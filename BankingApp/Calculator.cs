@@ -5,7 +5,8 @@ using System.Threading.Tasks;
 
 namespace BankingApp
 {
-    public class Calculator
+    public class Calculator:Customer
     {
+        void CalculateFees() { }
     }
 }

@@ -3,7 +3,7 @@
   <Class Name="BankingApp.Customer">
     <Position X="14" Y="2.5" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAIAAAAAAAAACAQAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAIAAAAAAABACAQAAAAAAAAA=</HashCode>
       <FileName>Customer.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -12,6 +12,20 @@
     <TypeIdentifier>
       <HashCode>ACAAAAAAAAAAAAAAAAAAAQAEAAAAAAAEAAAAAAAAAAI=</HashCode>
       <FileName>Bank services.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BankingApp.Calculator">
+    <Position X="17.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Calculator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BankingApp.History">
+    <Position X="11.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>History.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

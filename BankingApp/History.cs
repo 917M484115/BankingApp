@@ -5,13 +5,11 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 namespace BankingApp
 {
-    public class Customer
+    public class History:Bank_services
     {
         [Key]
-        int CustomerId;
-        double AccountBalance;
-        string UserName;
-        string Password;
-       
+        DateTime Date;
+        void ShowTxHistory() { }
+
     }
 }
