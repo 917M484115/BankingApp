@@ -7,6 +7,8 @@ namespace BankingApp
 {
     public class Calculator:Customer
     {
-        void CalculateFees() { }
+        void CalculateFees() {
+        
+        }
     }
 }
