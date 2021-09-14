@@ -6,8 +6,4 @@
     <RootNamespace>BankingApp.Aids</RootNamespace>
   </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="SendGrid" Version="9.24.2" />
-  </ItemGroup>
-
 </Project>
