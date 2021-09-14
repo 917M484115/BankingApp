@@ -1,4 +1,4 @@
-using BankingApp.Data;
+using Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -14,6 +14,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using BankingApp.Domain;
+using BankingApp.Infra;
+
+
 namespace BankingApp
 {
     public class Startup
