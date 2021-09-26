@@ -25,6 +25,8 @@ namespace BankingApp.Facade.ViewModels
         public double TimeInMonths { get; set; }
         [TempData]
         public double Result { get; set; }
+        [TempData]
+        public double Revenue { get; set; }
         //{ get { return TimeInMonths * Amount; } }
         [BindProperty]
         public double Amount { get; set; }

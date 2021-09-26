@@ -19,29 +19,42 @@ namespace BankingApp.Pages
         //[BindProperty] public Calculator calculator { get; private set; }
         [BindProperty] public CalculatorViewModel calculatorViewModel { get; set; }
         public SelectList YieldTypes { get; private set; }
+        public SelectList selectList = new SelectList(
+                 new List<SelectListItem>
+                 {
+            new SelectListItem {Text = "Classic", Value = "0.05"},
+            new SelectListItem {Text = "Risky", Value = "0.1"},
+                     }, "Value", "Text");
         //public IEnumerable<SelectListItem> YieldId { get; set; }
+
         public IActionResult OnGet()
-        {
-            YieldTypes = loadYieldTypes(new object[] { "Classic", 0.01, 0, 0, 0, 1 });
-            return Page();
-        }
-        public IActionResult OnPost()
         {
             //YieldTypes = loadYieldTypes();
             return Page();
         }
-        public async Task<IActionResult> OnGetCalculateAsync()
+        public IActionResult OnPost(int? id)
         {
-            YieldTypes = loadYieldTypes(new object[] { "Classic", 0.01, 0, 0, 0, 1 });
-            
+            //YieldTypes = loadYieldTypes(id);
             return Page();
         }
+        //public async Task<IActionResult> OnGetCalculateAsync(int? id)
+        //{
+        //    YieldTypes = loadYieldTypes(id);
+
+        //    return Page();
+        //}
         public async Task<IActionResult> OnPostCalculateAsync()
         {
-           
-            var a = YieldTypes;
-            var selectedAPY =calculatorViewModel.YieldId;
-            calculatorViewModel.Result =Convert.ToDouble(selectedAPY);
+
+            //var a = YieldTypes.SelectedValue;
+            //vm.FindAsync();
+            var selectedAPY = calculatorViewModel.APY+1;
+            var TimeInYears = calculatorViewModel.TimeInMonths/12;
+            var amount = calculatorViewModel.Amount;
+            var result = amount * Math.Pow(selectedAPY, TimeInYears);
+            calculatorViewModel.Result =Math.Round(result,2);
+            calculatorViewModel.Revenue = Math.Round(calculatorViewModel.Result - amount,2);
+            //YieldTypes = loadYieldTypes();
             return Page();
         }
         public async Task<IActionResult> OnGetCreateAsync()
@@ -70,7 +83,7 @@ namespace BankingApp.Pages
             s.YieldId = Convert.ToInt32(v.YieldId);
             return s;
         }
-        internal SelectList loadYieldTypes(object selectedType)
+        internal SelectList loadYieldTypes(object selectedType=null)
         {
             var q = from d in _context.Calculator orderby d.YieldName select d;
             return new SelectList(q.AsNoTracking(),

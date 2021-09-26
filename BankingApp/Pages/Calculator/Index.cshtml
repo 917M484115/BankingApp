@@ -2,6 +2,7 @@
 @model Pages.CalculatorModel
 @using Core.Extensions;
 @{ 
+    ViewData["Title"] = "Calculator";
 
 }
 
@@ -20,10 +21,12 @@
         <input asp-for="calculatorViewModel.Amount" /> eur
     </div>
     <br />
+    @Html.Select(model => model.calculatorViewModel.APY,
+                Model.selectList, "-- Select Type --", "Yield Type")
+
     <div class="form-group">
-        @Html.Select(model => model.calculatorViewModel.YieldId,
-     Model.YieldTypes, "-- Select Type --", "Yield Type")
-        <input type="submit" asp-page-handler="Calculate"   value="Calculate" />
+
+        <input type="submit" asp-page-handler="Calculate" asp-route-id="" value="Calculate" />
     </div>
     <dt class="col-sm-2">
         @Html.DisplayNameFor(model => model.calculatorViewModel.Result)
@@ -31,8 +34,12 @@
     <dt class="col-sm-2">
         @Html.DisplayFor(model => model.calculatorViewModel.Result)
     </dt>
-
-
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.calculatorViewModel.Revenue)
+    </dt>
+    <dt class="col-sm-2">
+        @Html.DisplayFor(model => model.calculatorViewModel.Revenue)
+    </dt>
 </form>
 
 <a asp-page="Create">Create New</a>
