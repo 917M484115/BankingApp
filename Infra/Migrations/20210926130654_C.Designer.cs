@@ -4,14 +4,16 @@ using BankingApp.Infra;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BankingApp.Infra.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210926130654_C")]
+    partial class C
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,7 +23,7 @@ namespace BankingApp.Infra.Migrations
 
             modelBuilder.Entity("Data.Calculator", b =>
                 {
-                    b.Property<int>("YieldId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -38,10 +40,10 @@ namespace BankingApp.Infra.Migrations
                     b.Property<double>("TimeInMonths")
                         .HasColumnType("float");
 
-                    b.Property<string>("YieldName")
+                    b.Property<string>("YieldType")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("YieldId");
+                    b.HasKey("Id");
 
                     b.ToTable("Calculator");
                 });

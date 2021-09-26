@@ -12,8 +12,9 @@ namespace BankingApp.Facade.ViewModels
     public class CalculatorViewModel
     {
 
-        [Key]
-        public string YieldType { get; set; }
+        //[BindProperty]
+        public IEnumerable<SelectListItem> YieldId { get; set; }
+        public string YieldName { get; set; }
         
         //public IEnumerable<SelectListItem> Names { get; set; }
 

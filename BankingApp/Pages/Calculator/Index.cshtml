@@ -1,23 +1,29 @@
 ﻿@page
 @model Pages.CalculatorModel
 @using Core.Extensions;
-@{
+@{ 
+
 }
+
+
+@*@Html.Select(model => model.calculatorViewModel.YieldId,
+     Model.YieldTypes, "-- Select Type --", "Yield Type")*@
 
 <form method="post">
     <div asp-validation-summary="All"></div>
     <div>
-        <label asp-for="calculatorViewModel.TimeInMonths"></label>
+        <label asp-for="calculatorViewModel.TimeInMonths">Time period</label>
         <input asp-for="calculatorViewModel.TimeInMonths" /> months
     </div>
     <div>
         <label asp-for="calculatorViewModel.Amount"></label>
         <input asp-for="calculatorViewModel.Amount" /> eur
     </div>
-
     <br />
     <div class="form-group">
-        <input type="submit" asp-page-handler="Calculate" value="Calculate" />
+        @Html.Select(model => model.calculatorViewModel.YieldId,
+     Model.YieldTypes, "-- Select Type --", "Yield Type")
+        <input type="submit" asp-page-handler="Calculate"   value="Calculate" />
     </div>
     <dt class="col-sm-2">
         @Html.DisplayNameFor(model => model.calculatorViewModel.Result)
@@ -25,9 +31,9 @@
     <dt class="col-sm-2">
         @Html.DisplayFor(model => model.calculatorViewModel.Result)
     </dt>
+
+
 </form>
-@Html.Select(model => model.calculatorViewModel.YieldType,
-  Model.FunctionNames, "-- Select yield type --")
-<p>
-    <a asp-page="Create">Create New</a>
+
+<a asp-page="Create">Create New</a>
 </p>

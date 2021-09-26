@@ -8,6 +8,7 @@ using Data;
 using BankingApp.Facade.ViewModels;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 
 namespace BankingApp.Pages
 {
@@ -17,14 +18,30 @@ namespace BankingApp.Pages
         public CalculatorModel(ApplicationDbContext c) => _context = c;
         //[BindProperty] public Calculator calculator { get; private set; }
         [BindProperty] public CalculatorViewModel calculatorViewModel { get; set; }
-        public SelectList FunctionNames { get; private set; }
-        public void OnGet()
+        public SelectList YieldTypes { get; private set; }
+        //public IEnumerable<SelectListItem> YieldId { get; set; }
+        public IActionResult OnGet()
         {
-            FunctionNames = loadYieldTypes();
+            YieldTypes = loadYieldTypes(new object[] { "Classic", 0.01, 0, 0, 0, 1 });
+            return Page();
+        }
+        public IActionResult OnPost()
+        {
+            //YieldTypes = loadYieldTypes();
+            return Page();
+        }
+        public async Task<IActionResult> OnGetCalculateAsync()
+        {
+            YieldTypes = loadYieldTypes(new object[] { "Classic", 0.01, 0, 0, 0, 1 });
+            
+            return Page();
         }
         public async Task<IActionResult> OnPostCalculateAsync()
         {
-            calculatorViewModel.Result = calculatorViewModel.TimeInMonths * calculatorViewModel.Amount;
+           
+            var a = YieldTypes;
+            var selectedAPY =calculatorViewModel.YieldId;
+            calculatorViewModel.Result =Convert.ToDouble(selectedAPY);
             return Page();
         }
         public async Task<IActionResult> OnGetCreateAsync()
@@ -39,25 +56,25 @@ namespace BankingApp.Pages
                 return Page();
             }
 
-            var couch = toDataModel(calculatorViewModel);
+            var yield = toDataModel(calculatorViewModel);
             
-            await _context.AddAsync(couch);
+            await _context.AddAsync(yield);
             await _context.SaveChangesAsync();
             return RedirectToPage("./Calculator");
         }
         private Calculator toDataModel(CalculatorViewModel v)
         {
             var s = new Calculator();
-            s.YieldType = v.YieldType;
+            s.YieldName = v.YieldName;
             s.APY = v.APY;
-           
+            s.YieldId = Convert.ToInt32(v.YieldId);
             return s;
         }
-        internal SelectList loadYieldTypes(object selectedType = null)
+        internal SelectList loadYieldTypes(object selectedType)
         {
-            var q = from d in _context.Calculator orderby d.YieldType select d;
+            var q = from d in _context.Calculator orderby d.YieldName select d;
             return new SelectList(q.AsNoTracking(),
-                "Name", "APY", selectedType);
+                "YieldId", "YieldName", selectedType);
         }
     }
 }

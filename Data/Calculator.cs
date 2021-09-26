@@ -6,9 +6,12 @@ namespace Data
 {
     public class Calculator
     {
-        
+
+
         [Key]
-        public string YieldType { get; set; }
+        public int YieldId { get; set; }
+        
+        public string YieldName { get; set; }
 
         //BindProperty]
         public double APY { get; set; }
