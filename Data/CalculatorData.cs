@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Data
 {
-    public class Calculator
+    public class CalculatorData
     {
 
 

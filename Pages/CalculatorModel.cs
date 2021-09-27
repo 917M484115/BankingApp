@@ -75,9 +75,9 @@ namespace BankingApp.Pages
             await _context.SaveChangesAsync();
             return RedirectToPage("./Calculator");
         }
-        private Calculator toDataModel(CalculatorViewModel v)
+        private CalculatorData toDataModel(CalculatorViewModel v)
         {
-            var s = new Calculator();
+            var s = new CalculatorData();
             s.YieldName = v.YieldName;
             s.APY = Convert.ToDouble(v.APY);
             s.YieldId = Convert.ToInt32(v.YieldId);

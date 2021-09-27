@@ -17,11 +17,11 @@ namespace BankingApp.Infra
             : base(options)
         {
         }
-        public DbSet<Calculator> Calculator { get; set; }
+        public DbSet<CalculatorData> Calculator { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //modelBuilder.Entity<Calculator>().HasKey(m => m.YieldType);
-            modelBuilder.Entity<Calculator>().ToTable("Calculator");
+            modelBuilder.Entity<CalculatorData>().ToTable("Calculator");
             
             base.OnModelCreating(modelBuilder);
         }
