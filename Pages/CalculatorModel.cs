@@ -48,9 +48,6 @@ namespace BankingApp.Pages
             //var a = YieldTypes.SelectedValue;
             //vm.FindAsync();
             selectList = new SelectList(SelectList(), "Value", "Text");
-            var selectedAPY = calculatorViewModel.APY+1;
-            var TimeInYears = calculatorViewModel.TimeInMonths/12;
-            var amount = calculatorViewModel.Amount;
             var selectedAPY = Convert.ToDouble(calculatorViewModel.APY)+1;
             var TimeInYears = Convert.ToDouble(calculatorViewModel.TimeInMonths)/12;
             var amount = Convert.ToDouble(calculatorViewModel.Amount);
