@@ -22,8 +22,10 @@ namespace BankingApp.Pages
         public SelectList selectList = new SelectList(
                  new List<SelectListItem>
                  {
+                     //foreach (item a in database){new SelectListItem{Text=item.YieldType,Value=item.APY}}
             new SelectListItem {Text = "Classic", Value = "0.05"},
             new SelectListItem {Text = "Risky", Value = "0.1"},
+            new SelectListItem {Text = "Crypto", Value = "0.2"},
                      }, "Value", "Text");
         //public IEnumerable<SelectListItem> YieldId { get; set; }
 
@@ -48,9 +50,9 @@ namespace BankingApp.Pages
 
             //var a = YieldTypes.SelectedValue;
             //vm.FindAsync();
-            var selectedAPY = calculatorViewModel.APY+1;
-            var TimeInYears = calculatorViewModel.TimeInMonths/12;
-            var amount = calculatorViewModel.Amount;
+            var selectedAPY = Convert.ToDouble(calculatorViewModel.APY)+1;
+            var TimeInYears = Convert.ToDouble(calculatorViewModel.TimeInMonths)/12;
+            var amount = Convert.ToDouble(calculatorViewModel.Amount);
             var result = amount * Math.Pow(selectedAPY, TimeInYears);
             calculatorViewModel.Result =Math.Round(result,2);
             calculatorViewModel.Revenue = Math.Round(calculatorViewModel.Result - amount,2);
@@ -79,7 +81,7 @@ namespace BankingApp.Pages
         {
             var s = new Calculator();
             s.YieldName = v.YieldName;
-            s.APY = v.APY;
+            s.APY = Convert.ToDouble(v.APY);
             s.YieldId = Convert.ToInt32(v.YieldId);
             return s;
         }
@@ -87,7 +89,7 @@ namespace BankingApp.Pages
         {
             var q = from d in _context.Calculator orderby d.YieldName select d;
             return new SelectList(q.AsNoTracking(),
-                "YieldId", "YieldName", selectedType);
+                "APY", "YieldName", selectedType);
         }
     }
 }

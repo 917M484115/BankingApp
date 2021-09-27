@@ -2,7 +2,7 @@
 @model Pages.CalculatorModel
 @using Core.Extensions;
 @{ 
-    ViewData["Title"] = "Calculator";
+//ViewData["Title"] = "Calculator";
 
 }
 
@@ -12,34 +12,17 @@
 
 <form method="post">
     <div asp-validation-summary="All"></div>
-    <div>
-        <label asp-for="calculatorViewModel.TimeInMonths">Time period</label>
-        <input asp-for="calculatorViewModel.TimeInMonths" /> months
-    </div>
-    <div>
-        <label asp-for="calculatorViewModel.Amount"></label>
-        <input asp-for="calculatorViewModel.Amount" /> eur
-    </div>
-    <br />
+    @Html.Editor(model => model.calculatorViewModel.TimeInMonths)
+    @Html.Editor(model => model.calculatorViewModel.Amount)
     @Html.Select(model => model.calculatorViewModel.APY,
-                Model.selectList, "-- Select Type --", "Yield Type")
+            Model.selectList, "-- Select Type --", "Yield Type")
 
     <div class="form-group">
 
         <input type="submit" asp-page-handler="Calculate" asp-route-id="" value="Calculate" />
     </div>
-    <dt class="col-sm-2">
-        @Html.DisplayNameFor(model => model.calculatorViewModel.Result)
-    </dt>
-    <dt class="col-sm-2">
-        @Html.DisplayFor(model => model.calculatorViewModel.Result)
-    </dt>
-    <dt class="col-sm-2">
-        @Html.DisplayNameFor(model => model.calculatorViewModel.Revenue)
-    </dt>
-    <dt class="col-sm-2">
-        @Html.DisplayFor(model => model.calculatorViewModel.Revenue)
-    </dt>
+    @Html.Show(model => model.calculatorViewModel.Result)
+    @Html.Show(model => model.calculatorViewModel.Revenue)
 </form>
 
 <a asp-page="Create">Create New</a>
