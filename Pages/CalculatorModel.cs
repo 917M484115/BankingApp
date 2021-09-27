@@ -9,7 +9,6 @@ using BankingApp.Facade.ViewModels;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
-
 namespace BankingApp.Pages
 {
     public class CalculatorModel:PageModel
@@ -19,35 +18,36 @@ namespace BankingApp.Pages
         //[BindProperty] public Calculator calculator { get; private set; }
         [BindProperty] public CalculatorViewModel calculatorViewModel { get; set; }
         public SelectList YieldTypes { get; private set; }
-        public SelectList selectList = new SelectList(
-                 new List<SelectListItem>
-                 {
-            new SelectListItem {Text = "Classic", Value = "0.05"},
-            new SelectListItem {Text = "Risky", Value = "0.1"},
-                     }, "Value", "Text");
+        public SelectList selectList; 
         //public IEnumerable<SelectListItem> YieldId { get; set; }
-
+        public List<SelectListItem> SelectList ()
+        {
+              List<SelectListItem>selectList=new List<SelectListItem>();
+              foreach(var item in _context.Calculator)
+              { 
+                selectList.Add(new SelectListItem {Text=item.YieldName.ToString(),Value=item.APY.ToString() });
+              }
+              return selectList;
+        }
         public IActionResult OnGet()
         {
-            //YieldTypes = loadYieldTypes();
+            selectList = new SelectList(SelectList(), "Value", "Text");
             return Page();
         }
         public IActionResult OnPost(int? id)
         {
-            //YieldTypes = loadYieldTypes(id);
             return Page();
         }
-        //public async Task<IActionResult> OnGetCalculateAsync(int? id)
-        //{
-        //    YieldTypes = loadYieldTypes(id);
-
-        //    return Page();
-        //}
+        public async Task<IActionResult> OnGetCalculateAsync(int? id)
+        {
+            selectList = new SelectList(SelectList());
+            return Page();
+        }
         public async Task<IActionResult> OnPostCalculateAsync()
         {
-
             //var a = YieldTypes.SelectedValue;
             //vm.FindAsync();
+            selectList = new SelectList(SelectList(), "Value", "Text");
             var selectedAPY = calculatorViewModel.APY+1;
             var TimeInYears = calculatorViewModel.TimeInMonths/12;
             var amount = calculatorViewModel.Amount;
@@ -82,12 +82,6 @@ namespace BankingApp.Pages
             s.APY = v.APY;
             s.YieldId = Convert.ToInt32(v.YieldId);
             return s;
-        }
-        internal SelectList loadYieldTypes(object selectedType=null)
-        {
-            var q = from d in _context.Calculator orderby d.YieldName select d;
-            return new SelectList(q.AsNoTracking(),
-                "YieldId", "YieldName", selectedType);
         }
     }
 }
