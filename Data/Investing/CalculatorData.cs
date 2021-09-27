@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
 using System.ComponentModel.DataAnnotations;
+using BankingApp.Data.Common;
 
 namespace Data
 {
-    public class CalculatorData
+    public sealed class CalculatorData : MoneyAmountData
     {
 
 
@@ -20,8 +20,8 @@ namespace Data
         public double TimeInMonths { get; set; }
         [TempData]
         public double Result { get; set; }
-        [BindProperty]
-        public double Amount { get; set; }
+        //[BindProperty]
+        //public double Amount { get; set; }
 
     }
 }
