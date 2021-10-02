@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
-namespace BankingApp.Core.Extensions
+namespace Core.Extensions
 {
     public class PaginatedList<T> : List<T>
     {

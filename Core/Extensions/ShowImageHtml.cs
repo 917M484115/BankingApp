@@ -5,7 +5,7 @@ using System.Text.Encodings.Web;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace BankingApp.Core.Extensions
+namespace Core.Extensions
 {
     public static class ShowImageHtml
     {
