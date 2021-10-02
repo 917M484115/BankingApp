@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Threading.Tasks;
 using BankingApp.Infra;
 using Data;
+using System.IO;
+using System.Web.Razor;
 using BankingApp.Facade.ViewModels;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
@@ -40,7 +42,6 @@ namespace BankingApp.Pages
         }
         public async Task<IActionResult> OnGetCalculateAsync(int? id)
         {
-            selectList = new SelectList(SelectList());
             return Page();
         }
         public async Task<IActionResult> OnPostCalculateAsync()
@@ -58,22 +59,15 @@ namespace BankingApp.Pages
             return Page();
         }
         public async Task<IActionResult> OnGetCreateAsync()
-        {
-            
+        {            
             return Page();
         }
         public async Task<IActionResult> OnPostCreateAsync()
         {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
-
-            var yield = toDataModel(calculatorViewModel);
-            
+            var yield = toDataModel(calculatorViewModel);         
             await _context.AddAsync(yield);
             await _context.SaveChangesAsync();
-            return RedirectToPage("./Calculator");
+            return RedirectToPage("./Index/");
         }
         private CalculatorData toDataModel(CalculatorViewModel v)
         {
