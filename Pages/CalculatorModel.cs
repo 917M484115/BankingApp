@@ -64,16 +64,15 @@ namespace BankingApp.Pages
         }
         public async Task<IActionResult> OnPostCreateAsync()
         {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
-
+            //if (!ModelState.IsValid)
+            //{
+            //    return Page();
+            //}
             var yield = toDataModel(calculatorViewModel);
             
             await _context.AddAsync(yield);
             await _context.SaveChangesAsync();
-            return RedirectToPage("./Calculator");
+            return RedirectToPage("./Index/");
         }
         private CalculatorData toDataModel(CalculatorViewModel v)
         {

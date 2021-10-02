@@ -4,7 +4,7 @@ using System.Linq.Expressions;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace Core.Extensions
+namespace BankingApp.Core.Extensions
 {
     public static class EditorHtml
     {
