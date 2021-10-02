@@ -1,32 +1,78 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="BankingApp.Customer">
-    <Position X="14" Y="2.5" Width="2" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAIAAAAAAABACAQAAAAAAAAA=</HashCode>
-      <FileName>Customer.cs</FileName>
-    </TypeIdentifier>
+  <Class Name="BankingApp.Data.ATMData">
+    <Position X="23" Y="7.75" Width="1.5" />
+    <TypeIdentifier />
   </Class>
-  <Class Name="BankingApp.Bank_services">
-    <Position X="11.25" Y="5.25" Width="2" />
-    <TypeIdentifier>
-      <HashCode>ACAAAAAAAAAAAAAAAAAAAQAEAAAAAAAEAAAAAAAAAAI=</HashCode>
-      <FileName>Bank services.cs</FileName>
-    </TypeIdentifier>
+  <Class Name="BankingApp.Data.ATMManagerData">
+    <Position X="17.5" Y="7.75" Width="1.75" />
+    <TypeIdentifier />
   </Class>
-  <Class Name="BankingApp.Calculator">
-    <Position X="17.25" Y="5.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Calculator.cs</FileName>
-    </TypeIdentifier>
+  <Class Name="BankingApp.Data.Common.AccountData">
+    <Position X="21.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier />
   </Class>
-  <Class Name="BankingApp.History">
-    <Position X="11.5" Y="8" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAABAAAAAAAAAAA=</HashCode>
-      <FileName>History.cs</FileName>
-    </TypeIdentifier>
+  <Class Name="BankingApp.Data.Common.BaseData">
+    <Position X="19.5" Y="3" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BankingApp.Data.Common.MoneyAmountData">
+    <Position X="19.5" Y="5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="BankingApp.Data.Common.NamedData">
+    <Position X="12" Y="5" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BankingApp.Data.Common.PersonData">
+    <Position X="15.75" Y="5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Data.CalculatorData">
+    <Position X="24.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="BankingApp.Data.InvestingAccountData">
+    <Position X="23.25" Y="10.5" Width="2" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="BankingApp.Data.Loan.CarLoanData">
+    <Position X="15.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="BankingApp.Data.Loan.HomeLoanData">
+    <Position X="19.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="BankingApp.Data.Loan.LoanData">
+    <Position X="19.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="BankingApp.Data.Loan.PersonalLoanData">
+    <Position X="17.5" Y="10.5" Width="1.75" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="BankingApp.Data.LoanAccountData">
+    <Position X="21.25" Y="10.5" Width="1.75" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="BankingApp.Data.LoanManagerData">
+    <Position X="13.75" Y="7.75" Width="1.75" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="BankingApp.Data.BankData">
+    <Position X="12" Y="7.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="BankingApp.Data.CustomerData">
+    <Position X="15.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="BankingApp.Core.UniqueItem">
+    <Position X="19.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier />
   </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>
