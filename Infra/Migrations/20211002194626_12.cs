@@ -2,7 +2,7 @@
 
 namespace BankingApp.Infra.Migrations
 {
-    public partial class AA : Migration
+    public partial class _12 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

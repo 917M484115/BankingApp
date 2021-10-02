@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BankingApp.Infra.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210926142514_E")]
-    partial class E
+    [Migration("20211002194626_12")]
+    partial class _12
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,7 +21,7 @@ namespace BankingApp.Infra.Migrations
                 .HasAnnotation("ProductVersion", "5.0.10")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Data.Calculator", b =>
+            modelBuilder.Entity("Data.CalculatorData", b =>
                 {
                     b.Property<int>("YieldId")
                         .ValueGeneratedOnAdd()
@@ -29,15 +29,6 @@ namespace BankingApp.Infra.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<double>("APY")
-                        .HasColumnType("float");
-
-                    b.Property<double>("Amount")
-                        .HasColumnType("float");
-
-                    b.Property<double>("Result")
-                        .HasColumnType("float");
-
-                    b.Property<double>("TimeInMonths")
                         .HasColumnType("float");
 
                     b.Property<string>("YieldName")

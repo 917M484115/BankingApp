@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BankingApp.Infra.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210914184613_A")]
-    partial class A
+    [Migration("20211002201256_13")]
+    partial class _13
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,24 +21,20 @@ namespace BankingApp.Infra.Migrations
                 .HasAnnotation("ProductVersion", "5.0.10")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Data.Calculator", b =>
+            modelBuilder.Entity("Data.CalculatorData", b =>
                 {
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("YieldId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<double>("APY")
                         .HasColumnType("float");
 
-                    b.Property<double>("Amount")
-                        .HasColumnType("float");
+                    b.Property<string>("YieldName")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("Result")
-                        .HasColumnType("float");
-
-                    b.Property<double>("TimeInMonths")
-                        .HasColumnType("float");
-
-                    b.HasKey("Name");
+                    b.HasKey("YieldId");
 
                     b.ToTable("Calculator");
                 });

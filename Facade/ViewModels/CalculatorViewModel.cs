@@ -12,15 +12,9 @@ namespace BankingApp.Facade.ViewModels
 {
     public class CalculatorViewModel
     {
-
-        //[BindProperty]
-        //[DefaultValue(1)]
         public IEnumerable<SelectListItem> YieldId { get; set; }
         public string YieldName { get; set; }
 
-        //public IEnumerable<SelectListItem> Names { get; set; }
-
-        //[BindProperty]
         [Required(ErrorMessage = "This field is required")]
         public double? APY { get; set; }
         
@@ -32,7 +26,6 @@ namespace BankingApp.Facade.ViewModels
 
         [TempData]
         public double Revenue { get; set; }
-        //{ get { return TimeInMonths * Amount; } }
 
         [BindProperty, Required(ErrorMessage = "This field is required")]
         public double? Amount { get; set; }
