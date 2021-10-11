@@ -1,12 +1,13 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Reflection;
+using Aids;
 
 namespace Tests
 {
-	public abstract class AbstractClassTests<TClass, TBaseClass> : StaticClassTests
-    where TClass : class
-    where TBaseClass : class
+    public abstract class AbstractClassTests<TClass, TBaseClass> : StaticClassTests
+        where TClass : class
+        where TBaseClass : class
     {
         protected TClass obj;
         [TestInitialize]
