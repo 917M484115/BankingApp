@@ -31,7 +31,9 @@
   <ItemGroup>
     <Folder Include="Aids\" />
     <Folder Include="Core\" />
-    <Folder Include="Data\" />
+    <Folder Include="Data\ATM\" />
+    <Folder Include="Data\Investing\" />
+    <Folder Include="Data\Loan\" />
     <Folder Include="Domain\" />
     <Folder Include="Facade\" />
     <Folder Include="Infra\" />
