@@ -31,7 +31,6 @@
   <ItemGroup>
     <Folder Include="Aids\" />
     <Folder Include="Core\" />
-    <Folder Include="Domain\" />
     <Folder Include="Facade\" />
     <Folder Include="Infra\" />
     <Folder Include="Pages\" />
