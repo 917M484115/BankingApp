@@ -4,5 +4,6 @@
     {
         public string CarType { get; set; }
         public double CarValue { get; set; }
+        public int CarAge { get; set; }
     }
 }

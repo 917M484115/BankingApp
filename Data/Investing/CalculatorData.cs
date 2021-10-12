@@ -1,10 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using BankingApp.Data.Common;
 
 namespace Data
 {
-    public sealed class CalculatorData 
+    public sealed class CalculatorData
     {
         [Key]
         public int YieldId { get; set; }
