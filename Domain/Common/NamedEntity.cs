@@ -1,6 +1,5 @@
 ﻿//using BankingApp.Core;
 
-
 //namespace BankingApp.Domain.Common
 //{
 //    public abstract class Named<TData> : BaseEntity<TData>
@@ -11,5 +10,4 @@
 //        public string Name => Data?.Name ?? string.Empty;
 //    }
 //}
-
-//TODO see named Repo ei taha hästi toimida
+//TODO mingi jama sellega

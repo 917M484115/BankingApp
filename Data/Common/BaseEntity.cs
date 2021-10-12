@@ -1,0 +1,16 @@
+﻿using System;
+
+namespace BankingApp.Data.Common
+{
+    public abstract class BaseEntity
+    {
+        public static string Unspecified => Aids.Constants.Word.Unspecified;
+        public static DateTime UnspecifiedValidFrom => DateTime.MinValue;
+        public static DateTime UnspecifiedValidTo => DateTime.MaxValue;
+        public static double UnspecifiedDouble => double.NaN;
+        public static decimal UnspecifiedDecimal => decimal.MaxValue;
+        public static int UnspecifiedInteger => 0;
+        protected static bool isUnspecified(string s)
+            => string.IsNullOrWhiteSpace(s) || s.Trim() == Unspecified;
+    }
+}

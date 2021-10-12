@@ -10,11 +10,11 @@ namespace BankingApp.Domain.Common
         public string FullName { get; }
         public int Age { get; }
     }
-    public abstract class Person<TData> : BaseEntity<TData>, IPersonEntity
+    public abstract class PersonEntity<TData> : BaseEntity<TData>, IPersonEntity
         where TData : PersonData, new()
     {
-        protected Person() : this(null) { }
-        protected Person(TData d) : base(d) { }
+        protected PersonEntity() : this(null) { }
+        protected PersonEntity(TData d) : base(d) { }
         public string LastName => Data?.LastName ?? "Unspecified";
         public string FirstMidName => Data?.FirstMidName ?? "Unspecified";
         public string FullName
