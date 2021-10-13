@@ -18,12 +18,11 @@ namespace BankingApp.Pages
         public CalculatorModel(ApplicationDbContext c)
         {
             _context = c;
+            selectList = new SelectList(SelectList(), "Value", "Text");
         }
 
         //[BindProperty] public Calculator calculator { get; private set; }
         [BindProperty] public CalculatorViewModel calculatorViewModel { get; set; }
-
-        public SelectList YieldTypes { get; private set; }
 
         //public IEnumerable<SelectListItem> YieldId { get; set; }
         public List<SelectListItem> SelectList()
@@ -33,19 +32,17 @@ namespace BankingApp.Pages
                 selectList.Add(new SelectListItem {Text = item.YieldName, Value = item.APY.ToString()});
             return selectList;
         }
-
         public IActionResult OnGet()
         {
-            selectList = new SelectList(SelectList(), "Value", "Text");
             return Page();
         }
 
-        public IActionResult OnPost(int? id)
+        public IActionResult OnPost()
         {
             return Page();
         }
 
-        public async Task<IActionResult> OnGetCalculateAsync(int? id)
+        public async Task<IActionResult> OnGetCalculateAsync()
         {
             return Page();
         }
@@ -54,7 +51,6 @@ namespace BankingApp.Pages
         {
             //var a = YieldTypes.SelectedValue;
             //vm.FindAsync();
-            selectList = new SelectList(SelectList(), "Value", "Text");
             var selectedAPY = Convert.ToDouble(calculatorViewModel.APY) + 1;
             var TimeInYears = Convert.ToDouble(calculatorViewModel.TimeInMonths) / 12;
             var amount = Convert.ToDouble(calculatorViewModel.Amount);
