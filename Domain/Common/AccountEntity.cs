@@ -1,13 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BankingApp.Data.Common;
 
 namespace BankingApp.Domain.Common
 {
-    public abstract class AccountEntity <TData>
+    public abstract class AccountEntity<T> : MoneyAmountEntity<T> where T : AccountData, new()
     {
+        protected internal AccountEntity(T d) : base(d) { }
+        public virtual string CustomerId => Data?.CustomerId ?? "Unspecified";
+
+        public virtual string AccountAddress => Data?.AccountAddress ?? "Unspecified";
+
+        public virtual string AccountNickName => Data?.AccountNickName ?? "Unspecified";
+
+        public virtual string AccountLocation => Data?.AccountLocation ?? "Unspecified";
     }
-    //TODO AccountEntity
+    //TODO Unspecified saada pärima BaseEntity'st
 }

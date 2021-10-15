@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BankingApp.Data.Common;
 
 namespace BankingApp.Domain.Common
 {
-    public abstract class MoneyAmountEntity <TData>
+    public abstract class MoneyAmountEntity <T>: BaseEntity<T> where T: MoneyAmountData, new()
     {
+        protected internal MoneyAmountEntity(T d = null) : base(d) { }
+
+        public virtual double MoneyAmount => Data?.MoneyAmount ?? 0;
     }
 
-    //TODO MoneyAmountEntity
 }
