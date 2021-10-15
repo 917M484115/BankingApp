@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using BankingApp.Data.Common;
 
-namespace Data
+namespace BankingApp.Data.Investing
 {
     public sealed class CalculatorData
     {

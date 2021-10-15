@@ -33,7 +33,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Investing\" />
     <Folder Include="Loan\" />
   </ItemGroup>
 
