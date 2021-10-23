@@ -8,14 +8,14 @@ using BankingApp.Domain.Common;
 
 namespace BankingApp.Domain
 {
-	public sealed class Notification : BaseEntity<CNotificationData>
+	public sealed class Notification : BaseEntity<NotificationData>
 	{
 		public Notification(NotificationData d) : base(d) { }
-		public string CarType => Data?.CarType ?? "Unspecified";
-		public string CarType => Data?.CarType ?? "Unspecified";
-		public string CarType => Data?.CarType ?? "Unspecified";
-		public string CarType => Data?.CarType ?? "Unspecified";
-		public string CarType => Data?.CarType ?? "Unspecified";
+		public string TransactionId => Data?.TransactionId ?? "Unspecified";
+		public string ATMProcessId => Data?.ATMProcessId ?? "Unspecified";
+		public string LoanId => Data?.LoanId ?? "Unspecified";
+		public string InvestmentId => Data?.InvestmentId ?? "Unspecified";
+		public string CurrencySwapId => Data?.CurrencySwapId ?? "Unspecified";
 
 	}
 }
