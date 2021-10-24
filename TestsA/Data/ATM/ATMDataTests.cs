@@ -1,4 +1,4 @@
-﻿using BankingApp.Data;
+﻿using BankingApp.Data.ATM;
 using BankingApp.Data.Common;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 

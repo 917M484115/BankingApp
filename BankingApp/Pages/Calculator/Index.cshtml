@@ -1,29 +1,30 @@
 ﻿@page
 @model Pages.CalculatorModel
 @using BankingApp.Core.Extensions;
-@{ 
-ViewData["Title"] = "Calculator";
+@{
+    ViewData["Title"] = "Calculator";
 
 }
 
 
 @*@Html.Select(model => model.calculatorViewModel.YieldId,
-     Model.YieldTypes, "-- Select Type --", "Yield Type")*@
+    Model.YieldTypes, "-- Select Type --", "Yield Type")*@
+@*
+    <form method="post">
+        <div asp-validation-summary="All"></div>
+        @Html.Editor(model => model.calculatorViewModel.TimeInMonths)
+        @Html.Editor(model => model.calculatorViewModel.Amount)
+        @Html.Select(model => model.calculatorViewModel.APY,
+                Model.selectList, "-- Select Type --", "Yield Type")
 
-<form method="post">
-    <div asp-validation-summary="All"></div>
-    @Html.Editor(model => model.calculatorViewModel.TimeInMonths)
-    @Html.Editor(model => model.calculatorViewModel.Amount)
-    @Html.Select(model => model.calculatorViewModel.APY,
-            Model.selectList, "-- Select Type --", "Yield Type")
+        <div class="form-group">
 
-    <div class="form-group">
+            <input type="submit" asp-page-handler="Calculate" asp-route-id="" value="Calculate" />
+        </div>
+        @Html.Show(model => model.calculatorViewModel.Result)
+        @Html.Show(model => model.calculatorViewModel.Revenue)
+    </form>
 
-        <input type="submit" asp-page-handler="Calculate" asp-route-id="" value="Calculate" />
-    </div>
-    @Html.Show(model => model.calculatorViewModel.Result)
-    @Html.Show(model => model.calculatorViewModel.Revenue)
-</form>
-
-<a asp-page="Create">Create New</a>
-</p>
+    <a asp-page="Create">Create New</a>
+    </p>
+*@

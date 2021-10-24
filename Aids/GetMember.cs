@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq.Expressions;
 
-namespace Aids
+namespace BankingApp.Aids
 {
     public static class GetMember
     {

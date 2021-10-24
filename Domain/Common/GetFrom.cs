@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Aids;
+using BankingApp.Aids;
 
 namespace BankingApp.Domain.Common
 {

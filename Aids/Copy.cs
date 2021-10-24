@@ -2,7 +2,7 @@
 using System.Linq;
 
 
-namespace Aids
+namespace BankingApp.Aids
 {
     public static class Copy
     {

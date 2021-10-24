@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Linq;
 
-namespace Aids
+namespace BankingApp.Aids
 {
     public static class Strings
     {

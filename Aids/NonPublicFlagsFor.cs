@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-namespace Aids
+namespace BankingApp.Aids
 {
     public static class NonPublicFlagsFor
     {

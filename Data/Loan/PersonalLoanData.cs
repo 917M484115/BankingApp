@@ -1,4 +1,4 @@
-﻿using Aids;
+﻿using BankingApp.Aids;
 
 namespace BankingApp.Data.Loan
 {

@@ -1,13 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
-using BankingApp.Data.Common;
+﻿using BankingApp.Data.Common;
 
 namespace BankingApp.Data.Investing
 {
-    public sealed class CalculatorData
+    public sealed class CalculatorData : NamedData
     {
-        [Key]
-        public int YieldId { get; set; }
-        public string YieldName { get; set; }
         public double APY { get; set; }
     }
 }

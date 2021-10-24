@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BankingApp.Data.Common
 {
-    public abstract class PeriodData : BaseEntityB
+    public abstract class PeriodData : BaseEntity
     {
         public DateTime? From { get; set; }
         public DateTime? To { get; set; }

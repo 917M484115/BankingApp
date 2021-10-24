@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="BankingApp.Facade.Common.AbstractViewFactory&lt;TData, TObject, TView&gt;">
+    <Position X="8" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Common\AbstractViewFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BankingApp.Facade.Common.NamedView">
+    <Position X="1" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAgAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Common\NamedView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BankingApp.Facade.Common.PeriodView">
+    <Position X="3.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAABIAAAA=</HashCode>
+      <FileName>Common\PeriodView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BankingApp.Facade.Common.UniqueEntityView">
+    <Position X="3.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Common\UniqueEntityView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

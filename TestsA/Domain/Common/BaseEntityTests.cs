@@ -1,5 +1,5 @@
-﻿using Aids;
-using BankingApp.Data;
+﻿using BankingApp.Aids;
+using BankingApp.Data.ATM;
 using BankingApp.Domain.Common;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 

@@ -1,10 +1,10 @@
 ﻿using System;
-using Aids;
+using BankingApp.Aids;
 using BankingApp.Data.Common;
 
 namespace BankingApp.Domain.Common
 {
-    public abstract class ValueObject<TData> : BaseEntityB where TData : class, new()
+    public abstract class ValueObject<TData> : BaseEntity where TData : class, new()
     {
 
         protected readonly TData data;

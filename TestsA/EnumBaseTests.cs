@@ -1,5 +1,5 @@
 ﻿using System;
-using Aids;
+using BankingApp.Aids;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Tests

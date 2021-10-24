@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Linq;
 
-namespace Aids
+namespace BankingApp.Aids
 {
     public static class SetRandom
     {

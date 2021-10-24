@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Aids;
+using BankingApp.Aids;
 using BankingApp.Core;
 
 namespace BankingApp.Domain.Common

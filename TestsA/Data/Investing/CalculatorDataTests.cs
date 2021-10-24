@@ -1,5 +1,5 @@
 ﻿using BankingApp.Data.Common;
-using Data;
+using BankingApp.Data.Investing;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Tests.Data.Investing

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Aids
+namespace BankingApp.Aids
 {
     public static class GetEnum
     {

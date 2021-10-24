@@ -2,7 +2,7 @@
 
 namespace BankingApp.Data.Common
 {
-    public abstract class BaseEntityB
+    public abstract class BaseEntity
     {
         public static string Unspecified => Aids.Constants.Word.Unspecified;
         public static DateTime UnspecifiedValidFrom => DateTime.MinValue;

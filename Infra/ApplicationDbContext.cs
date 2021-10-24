@@ -4,8 +4,7 @@ using BankingApp.Data;
 using BankingApp.Data.Common;
 using BankingApp.Data.Investing;
 using BankingApp.Data.Loan;
-using Data;
-
+using BankingApp.Data.ATM;
 namespace BankingApp.Infra
 {
     public class ApplicationDbContext : IdentityDbContext

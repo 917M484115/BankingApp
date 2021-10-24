@@ -1,4 +1,4 @@
-﻿namespace Aids.Constants
+﻿namespace BankingApp.Aids.Constants
 {
     public static class Character
     {
