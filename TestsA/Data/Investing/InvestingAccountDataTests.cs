@@ -2,7 +2,7 @@
 using BankingApp.Data.Common;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Tests.Data.Investing
+namespace BankingApp.Tests.Data.Investing
 {
     [TestClass]
     public class InvestingAccountDataTests : SealedClassTests<InvestingAccountData, AccountData>

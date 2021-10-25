@@ -3,7 +3,7 @@ using BankingApp.Data.ATM;
 using BankingApp.Domain.Common;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Tests.Domain.Common
+namespace BankingApp.Tests.Domain.Common
 {
     [TestClass]
     public class BaseEntityTests : AbstractClassTests<BaseEntity<ATMData>, object>

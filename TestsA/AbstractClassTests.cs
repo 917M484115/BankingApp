@@ -3,7 +3,7 @@ using System;
 using System.Reflection;
 using BankingApp.Aids;
 
-namespace Tests
+namespace BankingApp.Tests
 {
     public abstract class AbstractClassTests<TClass, TBaseClass> : StaticClassTests
         where TClass : class

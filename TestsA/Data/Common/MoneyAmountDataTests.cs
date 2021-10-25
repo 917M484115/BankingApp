@@ -2,7 +2,7 @@
 using BankingApp.Data.Common;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Tests.Data.Common
+namespace BankingApp.Tests.Data.Common
 {
     [TestClass]
     public class MoneyAmountDataTests : AbstractClassTests<MoneyAmountData, BaseData>
