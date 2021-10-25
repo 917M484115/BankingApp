@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BankingApp.Facade.Loan
 {
-	public abstract class HomeLoanView: LoanView
+	public sealed class HomeLoanView: LoanView
 	{
 		[DisplayName("Home value")] public double HomeValue { get; set; }
 		[DisplayName("Home age")] public int HomeAge { get; set; }

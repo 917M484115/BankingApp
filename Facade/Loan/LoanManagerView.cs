@@ -7,7 +7,7 @@ using BankingApp.Facade.Common;
 
 namespace BankingApp.Facade.Loan
 {
-	public abstract class LoanManagerView: PersonView
+	public sealed class LoanManagerView: PersonView
 	{
 	}
 }
