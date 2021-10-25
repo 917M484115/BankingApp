@@ -3,22 +3,26 @@ using BankingApp.Data.Common;
 using BankingApp.Domain.Common;
 
 namespace BankingApp.Facade.Common {
-    public abstract class AbstractViewFactory<TData, TObject, TView>
-        where TData : PeriodData, new()
-        where TView : PeriodView, new()
-        where TObject : IEntity<TData> {
+	public abstract class AbstractViewFactory<TData, TObject, TView>
+		where TData : PeriodData, new()
+		where TView : PeriodView, new()
+		where TObject : IEntity<TData>
+	{
 
-        public TObject Create(TView v) {
-            var d = new TData();
-            Copy.Members(v, d);
-            return toObject(d);
-        }
-        internal protected abstract TObject toObject(TData d);
-
-        public TView Create(TObject o) {
-            var v = new TView();
-            Copy.Members(o.Data, v);
-            return v;
-        }
-    }
+		public virtual TObject Create(TView v)
+		{
+			var d = new TData();
+			copyMembers(v, d);
+			return toObject(d);
+		}
+		internal protected abstract TObject toObject(TData d);
+		internal protected virtual void copyMembers(TView v, TData d) => Copy.Members(v, d);
+		internal protected virtual void copyMembers(TData d, TView v) => Copy.Members(d, v);
+		public virtual TView Create(TObject o)
+		{
+			var v = new TView();
+			copyMembers(o.Data, v);
+			return v;
+		}
+	}
 }

@@ -2,7 +2,7 @@
 
 namespace BankingApp.Data
 {
-    public sealed class BankData : NamedData
+    public sealed class BankData : NamedEntityData
     {
     }
 }

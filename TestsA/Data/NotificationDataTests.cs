@@ -10,7 +10,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace BankingApp.Tests.Data
 {
     [TestClass]
-    public class NotificationDataTests : SealedClassTests<NotificationData,BaseData>
+    public class NotificationDataTests : SealedClassTests<NotificationData, UniqueEntityData>
     {
         [TestMethod] public void TransactionIdTest() => isReadOnlyProperty<string>();
         [TestMethod] public void ATMProcessIdTest() => isReadOnlyProperty<string>();

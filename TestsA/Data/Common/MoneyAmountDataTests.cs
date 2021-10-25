@@ -5,7 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace BankingApp.Tests.Data.Common
 {
     [TestClass]
-    public class MoneyAmountDataTests : AbstractClassTests<MoneyAmountData, BaseData>
+    public class MoneyAmountDataTests : AbstractClassTests<MoneyAmountData, UniqueEntityData>
     {
         private class testClass : MoneyAmountData { }
         protected override MoneyAmountData getObject() => GetRandom.ObjectOf<testClass>();
