@@ -1,10 +1,11 @@
 ﻿using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using BankingApp.Data.Common;
 
 namespace BankingApp.Facade.Common {
 
-    public abstract class PeriodView {
+    public abstract class PeriodView: BaseEntity {
 
         internal static string setDisplayNameValue => "set_DisplayNameValue";
 
