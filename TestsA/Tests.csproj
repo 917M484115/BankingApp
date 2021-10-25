@@ -25,6 +25,7 @@
   <ItemGroup>
     <Folder Include="Aids\" />
     <Folder Include="Core\" />
+    <Folder Include="Domain\Common\" />
     <Folder Include="Facade\" />
     <Folder Include="Infra\" />
     <Folder Include="Pages\" />

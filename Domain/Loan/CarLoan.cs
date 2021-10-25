@@ -11,7 +11,7 @@ namespace BankingApp.Domain.Loan
 	public sealed class CarLoan : Loan<CarLoanData>
 	{
 		public CarLoan(CarLoanData d) : base(d) { }
-		public string CarType => Data?.CarType ?? "Unspecified";
+		public string CarType => Data?.CarType ?? Unspecified;
 		public double CarValue => Data?.CarValue ?? 0;
 		public int CarAge => Data?.CarAge ?? 0;
 	}

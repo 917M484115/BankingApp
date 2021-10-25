@@ -6,7 +6,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Tests.Data.Common
 {
     [TestClass]
-    public class PersonDataTests : AbstractClassTests<PersonData, BaseData>
+    public class PersonDataTests : AbstractClassTests<PersonData, NamedEntityData>
     {
         private class testClass : PersonData { }
         protected override PersonData getObject() => GetRandom.ObjectOf<testClass>();

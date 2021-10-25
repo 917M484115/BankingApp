@@ -1,7 +1,7 @@
 ﻿using BankingApp.Data;
 using BankingApp.Domain.Common;
 
-namespace BankingApp.Domain
+namespace BankingApp.Domain.Misc
 {
 	public sealed class Bank : NamedEntity<BankData>
 	{

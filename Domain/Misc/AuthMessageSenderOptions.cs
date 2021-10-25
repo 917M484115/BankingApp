@@ -1,4 +1,4 @@
-﻿namespace BankingApp.Domain
+﻿namespace BankingApp.Domain.Misc
 {
     public class AuthMessageSenderOptions
     {

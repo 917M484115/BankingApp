@@ -4,7 +4,7 @@
 //using SendGrid.Helpers.Mail;
 //using System.Threading.Tasks;
 //using BankingApp.Domain;
-//namespace BankingApp.Domain
+//namespace BankingApp.Domain.Misc
 //{
 //    public class EmailSender: IEmailSender
 //    {

@@ -5,7 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Tests.Data
 {
     [TestClass]
-    public class BankDataTests : SealedClassTests<BankData, NamedData>
+    public class BankDataTests : SealedClassTests<BankData, NamedEntityData>
     {
     }
 }

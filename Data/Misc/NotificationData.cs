@@ -2,7 +2,7 @@
 
 namespace BankingApp.Data
 {
-    public sealed class NotificationData :BaseData
+    public sealed class NotificationData : UniqueEntityData
     {
         public string TransactionId { get; }
         public string ATMProcessId { get; }

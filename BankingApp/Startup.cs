@@ -14,6 +14,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using BankingApp.Domain;
+using BankingApp.Domain.Misc;
 using BankingApp.Infra;
 
 
