@@ -10,7 +10,7 @@ namespace BankingApp.Domain.Misc
 
         public virtual string AccountAddress => Data?.AccountAddress ?? Unspecified;
 
-        public virtual string AccountNickName => Data?.AccountNickName ?? Unspecified;
+        public virtual string AccountNickName => Data?.AccountNickname ?? Unspecified;
 
         public virtual string AccountLocation => Data?.AccountLocation ?? Unspecified;
     }

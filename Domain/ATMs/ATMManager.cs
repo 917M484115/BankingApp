@@ -1,7 +1,7 @@
 ﻿using BankingApp.Data.ATM;
 using BankingApp.Domain.Common;
 
-namespace BankingApp.Domain.ATM
+namespace BankingApp.Domain.ATMs
 {
     public sealed class ATMManager : PersonEntity<ATMManagerData>
     {

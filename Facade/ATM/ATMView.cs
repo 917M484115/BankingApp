@@ -8,7 +8,7 @@ using BankingApp.Facade.Common;
 
 namespace BankingApp.Facade.ATM
 {
-	class ATMView: MoneyAmountView
+	public sealed class ATMView: MoneyAmountView
 	{ 
 		public string Location { get; set; }
 		public string Manager { get; set; }
