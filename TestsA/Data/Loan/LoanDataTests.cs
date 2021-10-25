@@ -3,7 +3,7 @@ using BankingApp.Data.Common;
 using BankingApp.Data.Loan;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Tests.Data.Loan
+namespace BankingApp.Tests.Data.Loan
 {
     [TestClass]
     public class LoanDataTests : AbstractClassTests<LoanData, MoneyAmountData>

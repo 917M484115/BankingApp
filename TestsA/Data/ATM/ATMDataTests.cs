@@ -2,7 +2,7 @@
 using BankingApp.Data.Common;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Tests.Data.ATM
+namespace BankingApp.Tests.Data.ATM
 {
     [TestClass]
     public class ATMDataTests : SealedClassTests<ATMData, MoneyAmountData>

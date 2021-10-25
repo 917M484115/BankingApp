@@ -5,7 +5,7 @@ using System.Diagnostics;
 using System.Linq;
 using BankingApp.Aids;
 
-namespace Tests
+namespace BankingApp.Tests
 {
     public abstract class BaseTests
     {

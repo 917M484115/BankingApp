@@ -7,7 +7,7 @@ using System.Reflection;
 using BankingApp.Aids;
 
 
-namespace Tests
+namespace BankingApp.Tests
 {
     public abstract class StaticClassTests : BaseTests
     {

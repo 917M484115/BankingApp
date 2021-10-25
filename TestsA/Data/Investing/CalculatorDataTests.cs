@@ -2,7 +2,7 @@
 using BankingApp.Data.Investing;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Tests.Data.Investing
+namespace BankingApp.Tests.Data.Investing
 { 
     [TestClass]
     //TODO Kas CalculatorData tohib NamedEntityDatast pärida või ei? Lisada see Datasse, kui võimalik implementeerida. Kui ei, tuleb test teha ümber.

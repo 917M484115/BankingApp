@@ -8,12 +8,19 @@
     </TypeIdentifier>
   </Class>
   <Class Name="BankingApp.Data.Common.NamedEntityData">
-    <Position X="6.75" Y="2.25" Width="1.5" />
+    <Position X="6.25" Y="2.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAgAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Common\NamedEntityData.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BankingApp.Data.Common.PeriodData" Collapsed="true">
+    <Position X="0.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Common\PeriodData.cs</FileName>
+    </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

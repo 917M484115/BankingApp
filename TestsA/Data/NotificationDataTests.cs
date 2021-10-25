@@ -7,7 +7,7 @@ using BankingApp.Data;
 using BankingApp.Data.Common;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Tests.Data
+namespace BankingApp.Tests.Data
 {
     [TestClass]
     public class NotificationDataTests : SealedClassTests<NotificationData, UniqueEntityData>

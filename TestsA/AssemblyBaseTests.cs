@@ -4,7 +4,7 @@ using System.Linq;
 using BankingApp.Aids;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Tests
+namespace BankingApp.Tests
 {
     public abstract class AssemblyBaseTests : BaseTests
     {
