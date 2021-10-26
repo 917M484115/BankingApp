@@ -16,8 +16,10 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using BankingApp.Domain;
 using BankingApp.Domain.Misc;
 using BankingApp.Infra;
-
-
+using BankingApp.Domain.Loans;
+using BankingApp.Infra.Loan;
+using BankingApp.Infra.Investing;
+using BankingApp.Domain.Investing;
 namespace BankingApp
 {
     public class Startup
@@ -38,11 +40,16 @@ namespace BankingApp
             services.AddDatabaseDeveloperPageExceptionFilter();
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+            registerRepositories(services);
             //services.AddTransient<IEmailSender, EmailSender>();
             services.Configure<AuthMessageSenderOptions>(Configuration);
             services.AddRazorPages();
         }
-
+        private static void registerRepositories(IServiceCollection s)
+        {
+            s.AddScoped<ICarLoanRepository, CarLoanRepository>();
+            s.AddScoped<ICalcuatorsRepository, CalculatorsRepository>();
+        }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
