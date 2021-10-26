@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using BankingApp.Data.Investing;
 using BankingApp.Data.Loan;
-using BankingApp.Domain.Loan;
 using BankingApp.Domain.Loans;
 using BankingApp.Infra.Common;
 

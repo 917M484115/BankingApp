@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using BankingApp.Data.ATM;
 using BankingApp.Data.Loan;
 
-namespace BankingApp.Domain.Loan
+namespace BankingApp.Domain.Loans
 {
 	public sealed class CarLoan : Loan<CarLoanData>
 	{
