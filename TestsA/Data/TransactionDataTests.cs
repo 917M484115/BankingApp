@@ -5,13 +5,13 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace BankingApp.Tests.Data
 {
     [TestClass]
-    public class TransactionDataTests :SealedClassTests<TransactionData, MoneyAmountData>
+    public class TransactionDataTests :SealedClassTests<MoneyAmountData>
     {
-        [TestMethod] public void RecipientIdTest() => isReadWriteProperty<string>();
-        [TestMethod] public void RecipientNameTest() => isReadWriteProperty<string>();
-        [TestMethod] public void SenderIdTest() => isReadWriteProperty<string>();
-        [TestMethod] public void SenderNameTest() => isReadWriteProperty<string>();
-        [TestMethod] public void NoteTest() => isReadWriteProperty<string>();
-        [TestMethod] public void TransactionNrTest() => isReadWriteProperty<int>();
+        [TestMethod] public void RecipientIdTest() => isProperty<string>();
+        [TestMethod] public void RecipientNameTest() => isProperty<string>();
+        [TestMethod] public void SenderIdTest() => isProperty<string>();
+        [TestMethod] public void SenderNameTest() => isProperty<string>();
+        [TestMethod] public void NoteTest() => isProperty<string>();
+        [TestMethod] public void TransactionNrTest() => isProperty<int>();
     }
 }

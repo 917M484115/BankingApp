@@ -5,10 +5,10 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace BankingApp.Tests.Data.Common
 {
     [TestClass]
-    public class MoneyAmountDataTests : AbstractClassTests<MoneyAmountData, UniqueEntityData>
+    public class MoneyAmountDataTests : AbstractClassTests<UniqueEntityData>
     {
         private class testClass : MoneyAmountData { }
-        protected override MoneyAmountData getObject() => GetRandom.ObjectOf<testClass>();
-        [TestMethod] public void MoneyAmountTest() => isReadWriteProperty<double>();
+        protected override object createObject() => new testClass();
+        [TestMethod] public void MoneyAmountTest() => isProperty<double>();
     }
 }

@@ -5,7 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace BankingApp.Tests.Data.ATM
 {
     [TestClass]
-    public class ATMManagerDataTests : SealedClassTests<ATMManagerData, PersonData>
+    public class ATMManagerDataTests : SealedClassTests<PersonData>
     {
     }
 }

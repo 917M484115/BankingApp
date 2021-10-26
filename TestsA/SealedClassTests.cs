@@ -2,12 +2,8 @@
 
 namespace BankingApp.Tests
 {
-    public abstract class SealedClassTests<TClass, TBaseClass>
-        : ClassTests<TClass, TBaseClass>
-        where TClass : class, new()
-        where TBaseClass : class
+    public abstract class SealedClassTests<TBaseClass> : ClassTests<TBaseClass>
     {
-
-        [TestMethod] public override void IsSealedTest() => isTrue(type.IsSealed);
+        [TestMethod] public void IsSealed() => isTrue(type?.IsSealed ?? false);
     }
 }

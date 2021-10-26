@@ -1,6 +1,6 @@
 ﻿using BankingApp.Data.Loan;
 
-namespace BankingApp.Domain.Loan
+namespace BankingApp.Domain.Loans
 {
 	public sealed class PersonalLoan : Loan<PersonalLoanData>
 	{

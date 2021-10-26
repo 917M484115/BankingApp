@@ -4,10 +4,10 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace BankingApp.Tests.Data.Loan
 {
     [TestClass]
-    public class CarLoanDataTests : SealedClassTests<CarLoanData, LoanData>
+    public class CarLoanDataTests : SealedClassTests<LoanData>
     {
-        [TestMethod] public void CarTypeTest() => isReadWriteProperty<string>();
-        [TestMethod] public void CarValueTest() => isReadWriteProperty<double>();
-        [TestMethod] public void CarAgeTest() => isReadWriteProperty<int>();
+        [TestMethod] public void CarTypeTest() => isProperty<string>();
+        [TestMethod] public void CarValueTest() => isProperty<double>();
+        [TestMethod] public void CarAgeTest() => isProperty<int>();
     }
 }

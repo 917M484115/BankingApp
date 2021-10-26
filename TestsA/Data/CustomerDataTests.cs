@@ -6,8 +6,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace BankingApp.Tests.Data
 {
     [TestClass]
-    public class CustomerDataTests : SealedClassTests<CustomerData, PersonData>
+    public class CustomerDataTests : SealedClassTests<PersonData>
     {
-        [TestMethod] public void AccountIdTest() => isReadWriteProperty<string>();
+        [TestMethod] public void AccountIdTest() => isProperty<string>();
     }
 }

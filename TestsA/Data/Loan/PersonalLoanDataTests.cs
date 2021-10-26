@@ -4,8 +4,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace BankingApp.Tests.Data.Loan
 {
     [TestClass]
-    public class PersonalLoanDataTests:SealedClassTests<PersonalLoanData,LoanData>
+    public class PersonalLoanDataTests:SealedClassTests<LoanData>
     {
-        [TestMethod] public void ReasonTest() => isReadWriteProperty<string>();
+        [TestMethod] public void ReasonTest() => isProperty<string>();
     }
 }

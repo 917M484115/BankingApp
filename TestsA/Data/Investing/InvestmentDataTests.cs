@@ -5,9 +5,9 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace BankingApp.Tests.Data.Investing
 {
     [TestClass]
-    public class InvestmentDataTests : SealedClassTests<InvestmentData, MoneyAmountData>
+    public class InvestmentDataTests : SealedClassTests<MoneyAmountData>
     {
-        [TestMethod] public void CurrentAmountTest() => isReadWriteProperty<double>();
-        [TestMethod] public void DescriptionTest() => isReadWriteProperty<string>();
+        [TestMethod] public void CurrentAmountTest() => isProperty<double>();
+        [TestMethod] public void DescriptionTest() => isProperty<string>();
     }
 }

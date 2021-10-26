@@ -10,7 +10,7 @@ namespace BankingApp.Data.Common
         public static double UnspecifiedDouble => double.NaN;
         public static decimal UnspecifiedDecimal => decimal.MaxValue;
         public static int UnspecifiedInteger => 0;
-        protected static bool isUnspecified(string s)
+        protected internal static bool isUnspecified(string s)
             => string.IsNullOrWhiteSpace(s) || s.Trim() == Unspecified;
     }
 }

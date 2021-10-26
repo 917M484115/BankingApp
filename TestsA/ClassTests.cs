@@ -1,17 +1,10 @@
 ﻿using BankingApp.Aids;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Tests;
 
 namespace BankingApp.Tests
 {
-    public abstract class ClassTests<TClass, TBaseClass>
-        : AbstractClassTests<TClass, TBaseClass>
-        where TClass : class, new()
-        where TBaseClass : class
+    public abstract class ClassTests<TBaseClass> : BaseClassTests<TBaseClass>
     {
-        [TestMethod] public override void IsAbstractTest() => isFalse(type.IsAbstract);
-        protected override TClass getObject() => GetRandom.ObjectOf<TClass>();
-        [TestMethod]
-        public virtual void CanCreate()
-            => Assert.IsInstanceOfType(new TClass(), typeof(TClass));
+        protected override object createObject() => GetRandom.ObjectOf(type);
     }
 }

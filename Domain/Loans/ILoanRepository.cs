@@ -1,12 +1,10 @@
-﻿//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Text;
-//using System.Threading.Tasks;
+﻿//using BankingApp.Data.Common;
+//using BankingApp.Data.Loan;
 //using BankingApp.Domain.Common;
-//using BankingApp.Domain.Loan;
+
 
 //namespace BankingApp.Domain.Loans
 //{
-//	public interface ILoanRepository : IRepository<Loan> { }
+//    public interface ILoanRepository : IMoneyAmountEntity<> { }
 //}
+//TODO ILoanRepod ja teised sarnased Irepod

@@ -5,7 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace BankingApp.Tests.Data.Loan
 {
     [TestClass]
-    public class LoanManagerDataTests:SealedClassTests<LoanManagerData,PersonData>
+    public class LoanManagerDataTests:SealedClassTests<PersonData>
     {
     }
 }

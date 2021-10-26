@@ -8,38 +8,27 @@ namespace BankingApp.Tests
 {
     public abstract class AssemblyBaseTests : BaseTests
     {
-        protected AssemblyBaseTests(string assemblyName = null,
-            string testAssemblyName = null)
-        {
-            assembly = assemblyName ?? "Contoso";
-            var head = assembly.GetHead();
-            var tail = assembly.GetTail();
-            testAssembly = testAssemblyName ?? $"{head}.Tests";
-            testNamespace = $"{testAssembly}.{tail}";
-        }
-        [TestInitialize] public void CreateList() => list = new List<string>();
-        [TestMethod] public void IsTested() => isAllTested(assembly);
+        private static string noClassesInNamespace => "No classes in the namespace {0}";
         private static string isNotTested => "<{0}> is not tested";
         private static string noClassesInAssembly => "No classes in the assembly {0}";
-        private static string noClassesInNamespace => "No classes in the namespace {0}";
-        protected string testAssembly { get; }
-        protected string testNamespace { get; }
-        protected string assembly { get; }
-        private static char genericsClass => '`';
         private static char internalClass => '+';
         private static string displayClass => "<>";
         private static string shell32Class => "Shell32.";
+        private static char genericsClass => '`';
         private List<string> list;
+        [TestInitialize] public void CreateList() => list = new List<string>();
+        [TestMethod] public void IsTested() => isAllTested(assembly);
+        private static string testAssembly => "BankingApp.Tests";
+        protected virtual string assembly => "BankingApp";
         protected virtual string nameSpace(string name) => $"{assembly}.{name}";
-        protected void isAllTested(string assemblyName, string namespaceName = null)
+        protected virtual void isAllTested(string assembly, string namespaceName = null)
         {
-            namespaceName ??= assemblyName;
-            var l = getTypes(assemblyName);
+            namespaceName ??= assembly;
+            var l = getTypes(assembly);
             removeInterfaces(l);
             list = getNames(l);
-            removeNotIn(list, namespaceName);
-            if (list.Count == 0) notTested(noClassesInNamespace, namespaceName);
-            removeSurrogates(list);
+            removeNotIn(namespaceName);
+            removeSurrogates();
             removeTested();
             if (list.Count == 0) return;
             notTested(isNotTested, list[0]);
@@ -59,20 +48,22 @@ namespace BankingApp.Tests
                 types.Remove(e);
             }
         }
-        private static List<string> getNames(IEnumerable<Type> l) => l.Select(o => o.FullName).ToList();
-        private static void removeNotIn(List<string> l, string namespaceName)
+        private static List<string> getNames(List<Type> l) => l.Select(o => o.FullName).ToList();
+        private void removeNotIn(string namespaceName)
         {
             if (string.IsNullOrEmpty(namespaceName)) return;
-            l.RemoveAll(o => !o.StartsWith(namespaceName + '.'));
+            list.RemoveAll(o => !o.StartsWith(namespaceName + '.'));
+            if (list.Count > 0) return;
+            notTested(noClassesInNamespace, namespaceName);
         }
-        private static void removeSurrogates(List<string> l)
+        private void removeSurrogates()
         {
-            l.RemoveAll(o => o.Contains(shell32Class));
-            l.RemoveAll(o => o.Contains(internalClass));
-            l.RemoveAll(o => o.Contains(displayClass));
-            l.RemoveAll(o => o.Contains("<"));
-            l.RemoveAll(o => o.Contains(">"));
-            l.RemoveAll(o => o.Contains("Migrations"));
+            list.RemoveAll(o => o.Contains(shell32Class));
+            list.RemoveAll(o => o.Contains(internalClass));
+            list.RemoveAll(o => o.Contains(displayClass));
+            list.RemoveAll(o => o.Contains("<"));
+            list.RemoveAll(o => o.Contains(">"));
+            list.RemoveAll(o => o.Contains("Migrations"));
         }
         private void removeTested()
         {
@@ -86,18 +77,23 @@ namespace BankingApp.Tests
                 list.RemoveAt(i - 1);
             }
         }
-        private List<string> getTestClasses()
-        {
-            var tests = GetSolution.TypeNamesForAssembly(testAssembly);
-            removeNotIn(tests, testNamespace);
-            removeSurrogates(tests);
-            return tests.Select(removeGenericsChars).ToList();
-        }
         private string toTestName(string className)
         {
             className = removeAssemblyName(className);
             className = removeGenericsChars(className);
             return className + "Tests";
+        }
+        private string removeAssemblyName(string className) => className[assembly.Length..];
+        private static List<string> getTestClasses()
+        {
+            var l = new List<string>();
+            var tests = GetSolution.TypeNamesForAssembly(testAssembly);
+            foreach (var t in tests)
+            {
+                var n = removeGenericsChars(t);
+                l.Add(n);
+            }
+            return l;
         }
         private static string removeGenericsChars(string className)
         {
@@ -105,6 +101,6 @@ namespace BankingApp.Tests
             if (idx > 0) className = className.Substring(0, idx);
             return className;
         }
-        private string removeAssemblyName(string className) => className[assembly.Length..];
+
     }
 }

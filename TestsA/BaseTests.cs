@@ -4,105 +4,71 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using BankingApp.Aids;
+using Tests;
 
 namespace BankingApp.Tests
 {
-    public abstract class BaseTests
+   public class BaseTests : TestAids
     {
-        private static System.Reflection.BindingFlags allFlags => PublicFlagsFor.All | NonPublicFlagsFor.All;
-        protected static void areEqual<TExpected, TActual>(TExpected e, TActual a) => Assert.AreEqual(e, a);
-        protected static void areEqual<TExpected, TActual>(TExpected e, TActual a, string s) => Assert.AreEqual(e, a, s);
-        protected static void areNotEqual<TExpected, TActual>(TExpected e, TActual a) => Assert.AreNotEqual(e, a);
-        protected static void exception<T>(Action a) where T : Exception => Assert.ThrowsException<T>(a);
-        protected static void isNull(object o, string msg = null) => Assert.IsNull(o, msg ?? string.Empty);
-        protected static void isNotNull(object o) => Assert.IsNotNull(o);
-        protected static void isNotNull(object o, string message) => Assert.IsNotNull(o, message);
-        protected static void isInstanceOfType<TType>(object o) => isInstanceOfType(o, typeof(TType));
-        protected static void isInstanceOfType(object o, Type t) => Assert.IsInstanceOfType(o, t);
-        protected static void isFalse(bool b) => Assert.IsFalse(b);
-        protected static void isTrue(bool b, string s = null)
+
+        [TestCleanup]
+        public virtual void TestCleanup()
         {
-            if (s is null) Assert.IsTrue(b);
-            else Assert.IsTrue(b, s);
+            objUnderTests = null;
+            type = null;
         }
-        protected static void fail(string message) => Assert.Fail(message);
-        protected static void notTested(string message) => Assert.Inconclusive(message);
-        protected static void notTested(string message, params object[] parameters)
-            => Assert.Inconclusive(message, parameters);
-        protected static void isReadOnly(object o, string propertyName, object expected)
+        [TestMethod]
+        public virtual void IsSpecifiedClassTested()
         {
-            var actual = isReadOnly(o, propertyName);
-            areEqual(expected, actual);
+            if (type == null) notTested(notSpecifiedMsg);
+            var testClassName = GetType().Name;
+            isTrue(testClassName.StartsWith(testableClassName));
         }
-        protected static object isReadOnly(object o, string propertyName)
+        protected Type getTestableClassType()
         {
-            var p = o.GetType().GetProperty(propertyName, allFlags);
-            isNotNull(p);
-            isFalse(p?.CanWrite ?? true);
-            isTrue(p?.CanRead ?? false);
-            return p?.GetValue(o);
+            var testClassName = GetType().FullName;
+            var testableClassName = testClassName.Replace("Tests", string.Empty);
+            testableClassName = testableClassName.Replace("..", ".");
+            var solutionName = testableClassName.GetHead();
+            var projectName = testableClassName.GetTail().GetHead();
+            var l = GetSolution.TypesForAssembly($"{solutionName}.{projectName}");
+            var list = l?.Where(x => x.FullName == testableClassName)?.ToList();
+            return (list?.Count() > 0)? list[0]: null;
         }
-        protected static string getPropertyAfter(string methodName)
+        [TestMethod]
+        public virtual void IsTested()
         {
-            var stack = new StackTrace();
-            int i = methodFrameIdx(stack, methodName);
-            return nextPropertyName(stack, i);
+            if (type == null) notTested(notSpecifiedMsg);
+            members = publicDeclaredMembers;
+            removeTestedMethods();
+            if (!isTested) notTested(notTestedMsg, members[0]);
         }
-        private static string nextPropertyName(StackTrace s, int i)
+        private const string notSpecifiedMsg = "Class is not specified";
+        private const string notTestedMsg = "<{0}> is not tested";
+        private List<string> members { get; set; }
+        private bool isTested => members.Count == 0;
+        private string testableClassName
         {
-            for (i += 1; i < s.FrameCount - 1; i++)
+            get
             {
-                var n = s.GetFrame(i)?.GetMethod()?.Name;
-                if (n is "MoveNext" or "Start") continue;
-                return n?.Replace("Test", string.Empty);
-            }
-            return string.Empty;
-        }
-        private static int methodFrameIdx(StackTrace s, string methodName)
-        {
-            int i;
-            for (i = 0; i < s.FrameCount - 1; i++)
-            {
-                var n = s.GetFrame(i)?.GetMethod()?.Name;
-                if (n == methodName) break;
-            }
-            return i;
-        }
-        protected static void equalProperties(object x, object y, params string[] except)
-        {
-            foreach (var property in x.GetType().GetProperties(PublicFlagsFor.Instance))
-            {
-                var name = property.Name;
-                if (except.Contains(name)) continue;
-                var p = y.GetType().GetProperty(name, PublicFlagsFor.Instance);
-                isNotNull(p, $"No property with name '{name}' found.");
-                var expected = property.GetValue(x);
-                var actual = p?.GetValue(y);
-                areEqual(expected, actual, $"For property'{name}'.");
+                var s = type.Name;
+                var index = s.IndexOf("`", StringComparison.Ordinal);
+                if (index > -1) s = s.Substring(0, index);
+                return s;
             }
         }
-        protected static void notEqualProperties(object x, object y)
+        private List<string> publicDeclaredMembers
+                => GetClass.Members(type, PublicFlagsFor.Declared).Select(e => e.Name).ToList();
+
+        private void removeTestedMethods()
         {
-            foreach (var property in x.GetType().GetProperties(PublicFlagsFor.Instance))
+            var tests = GetType().GetMembers().Select(e => e.Name).ToList();
+            for (var i = members.Count; i > 0; i--)
             {
-                var name = property.Name;
-                var p = y.GetType().GetProperty(name, PublicFlagsFor.Instance);
-                isNotNull(p, $"No property with name '{name}' found.");
-                var expected = property.GetValue(x);
-                var actual = p?.GetValue(y);
-                if (expected != actual) return;
-            }
-            fail("All properties are same");
-        }
-        protected static void htmlContains(IReadOnlyList<object> actual, IReadOnlyList<string> expected)
-        {
-            isInstanceOfType(actual, typeof(List<object>));
-            areEqual(expected.Count, actual.Count);
-            for (var i = 0; i < actual.Count; i++)
-            {
-                var a = actual[i].ToString();
-                var e = expected[i];
-                isTrue(a?.Contains(e) ?? false, $"{e} != {a}");
+                var m = members[i - 1] + "Test";
+                var isTested = tests.Find(o => o == m);
+                if (string.IsNullOrEmpty(isTested)) continue;
+                members.RemoveAt(i - 1);
             }
         }
     }

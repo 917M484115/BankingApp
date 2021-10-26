@@ -6,12 +6,12 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace BankingApp.Tests.Data.Loan
 {
     [TestClass]
-    public class LoanDataTests : AbstractClassTests<LoanData, MoneyAmountData>
+    public class LoanDataTests : AbstractClassTests<MoneyAmountData>
     {
         private class testClass : LoanData { }
-        protected override LoanData getObject() => GetRandom.ObjectOf<testClass>();
-        [TestMethod] public void LoanPeriodTest() => isReadWriteProperty<int>();
-        [TestMethod] public void InterestTest() => isReadWriteProperty<double>();
-        [TestMethod] public void LoanManagerIdTest() => isReadWriteProperty<string>();
+        protected override LoanData createObject() => GetRandom.ObjectOf<testClass>();
+        [TestMethod] public void LoanPeriodTest() => isProperty<int>();
+        [TestMethod] public void InterestTest() => isProperty<double>();
+        [TestMethod] public void LoanManagerIdTest() => isProperty<string>();
     }
 }

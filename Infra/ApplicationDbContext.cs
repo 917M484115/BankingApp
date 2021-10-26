@@ -27,6 +27,7 @@ namespace BankingApp.Infra
         public DbSet<CustomerData> Customer { get; set; }
         public DbSet<NotificationData> Notification { get; set; }
         public DbSet<TransactionData> Transaction { get; set; }
+        public DbSet<TransactionData> MoneyAmount { get; set; }
         public DbSet<CalculatorData> Calculator { get; set; }
 
         //TODO vaadata, kuidas krüptod/stockid listina siia saada. Võib panna käsitsi nt 5 populaarseimat ja listist saab investeerides valida nende vahel.
@@ -50,7 +51,8 @@ namespace BankingApp.Infra
             modelBuilder.Entity<CustomerData>().ToTable("Customer");
             modelBuilder.Entity<NotificationData>().ToTable("Notification");
             modelBuilder.Entity<TransactionData>().ToTable("Transaction");
-            
+            modelBuilder.Entity<MoneyAmountData>().ToTable("MoneyAmount");
+
 
             base.OnModelCreating(modelBuilder);
         }

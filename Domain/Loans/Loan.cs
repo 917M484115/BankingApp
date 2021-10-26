@@ -1,7 +1,7 @@
 ﻿using BankingApp.Data.Loan;
 using BankingApp.Domain.Common;
 
-namespace BankingApp.Domain.Loan
+namespace BankingApp.Domain.Loans
 {
 	public abstract class Loan<T> : MoneyAmountEntity<T> where T : LoanData, new()
 	{

@@ -1,14 +1,13 @@
-﻿using BankingApp.Data.ATM;
-using BankingApp.Data.Common;
+﻿using BankingApp.Data.Common;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace BankingApp.Tests.Data.ATM
 {
     [TestClass]
-    public class ATMDataTests : SealedClassTests<ATMData, MoneyAmountData>
+    public class ATMDataTests : SealedClassTests<MoneyAmountData>
     {
-        [TestMethod] public void LocationTest() => isReadWriteProperty<string>();
-        [TestMethod] public void ManagerTest() => isReadWriteProperty<string>();
+        [TestMethod] public void LocationTest() => isProperty<string>();
+        [TestMethod] public void ManagerTest() => isProperty<string>();
     }
 
 }
