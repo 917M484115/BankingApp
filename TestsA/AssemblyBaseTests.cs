@@ -17,7 +17,7 @@ namespace BankingApp.Tests
         private static char genericsClass => '`';
         private List<string> list;
         [TestInitialize] public void CreateList() => list = new List<string>();
-        [TestMethod] public void IsTested() => isAllTested(assembly);
+        [TestMethod] public override void IsTested() => isAllTested(assembly);
         private static string testAssembly => "BankingApp.Tests";
         protected virtual string assembly => "BankingApp";
         protected virtual string nameSpace(string name) => $"{assembly}.{name}";

@@ -3,6 +3,7 @@ using BankingApp.Domain.Loans;
 using BankingApp.Facade.Loan;
 using BankingApp.Infra;
 using BankingApp.Pages.Common;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 
 namespace BankingApp.Pages.Loan
@@ -17,8 +18,14 @@ namespace BankingApp.Pages.Loan
         {
             createColumn(x => Item.Id);
             createColumn(x => Item.CarType);
-            createColumn(x => Item.CarValue);;
+            createColumn(x => Item.CarValue);
             createColumn(x => Item.CarAge);
         }
+        public override string GetName(IHtmlHelper<CarLoanPage> h, int i) => i switch
+        {
+            2  => getName<double>(h, i),
+            3 => getName<int>(h, i),
+            _ => base.GetName(h, i)
+        };
     }
 }

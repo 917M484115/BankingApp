@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-
+using Newtonsoft.Json;
 namespace BankingApp.Pages.Common {
     public abstract class UnifiedPage<TPage, TRepository, TDomain, TView, TData>
         :TitledPage<TRepository, TDomain, TView, TData>, IIndexTable<TPage>
@@ -33,15 +33,17 @@ namespace BankingApp.Pages.Common {
 
         private bool isCorrectIndex<TList>(int i, IList<TList> l) => i >= 0 && i < l?.Count;
 
-        public virtual string GetName(IHtmlHelper<TPage> html, int i) {
+        public virtual string GetName(IHtmlHelper<TPage> h, int i) => getName<string>(h, i);
+
+        protected string getName<TResult>(IHtmlHelper<TPage> h, int i)
+        {
             if (isCorrectIndex(i, Columns))
-                return html.DisplayNameFor(Columns[i] as Expression<Func<TPage, string>>);
+                return h.DisplayNameFor(Columns[i] as Expression<Func<TPage, TResult>>);
             return Undefined;
         }
 
         public virtual IHtmlContent GetValue(IHtmlHelper<TPage> html, int i)
             => html.DisplayFor(Columns[i] as Expression<Func<TPage, string>>);
-
 
         public virtual Uri GetSortStringExpression(int i)
                     => isCorrectIndex(i, Columns)

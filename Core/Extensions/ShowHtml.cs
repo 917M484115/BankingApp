@@ -12,21 +12,27 @@ namespace BankingApp.Core.Extensions
         public static IHtmlContent Show<TModel, TResult>(
             this IHtmlHelper<TModel> html,
             Expression<Func<TModel, TResult>> e) => Show(html, e, e);
+
+
         public static IHtmlContent Show<TModel, TResult1, TResult2>(
             this IHtmlHelper<TModel> html,
             Expression<Func<TModel, TResult1>> label,
-            Expression<Func<TModel, TResult2>> value = null)
+            Expression<Func<TModel, TResult2>> value =null)
         {
             var labelStr = html.DisplayNameFor(label);
             var valueStr = (value is null) ? getValue(html, label) : getValue(html, value);
             return html.Show(labelStr, valueStr);
         }
+
+
         public static IHtmlContent Show<TModel>(this IHtmlHelper<TModel> h, string label, string value)
         {
             if (h == null) throw new ArgumentNullException(nameof(h));
             var s = htmlStrings(h, label, value);
             return new HtmlContentBuilder(s);
         }
+
+
         internal static List<object> htmlStrings<TModel>(
             IHtmlHelper<TModel> h, string label, string value)
         {
@@ -39,6 +45,8 @@ namespace BankingApp.Core.Extensions
                 new HtmlString("</dd>")
             };
         }
+
+
         internal static string getValue<TModel, TResult>(IHtmlHelper<TModel> html, Expression<Func<TModel, TResult>> e)
         {
             var value = html.DisplayFor(e);

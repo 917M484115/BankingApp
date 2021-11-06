@@ -10,42 +10,18 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BankingApp.Infra.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20211012020847_new")]
-    partial class @new
+    [Migration("20211106110348_a")]
+    partial class a
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.10")
+                .HasAnnotation("ProductVersion", "5.0.11")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("BankingApp.Data.ATMData", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Location")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Manager")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<double>("MoneyAmount")
-                        .HasColumnType("float");
-
-                    b.Property<byte[]>("RowVersion")
-                        .IsConcurrencyToken()
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("rowversion");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ATM");
-                });
-
-            modelBuilder.Entity("BankingApp.Data.ATMManagerData", b =>
+            modelBuilder.Entity("BankingApp.Data.ATM.ATMManagerData", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -56,21 +32,20 @@ namespace BankingApp.Infra.Migrations
                     b.Property<DateTime?>("Birthday")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("FirstMidName")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                    b.Property<string>("Code")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("LastName")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                    b.Property<string>("Country")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<byte[]>("Photo")
-                        .HasColumnType("varbinary(max)");
+                    b.Property<DateTime?>("From")
+                        .HasColumnType("datetime2");
 
-                    b.Property<byte[]>("RowVersion")
-                        .IsConcurrencyToken()
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("rowversion");
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("To")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -82,45 +57,40 @@ namespace BankingApp.Infra.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("Name")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                    b.Property<string>("Code")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<byte[]>("RowVersion")
-                        .IsConcurrencyToken()
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("rowversion");
+                    b.Property<DateTime?>("From")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("To")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
                     b.ToTable("Bank");
                 });
 
-            modelBuilder.Entity("BankingApp.Data.Common.AccountData", b =>
+            modelBuilder.Entity("BankingApp.Data.Common.MoneyAmountData", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("AccountAddress")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("AccountLocation")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CustomerId")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime?>("From")
+                        .HasColumnType("datetime2");
 
                     b.Property<double>("MoneyAmount")
                         .HasColumnType("float");
 
-                    b.Property<byte[]>("RowVersion")
-                        .IsConcurrencyToken()
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("rowversion");
+                    b.Property<DateTime?>("To")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Account");
+                    b.ToTable("MoneyAmount");
                 });
 
             modelBuilder.Entity("BankingApp.Data.CustomerData", b =>
@@ -137,148 +107,49 @@ namespace BankingApp.Infra.Migrations
                     b.Property<DateTime?>("Birthday")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("FirstMidName")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                    b.Property<string>("Code")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("LastName")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                    b.Property<string>("Country")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<byte[]>("Photo")
-                        .HasColumnType("varbinary(max)");
+                    b.Property<DateTime?>("From")
+                        .HasColumnType("datetime2");
 
-                    b.Property<byte[]>("RowVersion")
-                        .IsConcurrencyToken()
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("rowversion");
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("To")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
                     b.ToTable("Customer");
                 });
 
-            modelBuilder.Entity("BankingApp.Data.Investing.InvestmentData", b =>
+            modelBuilder.Entity("BankingApp.Data.Investing.CalculatorData", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<double>("CurrentAmount")
+                    b.Property<double>("APY")
                         .HasColumnType("float");
 
-                    b.Property<string>("Description")
+                    b.Property<string>("Code")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("MoneyAmount")
-                        .HasColumnType("float");
+                    b.Property<DateTime?>("From")
+                        .HasColumnType("datetime2");
 
-                    b.Property<byte[]>("RowVersion")
-                        .IsConcurrencyToken()
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("rowversion");
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("To")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Investment");
-                });
-
-            modelBuilder.Entity("BankingApp.Data.Loan.CarLoanData", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("CarAge")
-                        .HasColumnType("int");
-
-                    b.Property<string>("CarType")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<double>("CarValue")
-                        .HasColumnType("float");
-
-                    b.Property<double>("Interest")
-                        .HasColumnType("float");
-
-                    b.Property<string>("LoanManagerId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("LoanPeriod")
-                        .HasColumnType("int");
-
-                    b.Property<double>("MoneyAmount")
-                        .HasColumnType("float");
-
-                    b.Property<byte[]>("RowVersion")
-                        .IsConcurrencyToken()
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("rowversion");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("CarLoan");
-                });
-
-            modelBuilder.Entity("BankingApp.Data.Loan.HomeLoanData", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("HomeAge")
-                        .HasColumnType("int");
-
-                    b.Property<double>("HomeValue")
-                        .HasColumnType("float");
-
-                    b.Property<double>("Interest")
-                        .HasColumnType("float");
-
-                    b.Property<string>("LoanManagerId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("LoanPeriod")
-                        .HasColumnType("int");
-
-                    b.Property<double>("MoneyAmount")
-                        .HasColumnType("float");
-
-                    b.Property<byte[]>("RowVersion")
-                        .IsConcurrencyToken()
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("rowversion");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("HomeLoan");
-                });
-
-            modelBuilder.Entity("BankingApp.Data.Loan.PersonalLoanData", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<double>("Interest")
-                        .HasColumnType("float");
-
-                    b.Property<string>("LoanManagerId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("LoanPeriod")
-                        .HasColumnType("int");
-
-                    b.Property<double>("MoneyAmount")
-                        .HasColumnType("float");
-
-                    b.Property<string>("Reason")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<byte[]>("RowVersion")
-                        .IsConcurrencyToken()
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("rowversion");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("PersonalLoan");
+                    b.ToTable("Calculator");
                 });
 
             modelBuilder.Entity("BankingApp.Data.LoanManagerData", b =>
@@ -292,21 +163,20 @@ namespace BankingApp.Infra.Migrations
                     b.Property<DateTime?>("Birthday")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("FirstMidName")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                    b.Property<string>("Code")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("LastName")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                    b.Property<string>("Country")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<byte[]>("Photo")
-                        .HasColumnType("varbinary(max)");
+                    b.Property<DateTime?>("From")
+                        .HasColumnType("datetime2");
 
-                    b.Property<byte[]>("RowVersion")
-                        .IsConcurrencyToken()
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("rowversion");
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("To")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -318,68 +188,15 @@ namespace BankingApp.Infra.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<byte[]>("RowVersion")
-                        .IsConcurrencyToken()
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("rowversion");
+                    b.Property<DateTime?>("From")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("To")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
                     b.ToTable("Notification");
-                });
-
-            modelBuilder.Entity("BankingApp.Data.TransactionData", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<double>("MoneyAmount")
-                        .HasColumnType("float");
-
-                    b.Property<string>("Note")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("RecipientId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("RecipientName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<byte[]>("RowVersion")
-                        .IsConcurrencyToken()
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("rowversion");
-
-                    b.Property<string>("SenderId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SenderName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("TransactionNr")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Transaction");
-                });
-
-            modelBuilder.Entity("Data.CalculatorData", b =>
-                {
-                    b.Property<int>("YieldId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<double>("APY")
-                        .HasColumnType("float");
-
-                    b.Property<string>("YieldName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("YieldId");
-
-                    b.ToTable("Calculator");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -582,7 +399,143 @@ namespace BankingApp.Infra.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("BankingApp.Data.InvestingAccountData", b =>
+            modelBuilder.Entity("BankingApp.Data.ATM.ATMData", b =>
+                {
+                    b.HasBaseType("BankingApp.Data.Common.MoneyAmountData");
+
+                    b.Property<string>("Location")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Manager")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.ToTable("ATM");
+                });
+
+            modelBuilder.Entity("BankingApp.Data.Common.AccountData", b =>
+                {
+                    b.HasBaseType("BankingApp.Data.Common.MoneyAmountData");
+
+                    b.Property<string>("AccountAddress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AccountLocation")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AccountNickname")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CustomerId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.ToTable("Account");
+                });
+
+            modelBuilder.Entity("BankingApp.Data.Investing.InvestmentData", b =>
+                {
+                    b.HasBaseType("BankingApp.Data.Common.MoneyAmountData");
+
+                    b.Property<double>("CurrentAmount")
+                        .HasColumnType("float");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.ToTable("Investment");
+                });
+
+            modelBuilder.Entity("BankingApp.Data.Loan.CarLoanData", b =>
+                {
+                    b.HasBaseType("BankingApp.Data.Common.MoneyAmountData");
+
+                    b.Property<int>("CarAge")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CarType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("CarValue")
+                        .HasColumnType("float");
+
+                    b.Property<double>("Interest")
+                        .HasColumnType("float");
+
+                    b.Property<string>("LoanManagerId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("LoanPeriod")
+                        .HasColumnType("int");
+
+                    b.ToTable("CarLoan");
+                });
+
+            modelBuilder.Entity("BankingApp.Data.Loan.HomeLoanData", b =>
+                {
+                    b.HasBaseType("BankingApp.Data.Common.MoneyAmountData");
+
+                    b.Property<int>("HomeAge")
+                        .HasColumnType("int");
+
+                    b.Property<double>("HomeValue")
+                        .HasColumnType("float");
+
+                    b.Property<double>("Interest")
+                        .HasColumnType("float");
+
+                    b.Property<string>("LoanManagerId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("LoanPeriod")
+                        .HasColumnType("int");
+
+                    b.ToTable("HomeLoan");
+                });
+
+            modelBuilder.Entity("BankingApp.Data.Loan.PersonalLoanData", b =>
+                {
+                    b.HasBaseType("BankingApp.Data.Common.MoneyAmountData");
+
+                    b.Property<double>("Interest")
+                        .HasColumnType("float");
+
+                    b.Property<string>("LoanManagerId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("LoanPeriod")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Reason")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.ToTable("PersonalLoan");
+                });
+
+            modelBuilder.Entity("BankingApp.Data.TransactionData", b =>
+                {
+                    b.HasBaseType("BankingApp.Data.Common.MoneyAmountData");
+
+                    b.Property<string>("Note")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RecipientId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RecipientName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SenderId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SenderName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TransactionNr")
+                        .HasColumnType("int");
+
+                    b.ToTable("Transaction");
+                });
+
+            modelBuilder.Entity("BankingApp.Data.Investing.InvestingAccountData", b =>
                 {
                     b.HasBaseType("BankingApp.Data.Common.AccountData");
 
@@ -647,11 +600,74 @@ namespace BankingApp.Infra.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("BankingApp.Data.InvestingAccountData", b =>
+            modelBuilder.Entity("BankingApp.Data.ATM.ATMData", b =>
+                {
+                    b.HasOne("BankingApp.Data.Common.MoneyAmountData", null)
+                        .WithOne()
+                        .HasForeignKey("BankingApp.Data.ATM.ATMData", "Id")
+                        .OnDelete(DeleteBehavior.ClientCascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("BankingApp.Data.Common.AccountData", b =>
+                {
+                    b.HasOne("BankingApp.Data.Common.MoneyAmountData", null)
+                        .WithOne()
+                        .HasForeignKey("BankingApp.Data.Common.AccountData", "Id")
+                        .OnDelete(DeleteBehavior.ClientCascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("BankingApp.Data.Investing.InvestmentData", b =>
+                {
+                    b.HasOne("BankingApp.Data.Common.MoneyAmountData", null)
+                        .WithOne()
+                        .HasForeignKey("BankingApp.Data.Investing.InvestmentData", "Id")
+                        .OnDelete(DeleteBehavior.ClientCascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("BankingApp.Data.Loan.CarLoanData", b =>
+                {
+                    b.HasOne("BankingApp.Data.Common.MoneyAmountData", null)
+                        .WithOne()
+                        .HasForeignKey("BankingApp.Data.Loan.CarLoanData", "Id")
+                        .OnDelete(DeleteBehavior.ClientCascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("BankingApp.Data.Loan.HomeLoanData", b =>
+                {
+                    b.HasOne("BankingApp.Data.Common.MoneyAmountData", null)
+                        .WithOne()
+                        .HasForeignKey("BankingApp.Data.Loan.HomeLoanData", "Id")
+                        .OnDelete(DeleteBehavior.ClientCascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("BankingApp.Data.Loan.PersonalLoanData", b =>
+                {
+                    b.HasOne("BankingApp.Data.Common.MoneyAmountData", null)
+                        .WithOne()
+                        .HasForeignKey("BankingApp.Data.Loan.PersonalLoanData", "Id")
+                        .OnDelete(DeleteBehavior.ClientCascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("BankingApp.Data.TransactionData", b =>
+                {
+                    b.HasOne("BankingApp.Data.Common.MoneyAmountData", null)
+                        .WithOne()
+                        .HasForeignKey("BankingApp.Data.TransactionData", "Id")
+                        .OnDelete(DeleteBehavior.ClientCascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("BankingApp.Data.Investing.InvestingAccountData", b =>
                 {
                     b.HasOne("BankingApp.Data.Common.AccountData", null)
                         .WithOne()
-                        .HasForeignKey("BankingApp.Data.InvestingAccountData", "Id")
+                        .HasForeignKey("BankingApp.Data.Investing.InvestingAccountData", "Id")
                         .OnDelete(DeleteBehavior.ClientCascade)
                         .IsRequired();
                 });

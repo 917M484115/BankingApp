@@ -12,7 +12,7 @@ namespace BankingApp.Domain.Loans
 	{
 		public CarLoan(CarLoanData d) : base(d) { }
 		public string CarType => Data?.CarType ?? Unspecified;
-		public double CarValue => Data?.CarValue ?? 0;
-		public int CarAge => Data?.CarAge ?? 0;
+		public double CarValue => Data?.CarValue ?? UnspecifiedDouble;
+		public int CarAge => Data?.CarAge ?? UnspecifiedInteger;
 	}
 }

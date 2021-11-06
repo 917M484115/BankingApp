@@ -11,7 +11,7 @@ namespace Tests.Data.Common
     {
         private class testClass : BaseEntity { }
         protected override object createObject() => new testClass();
-        [TestMethod] public void UnspecifiedTest() => isProperty(Aids.Constants.Word.Unspecified);
+        [TestMethod] public void UnspecifiedTest() => isProperty(BankingApp.Aids.Constants.Word.Unspecified);
         [TestMethod] public void UnspecifiedValidFromTest() => isProperty(DateTime.MinValue);
         [TestMethod] public void UnspecifiedValidToTest() => isProperty(DateTime.MaxValue);
         [TestMethod] public void UnspecifiedDoubleTest() => isProperty(double.NaN);
@@ -22,7 +22,7 @@ namespace Tests.Data.Common
         {
             Assert.IsTrue(BaseEntity.isUnspecified(null));
             Assert.IsTrue(BaseEntity.isUnspecified(string.Empty));
-            Assert.IsTrue(BaseEntity.isUnspecified(Aids.Constants.Word.Unspecified));
+            Assert.IsTrue(BaseEntity.isUnspecified(BankingApp.Aids.Constants.Word.Unspecified));
             Assert.IsFalse(BaseEntity.isUnspecified(GetRandom.String()));
         }
     }
