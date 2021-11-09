@@ -1,13 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using BankingApp.Data;
 
-namespace BankingApp.Pages
+namespace Soft.Pages
 {
     public class PrivacyModel : PageModel
     {
@@ -23,3 +17,4 @@ namespace BankingApp.Pages
         }
     }
 }
+

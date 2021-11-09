@@ -1,9 +1,11 @@
-﻿<!DOCTYPE html>
+﻿@using BankingApp.Pages.Common.Aids
+@using BankingApp.Pages.Common.Extensions
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - BankingApp</title>
+    <title>@ViewData["Title"] - Soft</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
@@ -11,29 +13,51 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">BankingApp</a>
+                <a class="navbar-brand" asp-area="" asp-page="/Index">Home</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Calculator/Index">Calculator</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="CarLoans" asp-page="/Index" asp-page-handler="index" >CarLoans</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Accounts/Index">Account Management</a>
-                        </li>
-                    </ul>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <partial name="_LoginPartial" />
+                    <ul class="navbar-nav flex-grow-1">
+                        @Html.DropMenu("Bank",
+                            new Link("Loan Managers", new Uri("/Bank/ATMs/Index?handler=index", UriKind.Relative)),
+                            new Link("ATM Managers", new Uri("/Bank/ATMs/Index?handler=index", UriKind.Relative))
+                            )
+
+                        @Html.DropMenu("ATM Manager",
+                            new Link("ATMs", new Uri("/ATMManager/ATMs/Index?handler=index", UriKind.Relative))
+                            )
+
+                        @Html.DropMenu("Loan Manager",
+                            new Link("Personal Loans", new Uri("/LoanManager/PersonalLoans/Index?handler=index", UriKind.Relative)),
+                            new Link("Home Loans", new Uri("/LoanManager/HomeLoans/Index?handler=index", UriKind.Relative)),
+                            new Link("Car Loans", new Uri("/LoanManager/CarLoans/Index?handler=index", UriKind.Relative)),
+                            new Link("All Loans", new Uri("/LoanManager/AllLoans/Index?handler=index", UriKind.Relative)),
+                            new Link("Loan Accounts", new Uri("/LoanManager/LoanAccounts/Index?handler=index", UriKind.Relative))
+                            )
+                        @Html.DropMenu("Client",
+                            new Link("Loan Accounts", new Uri("/Client/LoanAccounts/Index?handler=index", UriKind.Relative)),
+                            new Link("Investing Accounts", new Uri("/Client/LoanAccounts/Index?handler=index", UriKind.Relative)),
+                            new Link("All accounts", new Uri("/Client/Catalogs/Index?handler=index", UriKind.Relative))
+                            )
+                        @Html.DropMenu("Investing",
+                            new Link("Investments", new Uri("/Investing/Investments/Index?handler=index", UriKind.Relative)),
+                            new Link("Investing Accounts", new Uri("/Investing/InvestingAccounts/Index?handler=index", UriKind.Relative)),
+                            new Link("Calculator", new Uri("/Investing/Calculator/Index?handler=index", UriKind.Relative)),
+                            new Link("Crypto", new Uri("/Client/Crypto/Index?handler=index", UriKind.Relative)),
+                            new Link("Stocks", new Uri("/Investing/Stocks/Index?handler=index", UriKind.Relative))
+                            )
+                        @Html.DropMenu("Loans",
+                            new Link("All loans", new Uri("/Loans/AllLoans/Index?handler=index", UriKind.Relative)),
+                            new Link("Personal Loans", new Uri("/Loans/PersonalLoans/Index?handler=index", UriKind.Relative)),
+                            new Link("Home Loans", new Uri("/Loans/HomeLoans/Index?handler=index", UriKind.Relative)),
+                            new Link("Car Loans", new Uri("/Loans/CarLoans/Index?handler=index", UriKind.Relative))
+                            )
+
+
+                    </ul>
                 </div>
             </div>
         </nav>
@@ -46,7 +70,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2021 - BankingApp - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            &copy; 2020 - Soft - <a asp-area="" asp-page="/Privacy">Privacy</a>
         </div>
     </footer>
 
@@ -54,6 +78,6 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
 
-    @await RenderSectionAsync("Scripts", required: false)
+    @RenderSection("Scripts", required: false)
 </body>
 </html>

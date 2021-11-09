@@ -1,1 +1,43 @@
-﻿
+﻿@using BankingApp.Pages.Common.Aids
+@using BankingApp.Pages.Common.Extensions
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = Model.PageTitle;
+}
+
+<p>
+    <h1>@ViewData["Title"]</h1>
+</p>
+
+<h4>Edit</h4>
+<hr />
+<form enctype="multipart/form-data" id="editForm"
+      asp-page-handler="Edit"
+      asp-route-sortorder="@Model.SortOrder"
+      asp-route-fixedFilter="@Model.FixedFilter"
+      asp-route-fixedValue="@Model.FixedValue"
+      asp-route-pageIndex="@Model.PageIndex"
+      method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <dl class="row">
+        @RenderBody()
+    </dl>
+
+    <input id="saveButton" type="submit" value="Save" class="btn btn-primary" /> |
+
+    @Html.BackTo(
+        new Args(
+            null,
+            null,
+            Model.FixedFilter,
+            Model.FixedValue,
+            Model.SortOrder,
+            Model.SearchString,
+            Model.PageIndex))
+
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

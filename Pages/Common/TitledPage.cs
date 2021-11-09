@@ -12,7 +12,8 @@ namespace BankingApp.Pages.Common {
     public abstract class TitledPage<TRepository, TDomain, TView, TData> :
         PagedPage<TRepository, TDomain, TView, TData>
         where TRepository : class, ICrudMethods<TDomain>, ISorting, IFiltering, IPaging
-        where TView : PeriodView {
+        where TView : PeriodView
+    {
 
         protected internal TitledPage(TRepository r, string title) : base(r) => PageTitle = title;
 
@@ -26,7 +27,7 @@ namespace BankingApp.Pages.Common {
 
         public Uri PageUrl => pageUrl();
         public Uri CreateUrl => createUrl();
-
+        public virtual string BackToMasterDetailPageUrl => string.Empty;
         protected internal Uri createUrl()
             => new Uri($"{PageUrl}/Create" +
                        "?handler=Create" +
@@ -48,8 +49,9 @@ namespace BankingApp.Pages.Common {
             Func<TTDomain, bool> condition = null,
             Func<TTData, string> getName = null)
             where TTDomain : IEntity<TTData>
-            where TTData : IUniqueNamedData, new() {
-            Func<TTData, string> name = d => (getName is null) ? d.Name : getName(d);
+            where TTData : UniqueEntityData, new()
+        {
+            Func<TTData, string> name = d => (getName is null) ? (d as IUniqueNamedData)?.Name : getName(d);
             var items = r?.Get().GetAwaiter().GetResult();
             var l = items is null
                 ? new List<SelectListItem>()
@@ -65,7 +67,8 @@ namespace BankingApp.Pages.Common {
             return l;
         }
 
-        protected internal static string itemName(IEnumerable<SelectListItem> list, string id) {
+        protected internal static string itemName(IEnumerable<SelectListItem> list, string id)
+        {
             if (list is null) return Word.Unspecified;
 
             foreach (var m in list)
