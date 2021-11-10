@@ -15,5 +15,15 @@ namespace Tests
         protected static void isNotNull<TExpected>(TExpected e, string message = null) => Assert.IsNotNull(e, message);
         protected static void isTrue(bool e, string message = null) => Assert.IsTrue(e, message);
         protected static void isFalse(bool e, string message = null) => Assert.IsFalse(e, message);
+        protected static void areEqualProperties<TObject>(TObject e, TObject a)
+        {
+	        Assert.AreNotSame(e, a);
+	        foreach (var pi in e.GetType().GetProperties())
+	        {
+		        var expected = pi.GetValue(e);
+		        var actual = pi.GetValue(a);
+		        areEqual(expected, actual);
+	        }
+        }
     }
 }
