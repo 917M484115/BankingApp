@@ -1,5 +1,6 @@
-﻿@using BankingApp.Pages.Common.Aids
-@using BankingApp.Pages.Common.Extensions
+﻿@using BankingApp.Pages.Common.Extensions
+@using BankingApp.Pages.Common.Aids
+@using Microsoft.AspNetCore.Html
 
 @{
     Layout = "_Layout";
@@ -14,13 +15,14 @@
     Uri pageUrl = Model.PageUrl;
     var a = new Args(pageUrl, null, fixedFilter, fixedValue
         , sortOrder, searchString, pageIndex, currentFilter);
-  
+
 }
 
 <p>
     <h1>@ViewData["Title"]</h1>
     <h4>
-        @if (Model.IsMasterDetail()) {
+        @if (Model.IsMasterDetail())
+        {
             <a href='@Model.BackToMasterDetailPageUrl'>@Model.PageSubTitle</a>
         }
     </h4>
@@ -39,7 +41,7 @@
             &nbsp;
             <input id="searchButton" type="submit" value="Search" class="btn btn-light" />
             &nbsp;
-            <a id="backToList"asp-page="./Index"
+            <a id="backToList" asp-page="./Index"
                asp-route-handler="Index"
                asp-route-sortorder="@Model.SortOrder"
                asp-route-fixedFilter="@Model.FixedFilter"

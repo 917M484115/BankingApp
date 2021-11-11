@@ -10,7 +10,7 @@ namespace BankingApp.Data
         public string SenderId { get; set; }
         public string SenderName { get; set; }
         public string Note { get; set; }
-        public int TransactionNr { get; set; }
+        public int TransactionNr  { get; set; }
 
     }
 }

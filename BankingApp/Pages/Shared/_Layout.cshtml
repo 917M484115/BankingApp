@@ -22,8 +22,8 @@
                     <partial name="_LoginPartial" />
                     <ul class="navbar-nav flex-grow-1">
                         @Html.DropMenu("Bank",
-                            new Link("Loan Managers", new Uri("/Bank/ATMs/Index?handler=index", UriKind.Relative)),
-                            new Link("ATM Managers", new Uri("/Bank/ATMs/Index?handler=index", UriKind.Relative))
+                            new Link("Loan Managers", new Uri("/Bank/LoanManager/Index?handler=index", UriKind.Relative)),
+                            new Link("ATM Managers", new Uri("/Bank/ATMManager/Index?handler=index", UriKind.Relative))
                             )
 
                         @Html.DropMenu("ATM Manager",
@@ -38,22 +38,24 @@
                             new Link("Loan Accounts", new Uri("/LoanManager/LoanAccounts/Index?handler=index", UriKind.Relative))
                             )
                         @Html.DropMenu("Client",
-                            new Link("Loan Accounts", new Uri("/Client/LoanAccounts/Index?handler=index", UriKind.Relative)),
-                            new Link("Investing Accounts", new Uri("/Client/LoanAccounts/Index?handler=index", UriKind.Relative)),
-                            new Link("All accounts", new Uri("/Client/Catalogs/Index?handler=index", UriKind.Relative))
+                            new Link("Transaction", new Uri("/Client/Transaction/Index?handler=index", UriKind.Relative)),
+                            new Link("Calculator", new Uri("/Client/Calculator/Index?handler=index", UriKind.Relative)),
+                            new Link("All accounts", new Uri("/Client/AllAccounts/Index?handler=index", UriKind.Relative)),
+                            new Link("Notifications", new Uri("/Client/Notification/Index?handler=index", UriKind.Relative))
                             )
                         @Html.DropMenu("Investing",
                             new Link("Investments", new Uri("/Investing/Investments/Index?handler=index", UriKind.Relative)),
-                            new Link("Investing Accounts", new Uri("/Investing/InvestingAccounts/Index?handler=index", UriKind.Relative)),
                             new Link("Calculator", new Uri("/Investing/Calculator/Index?handler=index", UriKind.Relative)),
-                            new Link("Crypto", new Uri("/Client/Crypto/Index?handler=index", UriKind.Relative)),
-                            new Link("Stocks", new Uri("/Investing/Stocks/Index?handler=index", UriKind.Relative))
+                            new Link("Crypto", new Uri("/Investing/Crypto/Index?handler=index", UriKind.Relative)),
+                            new Link("Stocks", new Uri("/Investing/Stocks/Index?handler=index", UriKind.Relative)),
+                            new Link("Investing Accounts", new Uri("/Investing/InvestingAccounts/Index?handler=index", UriKind.Relative))
                             )
                         @Html.DropMenu("Loans",
-                            new Link("All loans", new Uri("/Loans/AllLoans/Index?handler=index", UriKind.Relative)),
-                            new Link("Personal Loans", new Uri("/Loans/PersonalLoans/Index?handler=index", UriKind.Relative)),
-                            new Link("Home Loans", new Uri("/Loans/HomeLoans/Index?handler=index", UriKind.Relative)),
-                            new Link("Car Loans", new Uri("/Loans/CarLoans/Index?handler=index", UriKind.Relative))
+                            new Link("Loan Account", new Uri("/Loan/LoanAccount/Index?handler=index", UriKind.Relative)),
+                            new Link("Personal Loans", new Uri("/Loan/PersonalLoan/Index?handler=index", UriKind.Relative)),
+                            new Link("Home Loans", new Uri("/Loan/HomeLoan/Index?handler=index", UriKind.Relative)),
+                            new Link("Car Loans", new Uri("/Loan/CarLoan/Index?handler=index", UriKind.Relative))
+
                             )
 
 

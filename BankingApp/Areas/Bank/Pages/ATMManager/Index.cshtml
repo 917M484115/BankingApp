@@ -2,16 +2,14 @@
 @using BankingApp.Pages.Common.Extensions;
 @using BankingApp.Pages.Common.Aids
 @using BankingApp.Pages.Common.Consts
-@model BankingApp.Pages.Loan.CarLoanPage;
+@model BankingApp.Pages.Bank.ATMManagerPage
 
 @{
     Layout = "_Index";
-    //ViewData["Title"] = Model.PageTitle;
     var page = Model.PageUrl;
 }
 
 @section Create {
-    @Html.Link(string.Empty, new Link(Captions.Create, Model.CreateUrl))
 }
 
 @Html.ShowTable(Model)

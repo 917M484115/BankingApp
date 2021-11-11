@@ -5,29 +5,40 @@ using System.Collections.Generic;
 
 namespace BankingApp.Pages.Common.Extensions
 {
-    public static class TableHtmlExtension {
+    public static class TableHtmlExtension
+    {
         public static IHtmlContent ShowTable<TPage>(this IHtmlHelper<TPage> h,
-            IIndexTable<TPage> page) {
-            var s = HtmlStrings(h, page);
+            IIndexTable<TPage> page, string select = null, string edit = "Edit",
+            string details = "Details", string delete = "Delete")
+        {
+            var buttons = new RowButtons
+            {
+                Select = select,
+                Edit = edit,
+                Details = details,
+                Delete = delete
+            };
+            var s = HtmlStrings(h, page, buttons);
             return new HtmlContentBuilder(s);
         }
 
         internal static List<object> HtmlStrings<TPage>(this IHtmlHelper<TPage> h,
-            IIndexTable<TPage> page) {
+            IIndexTable<TPage> page, RowButtons buttons)
+        {
             var l = new List<object> {
                 new HtmlString("<body>"),
                 new HtmlString("<table class=\"table\">"),
-                new HtmlString("<thead>"),
-                new HtmlString("<tr>")
+                new HtmlString("<thead>")
             };
             l.Add(h.Header(GetHeaders(h, page)));
             l.Add(new HtmlString("</thead>"));
             l.Add(new HtmlString("<tbody>"));
-            for (int i = 0; i < page.RowsCount; i++) {
+            for (int i = 0; i < page.RowsCount; i++)
+            {
                 l.Add(new HtmlString("<tr>"));
                 page.SetItem(i);
                 l.Add(h.Row(
-                    false,
+                    buttons,
                     page.PageUrl,
                     page.ItemId,
                     page.SortOrder,
@@ -44,17 +55,21 @@ namespace BankingApp.Pages.Common.Extensions
             return l;
         }
 
-        private static Link[] GetHeaders<TPage>(this IHtmlHelper<TPage> h, IIndexTable<TPage> page) {
+        private static Link[] GetHeaders<TPage>(this IHtmlHelper<TPage> h, IIndexTable<TPage> page)
+        {
             var l = new List<Link>();
-            for (var i = 0; i < page.ColumnsCount; i++) {
+            for (var i = 0; i < page.ColumnsCount; i++)
+            {
                 l.Add(new Link(page.GetName(h, i), page.GetSortStringExpression(i)));
             }
             return l.ToArray();
         }
 
-        private static IHtmlContent[] GetRows<TPage>(this IHtmlHelper<TPage> h, IIndexTable<TPage> page) {
+        private static IHtmlContent[] GetRows<TPage>(this IHtmlHelper<TPage> h, IIndexTable<TPage> page)
+        {
             var l = new List<IHtmlContent>();
-            for (var i = 0; i < page.ColumnsCount; i++) {
+            for (var i = 0; i < page.ColumnsCount; i++)
+            {
                 l.Add(page.GetValue(h, i));
             }
             return l.ToArray();

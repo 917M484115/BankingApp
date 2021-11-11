@@ -11,7 +11,8 @@ namespace BankingApp.Pages.Common.Extensions
 
         public static IHtmlContent Editor<TModel, TResult>(
             this IHtmlHelper<TModel> h,
-            Expression<Func<TModel, TResult>> e) {
+            Expression<Func<TModel, TResult>> e)
+        {
 
             var s = htmlStrings(h, e);
 
@@ -20,21 +21,24 @@ namespace BankingApp.Pages.Common.Extensions
 
         internal static List<object> htmlStrings<TModel, TResult>(
             IHtmlHelper<TModel> h,
-            Expression<Func<TModel, TResult>> e) {
+            Expression<Func<TModel, TResult>> e)
+        {
 
             return new List<object> {
-                new HtmlString("<div class=\"form-group\">"),
-                h.LabelFor(e, new {@class = "text-dark"}),
-                h.EditorFor(e,
-                    new {htmlAttributes = new {@class = "form-control"}}),
+                new HtmlString("<dt class=\"col-sm-2\">"),
+                h.LabelFor(e),
+                new HtmlString("</dt>"),
+                new HtmlString("<dd class=\"col-sm-10\">"),
+                h.EditorFor(e, new {htmlAttributes = new {@class = "form-control"}}),
                 h.ValidationMessageFor(e, "", new {@class = "text-danger"}),
-                new HtmlString("</div>")
+                new HtmlString("</dd>")
             };
         }
 
         public static IHtmlContent Editor<TModel, TResult>(
             this IHtmlHelper<TModel> h,
-            Expression<Func<TModel, TResult>> e, string displayName) {
+            Expression<Func<TModel, TResult>> e, string displayName)
+        {
 
             var s = htmlStrings(h, e, displayName);
 
@@ -43,15 +47,17 @@ namespace BankingApp.Pages.Common.Extensions
 
         internal static List<object> htmlStrings<TModel, TResult>(
             IHtmlHelper<TModel> h,
-            Expression<Func<TModel, TResult>> e, string displayName) {
+            Expression<Func<TModel, TResult>> e, string displayName)
+        {
 
             return new List<object> {
-                new HtmlString("<div class=\"form-group\">"),
+                new HtmlString("<dt class=\"col-sm-2\">"),
                 h.Label(displayName),
-                h.EditorFor(e,
-                    new {htmlAttributes = new {@class = "form-control"}}),
+                new HtmlString("</dt>"),
+                new HtmlString("<dd class=\"col-sm-10\">"),
+                h.EditorFor(e, new {htmlAttributes = new {@class = "form-control"}}),
                 h.ValidationMessageFor(e, "", new {@class = "text-danger"}),
-                new HtmlString("</div>")
+                new HtmlString("</dd>")
             };
         }
 

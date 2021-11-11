@@ -13,15 +13,15 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace BankingApp.Pages.Loan
 {
-    public abstract class CarLoansBasePage<TPage> :
+    public abstract class CarLoanBasePage<TPage> :
         ViewPage<TPage, ICarLoanRepository, CarLoan, CarLoanView, CarLoanData>
         where TPage : PageModel
     {
-        protected CarLoansBasePage(ICarLoanRepository r) : base(r, "Car Loans")
+        protected CarLoanBasePage(ICarLoanRepository r) : base(r, "Car Loans")
         {
         }
 
-        protected internal override Uri pageUrl() => new Uri("/Loan/CarLoans", UriKind.Relative);
+        protected internal override Uri pageUrl() => new Uri("/Loan/CarLoan", UriKind.Relative);
         protected internal override CarLoan toObject(CarLoanView v) => new CarLoanViewFactory().Create(v);
         protected internal override CarLoanView toView(CarLoan o) => new CarLoanViewFactory().Create(o);
 
@@ -32,17 +32,13 @@ namespace BankingApp.Pages.Loan
             createColumn(x => Item.CarValue);
             createColumn(x => Item.CarAge);
         }
-
         public override string GetName(IHtmlHelper<TPage> h, int i) => i switch
         {
-            8 or 9 => getName<DateTime?>(h, i),
+            2 => getName<double>(h, i),
+            3 => getName<int>(h, i),
             _ => base.GetName(h, i)
         };
 
-        public override IHtmlContent GetValue(IHtmlHelper<TPage> h, int i) => i switch
-        {
-            8 or 9 => getValue<DateTime?>(h, i),
-            _ => base.GetValue(h, i)
-        };
+
     }
 }

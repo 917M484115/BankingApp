@@ -7,10 +7,12 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 namespace BankingApp.Pages.Common.Extensions
 {
 
-    public static class EnumHtml {
+    public static class EnumHtml
+    {
 
         public static IHtmlContent EnumEditor<TModel, TResult>(
-            this IHtmlHelper<TModel> h, Expression<Func<TModel, TResult>> e) {
+            this IHtmlHelper<TModel> h, Expression<Func<TModel, TResult>> e)
+        {
 
             var l = new SelectList(Enum.GetNames(typeof(TResult)));
 
@@ -20,13 +22,16 @@ namespace BankingApp.Pages.Common.Extensions
         }
 
         internal static List<object> htmlStrings<TModel, TResult>(IHtmlHelper<TModel> h,
-            Expression<Func<TModel, TResult>> e, SelectList l) {
+            Expression<Func<TModel, TResult>> e, SelectList l)
+        {
             return new List<object> {
-                new HtmlString("<div class=\"form-group\">"),
+                new HtmlString("<dt class=\"col-sm-2\">"),
                 h.LabelFor(e, new {@class = "text-dark"}),
+                new HtmlString("</dt>"),
+                new HtmlString("<dd class=\"col-sm-10\">"),
                 h.DropDownListFor(e, l, new {@class = "form-control"}),
                 h.ValidationMessageFor(e, "", new {@class = "text-danger"}),
-                new HtmlString("</div>")
+                new HtmlString("</dd>")
             };
         }
 

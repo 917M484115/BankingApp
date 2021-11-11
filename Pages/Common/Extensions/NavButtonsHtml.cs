@@ -1,13 +1,12 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Html;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using System.Collections.Generic;
 using BankingApp.Aids;
 using BankingApp.Pages.Common.Aids;
 using BankingApp.Pages.Common.Consts;
-using Microsoft.AspNetCore.Html;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace BankingApp.Pages.Common.Extensions
-{
+namespace BankingApp.Pages.Common.Extensions {
 
     public static class NavButtonsHtml {
 

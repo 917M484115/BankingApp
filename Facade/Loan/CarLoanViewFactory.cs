@@ -12,9 +12,9 @@ namespace BankingApp.Facade.Loan
 		{
 			var v = base.Create(o);
 			v.CarType = o.CarType;
+            v.CarValue = o.CarValue;
 			v.CarAge = o.CarAge;
-			v.CarValue = o.CarValue;
-			return v;
+            return v;
 		}
 	}
 }

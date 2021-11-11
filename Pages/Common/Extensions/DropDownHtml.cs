@@ -10,7 +10,8 @@ namespace BankingApp.Pages.Common.Extensions
         public static IHtmlContent DropDown<TModel, TResult>(
             this IHtmlHelper<TModel> h,
             Expression<Func<TModel, TResult>> e,
-            IEnumerable<SelectListItem> items) {
+            IEnumerable<SelectListItem> items)
+        {
 
             var s = htmlStrings(h, e, items);
 
@@ -20,14 +21,17 @@ namespace BankingApp.Pages.Common.Extensions
         internal static List<object> htmlStrings<TModel, TResult>(
             IHtmlHelper<TModel> h,
             Expression<Func<TModel, TResult>> e,
-            IEnumerable<SelectListItem> items) {
+            IEnumerable<SelectListItem> items)
+        {
 
             return new List<object> {
-                new HtmlString("<div class=\"form-group\">"),
+                new HtmlString("<dt class=\"col-sm-2\">"),
                 h.LabelFor(e, new {@class = "text-dark"}),
+                new HtmlString("</dt>"),
+                new HtmlString("<dd class=\"col-sm-10\">"),
                 h.DropDownListFor(e, items, new {@class = "form-control"}),
                 h.ValidationMessageFor(e, "", new {@class = "text-danger"}),
-                new HtmlString("</div>")
+                new HtmlString("</dd>")
             };
         }
 

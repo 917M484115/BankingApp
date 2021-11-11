@@ -14,12 +14,16 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using BankingApp.Domain;
+using BankingApp.Domain.ATMs;
 using BankingApp.Domain.Misc;
 using BankingApp.Infra;
 using BankingApp.Domain.Loans;
 using BankingApp.Infra.Loan;
 using BankingApp.Infra.Investing;
 using BankingApp.Domain.Investing;
+using BankingApp.Infra.ATM;
+using BankingApp.Infra.Misc;
+
 namespace BankingApp
 {
     public class Startup
@@ -47,7 +51,13 @@ namespace BankingApp
         }
         private static void registerRepositories(IServiceCollection s)
         {
+            s.AddScoped<ITransactionRepository, TransactionRepository>();
+            s.AddScoped<INotificationRepository, NotificationRepository>();
+            s.AddScoped<ILoanManagerRepository, LoanManagerRepository>();
+            s.AddScoped<IATMManagerRepository, ATMManagerRepository>();
             s.AddScoped<ICarLoanRepository, CarLoanRepository>();
+            s.AddScoped<IHomeLoanRepository, HomeLoanRepository>();
+            s.AddScoped<IPersonalLoanRepository, PersonalLoanRepository>();
             s.AddScoped<ICalcuatorsRepository, CalculatorsRepository>();
         }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -5,7 +5,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace BankingApp.Pages.Common.Extensions
 {
-    public static class TitleHtml {
+    public static class TitleHtml 
+    {
 
         public static IHtmlContent Title(
             this IHtmlHelper h, string title) {

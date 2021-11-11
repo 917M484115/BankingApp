@@ -12,25 +12,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BankingApp.Pages.Loan
 {
-    public sealed class CarLoanPage : ViewPage<CarLoanPage, ICarLoanRepository, CarLoan, CarLoanView, CarLoanData>
+    public sealed class CarLoanPage : CarLoanBasePage<CarLoanPage>
     {
-        public CarLoanPage(ICarLoanRepository r) : base(r, "CarLoans") { }
-        protected internal override Uri pageUrl() => new Uri("/Loan/CarLoans", UriKind.Relative);
-        protected internal override CarLoan toObject(CarLoanView v) => new CarLoanViewFactory().Create(v);
-        protected internal override CarLoanView toView(CarLoan o) => new CarLoanViewFactory().Create(o);
-        protected override void createTableColumns()
-        {
-            createColumn(x => Item.Id);
-            createColumn(x => Item.CarType);
-            createColumn(x => Item.CarValue);
-            createColumn(x => Item.CarAge);
-        }
-        public override string GetName(IHtmlHelper<CarLoanPage> h, int i) => i switch
-        {
-            2 => getName<double>(h, i),
-            3 => getName<int>(h, i),
-            _ => base.GetName(h, i)
-        };
+        public CarLoanPage(ICarLoanRepository r) : base(r) { }
     }
 
+    //TODO Baaslehest saada pärimine korda. Seda on vaja, et luua ka LoanManagerile puhtamalt lehed.
 }

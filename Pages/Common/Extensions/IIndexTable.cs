@@ -4,7 +4,8 @@ using System;
 
 namespace BankingApp.Pages.Common.Extensions
 {
-    public interface IIndexTable<TPage> {
+    public interface IIndexTable<TPage> 
+    {
         int ColumnsCount { get; }
         int RowsCount { get; }
         void SetItem(int i);
