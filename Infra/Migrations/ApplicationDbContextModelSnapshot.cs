@@ -162,7 +162,7 @@ namespace BankingApp.Infra.Migrations
                     b.ToTable("Calculator");
                 });
 
-            modelBuilder.Entity("BankingApp.Data.LoanManagerData", b =>
+            modelBuilder.Entity("BankingApp.Data.Loan.LoanManagerData", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -502,7 +502,7 @@ namespace BankingApp.Infra.Migrations
                     b.ToTable("InvestingAccount");
                 });
 
-            modelBuilder.Entity("BankingApp.Data.LoanAccountData", b =>
+            modelBuilder.Entity("BankingApp.Data.Loan.LoanAccountData", b =>
                 {
                     b.HasBaseType("BankingApp.Data.Common.AccountData");
 
@@ -653,11 +653,11 @@ namespace BankingApp.Infra.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("BankingApp.Data.LoanAccountData", b =>
+            modelBuilder.Entity("BankingApp.Data.Loan.LoanAccountData", b =>
                 {
                     b.HasOne("BankingApp.Data.Common.AccountData", null)
                         .WithOne()
-                        .HasForeignKey("BankingApp.Data.LoanAccountData", "Id")
+                        .HasForeignKey("BankingApp.Data.Loan.LoanAccountData", "Id")
                         .OnDelete(DeleteBehavior.ClientCascade)
                         .IsRequired();
                 });

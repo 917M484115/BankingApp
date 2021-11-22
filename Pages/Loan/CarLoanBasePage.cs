@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using BankingApp.Data.Loan;
 using BankingApp.Domain.Loans;
 using BankingApp.Facade.Loan;
 using BankingApp.Pages.Common;
+using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
@@ -36,6 +33,13 @@ namespace BankingApp.Pages.Loan
             2 => getName<double>(h, i),
             3 => getName<int>(h, i),
             _ => base.GetName(h, i)
+        };
+
+        public override IHtmlContent GetValue(IHtmlHelper<TPage> h, int i) => i switch
+        {
+            2 => getValue<double>(h, i),
+            3 => getValue<int>(h, i),
+            _ => base.GetValue(h, i)
         };
 
 

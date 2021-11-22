@@ -12,6 +12,6 @@ namespace BankingApp.Infra.Loan
         where TData : MoneyAmountData, new()
 
     {
-        public LoanRepository(DbContext c, DbSet<TData> s) : base(c, s) { }
+        protected LoanRepository(DbContext c, DbSet<TData> s) : base(c, s) { }
     }
 }

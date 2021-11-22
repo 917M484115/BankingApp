@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BankingApp.Facade.Common;
+﻿using System.ComponentModel;
 
-namespace BankingApp.Facade.Loan
+namespace BankingApp.Facade.Common
 {
 	public abstract class LoanView: MoneyAmountView
 	{
