@@ -28,26 +28,20 @@ namespace BankingApp
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
-
+        private static string connection
+            => "DefaultConnection";
+        public Startup(IConfiguration c) =>Configuration=c;
         public IConfiguration Configuration { get; }
-
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDatabaseDeveloperPageExceptionFilter();
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+            //services.AddDatabaseDeveloperPageExceptionFilter();
+            registerAuthentication(services);
             registerRepositories(services);
-            //services.AddTransient<IEmailSender, EmailSender>();
-            services.Configure<AuthMessageSenderOptions>(Configuration);
+            registerDbContexts(services);
             services.AddRazorPages();
+            //services.AddTransient<IEmailSender, EmailSender>();
+            //services.Configure<AuthMessageSenderOptions>(Configuration;
         }
         private static void registerRepositories(IServiceCollection s)
         {
@@ -59,6 +53,20 @@ namespace BankingApp
             s.AddScoped<IHomeLoanRepository, HomeLoanRepository>();
             s.AddScoped<IPersonalLoanRepository, PersonalLoanRepository>();
             s.AddScoped<ICalcuatorsRepository, CalculatorsRepository>();
+        }
+
+        private void registerAuthentication(IServiceCollection s)=>
+            s.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+               .AddEntityFrameworkStores<ApplicationDbContext>();
+        private void registerDbContexts(IServiceCollection s)
+        {
+            registerDbContext<DbContext>(s);
+        }
+        protected virtual void registerDbContext<T>(IServiceCollection s) where T : DbContext
+        {
+            s.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlServer(
+                    Configuration.GetConnectionString(connection)));
         }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

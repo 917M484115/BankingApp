@@ -2,7 +2,8 @@
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
-
+using BankingApp.Pages.Common.CalcExtensions;
+using BankingApp.Pages.Investing;
 namespace BankingApp.Pages.Common.Extensions
 {
     public static class TableHtmlExtension
@@ -10,7 +11,7 @@ namespace BankingApp.Pages.Common.Extensions
         public static IHtmlContent ShowTable<TPage>(this IHtmlHelper<TPage> h,
             IIndexTable<TPage> page, string select = null, string edit = "Edit",
             string details = "Details", string delete = "Delete")
-        {
+        { 
             var buttons = new RowButtons
             {
                 Select = select,
@@ -21,7 +22,6 @@ namespace BankingApp.Pages.Common.Extensions
             var s = HtmlStrings(h, page, buttons);
             return new HtmlContentBuilder(s);
         }
-
         internal static List<object> HtmlStrings<TPage>(this IHtmlHelper<TPage> h,
             IIndexTable<TPage> page, RowButtons buttons)
         {

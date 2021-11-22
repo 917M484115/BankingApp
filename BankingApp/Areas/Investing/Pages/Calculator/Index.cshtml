@@ -1,0 +1,22 @@
+﻿@page
+@using BankingApp.Pages.Common.Extensions;
+@using BankingApp.Pages.Common.Aids
+@using BankingApp.Pages.Common.Consts
+@model BankingApp.Pages.Investing.CalculatorsPage
+@{
+    Layout = "CalcPartials/_CalcIndex";
+    var page = Model.PageUrl;
+}
+@section Create {
+    @Html.Link(string.Empty, new Link(Captions.Create, Model.CreateUrl))
+}
+<form method="post">
+    @Html.Editor(m => m.Item.TimeInMonths)
+    @Html.Editor(m => m.Item.Amount)
+    @Html.Select(m => m.Item.APY, Model.selectList, "-- Select Type --", "Yield Type")
+    <div class="form-group">
+        <input type="submit" asp-page-handler="Calculate" asp-route-id="" value="Calculate" />
+    </div>
+    @Html.Show(model => model.Item.Result)
+    @Html.Show(model => model.Item.Revenue)
+</form>
