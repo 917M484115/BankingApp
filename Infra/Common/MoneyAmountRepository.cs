@@ -1,15 +1,17 @@
-﻿//using BankingApp.Data.Common;
+﻿using BankingApp.Data.Common;
+using BankingApp.Domain.Common;
+using Microsoft.EntityFrameworkCore;
 
-//namespace BankingApp.Infra.Common
-//{
-//    public abstract class MoneyAmountRepository  :
-//        UniqueEntitiesRepository<MoneyAmount, MoneyAmountData>, IMoneyAmountRepository
-//    {
-//        protected MoneyAmountRepository(ApplicationDbContext c) : base(c, c.MoneyAmount) { }
-//        protected internal override MoneyAmount toDomainObject(MoneyAmountData d)
-//            => new MoneyAmount(d);
-//    }
+namespace BankingApp.Infra.Common
+{
+    public abstract class MoneyAmountRepository<TDomain, TData> : UniqueEntitiesRepository<TDomain, TData>
+        where TDomain : IEntity<TData>
+        where TData : UniqueEntityData, new()
+    {
 
-   
-//}
-//TODO MoneyAmountRepo
+        protected MoneyAmountRepository(DbContext c, DbSet<TData> s) : base(c, s) { }
+
+
+    }
+}
+

@@ -7,6 +7,7 @@ using BankingApp.Data.Loan;
 using BankingApp.Domain.Loans;
 using BankingApp.Facade.Loan;
 using BankingApp.Pages.Common;
+using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace BankingApp.Pages.Loan
@@ -34,6 +35,15 @@ namespace BankingApp.Pages.Loan
             3 => getName<int>(h, i),
             4 => getName<double>(h, i),
             _ => base.GetName(h, i)
+        };
+
+        public override IHtmlContent GetValue(IHtmlHelper<HomeLoanPage> h, int i) => i switch
+        {
+            1 => getValue<int>(h, i),
+            2 => getValue<double>(h, i),
+            3 => getValue<int>(h, i),
+            4 => getValue<double>(h, i),
+            _ => base.GetValue(h, i)
         };
 
     }

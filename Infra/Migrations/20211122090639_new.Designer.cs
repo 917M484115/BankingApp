@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BankingApp.Infra.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20211110220841_New")]
-    partial class New
+    [Migration("20211122090639_new")]
+    partial class @new
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -444,54 +444,7 @@ namespace BankingApp.Infra.Migrations
                     b.ToTable("Investment");
                 });
 
-            modelBuilder.Entity("BankingApp.Data.Loan.CarLoanData", b =>
-                {
-                    b.HasBaseType("BankingApp.Data.Common.MoneyAmountData");
-
-                    b.Property<int>("CarAge")
-                        .HasColumnType("int");
-
-                    b.Property<string>("CarType")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<double>("CarValue")
-                        .HasColumnType("float");
-
-                    b.Property<double>("Interest")
-                        .HasColumnType("float");
-
-                    b.Property<string>("LoanManagerId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("LoanPeriod")
-                        .HasColumnType("int");
-
-                    b.ToTable("CarLoan");
-                });
-
-            modelBuilder.Entity("BankingApp.Data.Loan.HomeLoanData", b =>
-                {
-                    b.HasBaseType("BankingApp.Data.Common.MoneyAmountData");
-
-                    b.Property<int>("HomeAge")
-                        .HasColumnType("int");
-
-                    b.Property<double>("HomeValue")
-                        .HasColumnType("float");
-
-                    b.Property<double>("Interest")
-                        .HasColumnType("float");
-
-                    b.Property<string>("LoanManagerId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("LoanPeriod")
-                        .HasColumnType("int");
-
-                    b.ToTable("HomeLoan");
-                });
-
-            modelBuilder.Entity("BankingApp.Data.Loan.PersonalLoanData", b =>
+            modelBuilder.Entity("BankingApp.Data.Loan.LoanData", b =>
                 {
                     b.HasBaseType("BankingApp.Data.Common.MoneyAmountData");
 
@@ -504,10 +457,7 @@ namespace BankingApp.Infra.Migrations
                     b.Property<int>("LoanPeriod")
                         .HasColumnType("int");
 
-                    b.Property<string>("Reason")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.ToTable("PersonalLoan");
+                    b.ToTable("Loan");
                 });
 
             modelBuilder.Entity("BankingApp.Data.TransactionData", b =>
@@ -547,6 +497,45 @@ namespace BankingApp.Infra.Migrations
                     b.HasBaseType("BankingApp.Data.Common.AccountData");
 
                     b.ToTable("LoanAccount");
+                });
+
+            modelBuilder.Entity("BankingApp.Data.Loan.CarLoanData", b =>
+                {
+                    b.HasBaseType("BankingApp.Data.Loan.LoanData");
+
+                    b.Property<int>("CarAge")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CarType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("CarValue")
+                        .HasColumnType("float");
+
+                    b.ToTable("CarLoan");
+                });
+
+            modelBuilder.Entity("BankingApp.Data.Loan.HomeLoanData", b =>
+                {
+                    b.HasBaseType("BankingApp.Data.Loan.LoanData");
+
+                    b.Property<int>("HomeAge")
+                        .HasColumnType("int");
+
+                    b.Property<double>("HomeValue")
+                        .HasColumnType("float");
+
+                    b.ToTable("HomeLoan");
+                });
+
+            modelBuilder.Entity("BankingApp.Data.Loan.PersonalLoanData", b =>
+                {
+                    b.HasBaseType("BankingApp.Data.Loan.LoanData");
+
+                    b.Property<string>("Reason")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.ToTable("PersonalLoan");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -627,29 +616,11 @@ namespace BankingApp.Infra.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("BankingApp.Data.Loan.CarLoanData", b =>
+            modelBuilder.Entity("BankingApp.Data.Loan.LoanData", b =>
                 {
                     b.HasOne("BankingApp.Data.Common.MoneyAmountData", null)
                         .WithOne()
-                        .HasForeignKey("BankingApp.Data.Loan.CarLoanData", "Id")
-                        .OnDelete(DeleteBehavior.ClientCascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("BankingApp.Data.Loan.HomeLoanData", b =>
-                {
-                    b.HasOne("BankingApp.Data.Common.MoneyAmountData", null)
-                        .WithOne()
-                        .HasForeignKey("BankingApp.Data.Loan.HomeLoanData", "Id")
-                        .OnDelete(DeleteBehavior.ClientCascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("BankingApp.Data.Loan.PersonalLoanData", b =>
-                {
-                    b.HasOne("BankingApp.Data.Common.MoneyAmountData", null)
-                        .WithOne()
-                        .HasForeignKey("BankingApp.Data.Loan.PersonalLoanData", "Id")
+                        .HasForeignKey("BankingApp.Data.Loan.LoanData", "Id")
                         .OnDelete(DeleteBehavior.ClientCascade)
                         .IsRequired();
                 });
@@ -677,6 +648,33 @@ namespace BankingApp.Infra.Migrations
                     b.HasOne("BankingApp.Data.Common.AccountData", null)
                         .WithOne()
                         .HasForeignKey("BankingApp.Data.LoanAccountData", "Id")
+                        .OnDelete(DeleteBehavior.ClientCascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("BankingApp.Data.Loan.CarLoanData", b =>
+                {
+                    b.HasOne("BankingApp.Data.Loan.LoanData", null)
+                        .WithOne()
+                        .HasForeignKey("BankingApp.Data.Loan.CarLoanData", "Id")
+                        .OnDelete(DeleteBehavior.ClientCascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("BankingApp.Data.Loan.HomeLoanData", b =>
+                {
+                    b.HasOne("BankingApp.Data.Loan.LoanData", null)
+                        .WithOne()
+                        .HasForeignKey("BankingApp.Data.Loan.HomeLoanData", "Id")
+                        .OnDelete(DeleteBehavior.ClientCascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("BankingApp.Data.Loan.PersonalLoanData", b =>
+                {
+                    b.HasOne("BankingApp.Data.Loan.LoanData", null)
+                        .WithOne()
+                        .HasForeignKey("BankingApp.Data.Loan.PersonalLoanData", "Id")
                         .OnDelete(DeleteBehavior.ClientCascade)
                         .IsRequired();
                 });

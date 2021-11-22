@@ -19,6 +19,7 @@ namespace BankingApp.Infra
         public DbSet<InvestingAccountData> InvestingAccount { get; set; }
         public DbSet<InvestmentData> Investment { get; set; }
         public DbSet<LoanAccountData> LoanAccount { get; set; }
+        public DbSet<LoanData> Loan { get; set; }
         public DbSet<CarLoanData> CarLoan { get; set; }
         public DbSet<HomeLoanData> HomeLoan { get; set; }
         public DbSet<PersonalLoanData> PersonalLoan { get; set; }
@@ -41,6 +42,7 @@ namespace BankingApp.Infra
             modelBuilder.Entity<AccountData>().ToTable("Account");
             modelBuilder.Entity<InvestingAccountData>().ToTable("InvestingAccount");
             modelBuilder.Entity<InvestmentData>().ToTable("Investment");
+            modelBuilder.Entity<LoanData>().ToTable("Loan");
             modelBuilder.Entity<LoanAccountData>().ToTable("LoanAccount");
             modelBuilder.Entity<CarLoanData>().ToTable("CarLoan");
             modelBuilder.Entity<HomeLoanData>().ToTable("HomeLoan");
