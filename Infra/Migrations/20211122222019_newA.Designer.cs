@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BankingApp.Infra.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20211122204019_abc")]
-    partial class abc
+    [Migration("20211122222019_newA")]
+    partial class newA
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

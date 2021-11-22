@@ -1,17 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BankingApp.Data;
-using BankingApp.Data.ATM;
 using BankingApp.Data.Loan;
-using BankingApp.Domain.ATMs;
 using BankingApp.Domain.Loans;
-using BankingApp.Facade.ATM;
 using BankingApp.Facade.Loan;
 using BankingApp.Pages.Common;
-using BankingApp.Pages.Loan;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace BankingApp.Pages.Bank

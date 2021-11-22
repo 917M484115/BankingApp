@@ -15,14 +15,14 @@
     <dl class="row">
         @RenderBody()
     </dl>
-    <a id="editButton"
+    @*<a id="editButton"
        asp-page="./Edit"
        asp-route-handler="Edit"
        asp-route-sortorder="@Model.SortOrder"
        asp-route-fixedFilter="@Model.FixedFilter"
        asp-route-fixedValue="@Model.FixedValue"
        asp-route-pageIndex="@Model.PageIndex"
-       asp-route-id="@itemId">Edit</a> |
+       asp-route-id="@itemId">Edit</a> |*@
     @Html.BackTo(
         new Args(
             null,

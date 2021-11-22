@@ -1,8 +1,7 @@
-﻿@*@page
-@using BankingApp.Pages.Common.Extensions;
-@using BankingApp.Pages.Common.Aids
+﻿@using BankingApp.Pages.Common.Aids
 @using BankingApp.Pages.Common.Consts
-@model BankingApp.Pages.Loan
+@using BankingApp.Pages.Common.Extensions
+@model BankingApp.Pages.Loan.CarLoanManagerPage
 
 @{
     Layout = "_Index";
@@ -13,6 +12,4 @@
     @Html.Link(string.Empty, new Link(Captions.Create, Model.CreateUrl))
 }
 
-@Html.ShowTable(Model)*@
-
-@*TODO AllAccounts Page *@
+@Html.ShowTable(Model, null, "Muuda", "Vaata", "Kustuta")
