@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BankingApp.Data.ATM;
-using BankingApp.Data.Loan;
+﻿using BankingApp.Data.Loan;
 
 namespace BankingApp.Domain.Loans
 {

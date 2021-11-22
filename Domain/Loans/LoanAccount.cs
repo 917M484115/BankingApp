@@ -1,4 +1,5 @@
-﻿using BankingApp.Data;
+﻿
+using BankingApp.Data.Loan;
 using BankingApp.Domain.Misc;
 
 namespace BankingApp.Domain.Loans

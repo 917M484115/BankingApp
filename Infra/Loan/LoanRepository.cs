@@ -1,14 +1,17 @@
-﻿using BankingApp.Data.Loan;
+﻿using BankingApp.Data.Common;
+using BankingApp.Data.Loan;
+using BankingApp.Domain.Common;
 using BankingApp.Domain.Loans;
 using BankingApp.Infra.Common;
+using Microsoft.EntityFrameworkCore;
 
 namespace BankingApp.Infra.Loan
 {
-    public abstract class LoanRepository :
-        MoneyAmountRepository<Loan<LoanData>, LoanData>
+    public abstract class LoanRepository<TDomain, TData> : MoneyAmountRepository<TDomain, TData>
+        where TDomain : IEntity<TData>
+        where TData : MoneyAmountData, new()
+
     {
-        public LoanRepository(ApplicationDbContext c) : base(c, c.Loan) { }
-        protected internal override Loan<LoanData> toDomainObject(LoanData d)
-            => new Loan<LoanData>(d);
+        public LoanRepository(DbContext c, DbSet<TData> s) : base(c, s) { }
     }
 }

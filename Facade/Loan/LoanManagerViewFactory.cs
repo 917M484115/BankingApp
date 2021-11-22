@@ -1,4 +1,4 @@
-﻿using BankingApp.Data;
+﻿using BankingApp.Data.Loan;
 using BankingApp.Domain.Loans;
 using BankingApp.Facade.Common;
 
