@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Soft</title>
+    <title>@ViewData["Title"] - Banking</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
@@ -39,7 +39,6 @@
                             )
                         @Html.DropMenu("Client",
                             new Link("Transaction", new Uri("/Client/Transaction/Index?handler=index", UriKind.Relative)),
-                            new Link("Calculator", new Uri("/Client/Calculator/Index?handler=index", UriKind.Relative)),
                             new Link("All accounts", new Uri("/Client/AllAccounts/Index?handler=index", UriKind.Relative)),
                             new Link("Notifications", new Uri("/Client/Notification/Index?handler=index", UriKind.Relative))
                             )

@@ -40,6 +40,7 @@ namespace BankingApp.Pages.Common.Extensions {
            params Link[] attributes) {
             if (h == null) throw new ArgumentNullException(nameof(h));
             var s = htmlStrings(attributes);
+            var bobby = new HtmlContentBuilder(s);
             return new HtmlContentBuilder(s);
         }
 

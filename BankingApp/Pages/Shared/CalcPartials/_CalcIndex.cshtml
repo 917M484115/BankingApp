@@ -1,0 +1,24 @@
+﻿@using BankingApp.Pages.Common.Extensions
+@using BankingApp.Pages.Common.Aids
+@using Microsoft.AspNetCore.Html
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = Model.PageTitle;
+    Uri pageUrl = Model.PageUrl;
+}
+
+<p>
+    <h1>@ViewData["Title"]</h1>
+    <h4>
+        @if (Model.IsMasterDetail())
+        {
+            <a href='@Model.BackToMasterDetailPageUrl'>@Model.PageSubTitle</a>
+        }
+    </h4>
+    @await RenderSectionAsync("Create")
+</p>
+
+<p />
+
+@RenderBody()
