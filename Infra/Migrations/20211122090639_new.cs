@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BankingApp.Infra.Migrations
 {
-    public partial class New : Migration
+    public partial class @new : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -306,51 +306,6 @@ namespace BankingApp.Infra.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "CarLoan",
-                columns: table => new
-                {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    CarType = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CarValue = table.Column<double>(type: "float", nullable: false),
-                    CarAge = table.Column<int>(type: "int", nullable: false),
-                    LoanPeriod = table.Column<int>(type: "int", nullable: false),
-                    Interest = table.Column<double>(type: "float", nullable: false),
-                    LoanManagerId = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_CarLoan", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_CarLoan_MoneyAmount_Id",
-                        column: x => x.Id,
-                        principalTable: "MoneyAmount",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "HomeLoan",
-                columns: table => new
-                {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    HomeValue = table.Column<double>(type: "float", nullable: false),
-                    HomeAge = table.Column<int>(type: "int", nullable: false),
-                    LoanPeriod = table.Column<int>(type: "int", nullable: false),
-                    Interest = table.Column<double>(type: "float", nullable: false),
-                    LoanManagerId = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_HomeLoan", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_HomeLoan_MoneyAmount_Id",
-                        column: x => x.Id,
-                        principalTable: "MoneyAmount",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Investment",
                 columns: table => new
                 {
@@ -370,20 +325,19 @@ namespace BankingApp.Infra.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "PersonalLoan",
+                name: "Loan",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Reason = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LoanPeriod = table.Column<int>(type: "int", nullable: false),
                     Interest = table.Column<double>(type: "float", nullable: false),
                     LoanManagerId = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PersonalLoan", x => x.Id);
+                    table.PrimaryKey("PK_Loan", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_PersonalLoan_MoneyAmount_Id",
+                        name: "FK_Loan_MoneyAmount_Id",
                         column: x => x.Id,
                         principalTable: "MoneyAmount",
                         principalColumn: "Id",
@@ -443,6 +397,63 @@ namespace BankingApp.Infra.Migrations
                         name: "FK_LoanAccount_Account_Id",
                         column: x => x.Id,
                         principalTable: "Account",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "CarLoan",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    CarType = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CarValue = table.Column<double>(type: "float", nullable: false),
+                    CarAge = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CarLoan", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_CarLoan_Loan_Id",
+                        column: x => x.Id,
+                        principalTable: "Loan",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "HomeLoan",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    HomeValue = table.Column<double>(type: "float", nullable: false),
+                    HomeAge = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_HomeLoan", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_HomeLoan_Loan_Id",
+                        column: x => x.Id,
+                        principalTable: "Loan",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "PersonalLoan",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Reason = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PersonalLoan", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_PersonalLoan_Loan_Id",
+                        column: x => x.Id,
+                        principalTable: "Loan",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -554,6 +565,9 @@ namespace BankingApp.Infra.Migrations
 
             migrationBuilder.DropTable(
                 name: "Account");
+
+            migrationBuilder.DropTable(
+                name: "Loan");
 
             migrationBuilder.DropTable(
                 name: "MoneyAmount");

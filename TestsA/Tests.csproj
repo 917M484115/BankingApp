@@ -23,7 +23,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Aids\" />
     <Folder Include="Core\" />
     <Folder Include="Facade\" />
     <Folder Include="Infra\" />

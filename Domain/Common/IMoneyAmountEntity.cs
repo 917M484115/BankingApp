@@ -1,6 +1,4 @@
-﻿using BankingApp.Domain.Common;
-
-namespace BankingApp.Data.Common
+﻿namespace BankingApp.Domain.Common
 {
     public interface IMoneyAmountEntity : IUniqueEntity
     {

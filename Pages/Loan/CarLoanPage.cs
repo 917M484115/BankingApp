@@ -1,13 +1,4 @@
-﻿using BankingApp.Data.Loan;
-using BankingApp.Domain.Loans;
-using BankingApp.Facade.Loan;
-using BankingApp.Infra;
-using BankingApp.Pages.Common;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using System;
-using System.Threading.Tasks;
-using BankingApp.Aids;
-using Microsoft.AspNetCore.Mvc;
+﻿using BankingApp.Domain.Loans;
 
 
 namespace BankingApp.Pages.Loan
@@ -16,6 +7,4 @@ namespace BankingApp.Pages.Loan
     {
         public CarLoanPage(ICarLoanRepository r) : base(r) { }
     }
-
-    //TODO Baaslehest saada pärimine korda. Seda on vaja, et luua ka LoanManagerile puhtamalt lehed.
 }
