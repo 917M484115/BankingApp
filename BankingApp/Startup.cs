@@ -48,6 +48,7 @@ namespace BankingApp
             s.AddScoped<ITransactionRepository, TransactionRepository>();
             s.AddScoped<INotificationRepository, NotificationRepository>();
             s.AddScoped<ILoanManagerRepository, LoanManagerRepository>();
+            s.AddScoped<ILoanAccountRepository, LoanAccountRepository>();
             s.AddScoped<IATMManagerRepository, ATMManagerRepository>();
             s.AddScoped<ICarLoanRepository, CarLoanRepository>();
             s.AddScoped<IHomeLoanRepository, HomeLoanRepository>();

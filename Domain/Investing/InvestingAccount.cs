@@ -1,5 +1,5 @@
 ﻿using BankingApp.Data.Investing;
-using BankingApp.Domain.Misc;
+using BankingApp.Domain.Common;
 
 namespace BankingApp.Domain.Investing
 {

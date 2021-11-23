@@ -1,7 +1,6 @@
 ﻿using BankingApp.Data.Common;
-using BankingApp.Domain.Common;
 
-namespace BankingApp.Domain.Misc
+namespace BankingApp.Domain.Common
 {
     public abstract class AccountEntity<T> : MoneyAmountEntity<T> where T : AccountData, new()
     {

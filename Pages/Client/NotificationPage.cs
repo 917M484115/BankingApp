@@ -4,12 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BankingApp.Data;
-using BankingApp.Domain.Loans;
 using BankingApp.Domain.Misc;
-using BankingApp.Facade.Loan;
 using BankingApp.Facade.Misc;
 using BankingApp.Pages.Common;
-using BankingApp.Pages.Loan;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace BankingApp.Pages.Client
