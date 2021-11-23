@@ -16,7 +16,6 @@ namespace BankingApp.Pages.Loan
         protected CarLoanBasePage(ICarLoanRepository r) : base(r, "Car Loans")
         {
         }
-
         protected internal override Uri pageUrl() => new Uri("/Loan/CarLoan", UriKind.Relative);
         protected internal override CarLoan toObject(CarLoanView v) => new CarLoanViewFactory().Create(v);
         protected internal override CarLoanView toView(CarLoan o) => new CarLoanViewFactory().Create(o);

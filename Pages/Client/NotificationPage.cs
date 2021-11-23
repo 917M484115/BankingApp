@@ -7,6 +7,7 @@ using BankingApp.Data;
 using BankingApp.Domain.Misc;
 using BankingApp.Facade.Misc;
 using BankingApp.Pages.Common;
+using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace BankingApp.Pages.Client
@@ -30,6 +31,11 @@ namespace BankingApp.Pages.Client
         public override string GetName(IHtmlHelper<NotificationPage> h, int i) => i switch
         {
             _ => base.GetName(h, i)
+        };
+
+        public override IHtmlContent GetValue(IHtmlHelper<NotificationPage> h, int i) => i switch
+        {
+            _ => base.GetValue(h, i)
         };
 
     }

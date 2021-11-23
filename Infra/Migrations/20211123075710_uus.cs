@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BankingApp.Infra.Migrations
 {
-    public partial class newA : Migration
+    public partial class uus : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
