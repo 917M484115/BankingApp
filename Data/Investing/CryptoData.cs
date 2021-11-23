@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BankingApp.Data.Common;
 
 namespace BankingApp.Data.Investing
 {
-    public sealed class CryptoData
+    public sealed class CryptoData :VirtualAssets
     {
-        //TODO cryptolist. kas need saab teha mitu mitmele?
+        public string Blockchain { get;set; }
+
     }
 }

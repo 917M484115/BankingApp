@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BankingApp.Data.Common;
 
 namespace BankingApp.Data.Investing
 {
-    public sealed class StockData
+    public sealed class StockData : VirtualAssets
     {
-        //TODO stockList
+        public string Country { get;set;}
     }
 }

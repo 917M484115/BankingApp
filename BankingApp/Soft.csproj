@@ -35,4 +35,10 @@
     <ProjectReference Include="..\Pages\Pages.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Areas\Investing\Pages\Crypto\" />
+    <Folder Include="Areas\Investing\Pages\Investments\" />
+    <Folder Include="Areas\Investing\Pages\Stocks\" />
+  </ItemGroup>
+
 </Project>

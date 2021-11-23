@@ -29,6 +29,8 @@ namespace BankingApp.Infra
         public DbSet<NotificationData> Notification { get; set; }
         public DbSet<TransactionData> Transaction { get; set; }
         public DbSet<CalculatorData> Calculator { get; set; }
+        public DbSet<StockData> Stock { get;set;}
+        public DbSet<CryptoData> Crypto { get;set;}
 
         //TODO vaadata, kuidas krüptod/stockid listina siia saada. Võib panna käsitsi nt 5 populaarseimat ja listist saab investeerides valida nende vahel.
         //public DbSet<CryptoData> Crypto { get; set; }
