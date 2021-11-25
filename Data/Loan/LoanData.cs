@@ -7,5 +7,6 @@ namespace BankingApp.Data.Loan
         public int LoanPeriod { get; set; }
         public double Interest { get; set; }
         public string LoanManagerId { get; set; }
+
     }
 }

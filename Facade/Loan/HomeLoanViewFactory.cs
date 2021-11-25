@@ -1,4 +1,5 @@
-﻿using BankingApp.Data.Loan;
+﻿using BankingApp.Data.Common;
+using BankingApp.Data.Loan;
 using BankingApp.Domain.Loans;
 using BankingApp.Facade.Common;
 
@@ -13,7 +14,7 @@ namespace BankingApp.Facade.Loan
 			var v = base.Create(o);
 			v.HomeAge = o.HomeAge;
 			v.HomeValue = o.HomeValue;
-			return v;
+            return v;
 		}
 	}
 }

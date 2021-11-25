@@ -1,8 +1,6 @@
 ﻿@page
 @using BankingApp.Pages.Common.Extensions;
-@using BankingApp.Pages.Common.Aids
-@using BankingApp.Pages.Common.Consts
-@model BankingApp.Pages.Loan.HomeLoanPage
+@model BankingApp.Pages.Loan.HomeLoanClientPage
 
 @{
     Layout = "_Index";
@@ -10,7 +8,6 @@
 }
 
 @section Create {
-    @Html.Link(string.Empty, new Link(Captions.Create, Model.CreateUrl))
 }
 
-@Html.ShowTable(Model)
+@Html.ShowTable(Model, null, null, "Vaata", null)

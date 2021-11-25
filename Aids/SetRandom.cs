@@ -17,12 +17,12 @@ namespace BankingApp.Aids
         {
             if (o is null) return;
             var t = o.GetType();
-            var properties = t.GetProperties();
+            var properties = GetClass.Properties(t);
             foreach (var p in properties)
             {
                 if (!p.CanWrite) continue;
                 if (p.PropertyType.Name == t.Name) continue;
-                var v = GetRandom.ValueOf(p.PropertyType);
+                var v = GetRandom.Value(p.PropertyType);
                 p.SetValue(o, v);
             }
         }
@@ -33,21 +33,21 @@ namespace BankingApp.Aids
             var t = getListElementsType(l);
             for (var c = 0; c <= GetRandom.UInt8(3, 5); c++)
             {
-                var v = GetRandom.ValueOf(t);
+                var v = GetRandom.Value(t);
                 l.Add(v);
             }
         }
         private static Type getListElementsType(IList list)
-            => Safe.Run(
-                () => {
-                    var t = list.GetType();
-                    var types =
-                    (
-                        from method in t.GetMethods()
+        {
+            return Safe.Run(() => {
+                var t = list.GetType();
+                var types =
+                    (from method in t.GetMethods()
                         where method.Name == "get_Item"
                         select method.ReturnType
                     ).Distinct().ToArray();
-                    return types[0];
-                }, default);
+                return types[0];
+            }, (Type)null);
+        }
     }
 }

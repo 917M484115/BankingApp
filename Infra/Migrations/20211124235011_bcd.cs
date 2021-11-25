@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BankingApp.Infra.Migrations
 {
-    public partial class uus : Migration
+    public partial class bcd : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -100,6 +100,24 @@ namespace BankingApp.Infra.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Crypto",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Blockchain = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    From = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    To = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Code = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Ticker = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Price = table.Column<double>(type: "float", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Crypto", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Customer",
                 columns: table => new
                 {
@@ -161,6 +179,24 @@ namespace BankingApp.Infra.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Notification", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Stock",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Country = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    From = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    To = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Code = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Ticker = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Price = table.Column<double>(type: "float", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Stock", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -535,6 +571,9 @@ namespace BankingApp.Infra.Migrations
                 name: "CarLoan");
 
             migrationBuilder.DropTable(
+                name: "Crypto");
+
+            migrationBuilder.DropTable(
                 name: "Customer");
 
             migrationBuilder.DropTable(
@@ -557,6 +596,9 @@ namespace BankingApp.Infra.Migrations
 
             migrationBuilder.DropTable(
                 name: "PersonalLoan");
+
+            migrationBuilder.DropTable(
+                name: "Stock");
 
             migrationBuilder.DropTable(
                 name: "Transaction");

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using BankingApp.Aids;
+using BankingApp.Aids.Reflection;
 using Tests;
 
 namespace BankingApp.Tests

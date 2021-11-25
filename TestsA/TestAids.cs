@@ -17,7 +17,7 @@ namespace Tests
                 $"The class {t} does not have a property {n}");
             isTrue(pi.CanRead, $"The property {n} does not have a getter");
             isTrue(pi.CanWrite, $"The property {n} does not have a setter");
-            var expectedValue = GetRandom.ValueOf(typeof(T));
+            var expectedValue = GetRandom.Value(typeof(T));
             pi.SetValue(objUnderTests, expectedValue);
             var actual = pi.GetValue(objUnderTests);
             areEqual(expectedValue, actual,

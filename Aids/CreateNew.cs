@@ -39,7 +39,7 @@ namespace BankingApp.Aids
             foreach (var p in parameters)
             {
                 var t = p.ParameterType;
-                var value = GetRandom.ValueOf(t);
+                var value = GetRandom.Value(t);
                 values.Add(value);
             }
             return values.ToArray();

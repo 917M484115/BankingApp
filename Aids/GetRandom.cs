@@ -76,12 +76,11 @@ namespace BankingApp.Aids
             return GetEnum.ValueByIndex(t, index);
         }
         public static TimeSpan TimeSpan() => new TimeSpan(Int64());
-        public static object ValueOf<T>() => ValueOf(typeof(T));
-        public static object ValueOf(Type t)
+        public static object Value(Type t)
         {
             var x = Nullable.GetUnderlyingType(t);
             if (!(x is null)) t = x;
-            if (t.IsArray) return ArrayOf(t.GetElementType());
+            if (t.IsArray) return Array(t.GetElementType());
             if (t.IsEnum) return EnumOf(t);
             if (t == typeof(string)) return String();
             if (t == typeof(char)) return Char();
@@ -118,15 +117,16 @@ namespace BankingApp.Aids
             if (t == typeof(TimeSpan)) return TimeSpan();
             return ObjectOf(t);
         }
-        public static object ArrayOf(Type t)
+        public static object Array(Type t)
         {
             if (t is null) return null;
             var listType = typeof(List<>);
             var constructedListType = listType.MakeGenericType(t);
             var list = (IList)Activator.CreateInstance(constructedListType);
-            for (var i = 0; i < UInt8(3, 10); i++) list.Add(ValueOf(t));
-            var array = Array.CreateInstance(t, list.Count);
+            for (var i = 0; i < UInt8(3, 10); i++) list.Add(Value(t));
+            var array = System.Array.CreateInstance(t, list.Count);
             list.CopyTo(array, 0);
+
             return array;
         }
 

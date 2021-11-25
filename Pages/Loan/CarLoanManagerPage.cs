@@ -1,7 +1,5 @@
 ﻿using System;
 using BankingApp.Domain.Loans;
-using Microsoft.AspNetCore.Html;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace BankingApp.Pages.Loan
 {

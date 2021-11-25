@@ -1,5 +1,4 @@
-﻿using System;
-using BankingApp.Domain.Loans;
+﻿using BankingApp.Domain.Loans;
 
 namespace BankingApp.Pages.Loan
 {

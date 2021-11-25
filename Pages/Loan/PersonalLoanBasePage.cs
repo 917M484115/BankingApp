@@ -7,13 +7,17 @@ using BankingApp.Data.Loan;
 using BankingApp.Domain.Loans;
 using BankingApp.Facade.Loan;
 using BankingApp.Pages.Common;
+using Microsoft.AspNetCore.Html;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace BankingApp.Pages.Loan
 {
-    public sealed class PersonalLoanPage : ViewPage<PersonalLoanPage, IPersonalLoanRepository, PersonalLoan, PersonalLoanView, PersonalLoanData>
+    public abstract class PersonalLoanBasePage<TPage> :
+        ViewPage<TPage, IPersonalLoanRepository, PersonalLoan, PersonalLoanView, PersonalLoanData>
+        where TPage : PageModel
     {
-        public PersonalLoanPage(IPersonalLoanRepository r) : base(r, "Personal Loans") { }
+        public PersonalLoanBasePage(IPersonalLoanRepository r) : base(r, "Personal Loans") { }
         protected internal override Uri pageUrl() => new Uri("/Loan/PersonalLoan", UriKind.Relative);
         protected internal override PersonalLoan toObject(PersonalLoanView v) => new PersonalLoanViewFactory().Create(v);
         protected internal override PersonalLoanView toView(PersonalLoan o) => new PersonalLoanViewFactory().Create(o);
@@ -26,11 +30,18 @@ namespace BankingApp.Pages.Loan
             createColumn(x => Item.LoanManagerId);
         }
 
-        public override string GetName(IHtmlHelper<PersonalLoanPage> h, int i) => i switch
+        public override string GetName(IHtmlHelper<TPage> h, int i) => i switch
         {
             2 => getName<int>(h, i),
             3 => getName<double>(h, i),
             _ => base.GetName(h, i)
+        };
+
+        public override IHtmlContent GetValue(IHtmlHelper<TPage> h, int i) => i switch
+        {
+            2 => getValue<int>(h, i),
+            3 => getValue<double>(h, i),
+            _ => base.GetValue(h, i)
         };
 
     }

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BankingApp.Infra.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20211123075710_uus")]
-    partial class uus
+    [Migration("20211124235011_bcd")]
+    partial class bcd
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -162,6 +162,68 @@ namespace BankingApp.Infra.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Calculator");
+                });
+
+            modelBuilder.Entity("BankingApp.Data.Investing.CryptoData", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Blockchain")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Code")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("From")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
+
+                    b.Property<string>("Ticker")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("To")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Crypto");
+                });
+
+            modelBuilder.Entity("BankingApp.Data.Investing.StockData", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Code")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Country")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("From")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
+
+                    b.Property<string>("Ticker")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("To")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Stock");
                 });
 
             modelBuilder.Entity("BankingApp.Data.Loan.LoanManagerData", b =>
