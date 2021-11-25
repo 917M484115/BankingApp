@@ -8,5 +8,11 @@ namespace BankingApp.Facade.Loan
 	public sealed class LoanAccountViewFactory : AbstractViewFactory<LoanAccountData, LoanAccount, LoanAccountView>
 	{
 		protected internal override LoanAccount toObject(LoanAccountData d) => new LoanAccount(d);
+		public override LoanAccountView Create(LoanAccount o)
+		{
+			var v = base.Create(o);
+			v.MoneyAmount = o.MoneyAmount;
+			return v;
+		}
 	}
 }

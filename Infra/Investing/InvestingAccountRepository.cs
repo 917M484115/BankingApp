@@ -10,7 +10,7 @@ using BankingApp.Infra.Common;
 namespace BankingApp.Infra.Investing
 {
 	public sealed class InvestingAccountRepository :
-		UniqueEntitiesRepository<InvestingAccount, InvestingAccountData>, IInvestingAccountRepository
+		AccountRepository<InvestingAccount, InvestingAccountData>, IInvestingAccountRepository
 	{
 		public InvestingAccountRepository(ApplicationDbContext c) : base(c, c.InvestingAccount) { }
 		protected internal override InvestingAccount toDomainObject(InvestingAccountData d)

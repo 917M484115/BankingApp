@@ -8,6 +8,6 @@ namespace BankingApp.Facade.Common
 		public double Interest { get; set; }
 		[DisplayName("Loan manager Id")] public string LoanManagerId { get; set; }
 
-        [DisplayName("Monthly return")] public string MonthlyReturn { get; set; }
+        [DisplayName("Monthly return")] public double MonthlyReturn { get; set; }
 	}
 }

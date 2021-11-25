@@ -9,6 +9,6 @@ namespace BankingApp.Facade.Common
 {
 	public abstract class MoneyAmountView: UniqueEntityView
 	{
-		[DisplayName("Money amount")] public int MoneyAmount { get; set; }
+		[DisplayName("Money amount")] public double MoneyAmount { get; set; }
 	}
 }

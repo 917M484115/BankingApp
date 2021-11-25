@@ -6,7 +6,7 @@ using BankingApp.Infra.Common;
 namespace BankingApp.Infra.Loan
 {
 	public sealed class LoanAccountRepository :
-		UniqueEntitiesRepository<LoanAccount, LoanAccountData>, ILoanAccountRepository
+		AccountRepository<LoanAccount, LoanAccountData>, ILoanAccountRepository
 	{
 		public LoanAccountRepository(ApplicationDbContext c) : base(c, c.LoanAccount) { }
 		protected internal override LoanAccount toDomainObject(LoanAccountData d)

@@ -2,7 +2,7 @@
 @using BankingApp.Pages.Common.Extensions;
 @using BankingApp.Pages.Common.Aids
 @using BankingApp.Pages.Common.Consts
-@model BankingApp.Pages.Loan.LoanAccountClientPage
+@model BankingApp.Pages.Loan.LoanAccountManagerPage
 
 @{
     Layout = "_Index";
@@ -10,7 +10,7 @@
 }
 
 @section Create {
-
+    @Html.Link(string.Empty, new Link(Captions.Create, Model.CreateUrl))
 }
 
-@Html.ShowTable(Model, null, null, "Vaata", null)
+@Html.ShowTable(Model, null, "Muuda", "Vaata", "Kustuta")

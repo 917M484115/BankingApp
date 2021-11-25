@@ -7,6 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="LoanManagerPages\**" />
+    <Compile Remove="NewFolder\**" />
+    <EmbeddedResource Remove="LoanManagerPages\**" />
+    <EmbeddedResource Remove="NewFolder\**" />
+    <None Remove="LoanManagerPages\**" />
+    <None Remove="NewFolder\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.RazorPages" Version="2.2.5" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
@@ -18,8 +27,6 @@
   <ItemGroup>
     <Folder Include="Bank\NewFolder\" />
     <Folder Include="Common\Docs\NewFolder\" />
-    <Folder Include="LoanManagerPages\" />
-    <Folder Include="NewFolder\" />
   </ItemGroup>
 
 </Project>
