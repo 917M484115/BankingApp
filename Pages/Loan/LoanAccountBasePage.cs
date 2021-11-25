@@ -8,6 +8,7 @@ using BankingApp.Domain.Loans;
 using BankingApp.Facade.Loan;
 using BankingApp.Pages.Common;
 using Microsoft.AspNetCore.Html;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
@@ -43,6 +44,16 @@ namespace BankingApp.Pages.Loan
             5 => getValue<double>(h, i),
             _ => base.GetValue(h, i)
         };
+        public virtual async Task<IActionResult> OnGetSelectAsync(string id, string sortOrder, string searchString,
+        int pageIndex, string fixedFilter, string fixedValue)
+        {
 
+   
+
+            var page = "/Client/Transaction";
+            var url = new Uri($"{page}/Edit?handler=Edit");
+
+            return Redirect(url.ToString());
+        }
     }
 }
