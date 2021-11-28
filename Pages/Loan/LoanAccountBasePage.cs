@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BankingApp.Aids;
+using BankingApp.Data;
 using BankingApp.Data.Loan;
 using BankingApp.Domain.Loans;
 using BankingApp.Facade.Loan;
@@ -48,11 +50,11 @@ namespace BankingApp.Pages.Loan
         int pageIndex, string fixedFilter, string fixedValue)
         {
 
-   
-
             var page = "/Client/Transaction";
-            var url = new Uri($"{page}/Edit?handler=Edit");
+            var name = GetMember.Name<TransactionData>(x => x.Id);
+            var url = new Uri($"{page}/Create?handler=Create", UriKind.Relative);
 
+            await Task.CompletedTask.ConfigureAwait(false);
             return Redirect(url.ToString());
         }
     }

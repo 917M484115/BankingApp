@@ -15,7 +15,7 @@ namespace BankingApp.Pages.Client
     public sealed class NotificationPage : ViewPage<NotificationPage, INotificationRepository, Notification, NotificationView, NotificationData>
     {
         public NotificationPage(INotificationRepository r) : base(r, "Notifications") { }
-        protected internal override Uri pageUrl() => new Uri("/Client/Notification/", UriKind.Relative);
+        protected internal override Uri pageUrl() => new Uri("/Client/Notification", UriKind.Relative);
         protected internal override Notification toObject(NotificationView v) => new NotificationViewFactory().Create(v);
         protected internal override NotificationView toView(Notification o) => new NotificationViewFactory().Create(o);
         protected override void createTableColumns()

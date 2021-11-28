@@ -15,7 +15,7 @@ namespace BankingApp.Pages.Client
     public sealed class TransactionPage : ViewPage<TransactionPage, ITransactionRepository, Transaction, TransactionView, TransactionData>
     {
         public TransactionPage(ITransactionRepository r) : base(r, "Transactions") { }
-        protected internal override Uri pageUrl() => new Uri("/Client/Transaction/", UriKind.Relative);
+        protected internal override Uri pageUrl() => new Uri("/Client/Transaction", UriKind.Relative);
         protected internal override Transaction toObject(TransactionView v) => new TransactionViewFactory().Create(v);
         protected internal override TransactionView toView(Transaction o) => new TransactionViewFactory().Create(o);
         protected override void createTableColumns()
