@@ -2,7 +2,7 @@
 
 namespace BankingApp.Data.Investing
 {
-    public sealed class CryptoData :VirtualAssets
+    public sealed class CryptoData :VirtualAssetData
     {
         public string Blockchain { get;set; }
 

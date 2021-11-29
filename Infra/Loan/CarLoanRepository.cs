@@ -1,5 +1,6 @@
 ﻿using BankingApp.Data.Loan;
 using BankingApp.Domain.Loans;
+using BankingApp.Infra.Common;
 
 namespace BankingApp.Infra.Loan
 {

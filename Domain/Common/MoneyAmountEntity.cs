@@ -2,7 +2,7 @@
 
 namespace BankingApp.Domain.Common
 {
-    public abstract class MoneyAmountEntity <T>: UniqueEntity<T> where T: MoneyAmountData, new()
+    public abstract class MoneyAmountEntity <T>: UniqueEntity<T>, IMoneyAmountEntity<T> where T: MoneyAmountData, new()
     {
         protected internal MoneyAmountEntity(T d = null) : base(d) { }
 

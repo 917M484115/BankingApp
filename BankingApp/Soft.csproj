@@ -12,9 +12,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Areas\Investing\Pages\Investments\**" />
+    <Compile Remove="Areas\Investing\Pages\Stocks\**" />
     <Compile Remove="Data\**" />
+    <Content Remove="Areas\Investing\Pages\Investments\**" />
+    <Content Remove="Areas\Investing\Pages\Stocks\**" />
     <Content Remove="Data\**" />
+    <EmbeddedResource Remove="Areas\Investing\Pages\Investments\**" />
+    <EmbeddedResource Remove="Areas\Investing\Pages\Stocks\**" />
     <EmbeddedResource Remove="Data\**" />
+    <None Remove="Areas\Investing\Pages\Investments\**" />
+    <None Remove="Areas\Investing\Pages\Stocks\**" />
     <None Remove="Data\**" />
   </ItemGroup>
 
@@ -33,12 +41,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Pages\Pages.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Areas\Investing\Pages\Crypto\" />
-    <Folder Include="Areas\Investing\Pages\Investments\" />
-    <Folder Include="Areas\Investing\Pages\Stocks\" />
   </ItemGroup>
 
 </Project>

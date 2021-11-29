@@ -21,6 +21,7 @@ using BankingApp.Domain.Loans;
 using BankingApp.Infra.Loan;
 using BankingApp.Infra.Investing;
 using BankingApp.Domain.Investing;
+using BankingApp.Domain.Investing.Repositories;
 using BankingApp.Infra.ATM;
 using BankingApp.Infra.Misc;
 
@@ -55,6 +56,8 @@ namespace BankingApp
             s.AddScoped<IPersonalLoanRepository, PersonalLoanRepository>();
             s.AddScoped<ICalcuatorsRepository, CalculatorsRepository>();
             s.AddScoped<IInvestingAccountRepository, InvestingAccountRepository>();
+            s.AddScoped<ICryptoRepository, CryptoRepository>();
+            s.AddScoped<IStockRepository, StockRepository>();
         }
 
         private void registerAuthentication(IServiceCollection s)=>

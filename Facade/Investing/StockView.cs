@@ -1,10 +1,8 @@
 ﻿using BankingApp.Facade.Common;
 namespace BankingApp.Facade.Investing
 {
-	public class StockView : NamedView
+	public class StockView : VirtualAssetView
 	{
-		public string Ticker { get; set; }
-		public double Price { get; set; }
-		public string Country { get; set; }
+        public string Country { get; set; }
 	}
 }

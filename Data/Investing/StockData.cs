@@ -2,7 +2,7 @@
 
 namespace BankingApp.Data.Investing
 {
-    public sealed class StockData : VirtualAssets
+    public sealed class StockData : VirtualAssetData
     {
         public string Country { get;set;}
     }

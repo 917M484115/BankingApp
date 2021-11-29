@@ -2,11 +2,10 @@
 using BankingApp.Data.Investing;
 namespace BankingApp.Domain.Investing
 {
-    public sealed class Crypto : NamedEntity<CryptoData>
+    public sealed class Crypto : VirtualAssetEntity<CryptoData>
     {
         public Crypto(CryptoData d) : base(d){ }
-        public double Price => Data?.Price?? double.NaN;
         public string Blockchain => Data?.Blockchain?? Unspecified;
-        public string Ticker => Data?.Ticker?? Unspecified;
+        
     }
 }

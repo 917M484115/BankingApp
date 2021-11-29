@@ -10,8 +10,6 @@ namespace BankingApp.Infra.Common
     {
 
         protected MoneyAmountRepository(DbContext c, DbSet<TData> s) : base(c, s) { }
-
-
     }
 }
 

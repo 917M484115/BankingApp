@@ -1,11 +1,13 @@
 ﻿using BankingApp.Infra.Common;
 using BankingApp.Domain.Investing;
 using BankingApp.Data.Investing;
+using BankingApp.Domain.Investing.Repositories;
+
 namespace BankingApp.Infra.Investing
 {
-    public sealed class CryptosRepository : UniqueEntitiesRepository<Crypto, CryptoData>
+    public sealed class CryptoRepository : VirtualAssetRepository<Crypto, CryptoData>, ICryptoRepository
     {
-        public CryptosRepository(ApplicationDbContext c) : base(c, c.Crypto) { }
+        public CryptoRepository(ApplicationDbContext c) : base(c, c.Crypto) { }
 
         protected internal override Crypto toDomainObject(CryptoData d)=> new Crypto(d);
     }
