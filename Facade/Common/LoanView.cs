@@ -9,5 +9,5 @@ namespace BankingApp.Facade.Common
 		[DisplayName("Loan manager Id")] public string LoanManagerId { get; set; }
 
         [DisplayName("Monthly return")] public double MonthlyReturn { get; set; }
-	}
+    }
 }

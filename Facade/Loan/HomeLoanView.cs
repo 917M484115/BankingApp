@@ -7,5 +7,5 @@ namespace BankingApp.Facade.Loan
 	{
 		[DisplayName("Home value")] public double HomeValue { get; set; }
 		[DisplayName("Home age")] public int HomeAge { get; set; }
-	}
+    }
 }

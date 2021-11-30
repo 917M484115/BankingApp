@@ -23,7 +23,8 @@
                     <ul class="navbar-nav flex-grow-1">
                         @Html.DropMenu("Bank",
                             new Link("Loan Managers", new Uri("/Bank/LoanManager/Index?handler=index", UriKind.Relative)),
-                            new Link("ATM Managers", new Uri("/Bank/ATMManager/Index?handler=index", UriKind.Relative))
+                            new Link("ATM Managers", new Uri("/Bank/ATMManager/Index?handler=index", UriKind.Relative)),
+                            new Link("Investing Managers", new Uri("/Bank/InvestingManager/Index?handler=index", UriKind.Relative))
                             )
 
                         @Html.DropMenu("ATM Manager",

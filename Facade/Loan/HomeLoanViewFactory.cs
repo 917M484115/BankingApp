@@ -15,7 +15,7 @@ namespace BankingApp.Facade.Loan
 			v.HomeAge = o.HomeAge;
 			v.HomeValue = o.HomeValue;
 			v.MonthlyReturn = o.MonthlyReturn;
-			return v;
+            return v;
 		}
 	}
 }

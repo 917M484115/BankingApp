@@ -12,6 +12,7 @@ namespace BankingApp.Facade.Loan
 		{
 			var v = base.Create(o);
 			v.MoneyAmount = o.MoneyAmount;
+            v.AccountAddress = o.AccountAddress;
 			return v;
 		}
 	}
