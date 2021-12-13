@@ -1,8 +1,8 @@
-﻿using Abc.Aids.Methods;
-using Abc.Aids.Regions;
-using System.Linq;
+﻿using System.Linq;
+using BankingApp.Aids.Methods;
+using BankingApp.Aids.Regions;
 
-namespace Abc.Aids.Extensions {
+namespace BankingApp.Aids.Extensions {
 
     public static class Booleans {
 

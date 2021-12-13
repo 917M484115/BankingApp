@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BankingApp.Infra.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20211124235011_bcd")]
-    partial class bcd
+    [Migration("20211212225049_aaa")]
+    partial class aaa
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -490,7 +490,7 @@ namespace BankingApp.Infra.Migrations
                 {
                     b.HasBaseType("BankingApp.Data.Common.MoneyAmountData");
 
-                    b.Property<string>("AccountNumber")
+                    b.Property<string>("AccountAddress")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("AccountLocation")

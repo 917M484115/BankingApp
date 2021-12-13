@@ -1,5 +1,5 @@
 ﻿using System;
-using BankingApp.Aids;
+using BankingApp.Aids.Methods;
 using BankingApp.Data.Loan;
 using BankingApp.Domain.Common;
 

@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <AssemblyName>Aids</AssemblyName>
-    <RootNamespace>Aids</RootNamespace>
+    <AssemblyName>BankingApp.Aids</AssemblyName>
+    <RootNamespace>BankingApp.Aids</RootNamespace>
   </PropertyGroup>
 
 </Project>

@@ -1,9 +1,9 @@
-﻿using Abc.Aids.Methods;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using BankingApp.Aids.Methods;
 
-namespace Abc.Aids.Extensions {
+namespace BankingApp.Aids.Extensions {
     public static class Lists {
 
         public static IEnumerable<T> OrderBy<T>(IEnumerable<T> list, Func<T, string> func)

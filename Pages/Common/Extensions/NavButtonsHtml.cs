@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
-using BankingApp.Aids;
+using BankingApp.Aids.Extensions;
 using BankingApp.Pages.Common.Aids;
 using BankingApp.Pages.Common.Consts;
 

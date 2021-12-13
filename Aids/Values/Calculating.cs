@@ -1,7 +1,7 @@
-using Abc.Aids.Extensions;
 using System;
+using BankingApp.Aids.Extensions;
 
-namespace Abc.Aids.Values {
+namespace BankingApp.Aids.Values {
 
     public static class Calculating {
 

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BankingApp.Aids;
+using BankingApp.Aids.Random;
 using BankingApp.Data.ATM;
 using BankingApp.Data.Common;
 using BankingApp.Data.Investing;
@@ -42,7 +43,7 @@ namespace Tests
             var repo = new TRepo();
             for (var i = 0; i < count; i++)
             {
-                var d = GetRandom.ObjectOf<TData>();
+                var d = GetRandom.Object<TData>();
                 if (idx == i)
                 {
                     d.Id = id;
@@ -62,11 +63,11 @@ namespace Tests
             var repo = new TRepo();
             for (var i = 0; i < itemsCount; i++)
             {
-                if (GetRandom.Bool()) repo.Add(toObject(GetRandom.ObjectOf<TData>())).GetAwaiter();
-                var d = GetRandom.ObjectOf<TData>();
+                if (GetRandom.Bool()) repo.Add(toObject(GetRandom.Object<TData>())).GetAwaiter();
+                var d = GetRandom.Object<TData>();
                 d = setRelatedId(d);
                 repo.Add(toObject(d)).GetAwaiter();
-                if (GetRandom.Bool()) repo.Add(toObject(GetRandom.ObjectOf<TData>())).GetAwaiter();
+                if (GetRandom.Bool()) repo.Add(toObject(GetRandom.Object<TData>())).GetAwaiter();
             }
             return repo;
         }

@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Reflection;
 
-namespace Abc.Aids.Extensions {
+namespace BankingApp.Aids.Extensions {
     public static class Enums {
         public static string ToStr(this Enum value) {
             var i = value.GetType().GetField(value.ToString());

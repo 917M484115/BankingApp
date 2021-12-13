@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using BankingApp.Aids;
+using BankingApp.Aids.Random;
 
 namespace Tests
 {

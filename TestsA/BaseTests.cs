@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using BankingApp.Aids;
+using BankingApp.Aids.Classes;
+using BankingApp.Aids.Extensions;
 using BankingApp.Aids.Reflection;
 using Tests;
 

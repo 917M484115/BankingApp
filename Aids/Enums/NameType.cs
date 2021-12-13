@@ -1,5 +1,5 @@
 ﻿
-namespace Abc.Aids.Enums {
+namespace BankingApp.Aids.Enums {
     public enum NameType {
         Undefined = 0,
         Official = 1,

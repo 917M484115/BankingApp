@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BankingApp.Aids.Reflection;
 
 namespace Tests.Aids
 {
@@ -26,17 +27,17 @@ namespace Tests.Aids
 
         [TestMethod]
         public void ValueByIndexTest()
-            => Assert.AreEqual(testEnum.First, GetEnum.ValueByIndex<testEnum>(1));
+            => Assert.AreEqual(testEnum.First, GetEnum.Value<testEnum>(1));
         [TestMethod]
         public void ValueByIndexTestByType()
-            => Assert.AreEqual(testEnum.Second, GetEnum.ValueByIndex(typeof(testEnum), 2));
+            => Assert.AreEqual(testEnum.Second, GetEnum.Value(typeof(testEnum), 2));
 
         [TestMethod]
         public void ValueByValueTest()
-            => Assert.AreEqual(testEnum.First, GetEnum.ValueByValue<testEnum>(1));
+            => Assert.AreEqual(testEnum.First, GetEnum.Value<testEnum>(1));
         [TestMethod]
         public void ValueByValueTestByType()
-            => Assert.AreEqual(testEnum.Second, GetEnum.ValueByValue(typeof(testEnum), 123));
+            => Assert.AreEqual(testEnum.Second, GetEnum.Value(typeof(testEnum), 123));
 
         [TestMethod]
         public void CountTestWrongType()
@@ -47,31 +48,31 @@ namespace Tests.Aids
 
         [TestMethod]
         public void ValueByIndexTestWrongIndex()
-            => Assert.AreEqual(testEnum.Undefined, GetEnum.ValueByIndex<testEnum>(100));
+            => Assert.AreEqual(testEnum.Undefined, GetEnum.Value<testEnum>(100));
         [TestMethod]
         public void ValueByIndexTestByTypeWrongIndex()
-            => Assert.AreEqual(testEnum.Undefined, GetEnum.ValueByIndex(typeof(testEnum), 100));
+            => Assert.AreEqual(testEnum.Undefined, GetEnum.Value(typeof(testEnum), 100));
 
         [TestMethod]
         public void ValueByValueTestWrongIndex()
-            => Assert.AreEqual(testEnum.Undefined, GetEnum.ValueByValue<testEnum>(100));
+            => Assert.AreEqual(testEnum.Undefined, GetEnum.Value<testEnum>(100));
         [TestMethod]
         public void ValueByValueTestByTypeWrongIndex()
-            => Assert.AreEqual(testEnum.Undefined, GetEnum.ValueByValue(typeof(testEnum), 100));
+            => Assert.AreEqual(testEnum.Undefined, GetEnum.Value(typeof(testEnum), 100));
 
         [TestMethod]
         public void ValueByIndexTestWrongType()
-            => Assert.AreEqual(null, GetEnum.ValueByIndex<string>(100));
+            => Assert.AreEqual(null, GetEnum.Value<string>(100));
         [TestMethod]
         public void ValueByIndexTestByTypeWrongType()
-            => Assert.AreEqual(null, GetEnum.ValueByIndex(typeof(string), 100));
+            => Assert.AreEqual(null, GetEnum.Value(typeof(string), 100));
 
         [TestMethod]
         public void ValueByValueTestWrongType()
-            => Assert.AreEqual(0, GetEnum.ValueByValue<int>(100));
+            => Assert.AreEqual(0, GetEnum.Value<int>(100));
         [TestMethod]
         public void ValueByValueTestByTypeWrongType()
-            => Assert.AreEqual(0, GetEnum.ValueByValue(typeof(int), 100));
+            => Assert.AreEqual(0, GetEnum.Value(typeof(int), 100));
 
     }
 }

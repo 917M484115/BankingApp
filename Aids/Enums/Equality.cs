@@ -1,4 +1,4 @@
-﻿namespace Abc.Aids.Enums {
+﻿namespace BankingApp.Aids.Enums {
     public enum Equality {
         IsEqual = 0,
         IsNotEqual = 1,

@@ -1,5 +1,5 @@
 ﻿
-namespace Abc.Aids.Formats.Dates {
+namespace BankingApp.Aids.Formats.Dates {
 
     public static class Morning {
 

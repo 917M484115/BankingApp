@@ -1,7 +1,7 @@
-﻿using Abc.Aids.Logging;
+﻿using BankingApp.Aids.Logging;
 using System;
 
-namespace Abc.Aids.Methods {
+namespace BankingApp.Aids.Methods {
 
     public static class Safe {
 

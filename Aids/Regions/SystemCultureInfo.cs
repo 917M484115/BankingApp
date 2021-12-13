@@ -1,7 +1,7 @@
-﻿using Abc.Aids.Methods;
-using System.Globalization;
+﻿using System.Globalization;
+using BankingApp.Aids.Methods;
 
-namespace Abc.Aids.Regions {
+namespace BankingApp.Aids.Regions {
 
     public static class SystemCultureInfo {
         public static CultureInfo[] GetSpecific() {

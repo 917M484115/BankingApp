@@ -1,8 +1,8 @@
-﻿using Abc.Aids.Regions;
-using System;
+﻿using System;
 using System.Globalization;
+using BankingApp.Aids.Regions;
 
-namespace Abc.Aids.Extensions {
+namespace BankingApp.Aids.Extensions {
     public static class Integers {
         public static int ToInteger(object o) {
             ToInteger(o, out var i);

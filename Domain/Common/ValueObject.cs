@@ -1,5 +1,5 @@
 ﻿using System;
-using BankingApp.Aids;
+using BankingApp.Aids.Methods;
 using BankingApp.Data.Common;
 
 namespace BankingApp.Domain.Common

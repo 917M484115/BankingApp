@@ -1,6 +1,6 @@
 ﻿using BankingApp.Data.Loan;
-using BankingApp.Aids;
 using System;
+using BankingApp.Aids.Methods;
 
 
 namespace BankingApp.Domain.Loans

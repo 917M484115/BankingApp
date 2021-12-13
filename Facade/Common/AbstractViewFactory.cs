@@ -1,4 +1,4 @@
-﻿using BankingApp.Aids;
+﻿using BankingApp.Aids.Methods;
 using BankingApp.Data.Common;
 using BankingApp.Domain.Common;
 

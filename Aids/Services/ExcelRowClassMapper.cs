@@ -1,9 +1,8 @@
-﻿
-using Abc.Aids.Reflection;
-using System;
+﻿using System;
 using System.Linq.Expressions;
+using BankingApp.Aids.Reflection;
 
-namespace Abc.Aids.Services {
+namespace BankingApp.Aids.Services {
     public sealed class ExcelRowClassMapper {
 
         public ExcelRowClassMapper() { }

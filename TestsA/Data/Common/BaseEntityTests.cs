@@ -1,5 +1,6 @@
 ﻿using System;
 using BankingApp.Aids;
+using BankingApp.Aids.Random;
 using BankingApp.Data.Common;
 using BankingApp.Tests;
 using Microsoft.VisualStudio.TestTools.UnitTesting;

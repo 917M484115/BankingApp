@@ -1,8 +1,8 @@
-﻿using Abc.Aids.Logging;
+﻿using BankingApp.Aids.Logging;
 using System;
 using System.Net;
 
-namespace Abc.Aids.Services {
+namespace BankingApp.Aids.Services {
 
     public static class WebService {
 

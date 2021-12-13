@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace Abc.Aids.Enums {
+namespace BankingApp.Aids.Enums {
     public enum ClassificatorType {
         Unspecified = 0,
         [Description("Order Identifier Type")] OrderIdentifierType = 1,

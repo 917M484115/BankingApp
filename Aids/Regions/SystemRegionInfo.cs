@@ -1,10 +1,10 @@
-﻿using Abc.Aids.Extensions;
-using Abc.Aids.Methods;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using BankingApp.Aids.Extensions;
+using BankingApp.Aids.Methods;
 
-namespace Abc.Aids.Regions {
+namespace BankingApp.Aids.Regions {
 
     public static class SystemRegionInfo {
 

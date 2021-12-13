@@ -1,4 +1,4 @@
-﻿namespace Abc.Aids.Services {
+﻿namespace BankingApp.Aids.Services {
 
     public enum ExcelRowClassMapperType {
         Value = 0,

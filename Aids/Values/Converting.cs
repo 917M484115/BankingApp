@@ -1,9 +1,9 @@
-﻿using Abc.Aids.Constants;
-using Abc.Aids.Regions;
+﻿using BankingApp.Aids.Constants;
 using System;
 using System.Globalization;
+using BankingApp.Aids.Regions;
 
-namespace Abc.Aids.Values {
+namespace BankingApp.Aids.Values {
 
     public static class Converting {
 

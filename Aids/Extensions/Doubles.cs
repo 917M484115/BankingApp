@@ -1,9 +1,9 @@
-﻿using Abc.Aids.Methods;
-using Abc.Aids.Regions;
-using System;
+﻿using System;
 using System.Globalization;
+using BankingApp.Aids.Methods;
+using BankingApp.Aids.Regions;
 
-namespace Abc.Aids.Extensions {
+namespace BankingApp.Aids.Extensions {
 
     public static class Doubles {
 

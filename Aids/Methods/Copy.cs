@@ -1,4 +1,4 @@
-﻿namespace Abc.Aids.Methods {
+﻿namespace BankingApp.Aids.Methods {
 
     public static class Copy {
 

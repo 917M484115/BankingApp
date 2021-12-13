@@ -1,10 +1,10 @@
-﻿using Abc.Aids.Methods;
-using Abc.Aids.Random;
+﻿using BankingApp.Aids.Random;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
+using BankingApp.Aids.Methods;
 
-namespace Abc.Aids.Reflection {
+namespace BankingApp.Aids.Reflection {
 
 
     public static class CreateNew {

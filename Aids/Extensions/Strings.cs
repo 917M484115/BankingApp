@@ -1,9 +1,9 @@
-﻿using Abc.Aids.Methods;
-using System;
+﻿using System;
 using System.Globalization;
 using System.Linq;
+using BankingApp.Aids.Methods;
 
-namespace Abc.Aids.Extensions {
+namespace BankingApp.Aids.Extensions {
 
     public static class Strings {
 

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BankingApp.Aids.Random;
 
 namespace Tests.Aids
 {
@@ -37,7 +38,7 @@ namespace Tests.Aids
         [TestMethod]
         public void ObjectTest()
         {
-            var o = GetRandom.ObjectOf<testClass>();
+            var o = GetRandom.Object<testClass>();
             Assert.AreNotEqual(0M, o.Decimal);
             Assert.AreNotEqual(0, o.Int);
             Assert.AreNotEqual(null, o.Str);

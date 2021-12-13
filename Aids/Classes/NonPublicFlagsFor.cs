@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-namespace Abc.Aids.Classes {
+namespace BankingApp.Aids.Classes {
     public static class NonPublicFlagsFor {
         private const BindingFlags p = BindingFlags.NonPublic;
         private const BindingFlags i = BindingFlags.Instance;

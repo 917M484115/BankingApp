@@ -1,4 +1,4 @@
-namespace Abc.Aids.Enums {
+namespace BankingApp.Aids.Enums {
     public enum StartsFromThe {
         //Beginning = 0,
         //End = 9

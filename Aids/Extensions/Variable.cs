@@ -1,8 +1,8 @@
-﻿using Abc.Aids.Methods;
-using System;
+﻿using System;
 using System.ComponentModel;
+using BankingApp.Aids.Methods;
 
-namespace Abc.Aids.Extensions {
+namespace BankingApp.Aids.Extensions {
 
     public static class Variable {
 

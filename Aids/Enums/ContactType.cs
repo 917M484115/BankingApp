@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace Abc.Aids.Enums {
+namespace BankingApp.Aids.Enums {
     public enum ContactType {
         [Description("Unspecified")] Unspecified = 0,
         [Description("Email Address")] Email = 1,

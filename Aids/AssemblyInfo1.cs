@@ -15,5 +15,5 @@ using System.Runtime.InteropServices;
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM.
 
-[assembly: Guid("0e31f9ea-cabd-4eb7-a3a8-7165cd2b6d94")]
+[assembly: Guid("c2d8a166-b2b2-4f9c-b418-a62f460f4a2a")]
 [assembly: InternalsVisibleTo("BankingApp.Tests")]

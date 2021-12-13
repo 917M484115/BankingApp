@@ -1,12 +1,12 @@
-﻿using Abc.Aids.Classes;
-using Abc.Aids.Methods;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
+using BankingApp.Aids.Classes;
+using BankingApp.Aids.Methods;
 
-namespace Abc.Aids.Reflection {
+namespace BankingApp.Aids.Reflection {
 
     public static class GetClass {
 

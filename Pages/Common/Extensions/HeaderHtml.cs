@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using BankingApp.Aids;
+using BankingApp.Aids.Extensions;
 using BankingApp.Pages.Common.Aids;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;

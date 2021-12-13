@@ -1,8 +1,7 @@
-﻿
-using Abc.Aids.Methods;
-using System;
+﻿using System;
+using BankingApp.Aids.Methods;
 
-namespace Abc.Aids.Values {
+namespace BankingApp.Aids.Values {
 
     public static class Comparing {
 

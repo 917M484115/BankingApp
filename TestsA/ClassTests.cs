@@ -1,10 +1,11 @@
-﻿using BankingApp.Aids;
+﻿
+using BankingApp.Aids.Random;
 using Tests;
 
 namespace BankingApp.Tests
 {
     public abstract class ClassTests<TBaseClass> : BaseClassTests<TBaseClass>
     {
-        protected override object createObject() => GetRandom.ObjectOf(type);
+        protected override object createObject() => GetRandom.Object(type);
     }
 }

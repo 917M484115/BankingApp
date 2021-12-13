@@ -1,4 +1,4 @@
-﻿namespace Abc.Aids.Formats.Dates {
+﻿namespace BankingApp.Aids.Formats.Dates {
     public static class Midnight {
 
         public static string Long => "00:00:00";

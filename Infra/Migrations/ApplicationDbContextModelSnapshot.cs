@@ -488,7 +488,7 @@ namespace BankingApp.Infra.Migrations
                 {
                     b.HasBaseType("BankingApp.Data.Common.MoneyAmountData");
 
-                    b.Property<string>("AccountNumber")
+                    b.Property<string>("AccountAddress")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("AccountLocation")

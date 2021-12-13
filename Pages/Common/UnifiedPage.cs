@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using BankingApp.Aids.Reflection;
 using Newtonsoft.Json;
 namespace BankingApp.Pages.Common {
     public abstract class UnifiedPage<TPage, TRepository, TDomain, TView, TData>
