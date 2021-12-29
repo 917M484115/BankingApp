@@ -1,6 +1,6 @@
 ﻿using BankingApp.Data.Common;
 
-namespace BankingApp.Data
+namespace BankingApp.Data.Misc
 {
     public sealed class NotificationData : UniqueEntityData
     {

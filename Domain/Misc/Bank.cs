@@ -1,4 +1,4 @@
-﻿using BankingApp.Data;
+﻿using BankingApp.Data.Misc;
 using BankingApp.Domain.Common;
 
 namespace BankingApp.Domain.Misc

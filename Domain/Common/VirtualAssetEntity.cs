@@ -7,7 +7,7 @@ namespace BankingApp.Domain.Common
         protected internal VirtualAssetEntity(T d = null) : base(d) { }
 
         public virtual string Ticker => Data?.Ticker ?? Unspecified;
-        public virtual double Price => Data?.Price ?? 0;
+        public virtual decimal Price => Data?.Price ?? UnspecifiedDecimal;
 
     }
 }

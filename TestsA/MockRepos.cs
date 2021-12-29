@@ -11,6 +11,7 @@ using BankingApp.Data.Investing;
 using BankingApp.Domain.ATMs;
 using BankingApp.Domain.Common;
 using BankingApp.Domain.Investing;
+using BankingApp.Domain.Investing.Repositories;
 
 namespace Tests
 {

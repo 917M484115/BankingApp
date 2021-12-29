@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using BankingApp.Domain.Investing.Repositories;
 using BankingApp.Data.Investing;
 using BankingApp.Domain.Investing;
 using BankingApp.Facade.Investing;

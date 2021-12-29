@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BankingApp.Domain.Common;
-namespace BankingApp.Domain.Investing
+namespace BankingApp.Domain.Investing.Repositories
 {
     public  interface ICalcuatorsRepository : IRepository<Calculator> 
     {

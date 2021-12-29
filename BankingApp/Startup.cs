@@ -57,7 +57,7 @@ namespace BankingApp
             s.AddScoped<ICalcuatorsRepository, CalculatorsRepository>();
             s.AddScoped<IInvestingAccountRepository, InvestingAccountRepository>();
             s.AddScoped<ICryptoRepository, CryptoRepository>();
-            s.AddScoped<IStockRepository, StockRepository>();
+            s.AddScoped<IStockRepository, StocksRepository>();
         }
 
         private void registerAuthentication(IServiceCollection s)=>

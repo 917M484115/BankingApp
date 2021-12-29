@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using BankingApp.Infra;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-
+using BankingApp.Domain.Investing.Repositories;
 namespace BankingApp.Pages.Investing
 {
     public sealed class CalculatorsPage : ViewPage<CalculatorsPage, ICalcuatorsRepository, Calculator, CalculatorView, CalculatorData>

@@ -47,6 +47,12 @@ namespace BankingApp.Pages.Investing
             4 => getValue<double>(h, i),
             _ => base.GetValue(h, i)
         };
-
+        public virtual async Task<IActionResult> OnGetSelectAsync(string id, string sortOrder, string searchString,
+        int pageIndex, string fixedFilter, string fixedValue)
+        {
+            Crypto c = await db.Get(id);
+            var page = "/Investing/Calculator";
+            return Redirect(page);
+        }
     }
 }

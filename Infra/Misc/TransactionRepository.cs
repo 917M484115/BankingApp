@@ -1,7 +1,6 @@
-﻿using BankingApp.Data;
+﻿using BankingApp.Data.Misc;
 using BankingApp.Domain.Misc;
 using BankingApp.Infra.Common;
-
 namespace BankingApp.Infra.Misc
 {
     public sealed class TransactionRepository :

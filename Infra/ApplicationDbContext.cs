@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using BankingApp.Data;
+using BankingApp.Data.Misc;
 using BankingApp.Data.Common;
 using BankingApp.Data.Investing;
 using BankingApp.Data.Loan;
@@ -13,6 +13,10 @@ namespace BankingApp.Infra
             : base(options)
         {
         }
+        public DbSet<CryptoPortfolioData> CryptoPortfolios { get;set;}
+        public DbSet<StocksPortfolioData> StocksPortfolios { get;set;}
+        public DbSet<StocksPortfolioItemData> StocksPortfolioItems { get;set;}
+        public DbSet<CryptoPortfolioItemData> CryptoPortfolioItems { get;set;}
         public DbSet<ATMData> ATM { get; set; }
         public DbSet<ATMManagerData> ATMManager { get; set; }
         public DbSet<AccountData> Account { get; set; }
@@ -38,6 +42,10 @@ namespace BankingApp.Infra
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //modelBuilder.Entity<Calculator>().HasKey(m => m.YieldType);
+            modelBuilder.Entity<CryptoPortfolioData>().ToTable(nameof(CryptoPortfolios));
+            modelBuilder.Entity<StocksPortfolioData>().ToTable(nameof(StocksPortfolios));
+            modelBuilder.Entity<CryptoPortfolioItemData>().ToTable(nameof(CryptoPortfolioItems));
+            modelBuilder.Entity<StocksPortfolioItemData>().ToTable(nameof(StocksPortfolioItems));
             modelBuilder.Entity<CalculatorData>().ToTable("Calculator");
             modelBuilder.Entity<ATMData>().ToTable("ATM");
             modelBuilder.Entity<ATMManagerData>().ToTable("ATMManager");

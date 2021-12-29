@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BankingApp.Data;
-using BankingApp.Domain.Misc;
+﻿using BankingApp.Domain.Misc;
 using BankingApp.Facade.Common;
-
+using BankingApp.Data.Misc;
 namespace BankingApp.Facade.Misc
 {
 	public sealed class TransactionViewFactory : AbstractViewFactory<TransactionData, Transaction, TransactionView>

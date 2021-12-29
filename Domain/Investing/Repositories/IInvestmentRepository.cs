@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using BankingApp.Domain.Common;
 
-namespace BankingApp.Domain.Investing
+namespace BankingApp.Domain.Investing.Repositories
 {
 	public interface IInvestmentRepository : IRepository<Investment> { }
 }

@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BankingApp.Data.Investing;
+﻿using BankingApp.Data.Investing;
 using BankingApp.Domain.Investing;
+using BankingApp.Domain.Investing.Repositories;
 using BankingApp.Infra.Common;
 
 namespace BankingApp.Infra.Investing
 {
-	public sealed class InvestmentRepository :
+	public sealed class InvestmentsRepository :
 		UniqueEntitiesRepository<Investment, InvestmentData>, IInvestmentRepository
 	{
-		public InvestmentRepository(ApplicationDbContext c) : base(c, c.Investment) { }
+		public InvestmentsRepository(ApplicationDbContext c) : base(c, c.Investment) { }
 		protected internal override Investment toDomainObject(InvestmentData d)
 			=> new Investment(d);
 	}
