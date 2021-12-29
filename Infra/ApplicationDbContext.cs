@@ -13,10 +13,10 @@ namespace BankingApp.Infra
             : base(options)
         {
         }
-        public DbSet<CryptoPortfolioData> CryptoPortfolios { get;set;}
-        public DbSet<StocksPortfolioData> StocksPortfolios { get;set;}
-        public DbSet<StocksPortfolioItemData> StocksPortfolioItems { get;set;}
-        public DbSet<CryptoPortfolioItemData> CryptoPortfolioItems { get;set;}
+        public DbSet<CryptoBasketData> CryptoBaskets { get;set;}
+        public DbSet<StocksBasketData> StocksBaskets { get;set;}
+        public DbSet<StocksBasketItemData> StocksBasketItems { get;set;}
+        public DbSet<CryptoBasketItemData> CryptoBasketItems { get;set;}
         public DbSet<ATMData> ATM { get; set; }
         public DbSet<ATMManagerData> ATMManager { get; set; }
         public DbSet<AccountData> Account { get; set; }
@@ -42,10 +42,10 @@ namespace BankingApp.Infra
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //modelBuilder.Entity<Calculator>().HasKey(m => m.YieldType);
-            modelBuilder.Entity<CryptoPortfolioData>().ToTable(nameof(CryptoPortfolios));
-            modelBuilder.Entity<StocksPortfolioData>().ToTable(nameof(StocksPortfolios));
-            modelBuilder.Entity<CryptoPortfolioItemData>().ToTable(nameof(CryptoPortfolioItems));
-            modelBuilder.Entity<StocksPortfolioItemData>().ToTable(nameof(StocksPortfolioItems));
+            modelBuilder.Entity<CryptoBasketData>().ToTable(nameof(CryptoBaskets));
+            modelBuilder.Entity<StocksBasketData>().ToTable(nameof(StocksBaskets));
+            modelBuilder.Entity<CryptoBasketItemData>().ToTable(nameof(CryptoBasketItems));
+            modelBuilder.Entity<StocksBasketItemData>().ToTable(nameof(StocksBasketItems));
             modelBuilder.Entity<CalculatorData>().ToTable("Calculator");
             modelBuilder.Entity<ATMData>().ToTable("ATM");
             modelBuilder.Entity<ATMManagerData>().ToTable("ATMManager");

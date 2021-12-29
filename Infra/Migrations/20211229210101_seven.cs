@@ -24,11 +24,11 @@ namespace BankingApp.Infra.Migrations
                 oldType: "float");
 
             migrationBuilder.CreateTable(
-                name: "CryptoPortfolioItems",
+                name: "CryptoBasketItems",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    CryptoPortfolioID = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CryptoBasketID = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CryptoID = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Quantity = table.Column<int>(type: "int", nullable: false),
                     From = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -36,11 +36,11 @@ namespace BankingApp.Infra.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CryptoPortfolioItems", x => x.Id);
+                    table.PrimaryKey("PK_CryptoBasketItems", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "CryptoPortfolios",
+                name: "CryptoBaskets",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
@@ -50,27 +50,27 @@ namespace BankingApp.Infra.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CryptoPortfolios", x => x.Id);
+                    table.PrimaryKey("PK_CryptoBaskets", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "StocksPortfolioItems",
+                name: "StocksBasketItems",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     StockID = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    StocksPortfolioID = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    StocksBasketID = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Quantity = table.Column<int>(type: "int", nullable: false),
                     From = table.Column<DateTime>(type: "datetime2", nullable: true),
                     To = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_StocksPortfolioItems", x => x.Id);
+                    table.PrimaryKey("PK_StocksBasketItems", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "StocksPortfolios",
+                name: "StocksBaskets",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
@@ -80,23 +80,23 @@ namespace BankingApp.Infra.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_StocksPortfolios", x => x.Id);
+                    table.PrimaryKey("PK_StocksBaskets", x => x.Id);
                 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "CryptoPortfolioItems");
+                name: "CryptoBasketItems");
 
             migrationBuilder.DropTable(
-                name: "CryptoPortfolios");
+                name: "CryptoBaskets");
 
             migrationBuilder.DropTable(
-                name: "StocksPortfolioItems");
+                name: "StocksBasketItems");
 
             migrationBuilder.DropTable(
-                name: "StocksPortfolios");
+                name: "StocksBaskets");
 
             migrationBuilder.AlterColumn<double>(
                 name: "Price",

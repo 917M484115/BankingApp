@@ -137,7 +137,7 @@ namespace BankingApp.Infra.Migrations
                     b.ToTable("Crypto");
                 });
 
-            modelBuilder.Entity("BankingApp.Data.Investing.CryptoPortfolioData", b =>
+            modelBuilder.Entity("BankingApp.Data.Investing.CryptoBasketData", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -153,10 +153,10 @@ namespace BankingApp.Infra.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("CryptoPortfolios");
+                    b.ToTable("CryptoBaskets");
                 });
 
-            modelBuilder.Entity("BankingApp.Data.Investing.CryptoPortfolioItemData", b =>
+            modelBuilder.Entity("BankingApp.Data.Investing.CryptoBasketItemData", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -164,7 +164,7 @@ namespace BankingApp.Infra.Migrations
                     b.Property<string>("CryptoID")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("CryptoPortfolioID")
+                    b.Property<string>("CryptoBasketID")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("From")
@@ -178,7 +178,7 @@ namespace BankingApp.Infra.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("CryptoPortfolioItems");
+                    b.ToTable("CryptoBasketItems");
                 });
 
             modelBuilder.Entity("BankingApp.Data.Investing.StockData", b =>
@@ -212,7 +212,7 @@ namespace BankingApp.Infra.Migrations
                     b.ToTable("Stock");
                 });
 
-            modelBuilder.Entity("BankingApp.Data.Investing.StocksPortfolioData", b =>
+            modelBuilder.Entity("BankingApp.Data.Investing.StocksBasketData", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -228,10 +228,10 @@ namespace BankingApp.Infra.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("StocksPortfolios");
+                    b.ToTable("StocksBaskets");
                 });
 
-            modelBuilder.Entity("BankingApp.Data.Investing.StocksPortfolioItemData", b =>
+            modelBuilder.Entity("BankingApp.Data.Investing.StocksBasketItemData", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -245,7 +245,7 @@ namespace BankingApp.Infra.Migrations
                     b.Property<string>("StockID")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("StocksPortfolioID")
+                    b.Property<string>("StocksBasketID")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("To")
@@ -253,7 +253,7 @@ namespace BankingApp.Infra.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("StocksPortfolioItems");
+                    b.ToTable("StocksBasketItems");
                 });
 
             modelBuilder.Entity("BankingApp.Data.Loan.LoanManagerData", b =>
