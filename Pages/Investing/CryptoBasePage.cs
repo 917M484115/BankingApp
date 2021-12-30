@@ -13,6 +13,8 @@ using BankingApp.Domain.Loans;
 using BankingApp.Facade.Loan;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using BankingApp.Domain.Misc;
+using BankingApp.Data.Misc;
 
 namespace BankingApp.Pages.Investing
 {
@@ -20,6 +22,18 @@ namespace BankingApp.Pages.Investing
         ViewPage<TPage, ICryptoRepository, Crypto, CryptoView, CryptoData>
         where TPage : PageModel
     {
+        public IEnumerable<SelectListItem> Buyers { get; }
+        public IOrdersRepository Orders { get; }
+        public ICryptoOrderItemsRepository OrderItems { get; }
+
+        protected CryptoBasePage(ICryptoBasketsRepository r, ICustomerRepository b,
+            IOrdersRepository o, ICryptoOrderItemsRepository oi) : base(r, "Baskets")
+        {
+            Buyers = newItemsList<Customer, CustomerData>(b);
+            Orders = o;
+            OrderItems = oi;
+            return;
+        }
         protected CryptoBasePage(ICryptoRepository r) : base(r, "Crypto")
         {
         }

@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using BankingApp.Data.Common;
 using BankingApp.Domain.Common;
+using BankingApp.Domain.Investing.Repositories;
 using BankingApp.Facade.Common;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -15,7 +16,17 @@ namespace BankingApp.Pages.Common {
        where TData : PeriodData, new()
        where TView : PeriodView
     {
+        private ICryptoBasketsRepository r;
+        private string v;
+
         protected ViewPage(TRepository r, string title) : base(r, title) { }
+
+        protected ViewPage(ICryptoBasketsRepository r, string v)
+        {
+            this.r = r;
+            this.v = v;
+        }
+
         public virtual async Task OnGetIndexAsync(string sortOrder,
             string id, string currentFilter, string searchString, int? pageIndex,
             string fixedFilter, string fixedValue)
