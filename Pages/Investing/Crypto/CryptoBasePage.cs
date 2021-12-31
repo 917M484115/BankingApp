@@ -4,17 +4,11 @@ using BankingApp.Facade.Investing;
 using BankingApp.Data.Investing;
 using System;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using System.Collections.Generic;
-using BankingApp.Infra;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using BankingApp.Domain.Investing.Repositories;
-using BankingApp.Domain.Loans;
-using BankingApp.Facade.Loan;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using BankingApp.Domain.Misc;
-using BankingApp.Data.Misc;
 
 namespace BankingApp.Pages.Investing
 {
@@ -22,22 +16,17 @@ namespace BankingApp.Pages.Investing
         ViewPage<TPage, ICryptoRepository, Crypto, CryptoView, CryptoData>
         where TPage : PageModel
     {
-        public IEnumerable<SelectListItem> Buyers { get; }
-        public IOrdersRepository Orders { get; }
-        public ICryptoOrderItemsRepository OrderItems { get; }
+        public ICryptoBasketsRepository CryptoBaskets { get;}
+        public ICryptoBasketItemsRepository CryptoBasketItems { get; }
 
-        protected CryptoBasePage(ICryptoBasketsRepository r, ICustomerRepository b,
-            IOrdersRepository o, ICryptoOrderItemsRepository oi) : base(r, "Baskets")
+        protected CryptoBasePage(ICryptoRepository r,
+            ICryptoBasketsRepository cbr, ICryptoBasketItemsRepository cir) 
+            : base(r, "Crypto")
         {
-            Buyers = newItemsList<Customer, CustomerData>(b);
-            Orders = o;
-            OrderItems = oi;
-            return;
+            CryptoBaskets = cbr;
+            CryptoBasketItems = cir;
         }
-        protected CryptoBasePage(ICryptoRepository r) : base(r, "Crypto")
-        {
-        }
-        protected internal override Uri pageUrl() => new Uri("/Investing/Crypto", UriKind.Relative);
+        protected internal override Uri pageUrl() => new Uri("/InvestingManager/Crypto", UriKind.Relative);
         protected internal override Crypto toObject(CryptoView v) => new CryptoViewFactory().Create(v);
         protected internal override CryptoView toView(Crypto o) => new CryptoViewFactory().Create(o);
 
@@ -48,25 +37,36 @@ namespace BankingApp.Pages.Investing
             createColumn(x => Item.Ticker);
             createColumn(x => Item.Blockchain);
             createColumn(x => Item.Price);
+            createColumn(x => Item.From);
+            createColumn(x => Item.To);
 
         }
         public override string GetName(IHtmlHelper<TPage> h, int i) => i switch
         {
-            4 => getName<double>(h, i),
-            _ => base.GetName(h, i)
+            4 => getName<decimal>(h, i),
+            5 or 6 => getName<DateTime?>(h, i),
+            _ => base.getName<string>(h, i)
         };
 
         public override IHtmlContent GetValue(IHtmlHelper<TPage> h, int i) => i switch
         {
-            4 => getValue<double>(h, i),
-            _ => base.GetValue(h, i)
+            4 => getValue<decimal>(h, i),
+            5 or 6 => getValue<DateTime?>(h, i),
+            _ => base.getValue<string>(h, i)
         };
         public virtual async Task<IActionResult> OnGetSelectAsync(string id, string sortOrder, string searchString,
         int pageIndex, string fixedFilter, string fixedValue)
         {
+
             Crypto c = await db.Get(id);
-            var page = "/Investing/Calculator";
-            return Redirect(page);
+            CryptoBasket b = await CryptoBaskets.GetLatestForUser(User.Identity.Name);
+            CryptoBasketItem i = await CryptoBasketItems.Add(b,c);
+            var page = "/Customer/Crypto";
+            var url = new Uri($"{page}/Edit?handler=Edit" +
+                $"&id={i.Id}" +
+                $"&fixedFilter={nameof(i.CryptoBasketID)}" +
+                $"&fixedValue={b.Id}", UriKind.Relative);
+            return Redirect(url.ToString());
         }
     }
 }

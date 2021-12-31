@@ -29,6 +29,7 @@
 
   <ItemGroup>
     <Folder Include="Common\Docs\NewFolder\" />
+    <Folder Include="Investing\CryptoOrders\" />
   </ItemGroup>
 
 </Project>

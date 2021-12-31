@@ -1,12 +1,12 @@
 ﻿@page
-@model BankingApp.Pages.Investing.CryptoBasketPage
+@model BankingApp.Pages.Investing.CryptoBasketManagerPage
 @using BankingApp.Aids.Reflection
 @using BankingApp.Data.Investing
 @using BankingApp.Pages.Common.Extensions
 
 @{
     Layout = "_Details";
-    string items = "/Shop/BasketItems";
+    string items = "/Investing/BasketItems";
     var basketId = GetMember.Name<CryptoBasketData>(x => x.CustomerID);
     var id = Model.Item.Id;
     var itemsUrl = new Uri($"{items}/Index?handler=index&fixedFilter={basketId}&fixedValue={id}", UriKind.Relative);

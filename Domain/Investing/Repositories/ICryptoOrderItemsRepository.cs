@@ -9,6 +9,6 @@ namespace BankingApp.Domain.Investing.Repositories
 {
     public interface ICryptoOrderItemsRepository : IRepository<OrderItem>
     {
-        Task AddItems(Order o, Crypto b);
+        Task AddItems(Order o, CryptoBasket b);
     }
 }

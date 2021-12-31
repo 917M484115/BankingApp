@@ -5915,10 +5915,10 @@
 
     _proto._cleanTipClass = function _cleanTipClass() {
       var $tip = $(this.getTipElement());
-      var tabClass = $tip.attr('class').match(BSCLS_PREFIX_REGEX);
+      var tBankingApplass = $tip.attr('class').match(BSCLS_PREFIX_REGEX);
 
-      if (tabClass !== null && tabClass.length) {
-        $tip.removeClass(tabClass.join(''));
+      if (tBankingApplass !== null && tBankingApplass.length) {
+        $tip.removeClass(tBankingApplass.join(''));
       }
     };
 
@@ -6125,10 +6125,10 @@
 
     _proto._cleanTipClass = function _cleanTipClass() {
       var $tip = $(this.getTipElement());
-      var tabClass = $tip.attr('class').match(BSCLS_PREFIX_REGEX$1);
+      var tBankingApplass = $tip.attr('class').match(BSCLS_PREFIX_REGEX$1);
 
-      if (tabClass !== null && tabClass.length > 0) {
-        $tip.removeClass(tabClass.join(''));
+      if (tBankingApplass !== null && tBankingApplass.length > 0) {
+        $tip.removeClass(tBankingApplass.join(''));
       }
     } // Static
     ;

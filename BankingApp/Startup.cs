@@ -24,6 +24,7 @@ using BankingApp.Domain.Investing;
 using BankingApp.Domain.Investing.Repositories;
 using BankingApp.Infra.ATM;
 using BankingApp.Infra.Misc;
+using BankingApp.Domain.Common;
 
 namespace BankingApp
 {
@@ -57,7 +58,10 @@ namespace BankingApp
             s.AddScoped<ICalcuatorsRepository, CalculatorsRepository>();
             s.AddScoped<IInvestingAccountRepository, InvestingAccountRepository>();
             s.AddScoped<ICryptoRepository, CryptoRepository>();
+            s.AddScoped<ICryptoBasketItemsRepository, CryptoBasketItemsRepository>();
+            s.AddScoped<ICryptoBasketsRepository, CryptoBasketRepository>();
             s.AddScoped<IStockRepository, StocksRepository>();
+            GetRepository.SetServiceProvider(s.BuildServiceProvider());
         }
 
         private void registerAuthentication(IServiceCollection s)=>

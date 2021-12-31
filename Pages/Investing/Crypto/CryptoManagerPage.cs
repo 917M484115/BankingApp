@@ -5,9 +5,8 @@ namespace BankingApp.Pages.Investing
 {
     public sealed class CryptoManagerPage : CryptoBasePage<CryptoManagerPage>
     {
-        public CryptoManagerPage(ICryptoRepository r) : base(r) { }
-
-        protected internal override Uri pageUrl() => new Uri("/InvestingManager/Crypto", UriKind.Relative);
-
+        public CryptoManagerPage(ICryptoRepository r,
+           ICryptoBasketsRepository cbr, ICryptoBasketItemsRepository cir)
+           : base(r, cbr, cir) { }
     }
 }
