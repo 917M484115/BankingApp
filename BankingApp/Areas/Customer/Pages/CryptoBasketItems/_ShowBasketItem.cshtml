@@ -1,0 +1,11 @@
+﻿@using BankingApp.Pages.Common.Extensions;
+@model BankingApp.Pages.Investing.CryptoBasketItemsClientPage;
+
+<body>
+    @Html.Show(m => m.Item.CryptoName)
+    @Html.Show(m => m.Item.BlockChain)
+    @Html.Show(m => m.Item.Ticker)
+    @Html.Show(m => m.Item.UnitPrice)
+    @Html.Show(m => m.Item.Quantity)
+    @Html.Show(m => m.Item.TotalPrice)
+</body>

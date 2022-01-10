@@ -26,7 +26,7 @@ namespace BankingApp.Pages.Investing
             CryptoBaskets = cbr;
             CryptoBasketItems = cir;
         }
-        protected internal override Uri pageUrl() => new Uri("/InvestingManager/Crypto", UriKind.Relative);
+        protected internal override Uri pageUrl() => new Uri("/Manager/Crypto", UriKind.Relative);
         protected internal override Crypto toObject(CryptoView v) => new CryptoViewFactory().Create(v);
         protected internal override CryptoView toView(Crypto o) => new CryptoViewFactory().Create(o);
 
@@ -61,7 +61,7 @@ namespace BankingApp.Pages.Investing
             Crypto c = await db.Get(id);
             CryptoBasket b = await CryptoBaskets.GetLatestForUser(User.Identity.Name);
             CryptoBasketItem i = await CryptoBasketItems.Add(b,c);
-            var page = "/Customer/Crypto";
+            var page = "/Customer/CryptoBasketItems";
             var url = new Uri($"{page}/Edit?handler=Edit" +
                 $"&id={i.Id}" +
                 $"&fixedFilter={nameof(i.CryptoBasketID)}" +

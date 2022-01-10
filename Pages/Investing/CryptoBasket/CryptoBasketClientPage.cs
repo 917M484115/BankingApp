@@ -1,17 +1,11 @@
 ﻿using BankingApp.Aids.Reflection;
 using BankingApp.Data.Investing;
-using BankingApp.Data.Misc;
-using BankingApp.Domain.Investing;
 using BankingApp.Domain.Investing.Repositories;
 using BankingApp.Domain.Misc;
-using BankingApp.Facade.Investing;
-using BankingApp.Pages.Common;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 namespace BankingApp.Pages.Investing
 {

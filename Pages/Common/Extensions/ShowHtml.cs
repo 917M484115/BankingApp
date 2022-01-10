@@ -8,8 +8,8 @@ namespace BankingApp.Pages.Common.Extensions
 {
 
     public static class ShowHtml {
-
         public static IHtmlContent Show<TModel, TResult>(
+
             this IHtmlHelper<TModel> h,
             Expression<Func<TModel, TResult>> e) {
             if (h == null) throw new ArgumentNullException(nameof(h));

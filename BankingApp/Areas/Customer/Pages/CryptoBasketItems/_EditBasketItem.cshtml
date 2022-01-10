@@ -1,0 +1,16 @@
+﻿@using BankingApp.Pages.Common.Extensions;
+@model BankingApp.Pages.Investing.CryptoBasketItemsClientPage;
+
+<body>
+    <input type="hidden" asp-for="Item.Id" />
+    <input type="hidden" asp-for="Item.CryptoID" />
+    <input type="hidden" asp-for="Item.CryptoBasketID" />
+    <input type="hidden" asp-for="Item.From" />
+    <input type="hidden" asp-for="Item.To" />
+    @Html.Show(m => m.Item.CryptoID, Model.CryptoName(Model.Item.CryptoID))
+    @Html.Show(m => m.Item.CryptoName)
+    @Html.Show(m =>m.Item.Ticker)
+    @Html.Show(m =>m.Item.BlockChain)
+    @Html.Show(m => m.Item.UnitPrice)
+    @Html.Editor(m => m.Item.Quantity)
+</body>

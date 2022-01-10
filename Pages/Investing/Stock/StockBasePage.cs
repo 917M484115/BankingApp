@@ -36,13 +36,13 @@ namespace BankingApp.Pages.Investing
         }
         public override string GetName(IHtmlHelper<TPage> h, int i) => i switch
         {
-            4 => getName<double>(h, i),
+            4 => getName<decimal>(h, i),
             _ => base.GetName(h, i)
         };
 
         public override IHtmlContent GetValue(IHtmlHelper<TPage> h, int i) => i switch
         {
-            4 => getValue<double>(h, i),
+            4 => getValue<decimal>(h, i),
             _ => base.GetValue(h, i)
         };
 

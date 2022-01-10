@@ -12,6 +12,8 @@ namespace BankingApp.Domain.Investing
         public string CryptoBasketID => Data?.CryptoBasketID ?? Unspecified;
         public Crypto Crypto =>
             new GetFrom<ICryptoRepository, Crypto>()?.ById(CryptoID);
+        public string Ticker => Crypto?.Ticker ?? Unspecified;
+        public string BlockChain => Crypto?.Blockchain ?? Unspecified;
         public decimal UnitPrice => Crypto?.Price ?? UnspecifiedDecimal;
         public decimal TotalPrice
             => Safe.Run(() => UnitPrice * Quanity, UnspecifiedDecimal);
