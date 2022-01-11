@@ -8,9 +8,8 @@
     <input type="hidden" asp-for="Item.From" />
     <input type="hidden" asp-for="Item.To" />
     @Html.Show(m => m.Item.CryptoID, Model.CryptoName(Model.Item.CryptoID))
-    @Html.Show(m => m.Item.CryptoName)
-    @Html.Show(m =>m.Item.Ticker)
-    @Html.Show(m =>m.Item.BlockChain)
-    @Html.Show(m => m.Item.UnitPrice)
+    @Html.Show(m => m.Item.Ticker, Model.TickerName(Model.Item.CryptoID))
+    @Html.Show(m => m.Item.UnitPrice, Model.CryptoPrice(Model.Item.CryptoID))
+    @Html.Show(m => m.Item.BlockChain, Model.BlockChainName(Model.Item.CryptoID))
     @Html.Editor(m => m.Item.Quantity)
 </body>
