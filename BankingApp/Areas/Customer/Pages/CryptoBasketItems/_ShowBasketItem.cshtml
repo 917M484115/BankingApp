@@ -2,10 +2,10 @@
 @model BankingApp.Pages.Investing.CryptoBasketItemsClientPage;
 
 <body>
-    @Html.Show(m => m.Item.CryptoID, Model.CryptoName(Model.Item.CryptoID))
-    @Html.Show(m => m.Item.BlockChain, Model.CryptoName(Model.Item.BlockChain))
-    @Html.Show(m => m.Item.Ticker)
-    @Html.Show(m => m.Item.UnitPrice)
+    @Html.Show(m => m.Item.CryptoID)
+    @Html.Show(m => m.Item.BlockChain, Model.BlockChainName(Model.Item.CryptoID))
+    @Html.Show(m => m.Item.Ticker,Model.TickerName(Model.Item.CryptoID))
+    @Html.Show(m => m.Item.UnitPrice, Model.CryptoPrice(Model.Item.CryptoID))
     @Html.Show(m => m.Item.Quantity)
     @Html.Show(m => m.Item.TotalPrice)
 </body>

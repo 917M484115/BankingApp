@@ -38,9 +38,9 @@ namespace BankingApp
         public void ConfigureServices(IServiceCollection services)
         {
             //services.AddDatabaseDeveloperPageExceptionFilter();
-            registerAuthentication(services);
             registerRepositories(services);
             registerDbContexts(services);
+            registerAuthentication(services);
             services.AddRazorPages();
             //services.AddTransient<IEmailSender, EmailSender>();
             //services.Configure<AuthMessageSenderOptions>(Configuration;
@@ -64,20 +64,20 @@ namespace BankingApp
             GetRepository.SetServiceProvider(s.BuildServiceProvider());
         }
 
-        private void registerAuthentication(IServiceCollection s)=>
-            s.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-               .AddEntityFrameworkStores<ApplicationDbContext>();
         private void registerDbContexts(IServiceCollection s)
         {
-            registerDbContext<DbContext>(s);
+            registerDbContext<ApplicationDbContext>(s);
         }
+        private static void registerAuthentication(IServiceCollection s)
+           => s.AddDefaultIdentity<IdentityUser>(
+               options => options.SignIn.RequireConfirmedAccount = true)
+             .AddEntityFrameworkStores<ApplicationDbContext>();
         protected virtual void registerDbContext<T>(IServiceCollection s) where T : DbContext
         {
-            s.AddDbContext<ApplicationDbContext>(options =>
+            s.AddDbContext<T>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString(connection)));
         }
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -88,23 +88,15 @@ namespace BankingApp
             else
             {
                 app.UseExceptionHandler("/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
             app.UseRouting();
-
             app.UseAuthentication();
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
         }

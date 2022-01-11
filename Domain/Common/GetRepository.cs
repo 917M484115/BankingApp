@@ -1,4 +1,5 @@
 ﻿using System;
+using BankingApp.Aids.Methods;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace BankingApp.Domain.Common
@@ -15,17 +16,17 @@ namespace BankingApp.Domain.Common
 
 
         internal static T instance<T>(IServiceProvider h)
-        {
-            if (h is null) return default;
-            var i = h.GetRequiredService<T>();
-            return i;
-        }
-
+             => Safe.Run(() => {
+                 if (h is null) return default;
+                 var i = h.GetRequiredService<T>();
+                 return i;
+             }, null);
         internal static object instance(IServiceProvider h, Type t)
-        {
-            var i = h?.GetRequiredService(t);
-            return i;
-        }
+            => Safe.Run(() =>
+            {
+                var i = h?.GetRequiredService(t);
+                return i;
+            }, null);
 
     }
 }

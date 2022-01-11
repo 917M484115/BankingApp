@@ -46,6 +46,8 @@ namespace BankingApp.Infra
             modelBuilder.Entity<StocksBasketData>().ToTable(nameof(StocksBaskets));
             modelBuilder.Entity<CryptoBasketItemData>().ToTable(nameof(CryptoBasketItems));
             modelBuilder.Entity<StocksBasketItemData>().ToTable(nameof(StocksBasketItems));
+            modelBuilder.Entity<CryptoData>().ToTable("Crypto").Property(x => x.Price)
+                .HasColumnType("decimal(16,4)"); ;
             modelBuilder.Entity<CalculatorData>().ToTable("Calculator");
             modelBuilder.Entity<ATMData>().ToTable("ATM");
             modelBuilder.Entity<ATMManagerData>().ToTable("ATMManager");

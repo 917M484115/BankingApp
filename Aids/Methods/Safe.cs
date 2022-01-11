@@ -34,8 +34,11 @@ namespace BankingApp.Aids.Methods {
             lock (key) { run(action); }
         }
 
-        private static T run<T>(Func<T> function, T valueOnExeption) {
-            try { return function(); } catch (Exception e) {
+        private static T run<T>(Func<T> function, T valueOnExeption)
+        {
+            try { return function(); }
+            catch (Exception e)
+            {
                 Log.Exception(e);
 
                 return valueOnExeption;
