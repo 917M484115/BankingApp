@@ -7,5 +7,5 @@ using BankingApp.Domain.Common;
 
 namespace BankingApp.Domain.Misc
 {
-	public interface ICustomerRepository : IRepository<Customer> { }
+	public interface ICustomersRepository : IRepository<Customer> { }
 }

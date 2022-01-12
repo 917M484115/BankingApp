@@ -5,9 +5,9 @@ using System.Collections.Generic;
 
 namespace BankingApp.Pages.Investing
 {
-    public sealed class CryptoBasketManagerPage : CryptoBasketBasePage<CryptoBasketManagerPage>
+    public sealed class CryptoBasketsManagerPage : CryptoBasketsBasePage<CryptoBasketsManagerPage>
     {
-        public CryptoBasketManagerPage(ICryptoBasketsRepository cbr, ICustomerRepository cr,
+        public CryptoBasketsManagerPage(ICryptoBasketsRepository cbr, ICustomersRepository cr,
             IOrdersRepository or, ICryptoOrderItemsRepository coir) : base(cbr, cr, or, coir) { }
         
     }

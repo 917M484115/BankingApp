@@ -15,14 +15,14 @@ using System.Threading.Tasks;
 
 namespace BankingApp.Pages.Investing
 {
-    public abstract class CryptoBasketBasePage<TPage> :
+    public abstract class CryptoBasketsBasePage<TPage> :
         ViewPage<TPage, ICryptoBasketsRepository, CryptoBasket, CryptoBasketView, CryptoBasketData>
         where TPage : PageModel
     {
         public IEnumerable<SelectListItem> Customers { get; }
         public IOrdersRepository CryptoOrders { get; }
         public ICryptoOrderItemsRepository CryptoOrderItems { get; }
-        protected CryptoBasketBasePage(ICryptoBasketsRepository cbr, ICustomerRepository cr,
+        protected CryptoBasketsBasePage(ICryptoBasketsRepository cbr, ICustomersRepository cr,
             IOrdersRepository or, ICryptoOrderItemsRepository coir) : base(cbr, "CryptoBaskets")
         {
             Customers = newItemsList<Customer,CustomerData>(cr);

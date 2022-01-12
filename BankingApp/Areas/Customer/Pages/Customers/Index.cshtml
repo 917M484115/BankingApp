@@ -2,15 +2,14 @@
 @using BankingApp.Pages.Common.Aids
 @using BankingApp.Pages.Common.Consts
 @using BankingApp.Pages.Common.Extensions
-@model BankingApp.Pages.Investing.CryptoBasketsManagerPage
+@model BankingApp.Pages.Misc.CustomersClientPage;
 
 @{
     Layout = "_Index";
-    var page = Model.PageUrl;
 }
 
 @section Create {
     @Html.Link(string.Empty, new Link(Captions.Create, Model.CreateUrl))
 }
 
-@Html.ShowTable(Model, "Osta", "Muuda", "Vaata", "Kustuta")
+@Html.ShowTable(Model)

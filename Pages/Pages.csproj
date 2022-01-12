@@ -9,13 +9,10 @@
   <ItemGroup>
     <Compile Remove="Bank\NewFolder\**" />
     <Compile Remove="LoanManagerPages\**" />
-    <Compile Remove="NewFolder\**" />
     <EmbeddedResource Remove="Bank\NewFolder\**" />
     <EmbeddedResource Remove="LoanManagerPages\**" />
-    <EmbeddedResource Remove="NewFolder\**" />
     <None Remove="Bank\NewFolder\**" />
     <None Remove="LoanManagerPages\**" />
-    <None Remove="NewFolder\**" />
   </ItemGroup>
 
   <ItemGroup>

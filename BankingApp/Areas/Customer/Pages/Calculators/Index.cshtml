@@ -1,14 +1,9 @@
 ﻿@page
 @using BankingApp.Pages.Common.Extensions;
-@using BankingApp.Pages.Common.Aids
-@using BankingApp.Pages.Common.Consts
-@model BankingApp.Pages.Investing.CalculatorsPage
+@model BankingApp.Pages.Investing.CalculatorsClientPage
 @{
     Layout = "CalcPartials/_CalcIndex";
     var page = Model.PageUrl;
-}
-@section Create {
-    @Html.Link(string.Empty, new Link(Captions.Create, Model.CreateUrl))
 }
 <form method="post">
     @Html.Editor(m => m.Item.TimeInMonths)

@@ -1,0 +1,13 @@
+﻿@using BankingApp.Pages.Common.Extensions;
+@model BankingApp.Pages.Misc.CustomersClientPage;
+
+<body>
+    <input type="hidden" asp-for="Item.Id" />
+    @Html.Editor(m => m.Item.Code)
+    @Html.Editor(m => m.Item.Name)
+    @Html.Editor(m => m.Item.Age)
+    @Html.Editor(m => m.Item.Birthday)
+    @Html.Editor(m => m.Item.Country)
+    @Html.Editor(m => m.Item.From)
+    @Html.Editor(m => m.Item.To)
+</body>

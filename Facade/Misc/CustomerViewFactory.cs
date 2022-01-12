@@ -10,7 +10,6 @@ namespace BankingApp.Facade.Misc
 		public override CustomerView Create(Customer o)
 		{
 			var v = base.Create(o);
-			v.AccountId = o.AccountId;
 			return v;
 		}
 	}
