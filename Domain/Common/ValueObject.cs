@@ -8,7 +8,7 @@ namespace BankingApp.Domain.Common
     {
 
         protected readonly TData data;
-        internal static Guid guid;
+        //internal static Guid guid;
         protected internal ValueObject(TData d = null) => data = d ?? new TData();
 
         public TData Data
@@ -63,7 +63,7 @@ namespace BankingApp.Domain.Common
         {
             try
             {
-                guid = new Guid(s);
+                var guid = new Guid(s);
                 return true;
             }
             catch (FormatException) { return false; }

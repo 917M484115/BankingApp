@@ -1,4 +1,5 @@
 ﻿using BankingApp.Infra.Common;
+using BankingApp.Infra;
 using BankingApp.Domain.Investing;
 using BankingApp.Data.Investing;
 using BankingApp.Domain.Investing.Repositories;

@@ -31,9 +31,10 @@ namespace BankingApp
     {
         private static string connection
             => "DefaultConnection";
-        public Startup(IConfiguration c) =>Configuration=c;
+        
         public IConfiguration Configuration { get; }
         // This method gets called by the runtime. Use this method to add services to the container.
+        public Startup(IConfiguration c) => Configuration = c;
         public void ConfigureServices(IServiceCollection services)
         {
             //services.AddDatabaseDeveloperPageExceptionFilter();
@@ -58,6 +59,7 @@ namespace BankingApp
             s.AddScoped<ICalculatorsRepository, CalculatorsRepository>();
             s.AddScoped<IInvestingAccountRepository, InvestingAccountRepository>();
             s.AddScoped<ICryptoRepository, CryptoRepository>();
+            //s.AddScoped<ICryptoOrderItemsRepository, CryptoOrderItemsRepository>();
             s.AddScoped<ICryptoBasketItemsRepository, CryptoBasketItemsRepository>();
             s.AddScoped<ICryptoBasketsRepository, CryptoBasketRepository>();
             s.AddScoped<IStockRepository, StocksRepository>();

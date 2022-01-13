@@ -7,7 +7,7 @@ namespace BankingApp.Domain.Investing
     public sealed class CryptoBasketItem : UniqueEntity<CryptoBasketItemData> 
     {
         public CryptoBasketItem(CryptoBasketItemData d) : base(d) { }
-        public int Quanity => Data?.Quantity ?? UnspecifiedInteger;
+        public int Quantity => Data?.Quantity ?? UnspecifiedInteger;
         public string CryptoID => Data?.CryptoID ?? Unspecified;
         public string CryptoBasketID => Data?.CryptoBasketID ?? Unspecified;
         public Crypto Crypto =>
@@ -16,6 +16,6 @@ namespace BankingApp.Domain.Investing
         public string BlockChain => Crypto?.Blockchain ?? Unspecified;
         public decimal UnitPrice => Crypto?.Price ?? UnspecifiedDecimal;
         public decimal TotalPrice
-            => Safe.Run(() => UnitPrice * Quanity, UnspecifiedDecimal);
+            => Safe.Run(() => UnitPrice * Quantity, UnspecifiedDecimal);
     }
 }
