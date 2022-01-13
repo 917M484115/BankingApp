@@ -16,11 +16,12 @@ namespace BankingApp.Domain.Common
 
 
         internal static T instance<T>(IServiceProvider h)
-             => Safe.Run(() => {
-                 if (h is null) return default;
-                 var i = h.GetRequiredService<T>();
-                 return i;
-             }, null);
+          => Safe.Run(() => {
+              Type typeParameterType = typeof(T);
+              if (h is null) return default;
+              var i = h.GetRequiredService<T>();
+              return i;
+          }, null);
         internal static object instance(IServiceProvider h, Type t)
             => Safe.Run(() =>
             {

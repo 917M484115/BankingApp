@@ -19,7 +19,7 @@ namespace BankingApp.Domain.Investing
         public string BuyerId => Data?.CustomerId ?? Unspecified;
         public string Name => $"{BuyerId} {OrderDate}";
         public DateTime OrderDate => Data?.OrderDate ?? UnspecifiedValidTo;
-        public Customer Customer => new GetFrom<ICustomerRepository, Customer>().ById(BuyerId);
+        public Customer Customer => new GetFrom<ICustomersRepository, Customer>().ById(BuyerId);
         public IReadOnlyList<OrderItem> Items =>
             new GetFrom<ICryptoOrderItemsRepository, OrderItem>().ListBy(orderId, Id);
         public decimal TotalPrice

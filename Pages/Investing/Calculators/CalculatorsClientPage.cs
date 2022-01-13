@@ -11,11 +11,11 @@ using System.Threading.Tasks;
 using BankingApp.Domain.Investing.Repositories;
 namespace BankingApp.Pages.Investing
 {
-    public sealed class CalculatorsPage : ViewPage<CalculatorsPage, ICalcuatorsRepository, Calculator, CalculatorView, CalculatorData>
+    public sealed class CalculatorsClientPage : CalculatorsBasePage<CalculatorsClientPage>
     {
         public SelectList selectList;
         private readonly ApplicationDbContext _context;
-        public CalculatorsPage(ICalcuatorsRepository r, ApplicationDbContext c) : base(r, "Calculator") { _context = c; selectList = new SelectList(SelectList(), "Value", "Text"); }
+        public CalculatorsClientPage(ICalculatorsRepository r, ApplicationDbContext c) : base(r) { _context = c; selectList = new SelectList(SelectList(), "Value", "Text"); }
         public List<SelectListItem> SelectList()
         {
             var selectList = new List<SelectListItem>();
@@ -33,16 +33,6 @@ namespace BankingApp.Pages.Investing
            Item.Revenue = Math.Round(Item.Result - amount, 2);
            return Page();
         }
-        protected internal override Uri pageUrl() => new Uri("/Investing/Calculator", UriKind.Relative);
-        protected internal override Calculator toObject(CalculatorView v) => new CalculatorViewFactory().Create(v);
-        protected internal override CalculatorView toView(Calculator o) => new CalculatorViewFactory().Create(o);
-        protected override void createTableColumns()
-        {
-        }
-        public override string GetName(IHtmlHelper<CalculatorsPage> h, int i) => i switch
-        {
-            0 => getName<double>(h, i),
-            _ => base.GetName(h, i)
-        };
+        protected internal override Uri pageUrl() => new Uri("/Customer/Calculators", UriKind.Relative);
     }
 }

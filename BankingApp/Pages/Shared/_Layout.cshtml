@@ -41,7 +41,9 @@
                         @Html.DropMenu("Investing Manager",
                             new Link("Crypto", new Uri("/Manager/Crypto/Index?handler=index", UriKind.Relative)),
                             new Link("Stock", new Uri("/Manager/Stock/Index?handler=index", UriKind.Relative)),
-                            new Link("Investing Accounts", new Uri("/Manager/InvestingAccount/Index?handler=index", UriKind.Relative)) 
+                            new Link("Calculator", new Uri("/Manager/Calculators/Index?handler=index",UriKind.Relative)),
+                            new Link("Customers", new Uri("/Manager/Customers/Index?handler=index", UriKind.Relative)),
+                            new Link("Investing Accounts", new Uri("/Manager/InvestingAccount/Index?handler=index", UriKind.Relative))
                             )
                         @Html.DropMenu("Client",
                             new Link("Transaction", new Uri("/Client/Transaction/Index?handler=index", UriKind.Relative)),
@@ -50,13 +52,15 @@
                             )
                         @Html.DropMenu("Investing",
                             new Link("Investments", new Uri("/Customer/Investment/Index?handler=index", UriKind.Relative)),
-                            new Link("Calculator", new Uri("/Customer/Investing/Calculator/Index?handler=index", UriKind.Relative)),
+                            new Link("Calculator", new Uri("/Customer/Calculators/Index?handler=index", UriKind.Relative)),
                             new Link("Crypto", new Uri("/Customer/Crypto/Index?handler=index", UriKind.Relative)),
                             new Link("Stock", new Uri("/Customer/Stock/Index?handler=index", UriKind.Relative)),
                             new Link("My CryptoBaskets", new Uri("/Customer/CryptoBaskets/Index?handler=index", UriKind.Relative)),
-                            new Link("My CryptoBasket Items",new Uri("/Customer/CryptoBAsketItems/Index?handler=index", UriKind.Relative)),
+                            new Link("My CryptoBasket Items",new Uri("/Customer/CryptoBasketItems/Index?handler=index", UriKind.Relative)),
                             new Link("My StockBaskets", new Uri("/Customer/StockBaskets/Index?handler=index", UriKind.Relative)),
-                            new Link("Investing Accounts", new Uri("/Customer/InvestingAccount/Index?handler=index", UriKind.Relative))
+                            new Link("Investing Accounts", new Uri("/Customer/InvestingAccount/Index?handler=index", UriKind.Relative)),
+                            new Link("My data", new Uri("/Customer/Customers/Index?handler=index", UriKind.Relative))
+
                             )
                         @Html.DropMenu("Loans",
                             new Link("Loan Account", new Uri("/Loan/LoanAccount/Index?handler=index", UriKind.Relative)),

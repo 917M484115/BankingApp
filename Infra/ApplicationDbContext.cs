@@ -36,17 +36,24 @@ namespace BankingApp.Infra
         public DbSet<StockData> Stock { get;set;}
         public DbSet<CryptoData> Crypto { get;set;}
 
+        protected override void OnModelCreating(ModelBuilder b)
+        {
+            base.OnModelCreating(b);
+            InitializeTables(b);
+        }
         //TODO vaadata, kuidas krüptod/stockid listina siia saada. Võib panna käsitsi nt 5 populaarseimat ja listist saab investeerides valida nende vahel.
         //public DbSet<CryptoData> Crypto { get; set; }
         //public DbSet<StockData> Stock { get; set; }
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        public static void InitializeTables(ModelBuilder modelBuilder)
         {
-            //modelBuilder.Entity<Calculator>().HasKey(m => m.YieldType);
             modelBuilder.Entity<CryptoBasketData>().ToTable(nameof(CryptoBaskets));
             modelBuilder.Entity<StocksBasketData>().ToTable(nameof(StocksBaskets));
             modelBuilder.Entity<CryptoBasketItemData>().ToTable(nameof(CryptoBasketItems));
             modelBuilder.Entity<StocksBasketItemData>().ToTable(nameof(StocksBasketItems));
-           
+            modelBuilder.Entity<StockData>().ToTable("Stock").Property(x => x.Price)
+                .HasColumnType("decimal(16,4)");
+            modelBuilder.Entity<CryptoData>().ToTable("Crypto").Property(x => x.Price)
+                .HasColumnType("decimal(16,4)");
             modelBuilder.Entity<CalculatorData>().ToTable("Calculator");
             modelBuilder.Entity<ATMData>().ToTable("ATM");
             modelBuilder.Entity<ATMManagerData>().ToTable("ATMManager");
@@ -64,10 +71,6 @@ namespace BankingApp.Infra
             modelBuilder.Entity<NotificationData>().ToTable("Notification");
             modelBuilder.Entity<TransactionData>().ToTable("Transaction");
             modelBuilder.Entity<MoneyAmountData>().ToTable("MoneyAmount");
-            modelBuilder.Entity<CryptoData>().ToTable(nameof(Crypto)).Property(x => x.Price)
-                .HasColumnType("decimal(16,4)"); ;
-
-            base.OnModelCreating(modelBuilder);
         }
     }
 }

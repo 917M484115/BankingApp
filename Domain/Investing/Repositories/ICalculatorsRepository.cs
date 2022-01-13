@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using BankingApp.Domain.Common;
 namespace BankingApp.Domain.Investing.Repositories
 {
-    public  interface ICalcuatorsRepository : IRepository<Calculator> 
+    public  interface ICalculatorsRepository : IRepository<Calculator> 
     {
     }
 }

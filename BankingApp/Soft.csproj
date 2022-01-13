@@ -14,16 +14,12 @@
   <ItemGroup>
     <Compile Remove="Areas\Customer\Pages\Investments\**" />
     <Compile Remove="Areas\Customer\Pages\Stocks\**" />
-    <Compile Remove="Data\**" />
     <Content Remove="Areas\Customer\Pages\Investments\**" />
     <Content Remove="Areas\Customer\Pages\Stocks\**" />
-    <Content Remove="Data\**" />
     <EmbeddedResource Remove="Areas\Customer\Pages\Investments\**" />
     <EmbeddedResource Remove="Areas\Customer\Pages\Stocks\**" />
-    <EmbeddedResource Remove="Data\**" />
     <None Remove="Areas\Customer\Pages\Investments\**" />
     <None Remove="Areas\Customer\Pages\Stocks\**" />
-    <None Remove="Data\**" />
   </ItemGroup>
 
   <ItemGroup>

@@ -9,9 +9,9 @@ using System;
 using System.Threading.Tasks;
 namespace BankingApp.Pages.Investing
 {
-    public sealed class CryptoBasketClientPage : CryptoBasketBasePage<CryptoBasketClientPage>
+    public sealed class CryptoBasketsClientPage : CryptoBasketsBasePage<CryptoBasketsClientPage>
     {
-        public CryptoBasketClientPage(ICryptoBasketsRepository cbr, ICustomerRepository cr,
+        public CryptoBasketsClientPage(ICryptoBasketsRepository cbr, ICustomersRepository cr,
             IOrdersRepository or, ICryptoOrderItemsRepository coir) : base(cbr, cr, or, coir) { }
         protected internal override Uri pageUrl() => new Uri("/Customer/CryptoBaskets", UriKind.Relative);
         public override async Task OnGetIndexAsync(string sortOrder,
@@ -45,14 +45,14 @@ namespace BankingApp.Pages.Investing
             createColumn(x => Item.From);
             createColumn(x => Item.Closed);
         }
-        public override string GetName(IHtmlHelper<CryptoBasketClientPage> h, int i) => i switch
+        public override string GetName(IHtmlHelper<CryptoBasketsClientPage> h, int i) => i switch
         {
             2 => getName<decimal>(h, i),
             3 => getName<DateTime?>(h, i),
             4 => getName<bool>(h, i),
             _ => base.GetName(h, i)
         };
-        public override IHtmlContent GetValue(IHtmlHelper<CryptoBasketClientPage> h, int i) => i switch
+        public override IHtmlContent GetValue(IHtmlHelper<CryptoBasketsClientPage> h, int i) => i switch
         {
             2 => getValue<decimal>(h, i),
             3 => getValue<DateTime?>(h, i),

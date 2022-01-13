@@ -11,7 +11,7 @@ namespace BankingApp.Domain.Investing
         private static string cryptoBasketID => GetMember.Name<CryptoBasketItemData>(x => x.CryptoBasketID);
         public CryptoBasket(CryptoBasketData d) : base(d) { }
         public string CustomerID => Data?.CustomerID ?? Unspecified;
-        public Customer Customer => new GetFrom<ICustomerRepository, Customer>()?.ById(CustomerID);
+        public Customer Customer => new GetFrom<ICustomersRepository, Customer>()?.ById(CustomerID);
         public IReadOnlyList<CryptoBasketItem> Items =>
             new GetFrom<ICryptoBasketItemsRepository, CryptoBasketItem>()?.ListBy(cryptoBasketID, Id);
         public string Name => $"{CustomerID} {ValidFrom}";

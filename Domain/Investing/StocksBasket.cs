@@ -11,7 +11,7 @@ namespace BankingApp.Domain.Investing
         private static string stocksBasketID => GetMember.Name<StocksBasketItemData>(x=>x.StocksBasketID);
         public StocksBasket(StocksBasketData d): base(d) { }
         public string CustomerID =>Data?.CustomerID?? Unspecified;
-        public Customer Customer => new GetFrom<ICustomerRepository,Customer>()?.ById(CustomerID);
+        public Customer Customer => new GetFrom<ICustomersRepository,Customer>()?.ById(CustomerID);
         public IReadOnlyList<StocksBasketItem> Items =>
             new GetFrom<IStocksBasketItemsRepository,StocksBasketItem>()?.ListBy(stocksBasketID,Id);
         public string Name => $"{CustomerID} {ValidFrom}";
