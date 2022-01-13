@@ -1,5 +1,4 @@
 ﻿using BankingApp.Data.Common;
-using BankingApp.Data.Investing;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace BankingApp.Tests.Data.Investing
@@ -9,8 +8,10 @@ namespace BankingApp.Tests.Data.Investing
     //panen praegu BaseDatat pärima, et test läbi läheks.
     public class CalculatorDataTests : SealedClassTests<NamedEntityData>
     {
-        [TestMethod] public void YieldIdTest() => isProperty<int>();
-        [TestMethod] public void YieldNameTest() => isProperty<string>();
-        [TestMethod] public void APYTest() => isProperty<double>();
+        [TestMethod] public void APYTest() => isProperty<double>(false);
+        [TestMethod] public void AmountTest() => isProperty<double>(false);
+        [TestMethod] public void ResultTest() => isProperty<double>(false);
+        [TestMethod] public void TimeInMonthsTest() => isProperty<double>(false);
+        [TestMethod] public void RevenueTest() => isProperty<double>(false);
     }
 }

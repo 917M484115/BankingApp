@@ -1,8 +1,7 @@
 ﻿using System;
-using BankingApp.Tests;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Tests
+namespace BankingApp.Tests
 {
     public abstract class BaseClassTests<TBaseClass> : BaseTests
     {

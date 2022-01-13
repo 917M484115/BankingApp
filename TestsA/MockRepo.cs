@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using BankingApp.Domain.Common;
 
-namespace Tests
+namespace BankingApp.Tests
 {
 	internal class MockRepo<T> : IRepository<T> where T : IUniqueEntity
 	{
