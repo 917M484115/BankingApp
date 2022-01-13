@@ -38,11 +38,11 @@ namespace BankingApp
         public void ConfigureServices(IServiceCollection services)
         {
             //services.AddDatabaseDeveloperPageExceptionFilter();
-            registerRepositories(services);
+            
             registerDbContexts(services);
             registerAuthentication(services);
             services.AddRazorPages();
-            
+            registerRepositories(services);
             //services.AddTransient<IEmailSender, EmailSender>();
             //services.Configure<AuthMessageSenderOptions>(Configuration;
         }
