@@ -1,6 +1,7 @@
 ﻿using BankingApp.Data.Common;
 using BankingApp.Domain.Common;
 using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
 
 namespace BankingApp.Infra.Common
 {
@@ -10,5 +11,6 @@ namespace BankingApp.Infra.Common
 
     {
         protected VirtualAssetRepository(DbContext c, DbSet<TData> s) : base(c, s) { }
+        
     }
 }
