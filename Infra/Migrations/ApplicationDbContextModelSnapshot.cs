@@ -181,6 +181,53 @@ namespace BankingApp.Infra.Migrations
                     b.ToTable("Crypto");
                 });
 
+            modelBuilder.Entity("BankingApp.Data.Investing.OrderData", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("CustomerID")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("From")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("OrderDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("To")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Order");
+                });
+
+            modelBuilder.Entity("BankingApp.Data.Investing.OrderItemData", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("CryptoID")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("From")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("OrderID")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("To")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Units")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("OrderItem");
+                });
+
             modelBuilder.Entity("BankingApp.Data.Investing.StockData", b =>
                 {
                     b.Property<string>("Id")

@@ -1,6 +1,8 @@
 ﻿using BankingApp.Domain.Misc;
 using BankingApp.Infra.Common;
 using BankingApp.Data.Misc;
+using BankingApp.Domain.Misc.Repositories;
+
 namespace BankingApp.Infra.Misc
 {
     public sealed class NotificationRepository :

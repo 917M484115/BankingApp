@@ -41,6 +41,10 @@
 
   <ItemGroup>
     <Folder Include="Areas\Customer\Pages\StockBasketItems\" />
+    <Folder Include="Areas\Manager\Pages\CryptoBasketItems\" />
+    <Folder Include="Areas\Manager\Pages\CryptoBaskets\" />
+    <Folder Include="Areas\Manager\Pages\OrderItems\" />
+    <Folder Include="Areas\Manager\Pages\Orders\" />
   </ItemGroup>
 
 </Project>

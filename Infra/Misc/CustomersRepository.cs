@@ -1,5 +1,6 @@
 ﻿using BankingApp.Data.Misc;
 using BankingApp.Domain.Misc;
+using BankingApp.Domain.Misc.Repositories;
 using BankingApp.Infra.Common;
 using System;
 using System.Collections.Generic;

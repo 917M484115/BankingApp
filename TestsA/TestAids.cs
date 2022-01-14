@@ -3,7 +3,7 @@ using System.Diagnostics;
 using BankingApp.Aids;
 using BankingApp.Aids.Random;
 
-namespace Tests
+namespace BankingApp.Tests
 {
     public abstract class TestAids : TestAssertions
     {

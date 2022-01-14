@@ -13,7 +13,7 @@ using BankingApp.Domain.Common;
 using BankingApp.Domain.Investing;
 using BankingApp.Domain.Investing.Repositories;
 
-namespace Tests
+namespace BankingApp.Tests
 {
     internal static class MockRepos
     {

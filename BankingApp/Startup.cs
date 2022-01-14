@@ -24,6 +24,7 @@ using BankingApp.Domain.Investing.Repositories;
 using BankingApp.Infra.ATM;
 using BankingApp.Infra.Misc;
 using BankingApp.Domain.Common;
+using BankingApp.Domain.Misc.Repositories;
 
 namespace BankingApp
 {
@@ -38,7 +39,6 @@ namespace BankingApp
         public void ConfigureServices(IServiceCollection services)
         {
             //services.AddDatabaseDeveloperPageExceptionFilter();
-            
             registerDbContexts(services);
             registerAuthentication(services);
             services.AddRazorPages();
@@ -55,12 +55,14 @@ namespace BankingApp
             s.AddScoped<IATMManagerRepository, ATMManagerRepository>();
             s.AddScoped<ICarLoanRepository, CarLoanRepository>();
             s.AddScoped<IHomeLoanRepository, HomeLoanRepository>();
-            s.AddScoped<ICustomersRepository,CustomersRepository>();
             s.AddScoped<IPersonalLoanRepository, PersonalLoanRepository>();
-            s.AddScoped<ICalculatorsRepository, CalculatorsRepository>();
             s.AddScoped<IInvestingAccountRepository, InvestingAccountRepository>();
+
+            s.AddScoped<ICustomersRepository, CustomersRepository>();
+            s.AddScoped<ICalculatorsRepository, CalculatorsRepository>();
             s.AddScoped<ICryptoRepository, CryptoRepository>();
-            //s.AddScoped<ICryptoOrderItemsRepository, CryptoOrderItemsRepository>();
+            s.AddScoped<IOrderItemsRepository, OrderItemsRepository>();
+            s.AddScoped<IOrdersRepository,OrdersRepository>();
             s.AddScoped<ICryptoBasketItemsRepository, CryptoBasketItemsRepository>();
             s.AddScoped<ICryptoBasketsRepository, CryptoBasketRepository>();
             s.AddScoped<IStockRepository, StocksRepository>();

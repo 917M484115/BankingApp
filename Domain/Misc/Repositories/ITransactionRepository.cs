@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using BankingApp.Domain.Common;
 
-namespace BankingApp.Domain.Misc
+namespace BankingApp.Domain.Misc.Repositories
 {
 	public interface ITransactionRepository : IRepository<Transaction> { }
 }
