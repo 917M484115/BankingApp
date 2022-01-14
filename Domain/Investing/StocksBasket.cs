@@ -4,6 +4,8 @@ using BankingApp.Aids.Reflection;
 using BankingApp.Domain.Misc;
 using System.Collections.Generic;
 using BankingApp.Domain.Investing.Repositories;
+using BankingApp.Domain.Misc.Repositories;
+
 namespace BankingApp.Domain.Investing
 {
     public sealed class StocksBasket : UniqueEntity<StocksBasketData>

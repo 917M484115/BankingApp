@@ -3,6 +3,7 @@ using BankingApp.Data.Misc;
 using BankingApp.Domain.Investing;
 using BankingApp.Domain.Investing.Repositories;
 using BankingApp.Domain.Misc;
+using BankingApp.Domain.Misc.Repositories;
 using BankingApp.Facade.Investing;
 using BankingApp.Pages.Common;
 using Microsoft.AspNetCore.Html;
@@ -21,9 +22,9 @@ namespace BankingApp.Pages.Investing
     {
         public IEnumerable<SelectListItem> Customers { get; }
         public IOrdersRepository CryptoOrders { get; }
-        public ICryptoOrderItemsRepository CryptoOrderItems { get; }
+        public IOrderItemsRepository CryptoOrderItems { get; }
         protected CryptoBasketsBasePage(ICryptoBasketsRepository cbr, ICustomersRepository cr,
-            IOrdersRepository or, ICryptoOrderItemsRepository coir) : base(cbr, "CryptoBaskets")
+            IOrdersRepository or, IOrderItemsRepository coir) : base(cbr, "CryptoBaskets")
         {
             Customers = newItemsList<Customer,CustomerData>(cr);
             CryptoOrders = or;
@@ -64,7 +65,7 @@ namespace BankingApp.Pages.Investing
             Order o = await CryptoOrders.GetLatestForUser(User.Identity.Name);
             await CryptoOrderItems.AddItems(o, b);
 
-            var page = "/Customer/CryptoOrders";
+            var page = "/Customer/Orders";
             var url = new Uri($"{page}/Index?handler=Index", UriKind.Relative);
             return Redirect(url.ToString());
         }

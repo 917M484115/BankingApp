@@ -1,7 +1,8 @@
 ﻿@page
-@using BankingApp.Pages.Common.Extensions
 @using BankingApp.Pages.Common.Aids
-@model BankingApp.Pages.Investing.CryptoBasketsClientPage;
+@using BankingApp.Pages.Common.Consts
+@using BankingApp.Pages.Common.Extensions
+@model BankingApp.Pages.Investing.OrdersClientPage
 
 @{
     Layout = "_Index";
@@ -27,7 +28,7 @@
                 var buttons = new RowButtons
                 {
                     Select = (item.Closed) ? null : "Osta",
-                    Delete = "Kustuta",
+                    Delete = null,
                     Edit = null,
                     Details = (item.Closed) ? "Vaata" : "Muuda"
                 };

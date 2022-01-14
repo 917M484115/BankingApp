@@ -13,10 +13,7 @@ namespace BankingApp.Infra
             : base(options)
         {
         }
-        public DbSet<CryptoBasketData> CryptoBaskets { get;set;}
-        public DbSet<StocksBasketData> StocksBaskets { get;set;}
-        public DbSet<StocksBasketItemData> StocksBasketItems { get;set;}
-        public DbSet<CryptoBasketItemData> CryptoBasketItems { get;set;}
+        
         public DbSet<ATMData> ATM { get; set; }
         public DbSet<ATMManagerData> ATMManager { get; set; }
         public DbSet<AccountData> Account { get; set; }
@@ -29,11 +26,19 @@ namespace BankingApp.Infra
         public DbSet<PersonalLoanData> PersonalLoan { get; set; }
         public DbSet<LoanManagerData> LoanManager { get; set; }
         public DbSet<BankData> Bank { get; set; }
-        public DbSet<CustomerData> Customer { get; set; }
         public DbSet<NotificationData> Notification { get; set; }
         public DbSet<TransactionData> Transaction { get; set; }
+
+        public DbSet<CryptoBasketData> CryptoBaskets { get; set; }
+        public DbSet<StocksBasketData> StocksBaskets { get; set; }
+        public DbSet<StocksBasketItemData> StocksBasketItems { get; set; }
+        public DbSet<CryptoBasketItemData> CryptoBasketItems { get; set; }
+        public DbSet<OrderData> Orders { get; set; }
+        public DbSet<OrderItemData> OrderItems { get; set; }
+        public DbSet<CustomerData> Customer { get; set; }
         public DbSet<CalculatorData> Calculator { get; set; }
         public DbSet<StockData> Stock { get;set;}
+
         public DbSet<CryptoData> Crypto { get;set;}
 
         protected override void OnModelCreating(ModelBuilder b)
@@ -54,6 +59,8 @@ namespace BankingApp.Infra
                 .HasColumnType("decimal(16,4)");
             modelBuilder.Entity<CryptoData>().ToTable("Crypto").Property(x => x.Price)
                 .HasColumnType("decimal(16,4)");
+            modelBuilder.Entity<OrderData>().ToTable("Order");
+            modelBuilder.Entity<OrderItemData>().ToTable("OrderItem");
             modelBuilder.Entity<CalculatorData>().ToTable("Calculator");
             modelBuilder.Entity<ATMData>().ToTable("ATM");
             modelBuilder.Entity<ATMManagerData>().ToTable("ATMManager");

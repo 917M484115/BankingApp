@@ -1,5 +1,6 @@
 ﻿using BankingApp.Data.Misc;
 using BankingApp.Domain.Misc;
+using BankingApp.Domain.Misc.Repositories;
 using BankingApp.Facade.Misc;
 using BankingApp.Pages.Common;
 using Microsoft.AspNetCore.Mvc.RazorPages;

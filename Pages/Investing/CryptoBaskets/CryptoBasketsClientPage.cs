@@ -2,6 +2,7 @@
 using BankingApp.Data.Investing;
 using BankingApp.Domain.Investing.Repositories;
 using BankingApp.Domain.Misc;
+using BankingApp.Domain.Misc.Repositories;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -12,7 +13,7 @@ namespace BankingApp.Pages.Investing
     public sealed class CryptoBasketsClientPage : CryptoBasketsBasePage<CryptoBasketsClientPage>
     {
         public CryptoBasketsClientPage(ICryptoBasketsRepository cbr, ICustomersRepository cr,
-            IOrdersRepository or, ICryptoOrderItemsRepository coir) : base(cbr, cr, or, coir) { }
+            IOrdersRepository or, IOrderItemsRepository coir) : base(cbr, cr, or, coir) { }
         protected internal override Uri pageUrl() => new Uri("/Customer/CryptoBaskets", UriKind.Relative);
         public override async Task OnGetIndexAsync(string sortOrder,
             string id, string currentFilter, string searchString, int? pageIndex,
