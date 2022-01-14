@@ -3,9 +3,9 @@
 
 <body>
     @Html.Show(m => m.Item.CryptoName)
-    @Html.Show(m => m.Item.BlockChain, Model.BlockChainName(Model.Item.CryptoID))
-    @Html.Show(m => m.Item.Ticker,Model.TickerName(Model.Item.CryptoID))
-    @Html.Show(m => m.Item.UnitPrice, Model.CryptoPrice(Model.Item.CryptoID))
+    @Html.Show(m => m.Item.BlockChain)
+    @Html.Show(m => m.Item.Ticker)
+    @Html.Show(m => m.Item.UnitPrice)
     @Html.Show(m => m.Item.Quantity)
     @Html.Show(m => m.Item.TotalPrice)
 </body>

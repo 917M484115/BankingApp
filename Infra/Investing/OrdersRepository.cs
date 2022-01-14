@@ -13,13 +13,6 @@ namespace BankingApp.Infra.Investing
     public sealed class OrdersRepository : UniqueEntitiesRepository<Order,OrderData>,IOrdersRepository 
     {
         public OrdersRepository(ApplicationDbContext c): base(c, c.Orders) { }
-        public async Task Close(Order b)
-        {
-            var d = b?.Data;
-            if (d == null) return;
-            d.To = DateTime.Now;
-            await Update(new Order(d));
-        }
         public async Task<Order> GetLatestForUser(string name)
         {
             var l = await dbSet

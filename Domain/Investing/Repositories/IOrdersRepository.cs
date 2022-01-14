@@ -10,6 +10,5 @@ namespace BankingApp.Domain.Investing.Repositories
     public interface IOrdersRepository : IRepository<Order>
     {
         Task<Order> GetLatestForUser(string name);
-        Task Close(Order b);
     }
 }

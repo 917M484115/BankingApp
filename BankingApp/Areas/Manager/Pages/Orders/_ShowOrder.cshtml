@@ -1,0 +1,10 @@
+﻿@using BankingApp.Pages.Common.Extensions;
+@model BankingApp.Pages.Investing.OrdersManagerPage;
+
+<body>
+    @Html.Show(m => m.Item.Id)
+    @Html.Show(m => m.Item.CustomerID)
+    @Html.Show(m => m.Item.CustomerName)
+    @Html.Show(m => m.Item.TotalPrice)
+    @Html.Show(m => m.Item.OrderDate)
+</body>

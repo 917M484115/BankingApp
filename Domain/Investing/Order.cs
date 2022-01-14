@@ -14,10 +14,10 @@ namespace BankingApp.Domain.Investing
     {
         private static string orderId => GetMember.Name<OrderItemData>(x => x.OrderID);
         public Order(OrderData d) : base(d) { }
-        public string BuyerId => Data?.CustomerID ?? Unspecified;
-        public string Name => $"{BuyerId} {OrderDate}";
+        public string CustomerID => Data?.CustomerID ?? Unspecified;
+        public string Name => $"{CustomerID} {OrderDate}";
         public DateTime OrderDate => Data?.OrderDate ?? UnspecifiedValidTo;
-        public Customer Customer => new GetFrom<ICustomersRepository, Customer>().ById(BuyerId);
+        public Customer Customer => new GetFrom<ICustomersRepository, Customer>().ById(CustomerID);
         public IReadOnlyList<OrderItem> Items =>
             new GetFrom<IOrderItemsRepository, OrderItem>().ListBy(orderId, Id);
         public decimal TotalPrice

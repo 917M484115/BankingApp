@@ -6,7 +6,7 @@ namespace BankingApp.Facade.Investing
 {
     public sealed class StocksBasketView : UniqueEntityView
     {
-        [DisplayName("Buyer email")] public string BuyerId { get; set; }
+        [DisplayName("Customer email")] public string CustomerID { get; set; }
         [DisplayName("Customer name")] public string CustomerName { get; set; }
         [DisplayName("Customer Country")] public string CustomerCountry { get; set; }
         [DisplayName("Total price")] public decimal TotalPrice { get; set; }

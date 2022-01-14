@@ -64,7 +64,7 @@ namespace BankingApp.Pages.Investing
             await db.Close(b);
             Order o = await CryptoOrders.GetLatestForUser(User.Identity.Name);
             await CryptoOrderItems.AddItems(o, b);
-
+            o.Data.OrderDate =(DateTime)b.Data.From;
             var page = "/Customer/Orders";
             var url = new Uri($"{page}/Index?handler=Index", UriKind.Relative);
             return Redirect(url.ToString());
