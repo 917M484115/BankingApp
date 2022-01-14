@@ -52,13 +52,5 @@ namespace BankingApp.Pages.Investing
             4 or 5 => getValue<DateTime?>(h, i),
             _ => base.GetValue(h, i)
         };
-        public virtual async Task<IActionResult> OnGetSelectAsync(string id, string sortOrder, string searchString,
-       int pageIndex, string fixedFilter, string fixedValue)
-        {
-
-            Order b = await db.Get(id);
-            await db.Close(b);
-            return Redirect(IndexUrl.ToString());
-        }
     }
 }

@@ -1,0 +1,20 @@
+﻿@page
+@model BankingApp.Pages.Investing.OrdersManagerPage
+@using BankingApp.Aids.Reflection
+@using BankingApp.Data.Investing
+@using BankingApp.Pages.Common.Extensions
+
+@{ 
+    Layout = "_Details";
+    string items = "/Manager/OrderItems";
+    var orderId = GetMember.Name<OrderItemData>(x => x.OrderID);
+    var id = Model.Item.Id;
+    var itemsUrl = new Uri($"{items}/Index?handler=index&fixedFilter={orderId}&fixedValue={id}", UriKind.Relative);
+
+}
+
+<partial name="_ShowOrder" />
+
+@section Details {
+    @Html.Link(new BankingApp.Pages.Common.Aids.Link(" | Show items", itemsUrl))
+}
