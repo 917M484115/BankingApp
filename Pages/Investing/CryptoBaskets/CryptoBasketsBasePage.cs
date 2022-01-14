@@ -40,8 +40,6 @@ namespace BankingApp.Pages.Investing
             createColumn(x => Item.CustomerName);
             createColumn(x => Item.CustomerCountry);
             createColumn(x => Item.TotalPrice);
-            createColumn(x => Item.From);
-            createColumn(x => Item.To);
         }
         public override string GetName(IHtmlHelper<TPage> h, int i) => i switch
         {

@@ -37,9 +37,6 @@ namespace BankingApp.Pages.Investing
             createColumn(x => Item.Ticker);
             createColumn(x => Item.Blockchain);
             createColumn(x => Item.Price);
-            createColumn(x => Item.From);
-            createColumn(x => Item.To);
-
         }
         public override string GetName(IHtmlHelper<TPage> h, int i) => i switch
         {
