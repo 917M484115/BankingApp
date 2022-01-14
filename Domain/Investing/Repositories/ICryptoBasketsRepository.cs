@@ -7,5 +7,6 @@ namespace BankingApp.Domain.Investing.Repositories
     {
         Task<CryptoBasket> GetLatestForUser(string name);
         Task Close(CryptoBasket b);
+        //Task Delete(CryptoBasket p, CryptoBasketItem c);
     }
 }

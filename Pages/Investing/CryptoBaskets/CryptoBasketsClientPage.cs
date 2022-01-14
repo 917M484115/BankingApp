@@ -13,7 +13,7 @@ namespace BankingApp.Pages.Investing
     public sealed class CryptoBasketsClientPage : CryptoBasketsBasePage<CryptoBasketsClientPage>
     {
         public CryptoBasketsClientPage(ICryptoBasketsRepository cbr, ICustomersRepository cr,
-            IOrdersRepository or, IOrderItemsRepository coir) : base(cbr, cr, or, coir) { }
+            IOrdersRepository or, IOrderItemsRepository coir, ICryptoBasketItemsRepository cbir) : base(cbr, cr, or, coir, cbir) { }
         protected internal override Uri pageUrl() => new Uri("/Customer/CryptoBaskets", UriKind.Relative);
         public override async Task OnGetIndexAsync(string sortOrder,
             string id, string currentFilter, string searchString, int? pageIndex,

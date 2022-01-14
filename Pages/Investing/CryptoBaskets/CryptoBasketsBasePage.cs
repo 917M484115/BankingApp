@@ -23,13 +23,16 @@ namespace BankingApp.Pages.Investing
         public IEnumerable<SelectListItem> Customers { get; }
         public IOrdersRepository CryptoOrders { get; }
         public IOrderItemsRepository CryptoOrderItems { get; }
-        
+        public ICryptoBasketsRepository CryptoBasketsRepository { get; }
+        public ICryptoBasketItemsRepository CryptoBasketItemsRepository { get; }
         protected CryptoBasketsBasePage(ICryptoBasketsRepository cbr, ICustomersRepository cr,
-            IOrdersRepository or, IOrderItemsRepository coir) : base(cbr, "CryptoBaskets")
+            IOrdersRepository or, IOrderItemsRepository coir, ICryptoBasketItemsRepository cbir) : base(cbr, "CryptoBaskets")
         {
+            CryptoBasketsRepository = cbr;
             Customers = newItemsList<Customer,CustomerData>(cr);
             CryptoOrders = or;
             CryptoOrderItems = coir;
+            CryptoBasketItemsRepository = cbir;
         }
         public string CustomerName(string id) => itemName(Customers, id);
         protected internal override Uri pageUrl() => new Uri("/Investing/CryptoBaskets", UriKind.Relative);
@@ -66,6 +69,20 @@ namespace BankingApp.Pages.Investing
             var page = "/Customer/Orders";
             var url = new Uri($"{page}/Index?handler=Index", UriKind.Relative);
             return Redirect(url.ToString());
+        }
+        
+        public override async Task<IActionResult> OnPostDeleteAsync(string id, string sortOrder, string searchString,
+            int pageIndex,
+            string fixedFilter, string fixedValue)
+        {
+            CryptoBasket b = await db.Get(id);
+            if (b.Data.To != null) return Redirect(IndexUrl.ToString());
+            foreach(var i in b.Items)
+            {
+                await CryptoBasketItemsRepository.Delete(b, i);
+            }    
+            await deleteObject(id, sortOrder, searchString, pageIndex, fixedFilter, fixedValue).ConfigureAwait(true);
+            return Redirect(IndexUrl.ToString());
         }
     }
 }

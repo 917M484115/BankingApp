@@ -9,7 +9,7 @@ namespace BankingApp.Pages.Investing
     public sealed class CryptoBasketsManagerPage : CryptoBasketsBasePage<CryptoBasketsManagerPage>
     {
         public CryptoBasketsManagerPage(ICryptoBasketsRepository cbr, ICustomersRepository cr,
-            IOrdersRepository or, IOrderItemsRepository coir) : base(cbr, cr, or, coir) { }
+            IOrdersRepository or, IOrderItemsRepository coir, ICryptoBasketItemsRepository cbir) : base(cbr, cr, or, coir, cbir) { }
         
     }
 }

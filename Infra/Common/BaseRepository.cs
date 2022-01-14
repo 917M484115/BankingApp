@@ -44,6 +44,13 @@ namespace BankingApp.Infra.Common {
             dbSet?.Remove(v);
             await db?.SaveChangesAsync();
         }
+        public async Task Delete2(TDomain obj)
+        {
+            var d = getData(obj);
+            if (d is null) return;
+            dbSet?.Remove(d);
+            await db?.SaveChangesAsync();
+        }
 
         public async Task Add(TDomain obj) {
             var d = getData(obj);
