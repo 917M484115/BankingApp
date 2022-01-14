@@ -23,6 +23,7 @@ namespace BankingApp.Pages.Investing
         public IEnumerable<SelectListItem> Customers { get; }
         public IOrdersRepository CryptoOrders { get; }
         public IOrderItemsRepository CryptoOrderItems { get; }
+        
         protected CryptoBasketsBasePage(ICryptoBasketsRepository cbr, ICustomersRepository cr,
             IOrdersRepository or, IOrderItemsRepository coir) : base(cbr, "CryptoBaskets")
         {
@@ -62,7 +63,6 @@ namespace BankingApp.Pages.Investing
             await db.Close(b);
             Order o = await CryptoOrders.GetLatestForUser(User.Identity.Name);
             await CryptoOrderItems.AddItems(o, b);
-
             var page = "/Customer/Orders";
             var url = new Uri($"{page}/Index?handler=Index", UriKind.Relative);
             return Redirect(url.ToString());
