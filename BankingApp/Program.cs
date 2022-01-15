@@ -1,10 +1,5 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using System;
-using BankingApp.Domain.Common;
-using BankingApp.Infra;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace BankingApp
 {

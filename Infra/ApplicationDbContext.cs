@@ -29,6 +29,7 @@ namespace BankingApp.Infra
         public DbSet<NotificationData> Notifications { get; set; }
         public DbSet<TransactionData> Transactions { get; set; }
 
+        public DbSet<BlockChainData> BlockChains { get;set;}
         public DbSet<CryptoPortfolioData> CryptoPortfolios { get;set;}
         public DbSet<CryptoBasketData> CryptoBaskets { get; set; }
         public DbSet<StocksBasketData> StocksBaskets { get; set; }
@@ -51,6 +52,7 @@ namespace BankingApp.Infra
         //public DbSet<StockData> Stock { get; set; }
         public static void InitializeTables(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<BlockChainData>().ToTable(nameof(BlockChains));
             modelBuilder.Entity<CryptoBasketData>().ToTable(nameof(CryptoBaskets));
             modelBuilder.Entity<StocksBasketData>().ToTable(nameof(StocksBaskets));
             modelBuilder.Entity<CryptoBasketItemData>().ToTable(nameof(CryptoBasketItems));

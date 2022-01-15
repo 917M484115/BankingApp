@@ -13,7 +13,7 @@ namespace BankingApp.Facade.Investing
             if (o.Crypto is not null)
             {
                 v.CryptoName = o.Crypto.Name;
-                v.BlockChain = o.Crypto.Blockchain;
+                v.BlockChain = o.Crypto.BlockChainID;
                 v.Ticker = o.Crypto.Ticker;
                 v.CustomerName =o.Customer.Name;
             }

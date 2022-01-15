@@ -1,8 +1,4 @@
-﻿using BankingApp.Pages.Common;
-using BankingApp.Domain.Investing;
-using BankingApp.Facade.Investing;
-using BankingApp.Data.Investing;
-using System;
+﻿using System;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
 using BankingApp.Infra;

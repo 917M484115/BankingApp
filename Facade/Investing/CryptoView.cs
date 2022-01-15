@@ -1,8 +1,10 @@
 ﻿using BankingApp.Facade.Common;
+using Microsoft.AspNetCore.Http;
+using System.ComponentModel;
 namespace BankingApp.Facade.Investing
 {
 	public class CryptoView : VirtualAssetView 
 	{
-        public string Blockchain { get;set;}
+        [DisplayName("BlockChain")]public string BlockchainID { get;set;}
     }
 }
