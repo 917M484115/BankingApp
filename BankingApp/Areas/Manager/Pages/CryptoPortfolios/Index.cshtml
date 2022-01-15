@@ -1,0 +1,13 @@
+﻿@page
+@using BankingApp.Pages.Common.Extensions;
+@model BankingApp.Pages.Investing.CryptoPortfolioManagerPage
+
+@{
+    Layout = "_Index";
+    var page = Model.PageUrl;
+}
+
+@section Create {
+}
+
+@Html.ShowTable(Model)

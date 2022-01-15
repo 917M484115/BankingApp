@@ -8,7 +8,7 @@ namespace BankingApp.Infra.Investing
 {
     public sealed class CryptoRepository : UniqueEntitiesRepository<Crypto, CryptoData>, ICryptoRepository
     {
-        public CryptoRepository(ApplicationDbContext c) : base(c, c.Crypto) { }
+        public CryptoRepository(ApplicationDbContext c) : base(c, c.Cryptos) { }
 
         protected internal override Crypto toDomainObject(CryptoData d)=> new Crypto(d);
     }

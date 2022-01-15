@@ -27,9 +27,6 @@ namespace BankingApp.Infra.Migrations
                     b.Property<int>("Age")
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("Birthday")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("Code")
                         .HasColumnType("nvarchar(max)");
 
@@ -47,13 +44,16 @@ namespace BankingApp.Infra.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ATMManager");
+                    b.ToTable("ATMManagers");
                 });
 
             modelBuilder.Entity("BankingApp.Data.Common.MoneyAmountData", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Code")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("From")
                         .HasColumnType("datetime2");
@@ -103,13 +103,16 @@ namespace BankingApp.Infra.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Calculator");
+                    b.ToTable("Calculators");
                 });
 
             modelBuilder.Entity("BankingApp.Data.Investing.CryptoBasketData", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Code")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CustomerID")
                         .HasColumnType("nvarchar(max)");
@@ -129,6 +132,9 @@ namespace BankingApp.Infra.Migrations
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Code")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CryptoBasketID")
                         .HasColumnType("nvarchar(max)");
@@ -178,13 +184,44 @@ namespace BankingApp.Infra.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Crypto");
+                    b.ToTable("Cryptos");
+                });
+
+            modelBuilder.Entity("BankingApp.Data.Investing.CryptoPortfolioData", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Code")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CryptoID")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CustomerID")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("From")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("To")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Units")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CryptoPortfolios");
                 });
 
             modelBuilder.Entity("BankingApp.Data.Investing.OrderData", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Code")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CustomerID")
                         .HasColumnType("nvarchar(max)");
@@ -200,13 +237,16 @@ namespace BankingApp.Infra.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Order");
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("BankingApp.Data.Investing.OrderItemData", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Code")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CryptoID")
                         .HasColumnType("nvarchar(max)");
@@ -225,7 +265,7 @@ namespace BankingApp.Infra.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("OrderItem");
+                    b.ToTable("OrderItems");
                 });
 
             modelBuilder.Entity("BankingApp.Data.Investing.StockData", b =>
@@ -256,13 +296,16 @@ namespace BankingApp.Infra.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Stock");
+                    b.ToTable("Stocks");
                 });
 
             modelBuilder.Entity("BankingApp.Data.Investing.StocksBasketData", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Code")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CustomerID")
                         .HasColumnType("nvarchar(max)");
@@ -282,6 +325,9 @@ namespace BankingApp.Infra.Migrations
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Code")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("From")
                         .HasColumnType("datetime2");
@@ -311,9 +357,6 @@ namespace BankingApp.Infra.Migrations
                     b.Property<int>("Age")
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("Birthday")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("Code")
                         .HasColumnType("nvarchar(max)");
 
@@ -331,7 +374,7 @@ namespace BankingApp.Infra.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("LoanManager");
+                    b.ToTable("LoanManagers");
                 });
 
             modelBuilder.Entity("BankingApp.Data.Misc.BankData", b =>
@@ -353,7 +396,7 @@ namespace BankingApp.Infra.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Bank");
+                    b.ToTable("Banks");
                 });
 
             modelBuilder.Entity("BankingApp.Data.Misc.CustomerData", b =>
@@ -363,9 +406,6 @@ namespace BankingApp.Infra.Migrations
 
                     b.Property<int>("Age")
                         .HasColumnType("int");
-
-                    b.Property<DateTime?>("Birthday")
-                        .HasColumnType("datetime2");
 
                     b.Property<string>("Code")
                         .HasColumnType("nvarchar(max)");
@@ -384,13 +424,16 @@ namespace BankingApp.Infra.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Customer");
+                    b.ToTable("Customers");
                 });
 
             modelBuilder.Entity("BankingApp.Data.Misc.NotificationData", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Code")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("From")
                         .HasColumnType("datetime2");
@@ -400,7 +443,7 @@ namespace BankingApp.Infra.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Notification");
+                    b.ToTable("Notifications");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -613,7 +656,7 @@ namespace BankingApp.Infra.Migrations
                     b.Property<string>("Manager")
                         .HasColumnType("nvarchar(max)");
 
-                    b.ToTable("ATM");
+                    b.ToTable("ATMs");
                 });
 
             modelBuilder.Entity("BankingApp.Data.Common.AccountData", b =>
@@ -632,7 +675,7 @@ namespace BankingApp.Infra.Migrations
                     b.Property<string>("CustomerId")
                         .HasColumnType("nvarchar(max)");
 
-                    b.ToTable("Account");
+                    b.ToTable("Accounts");
                 });
 
             modelBuilder.Entity("BankingApp.Data.Investing.InvestmentData", b =>
@@ -645,7 +688,7 @@ namespace BankingApp.Infra.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.ToTable("Investment");
+                    b.ToTable("Investments");
                 });
 
             modelBuilder.Entity("BankingApp.Data.Loan.LoanData", b =>
@@ -661,7 +704,7 @@ namespace BankingApp.Infra.Migrations
                     b.Property<int>("LoanPeriod")
                         .HasColumnType("int");
 
-                    b.ToTable("Loan");
+                    b.ToTable("Loans");
                 });
 
             modelBuilder.Entity("BankingApp.Data.Misc.TransactionData", b =>
@@ -686,21 +729,21 @@ namespace BankingApp.Infra.Migrations
                     b.Property<int>("TransactionNr")
                         .HasColumnType("int");
 
-                    b.ToTable("Transaction");
+                    b.ToTable("Transactions");
                 });
 
             modelBuilder.Entity("BankingApp.Data.Investing.InvestingAccountData", b =>
                 {
                     b.HasBaseType("BankingApp.Data.Common.AccountData");
 
-                    b.ToTable("InvestingAccount");
+                    b.ToTable("InvestingAccounts");
                 });
 
             modelBuilder.Entity("BankingApp.Data.Loan.LoanAccountData", b =>
                 {
                     b.HasBaseType("BankingApp.Data.Common.AccountData");
 
-                    b.ToTable("LoanAccount");
+                    b.ToTable("LoanAccounts");
                 });
 
             modelBuilder.Entity("BankingApp.Data.Loan.CarLoanData", b =>
@@ -716,7 +759,7 @@ namespace BankingApp.Infra.Migrations
                     b.Property<double>("CarValue")
                         .HasColumnType("float");
 
-                    b.ToTable("CarLoan");
+                    b.ToTable("CarLoans");
                 });
 
             modelBuilder.Entity("BankingApp.Data.Loan.HomeLoanData", b =>
@@ -729,7 +772,7 @@ namespace BankingApp.Infra.Migrations
                     b.Property<double>("HomeValue")
                         .HasColumnType("float");
 
-                    b.ToTable("HomeLoan");
+                    b.ToTable("HomeLoans");
                 });
 
             modelBuilder.Entity("BankingApp.Data.Loan.PersonalLoanData", b =>
@@ -739,7 +782,7 @@ namespace BankingApp.Infra.Migrations
                     b.Property<string>("Reason")
                         .HasColumnType("nvarchar(max)");
 
-                    b.ToTable("PersonalLoan");
+                    b.ToTable("PersonalLoans");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

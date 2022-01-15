@@ -4,10 +4,10 @@ using BankingApp.Facade.Common;
 
 namespace BankingApp.Facade.Investing
 {
-    public sealed class OrderItemViewFactory : AbstractViewFactory<OrderItemData,OrderItem,OrderItemView> 
+    public sealed class CryptoPortfolioViewFactory : AbstractViewFactory<CryptoPortfolioData,CryptoPortfolio,CryptoPortfolioView>
     {
-        protected internal override OrderItem toObject(OrderItemData d) => new OrderItem(d);
-        public override OrderItemView Create(OrderItem o)
+        protected internal override CryptoPortfolio toObject(CryptoPortfolioData d) => new CryptoPortfolio(d);
+        public override CryptoPortfolioView Create(CryptoPortfolio o)
         {
             var v = base.Create(o);
             if (o.Crypto is not null)
@@ -15,6 +15,7 @@ namespace BankingApp.Facade.Investing
                 v.CryptoName = o.Crypto.Name;
                 v.BlockChain = o.Crypto.Blockchain;
                 v.Ticker = o.Crypto.Ticker;
+                v.CustomerName =o.Customer.Name;
             }
             v.UnitPrice = o.UnitPrice;
             v.TotalPrice = o.TotalPrice;

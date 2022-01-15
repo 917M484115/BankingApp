@@ -19,7 +19,6 @@ namespace BankingApp.Pages.Misc
             createColumn(x => Item.Name);
             createColumn(x => Item.Age);
             createColumn(x => Item.Country);
-            createColumn(x => Item.Birthday);
         }
         public override async Task OnGetIndexAsync(string sortOrder,
             string id, string currentFilter, string searchString, int? pageIndex,
@@ -34,13 +33,11 @@ namespace BankingApp.Pages.Misc
         public override string GetName(IHtmlHelper<CustomersClientPage> h, int i) => i switch
         {
             1 => getName<int>(h,i),
-            3 => getName<DateTime?>(h, i),
             _ => base.GetName(h, i)
         };
         public override IHtmlContent GetValue(IHtmlHelper<CustomersClientPage> h, int i) => i switch
         {
             1 => getValue<int>(h, i),
-            3 => getValue<DateTime?>(h, i),
             _ => base.GetValue(h, i)
         };
         public override IActionResult OnGetCreate(

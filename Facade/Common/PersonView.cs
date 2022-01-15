@@ -10,7 +10,6 @@ namespace BankingApp.Facade.Common
 	public abstract class PersonView: NamedView
 	{
 		public int Age { get; set; }
-		public DateTime? Birthday { get; set; }
 		public string Country { get; set; }
 	}
 }

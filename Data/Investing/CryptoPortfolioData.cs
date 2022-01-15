@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BankingApp.Data.Common;
 
 namespace BankingApp.Data.Investing
 {
-    public sealed class CryptoPortfolioData
+    public sealed class CryptoPortfolioData : UniqueEntityData
     {
+        public string CustomerID {get;set;}
+        public string CryptoID { get; set; }
+        public int Units { get; set; }
     }
 }

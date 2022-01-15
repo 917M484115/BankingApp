@@ -7,7 +7,7 @@ namespace BankingApp.Infra.Investing
 {
     public sealed class StocksRepository : VirtualAssetRepository<Stock, StockData>, IStockRepository
     {
-        public StocksRepository(ApplicationDbContext c) : base(c, c.Stock) { }
+        public StocksRepository(ApplicationDbContext c) : base(c, c.Stocks) { }
         protected internal override Stock toDomainObject(StockData d) => new Stock(d);
     }
 }

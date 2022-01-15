@@ -21,21 +21,23 @@ namespace BankingApp.Pages.Investing
         where TPage : PageModel
     {
         public IEnumerable<SelectListItem> Customers { get; }
-        public IOrdersRepository CryptoOrders { get; }
-        public IOrderItemsRepository CryptoOrderItems { get; }
+        public IOrdersRepository CryptoOrdersRepository { get; }
+        public IOrderItemsRepository CryptoOrderItemsRepository { get; }
         public ICryptoBasketsRepository CryptoBasketsRepository { get; }
         public ICryptoBasketItemsRepository CryptoBasketItemsRepository { get; }
+        public ICryptoPortfolioRepository CryptoPortfolioRepository { get;}
         protected CryptoBasketsBasePage(ICryptoBasketsRepository cbr, ICustomersRepository cr,
-            IOrdersRepository or, IOrderItemsRepository coir, ICryptoBasketItemsRepository cbir) : base(cbr, "CryptoBaskets")
+            IOrdersRepository or, IOrderItemsRepository coir, ICryptoBasketItemsRepository cbir, ICryptoPortfolioRepository cpr) : base(cbr, "CryptoBaskets")
         {
+            CryptoPortfolioRepository = cpr;
             CryptoBasketsRepository = cbr;
             Customers = newItemsList<Customer,CustomerData>(cr);
-            CryptoOrders = or;
-            CryptoOrderItems = coir;
+            CryptoOrdersRepository = or;
+            CryptoOrderItemsRepository = coir;
             CryptoBasketItemsRepository = cbir;
         }
         public string CustomerName(string id) => itemName(Customers, id);
-        protected internal override Uri pageUrl() => new Uri("/Investing/CryptoBaskets", UriKind.Relative);
+        protected internal override Uri pageUrl() => new Uri("/Manager/CryptoBaskets", UriKind.Relative);
         protected internal override CryptoBasket toObject(CryptoBasketView v) => new CryptoBasketViewFactory().Create(v);
         protected internal override CryptoBasketView toView(CryptoBasket o) => new CryptoBasketViewFactory().Create(o);
         protected override void createTableColumns()
@@ -49,13 +51,11 @@ namespace BankingApp.Pages.Investing
         public override string GetName(IHtmlHelper<TPage> h, int i) => i switch
         {
             4 => getName<decimal>(h, i),
-            5 or 6 => getName<DateTime?>(h, i),
             _ => base.GetName(h, i)
         };
         public override IHtmlContent GetValue(IHtmlHelper<TPage> h, int i) => i switch
         {
             4 => getValue<decimal>(h, i),
-            5 or 6 => getValue<DateTime?>(h, i),
             _ => base.GetValue(h, i)
         };
         public virtual async Task<IActionResult> OnGetSelectAsync(string id, string sortOrder, string searchString,
@@ -64,8 +64,9 @@ namespace BankingApp.Pages.Investing
             CryptoBasket b = await db.Get(id);
             if (b.Data.To != null) return Redirect(IndexUrl.ToString());
             await db.Close(b);
-            Order o = await CryptoOrders.GetLatestForUser(User.Identity.Name);
-            await CryptoOrderItems.AddItems(o, b);
+            await CryptoPortfolioRepository.AddItems(b,b.CustomerID);
+            Order o = await CryptoOrdersRepository.GetLatestForUser(User.Identity.Name);
+            await CryptoOrderItemsRepository.AddItems(o, b);
             var page = "/Customer/Orders";
             var url = new Uri($"{page}/Index?handler=Index", UriKind.Relative);
             return Redirect(url.ToString());
@@ -76,11 +77,11 @@ namespace BankingApp.Pages.Investing
             string fixedFilter, string fixedValue)
         {
             CryptoBasket b = await db.Get(id);
-            if (b.Data.To != null) return Redirect(IndexUrl.ToString());
             foreach(var i in b.Items)
             {
                 await CryptoBasketItemsRepository.Delete(b, i);
             }    
+            await CryptoBasketsRepository.Delete(id);
             await deleteObject(id, sortOrder, searchString, pageIndex, fixedFilter, fixedValue).ConfigureAwait(true);
             return Redirect(IndexUrl.ToString());
         }

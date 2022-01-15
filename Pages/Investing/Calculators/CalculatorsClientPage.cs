@@ -19,7 +19,7 @@ namespace BankingApp.Pages.Investing
         public List<SelectListItem> SelectList()
         {
             var selectList = new List<SelectListItem>();
-            foreach (var item in _context.Calculator)
+            foreach (var item in _context.Calculators)
                 selectList.Add(new SelectListItem { Text = item.Name, Value = item.APY.ToString() });
             return selectList;
         }

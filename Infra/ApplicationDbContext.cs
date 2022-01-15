@@ -14,32 +14,32 @@ namespace BankingApp.Infra
         {
         }
         
-        public DbSet<ATMData> ATM { get; set; }
-        public DbSet<ATMManagerData> ATMManager { get; set; }
-        public DbSet<AccountData> Account { get; set; }
-        public DbSet<InvestingAccountData> InvestingAccount { get; set; }
-        public DbSet<InvestmentData> Investment { get; set; }
-        public DbSet<LoanAccountData> LoanAccount { get; set; }
-        public DbSet<LoanData> Loan { get; set; }
-        public DbSet<CarLoanData> CarLoan { get; set; }
-        public DbSet<HomeLoanData> HomeLoan { get; set; }
-        public DbSet<PersonalLoanData> PersonalLoan { get; set; }
-        public DbSet<LoanManagerData> LoanManager { get; set; }
-        public DbSet<BankData> Bank { get; set; }
-        public DbSet<NotificationData> Notification { get; set; }
-        public DbSet<TransactionData> Transaction { get; set; }
+        public DbSet<ATMData> ATMs { get; set; }
+        public DbSet<ATMManagerData> ATMManagers { get; set; }
+        public DbSet<AccountData> Accounts { get; set; }
+        public DbSet<InvestingAccountData> InvestingAccounts { get; set; }
+        public DbSet<InvestmentData> Investments { get; set; }
+        public DbSet<LoanAccountData> LoanAccounts { get; set; }
+        public DbSet<LoanData> Loans { get; set; }
+        public DbSet<CarLoanData> CarLoans { get; set; }
+        public DbSet<HomeLoanData> HomeLoans { get; set; }
+        public DbSet<PersonalLoanData> PersonalLoans { get; set; }
+        public DbSet<LoanManagerData> LoanManagers { get; set; }
+        public DbSet<BankData> Banks { get; set; }
+        public DbSet<NotificationData> Notifications { get; set; }
+        public DbSet<TransactionData> Transactions { get; set; }
 
+        public DbSet<CryptoPortfolioData> CryptoPortfolios { get;set;}
         public DbSet<CryptoBasketData> CryptoBaskets { get; set; }
         public DbSet<StocksBasketData> StocksBaskets { get; set; }
         public DbSet<StocksBasketItemData> StocksBasketItems { get; set; }
         public DbSet<CryptoBasketItemData> CryptoBasketItems { get; set; }
         public DbSet<OrderData> Orders { get; set; }
         public DbSet<OrderItemData> OrderItems { get; set; }
-        public DbSet<CustomerData> Customer { get; set; }
-        public DbSet<CalculatorData> Calculator { get; set; }
-        public DbSet<StockData> Stock { get;set;}
-
-        public DbSet<CryptoData> Crypto { get;set;}
+        public DbSet<CustomerData> Customers { get; set; }
+        public DbSet<CalculatorData> Calculators { get; set; }
+        public DbSet<StockData> Stocks { get;set;}
+        public DbSet<CryptoData> Cryptos { get;set;}
 
         protected override void OnModelCreating(ModelBuilder b)
         {
@@ -55,28 +55,29 @@ namespace BankingApp.Infra
             modelBuilder.Entity<StocksBasketData>().ToTable(nameof(StocksBaskets));
             modelBuilder.Entity<CryptoBasketItemData>().ToTable(nameof(CryptoBasketItems));
             modelBuilder.Entity<StocksBasketItemData>().ToTable(nameof(StocksBasketItems));
-            modelBuilder.Entity<StockData>().ToTable("Stock").Property(x => x.Price)
+            modelBuilder.Entity<StockData>().ToTable(nameof(Stocks)).Property(x => x.Price)
                 .HasColumnType("decimal(16,4)");
-            modelBuilder.Entity<CryptoData>().ToTable("Crypto").Property(x => x.Price)
+            modelBuilder.Entity<CryptoData>().ToTable(nameof(Cryptos)).Property(x => x.Price)
                 .HasColumnType("decimal(16,4)");
-            modelBuilder.Entity<OrderData>().ToTable("Order");
-            modelBuilder.Entity<OrderItemData>().ToTable("OrderItem");
-            modelBuilder.Entity<CalculatorData>().ToTable("Calculator");
-            modelBuilder.Entity<ATMData>().ToTable("ATM");
-            modelBuilder.Entity<ATMManagerData>().ToTable("ATMManager");
-            modelBuilder.Entity<AccountData>().ToTable("Account");
-            modelBuilder.Entity<InvestingAccountData>().ToTable("InvestingAccount");
-            modelBuilder.Entity<InvestmentData>().ToTable("Investment");
-            modelBuilder.Entity<LoanData>().ToTable("Loan");
-            modelBuilder.Entity<LoanAccountData>().ToTable("LoanAccount");
-            modelBuilder.Entity<CarLoanData>().ToTable("CarLoan");
-            modelBuilder.Entity<HomeLoanData>().ToTable("HomeLoan");
-            modelBuilder.Entity<PersonalLoanData>().ToTable("PersonalLoan");
-            modelBuilder.Entity<LoanManagerData>().ToTable("LoanManager");
-            modelBuilder.Entity<BankData>().ToTable("Bank");
-            modelBuilder.Entity<CustomerData>().ToTable("Customer");
-            modelBuilder.Entity<NotificationData>().ToTable("Notification");
-            modelBuilder.Entity<TransactionData>().ToTable("Transaction");
+            modelBuilder.Entity<OrderData>().ToTable(nameof(Orders));
+            modelBuilder.Entity<OrderItemData>().ToTable(nameof(OrderItems));
+            modelBuilder.Entity<CalculatorData>().ToTable(nameof(Calculators));
+            modelBuilder.Entity<ATMData>().ToTable(nameof(ATMs));
+            modelBuilder.Entity<ATMManagerData>().ToTable(nameof(ATMManagers));
+            modelBuilder.Entity<CryptoPortfolioData>().ToTable(nameof(CryptoPortfolios));
+            modelBuilder.Entity<AccountData>().ToTable(nameof(Accounts));
+            modelBuilder.Entity<InvestingAccountData>().ToTable(nameof(InvestingAccounts));
+            modelBuilder.Entity<InvestmentData>().ToTable(nameof(Investments));
+            modelBuilder.Entity<LoanData>().ToTable(nameof(Loans));
+            modelBuilder.Entity<LoanAccountData>().ToTable(nameof(LoanAccounts));
+            modelBuilder.Entity<CarLoanData>().ToTable(nameof(CarLoans));
+            modelBuilder.Entity<HomeLoanData>().ToTable(nameof(HomeLoans));
+            modelBuilder.Entity<PersonalLoanData>().ToTable(nameof(PersonalLoans));
+            modelBuilder.Entity<LoanManagerData>().ToTable(nameof(LoanManagers));
+            modelBuilder.Entity<BankData>().ToTable(nameof(Banks));
+            modelBuilder.Entity<CustomerData>().ToTable(nameof(Customers));
+            modelBuilder.Entity<NotificationData>().ToTable(nameof(Notifications));
+            modelBuilder.Entity<TransactionData>().ToTable(nameof(Transactions));
             modelBuilder.Entity<MoneyAmountData>().ToTable("MoneyAmount");
         }
     }

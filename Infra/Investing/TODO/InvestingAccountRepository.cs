@@ -9,7 +9,7 @@ namespace BankingApp.Infra.Investing
 	public sealed class InvestingAccountRepository :
 		AccountRepository<InvestingAccount, InvestingAccountData>, IInvestingAccountRepository
 	{
-		public InvestingAccountRepository(ApplicationDbContext c) : base(c, c.InvestingAccount) { }
+		public InvestingAccountRepository(ApplicationDbContext c) : base(c, c.InvestingAccounts) { }
 		protected internal override InvestingAccount toDomainObject(InvestingAccountData d)
 			=> new InvestingAccount(d);
 	}

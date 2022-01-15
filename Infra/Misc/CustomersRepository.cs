@@ -13,7 +13,7 @@ namespace BankingApp.Infra.Misc
     public sealed class CustomersRepository :
         UniqueEntitiesRepository<Customer, CustomerData>, ICustomersRepository
     {
-        public CustomersRepository(ApplicationDbContext c) : base(c, c.Customer) { }
+        public CustomersRepository(ApplicationDbContext c) : base(c, c.Customers) { }
         protected internal override Customer toDomainObject(CustomerData d)
             => new Customer(d);
     }

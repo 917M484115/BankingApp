@@ -7,7 +7,7 @@ namespace BankingApp.Infra.Loan
 	public sealed class CarLoanRepository :
 		LoanRepository<CarLoan, CarLoanData>, ICarLoanRepository
 	{
-		public CarLoanRepository(ApplicationDbContext c) : base(c, c.CarLoan) { }
+		public CarLoanRepository(ApplicationDbContext c) : base(c, c.CarLoans) { }
 		protected internal override CarLoan toDomainObject(CarLoanData d)
 			=> new CarLoan(d);
 	}

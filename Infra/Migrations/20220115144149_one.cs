@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BankingApp.Infra.Migrations
 {
-    public partial class aaa : Migration
+    public partial class one : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -47,7 +47,7 @@ namespace BankingApp.Infra.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ATMManager",
+                name: "ATMManagers",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
@@ -56,16 +56,15 @@ namespace BankingApp.Infra.Migrations
                     Code = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Age = table.Column<int>(type: "int", nullable: false),
-                    Birthday = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Country = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ATMManager", x => x.Id);
+                    table.PrimaryKey("PK_ATMManagers", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Bank",
+                name: "Banks",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
@@ -76,11 +75,11 @@ namespace BankingApp.Infra.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Bank", x => x.Id);
+                    table.PrimaryKey("PK_Banks", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Calculator",
+                name: "Calculators",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
@@ -96,11 +95,60 @@ namespace BankingApp.Infra.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Calculator", x => x.Id);
+                    table.PrimaryKey("PK_Calculators", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Crypto",
+                name: "CryptoBasketItems",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    CryptoBasketID = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CryptoID = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Quantity = table.Column<int>(type: "int", nullable: false),
+                    From = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    To = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Code = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CryptoBasketItems", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "CryptoBaskets",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    CustomerID = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    From = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    To = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Code = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CryptoBaskets", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "CryptoPortfolios",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    CustomerID = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CryptoID = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Units = table.Column<int>(type: "int", nullable: false),
+                    From = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    To = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Code = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CryptoPortfolios", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Cryptos",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
@@ -110,34 +158,15 @@ namespace BankingApp.Infra.Migrations
                     Code = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Ticker = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Price = table.Column<double>(type: "float", nullable: false)
+                    Price = table.Column<decimal>(type: "decimal(16,4)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Crypto", x => x.Id);
+                    table.PrimaryKey("PK_Cryptos", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Customer",
-                columns: table => new
-                {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    AccountId = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    From = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    To = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    Code = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Age = table.Column<int>(type: "int", nullable: false),
-                    Birthday = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    Country = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Customer", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "LoanManager",
+                name: "Customers",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
@@ -146,12 +175,28 @@ namespace BankingApp.Infra.Migrations
                     Code = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Age = table.Column<int>(type: "int", nullable: false),
-                    Birthday = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Country = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_LoanManager", x => x.Id);
+                    table.PrimaryKey("PK_Customers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "LoanManagers",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    From = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    To = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Code = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Age = table.Column<int>(type: "int", nullable: false),
+                    Country = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_LoanManagers", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -161,7 +206,8 @@ namespace BankingApp.Infra.Migrations
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     MoneyAmount = table.Column<double>(type: "float", nullable: false),
                     From = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    To = table.Column<DateTime>(type: "datetime2", nullable: true)
+                    To = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Code = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -169,20 +215,54 @@ namespace BankingApp.Infra.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Notification",
+                name: "Notifications",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     From = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    To = table.Column<DateTime>(type: "datetime2", nullable: true)
+                    To = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Code = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Notification", x => x.Id);
+                    table.PrimaryKey("PK_Notifications", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Stock",
+                name: "OrderItems",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    OrderID = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CryptoID = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Units = table.Column<int>(type: "int", nullable: false),
+                    From = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    To = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Code = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_OrderItems", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Orders",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    CustomerID = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    OrderDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    From = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    To = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Code = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Orders", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Stocks",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
@@ -192,11 +272,43 @@ namespace BankingApp.Infra.Migrations
                     Code = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Ticker = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Price = table.Column<double>(type: "float", nullable: false)
+                    Price = table.Column<decimal>(type: "decimal(16,4)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Stock", x => x.Id);
+                    table.PrimaryKey("PK_Stocks", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "StocksBasketItems",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    StockID = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    StocksBasketID = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Quantity = table.Column<int>(type: "int", nullable: false),
+                    From = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    To = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Code = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_StocksBasketItems", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "StocksBaskets",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    CustomerID = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    From = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    To = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Code = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_StocksBaskets", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -306,7 +418,7 @@ namespace BankingApp.Infra.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Account",
+                name: "Accounts",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
@@ -317,9 +429,9 @@ namespace BankingApp.Infra.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Account", x => x.Id);
+                    table.PrimaryKey("PK_Accounts", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Account_MoneyAmount_Id",
+                        name: "FK_Accounts_MoneyAmount_Id",
                         column: x => x.Id,
                         principalTable: "MoneyAmount",
                         principalColumn: "Id",
@@ -327,7 +439,7 @@ namespace BankingApp.Infra.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ATM",
+                name: "ATMs",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
@@ -336,9 +448,9 @@ namespace BankingApp.Infra.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ATM", x => x.Id);
+                    table.PrimaryKey("PK_ATMs", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ATM_MoneyAmount_Id",
+                        name: "FK_ATMs_MoneyAmount_Id",
                         column: x => x.Id,
                         principalTable: "MoneyAmount",
                         principalColumn: "Id",
@@ -346,7 +458,7 @@ namespace BankingApp.Infra.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Investment",
+                name: "Investments",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
@@ -355,9 +467,9 @@ namespace BankingApp.Infra.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Investment", x => x.Id);
+                    table.PrimaryKey("PK_Investments", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Investment_MoneyAmount_Id",
+                        name: "FK_Investments_MoneyAmount_Id",
                         column: x => x.Id,
                         principalTable: "MoneyAmount",
                         principalColumn: "Id",
@@ -365,7 +477,7 @@ namespace BankingApp.Infra.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Loan",
+                name: "Loans",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
@@ -375,9 +487,9 @@ namespace BankingApp.Infra.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Loan", x => x.Id);
+                    table.PrimaryKey("PK_Loans", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Loan_MoneyAmount_Id",
+                        name: "FK_Loans_MoneyAmount_Id",
                         column: x => x.Id,
                         principalTable: "MoneyAmount",
                         principalColumn: "Id",
@@ -385,7 +497,7 @@ namespace BankingApp.Infra.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Transaction",
+                name: "Transactions",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
@@ -398,9 +510,9 @@ namespace BankingApp.Infra.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Transaction", x => x.Id);
+                    table.PrimaryKey("PK_Transactions", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Transaction_MoneyAmount_Id",
+                        name: "FK_Transactions_MoneyAmount_Id",
                         column: x => x.Id,
                         principalTable: "MoneyAmount",
                         principalColumn: "Id",
@@ -408,41 +520,41 @@ namespace BankingApp.Infra.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "InvestingAccount",
+                name: "InvestingAccounts",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_InvestingAccount", x => x.Id);
+                    table.PrimaryKey("PK_InvestingAccounts", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_InvestingAccount_Account_Id",
+                        name: "FK_InvestingAccounts_Accounts_Id",
                         column: x => x.Id,
-                        principalTable: "Account",
+                        principalTable: "Accounts",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
-                name: "LoanAccount",
+                name: "LoanAccounts",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_LoanAccount", x => x.Id);
+                    table.PrimaryKey("PK_LoanAccounts", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_LoanAccount_Account_Id",
+                        name: "FK_LoanAccounts_Accounts_Id",
                         column: x => x.Id,
-                        principalTable: "Account",
+                        principalTable: "Accounts",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
-                name: "CarLoan",
+                name: "CarLoans",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
@@ -452,17 +564,17 @@ namespace BankingApp.Infra.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CarLoan", x => x.Id);
+                    table.PrimaryKey("PK_CarLoans", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_CarLoan_Loan_Id",
+                        name: "FK_CarLoans_Loans_Id",
                         column: x => x.Id,
-                        principalTable: "Loan",
+                        principalTable: "Loans",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
-                name: "HomeLoan",
+                name: "HomeLoans",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
@@ -471,17 +583,17 @@ namespace BankingApp.Infra.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_HomeLoan", x => x.Id);
+                    table.PrimaryKey("PK_HomeLoans", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_HomeLoan_Loan_Id",
+                        name: "FK_HomeLoans_Loans_Id",
                         column: x => x.Id,
-                        principalTable: "Loan",
+                        principalTable: "Loans",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
-                name: "PersonalLoan",
+                name: "PersonalLoans",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
@@ -489,11 +601,11 @@ namespace BankingApp.Infra.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PersonalLoan", x => x.Id);
+                    table.PrimaryKey("PK_PersonalLoans", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_PersonalLoan_Loan_Id",
+                        name: "FK_PersonalLoans_Loans_Id",
                         column: x => x.Id,
-                        principalTable: "Loan",
+                        principalTable: "Loans",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -556,52 +668,73 @@ namespace BankingApp.Infra.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "ATM");
+                name: "ATMManagers");
 
             migrationBuilder.DropTable(
-                name: "ATMManager");
+                name: "ATMs");
 
             migrationBuilder.DropTable(
-                name: "Bank");
+                name: "Banks");
 
             migrationBuilder.DropTable(
-                name: "Calculator");
+                name: "Calculators");
 
             migrationBuilder.DropTable(
-                name: "CarLoan");
+                name: "CarLoans");
 
             migrationBuilder.DropTable(
-                name: "Crypto");
+                name: "CryptoBasketItems");
 
             migrationBuilder.DropTable(
-                name: "Customer");
+                name: "CryptoBaskets");
 
             migrationBuilder.DropTable(
-                name: "HomeLoan");
+                name: "CryptoPortfolios");
 
             migrationBuilder.DropTable(
-                name: "InvestingAccount");
+                name: "Cryptos");
 
             migrationBuilder.DropTable(
-                name: "Investment");
+                name: "Customers");
 
             migrationBuilder.DropTable(
-                name: "LoanAccount");
+                name: "HomeLoans");
 
             migrationBuilder.DropTable(
-                name: "LoanManager");
+                name: "InvestingAccounts");
 
             migrationBuilder.DropTable(
-                name: "Notification");
+                name: "Investments");
 
             migrationBuilder.DropTable(
-                name: "PersonalLoan");
+                name: "LoanAccounts");
 
             migrationBuilder.DropTable(
-                name: "Stock");
+                name: "LoanManagers");
 
             migrationBuilder.DropTable(
-                name: "Transaction");
+                name: "Notifications");
+
+            migrationBuilder.DropTable(
+                name: "OrderItems");
+
+            migrationBuilder.DropTable(
+                name: "Orders");
+
+            migrationBuilder.DropTable(
+                name: "PersonalLoans");
+
+            migrationBuilder.DropTable(
+                name: "Stocks");
+
+            migrationBuilder.DropTable(
+                name: "StocksBasketItems");
+
+            migrationBuilder.DropTable(
+                name: "StocksBaskets");
+
+            migrationBuilder.DropTable(
+                name: "Transactions");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
@@ -610,10 +743,10 @@ namespace BankingApp.Infra.Migrations
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
-                name: "Account");
+                name: "Accounts");
 
             migrationBuilder.DropTable(
-                name: "Loan");
+                name: "Loans");
 
             migrationBuilder.DropTable(
                 name: "MoneyAmount");

@@ -8,7 +8,7 @@ namespace BankingApp.Infra.Investing
 	public sealed class InvestmentsRepository :
 		UniqueEntitiesRepository<Investment, InvestmentData>, IInvestmentRepository
 	{
-		public InvestmentsRepository(ApplicationDbContext c) : base(c, c.Investment) { }
+		public InvestmentsRepository(ApplicationDbContext c) : base(c, c.Investments) { }
 		protected internal override Investment toDomainObject(InvestmentData d)
 			=> new Investment(d);
 	}

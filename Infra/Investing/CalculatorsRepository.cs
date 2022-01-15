@@ -7,7 +7,7 @@ namespace BankingApp.Infra.Investing
 {
     public sealed class CalculatorsRepository : UniqueEntitiesRepository<Calculator, CalculatorData>,ICalculatorsRepository
     {
-        public CalculatorsRepository(ApplicationDbContext c): base(c,c.Calculator){}
+        public CalculatorsRepository(ApplicationDbContext c): base(c,c.Calculators){}
         protected internal override Calculator toDomainObject(CalculatorData d)=> new Calculator(d);
     }
 }

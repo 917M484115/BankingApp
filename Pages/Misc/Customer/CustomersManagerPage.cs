@@ -18,24 +18,17 @@ namespace BankingApp.Pages.Misc
         {
             createColumn(x => Item.Id);
             createColumn(x => Item.Name);
-            createColumn(x => Item.Code);
             createColumn(x => Item.Age);
-            createColumn(x => Item.Birthday);
-            createColumn(x => Item.From);
-            createColumn(x => Item.To);
+            createColumn(x => Item.Country);
         }
         public override string GetName(IHtmlHelper<CustomersManagerPage> h, int i) => i switch
         {
-            3 => getName<int>(h,i),
-            4 or 6 => getName<DateTime?>(h, i),
-            5 => getName<DateTime?>(h, i),
+            2 => getName<int>(h,i),
             _ => base.GetName(h, i)
         };
         public override IHtmlContent GetValue(IHtmlHelper<CustomersManagerPage> h, int i) => i switch
         {
-            3 => getValue<int>(h, i),
-            4 or 6 => getValue<DateTime?>(h, i),
-            5 => getValue<DateTime?>(h, i),
+            2 => getValue<int>(h, i),
             _ => base.GetValue(h, i)
         };
     }

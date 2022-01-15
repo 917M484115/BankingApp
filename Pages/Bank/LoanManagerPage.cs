@@ -17,7 +17,6 @@ namespace BankingApp.Pages.Bank
         {
             createColumn(x => Item.Id);
             createColumn(x => Item.Age);
-            createColumn(x => Item.Birthday);
             createColumn(x => Item.Country);
         }
 

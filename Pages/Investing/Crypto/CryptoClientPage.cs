@@ -35,6 +35,6 @@ namespace BankingApp.Pages.Investing
             3 => getValue<decimal>(h, i),
             _ => getValue<string>(h, i)
         };
-        public override string BackToMasterDetailPageUrl => $"/Customer/Index?handler=Index";
+        public override string BackToMasterDetailPageUrl => $"/Customer/Crypto/Index?handler=Index";
     }
 }

@@ -8,8 +8,7 @@ namespace BankingApp.Domain.Common
 
         protected internal PersonEntity(T d = null) : base(d) { }
 
-        public virtual int Age => Data?.Age ?? 0;
-        public virtual DateTime? Birthday => Data?.Birthday ?? null;
+        public virtual int Age => Data?.Age ?? UnspecifiedInteger;
         public virtual string Country => Data?.Country ?? Unspecified;
     }
 }

@@ -12,7 +12,7 @@ namespace BankingApp.Infra.ATM
 	public sealed class ATMManagerRepository :
 		UniqueEntitiesRepository<ATMManager, ATMManagerData>, IATMManagerRepository
 	{
-		public ATMManagerRepository(ApplicationDbContext c) : base(c, c.ATMManager) { }
+		public ATMManagerRepository(ApplicationDbContext c) : base(c, c.ATMManagers) { }
 		protected internal override ATMManager toDomainObject(ATMManagerData d)
 			=> new ATMManager(d);
 	}

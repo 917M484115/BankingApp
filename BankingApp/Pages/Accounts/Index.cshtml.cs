@@ -23,7 +23,7 @@ namespace Soft.Pages.Accounts
 
         public async Task OnGetAsync()
         {
-            AccountData = await _context.Account.ToListAsync();
+            AccountData = await _context.Accounts.ToListAsync();
         }
     }
 }
