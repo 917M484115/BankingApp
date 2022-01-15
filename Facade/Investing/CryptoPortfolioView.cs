@@ -1,4 +1,5 @@
 ﻿using BankingApp.Facade.Common;
+using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel;
 
 namespace BankingApp.Facade.Investing
@@ -14,5 +15,6 @@ namespace BankingApp.Facade.Investing
         [DisplayName("Unit price")] public decimal UnitPrice { get; set; }
         public int Units { get; set; }
         [DisplayName("Total Price")] public decimal TotalPrice { get; set; }
+        [TempData, DisplayName("Amount to sell")] public int AmountToSell { get; set; }
     }
 }

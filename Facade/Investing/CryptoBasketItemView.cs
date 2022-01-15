@@ -1,4 +1,5 @@
 ﻿using BankingApp.Facade.Common;
+using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel;
 
 namespace BankingApp.Facade.Investing
@@ -13,5 +14,6 @@ namespace BankingApp.Facade.Investing
         [DisplayName("BlockChain")] public string BlockChain { get;set;}
         [DisplayName("CryptoBasket")] public string CryptoBasketID { get; set; }
         [DisplayName("Total price")] public decimal TotalPrice { get; set; }
+        
     }
 }

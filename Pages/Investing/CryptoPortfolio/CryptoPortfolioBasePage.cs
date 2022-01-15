@@ -38,6 +38,7 @@ namespace BankingApp.Pages.Investing
             createColumn(x => Item.UnitPrice);
             createColumn(x => Item.Units);
             createColumn(x => Item.TotalPrice);
+            //createColumn(x => Item.AmountToSell);
         }
         public override string GetName(IHtmlHelper<TPage> h, int i) => i switch
         {
