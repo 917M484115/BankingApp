@@ -1,5 +1,4 @@
-﻿using BankingApp.Aids;
-using BankingApp.Data.Common;
+﻿using BankingApp.Data.Common;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace BankingApp.Tests.Data.Common

@@ -24,10 +24,11 @@
 
   <ItemGroup>
     <Folder Include="Core\" />
-    <Folder Include="Facade\" />
-    <Folder Include="Infra\" />
-    <Folder Include="Soft\" />
-    <Folder Include="Pages\" />
+    <Folder Include="Domain\Investing\" />
+    <Folder Include="Facade\Investing\" />
+    <Folder Include="Infra\Investing\" />
+    <Folder Include="Pages\Investing\" />
+    <Folder Include="Soft\Investing\" />
   </ItemGroup>
 
 </Project>
