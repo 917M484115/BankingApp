@@ -10,7 +10,7 @@ namespace BankingApp.Pages.Investing
     public sealed class BlockChainsClientPage : BlockChainsBasePage<BlockChainsClientPage>
     {
         public BlockChainsClientPage(IBlockChainsRepository r):base(r) { }
-        protected internal override Uri pageUrl()=> new Uri("/Client/BlockChains",UriKind.Relative);
+        protected internal override Uri pageUrl()=> new Uri("/Customer/BlockChains",UriKind.Relative);
         protected override void createTableColumns()
         {
             createColumn(x=>Item.Name);
