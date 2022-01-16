@@ -5,6 +5,6 @@
     @Html.Show(m => m.Item.Id)
     @Html.Show(m => m.Item.Name)
     @Html.Show(m => m.Item.Ticker)
-    @Html.Show(m => m.Item.Blockchain)
+    @Html.Show(m => m.Item.BlockchainID, Model.BlockChainName(Model.Item.BlockchainID))
     @Html.Show(m => m.Item.Price)
 </body>

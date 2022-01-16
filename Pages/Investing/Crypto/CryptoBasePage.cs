@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using BankingApp.Domain.Investing.Repositories;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Collections.Generic;
+using BankingApp.Aids.Reflection;
 
 namespace BankingApp.Pages.Investing
 {
@@ -16,16 +18,21 @@ namespace BankingApp.Pages.Investing
         ViewPage<TPage, ICryptoRepository, Crypto, CryptoView, CryptoData>
         where TPage : PageModel
     {
+        public IEnumerable<SelectListItem> BlockChains { get; }
         public ICryptoBasketsRepository CryptoBaskets { get;}
         public ICryptoBasketItemsRepository CryptoBasketItems { get; }
 
         protected CryptoBasePage(ICryptoRepository r,
-            ICryptoBasketsRepository cbr, ICryptoBasketItemsRepository cir) 
+            ICryptoBasketsRepository cbr, ICryptoBasketItemsRepository cir,IBlockChainsRepository bcr) 
             : base(r, "Crypto")
         {
+            BlockChains = newItemsList<BlockChain,BlockChainData>(bcr);
             CryptoBaskets = cbr;
             CryptoBasketItems = cir;
         }
+        protected internal override string pageSubtitle() =>
+            (FixedFilter == GetMember.Name<CryptoData>(x=>x.BlockChainID))? BlockChainName(FixedValue): null;
+        public string BlockChainName(string id)=>itemName(BlockChains,id);
         protected internal override Uri pageUrl() => new Uri("/Manager/Crypto", UriKind.Relative);
         protected internal override Crypto toObject(CryptoView v) => new CryptoViewFactory().Create(v);
         protected internal override CryptoView toView(Crypto o) => new CryptoViewFactory().Create(o);
@@ -35,20 +42,19 @@ namespace BankingApp.Pages.Investing
             createColumn(x => Item.Id);
             createColumn(x => Item.Name);
             createColumn(x => Item.Ticker);
-            createColumn(x => Item.Blockchain);
+            createColumn(x => Item.BlockchainID);
             createColumn(x => Item.Price);
         }
         public override string GetName(IHtmlHelper<TPage> h, int i) => i switch
         {
             4 => getName<decimal>(h, i),
-            5 or 6 => getName<DateTime?>(h, i),
             _ => base.getName<string>(h, i)
         };
 
         public override IHtmlContent GetValue(IHtmlHelper<TPage> h, int i) => i switch
         {
+            3 => getRaw(h, BlockChainName(Item?.BlockchainID)),
             4 => getValue<decimal>(h, i),
-            5 or 6 => getValue<DateTime?>(h, i),
             _ => base.getValue<string>(h, i)
         };
         public virtual async Task<IActionResult> OnGetSelectAsync(string id, string sortOrder, string searchString,

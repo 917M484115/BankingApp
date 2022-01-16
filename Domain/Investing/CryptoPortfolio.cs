@@ -15,7 +15,7 @@ namespace BankingApp.Domain.Investing
         public Customer Customer => new GetFrom<ICustomersRepository,Customer>().ById(CustomerID);
         public Crypto Crypto => new GetFrom<ICryptoRepository, Crypto>().ById(CryptoID);
         public string Ticker => Crypto?.Ticker ?? Unspecified;
-        public string BlockChain => Crypto?.Blockchain ?? Unspecified;
+        public string BlockChain => Crypto?.BlockChainID ?? Unspecified;
         public decimal UnitPrice => Crypto?.Price ?? UnspecifiedDecimal;
         public decimal TotalPrice
             => Safe.Run(() => UnitPrice * Units, UnspecifiedDecimal);
