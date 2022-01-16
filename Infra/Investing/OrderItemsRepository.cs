@@ -16,7 +16,8 @@ namespace BankingApp.Infra.Investing
                 {
                     OrderID = o.Id,
                     CryptoID = i.CryptoID,
-                    Units = i.Quantity
+                    Units = i.Quantity,
+                    OrderTime = System.DateTime.Now
                 };
                 var orderItem = toDomainObject(d);
                 await Add(orderItem);

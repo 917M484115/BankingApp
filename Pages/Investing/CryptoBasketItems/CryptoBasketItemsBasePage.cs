@@ -41,43 +41,6 @@ namespace BankingApp.Pages.Investing
         protected internal override CryptoBasketItem toObject(CryptoBasketItemView v) => new CryptoBasketItemViewFactory().Create(v);
         protected internal override CryptoBasketItemView toView(CryptoBasketItem o) => new CryptoBasketItemViewFactory().Create(o);
 
-        public IEnumerable<SelectListItem> Crypto { get; }
-        public IEnumerable<SelectListItem> CryptoBaskets { get; }
-
-        public override string BackToMasterDetailPageUrl => "/Manager/CryptoBaskets/Details" +
-                                                            "?handler=Details" +
-                                                            $"&id={FixedValue}";
-
-        protected internal override string pageSubtitle()
-        {
-            return CryptoBasketsName(FixedValue);
-        }
-
-        public string CryptoBasketsName(string id)
-        {
-            return itemName(CryptoBaskets, id);
-        }
-
-        public string CryptoName(string id)
-        {
-            return itemName(Crypto, id);
-        }
-
-        protected internal override Uri pageUrl()
-        {
-            return new("/Manager/CryptoBasketItems", UriKind.Relative);
-        }
-
-        protected internal override CryptoBasketItem toObject(CryptoBasketItemView v)
-        {
-            return new CryptoBasketItemViewFactory().Create(v);
-        }
-
-        protected internal override CryptoBasketItemView toView(CryptoBasketItem o)
-        {
-            return new CryptoBasketItemViewFactory().Create(o);
-        }
-
         protected override void createTableColumns()
         {
             createColumn(x => Item.Id);
@@ -88,14 +51,11 @@ namespace BankingApp.Pages.Investing
             createColumn(x => Item.UnitPrice);
             createColumn(x => Item.Quantity);
             createColumn(x => Item.TotalPrice);
-            createColumn(x => Item.From);
-            createColumn(x => Item.To);
         }
         public override string GetName(IHtmlHelper<TPage> h, int i) => i switch
         {
             5 or 7 => getName<decimal>(h, i),
             6 => getName<int>(h, i),
-            8 or 9 => getName<DateTime?>(h, i),
             _ => base.GetName(h, i)
         };
 
@@ -103,7 +63,6 @@ namespace BankingApp.Pages.Investing
         {
             5 or 7 => getValue<decimal>(h, i),
             6 => getValue<int>(h, i),
-            8 or 9 => getValue<DateTime?>(h, i),
             _ => base.GetValue(h, i)
         };
         public override string BackToMasterDetailPageUrl => $"/Manager/CryptoBaskets/Details" +

@@ -16,6 +16,7 @@ namespace BankingApp.Facade.Investing
                 v.BlockChain = o.Crypto.BlockChainID;
                 v.Ticker = o.Crypto.Ticker;
             }
+            v.OrderTime = o.OrderTime;
             v.UnitPrice = o.UnitPrice;
             v.TotalPrice = o.TotalPrice;
             return v;

@@ -68,6 +68,7 @@ namespace BankingApp.Pages.Investing
             createColumn(x => Item.UnitPrice);
             createColumn(x => Item.Units);
             createColumn(x => Item.TotalPrice);
+            createColumn(x => Item.OrderTime);
         }
 
         public override string GetName(IHtmlHelper<TPage> h, int i)
@@ -76,6 +77,7 @@ namespace BankingApp.Pages.Investing
             {
                 4 or 6 => getName<decimal>(h, i),
                 5 => getName<int>(h, i),
+                7 => getName<DateTime>(h,i),
                 _ => base.GetName(h, i)
             };
         }
@@ -86,6 +88,7 @@ namespace BankingApp.Pages.Investing
             {
                 4 or 6 => getValue<decimal>(h, i),
                 5 => getValue<int>(h, i),
+                7 => getValue<DateTime>(h, i),
                 _ => base.GetValue(h, i)
             };
         }

@@ -1,12 +1,14 @@
 ﻿using BankingApp.Facade.Common;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel;
-
+using System.ComponentModel.DataAnnotations;
+using DataAnnotationsExtensions;
 namespace BankingApp.Facade.Investing
 {
     public sealed class CryptoBasketItemView : UniqueEntityView
     {
         [DisplayName("Unit price")] public decimal UnitPrice { get; set; }
+        [Min(1)]
         public int Quantity { get; set; }
         [DisplayName("Crypto")] public string CryptoID { get; set; }
         [DisplayName("Crypto")] public string CryptoName { get; set; }
