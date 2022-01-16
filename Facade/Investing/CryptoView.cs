@@ -5,6 +5,6 @@ namespace BankingApp.Facade.Investing
 {
 	public class CryptoView : VirtualAssetView 
 	{
-        [DisplayName("BlockChain")]public string BlockСhainID { get;set;}
+        [DisplayName("BlockChain")]public string BlockChainID { get;set;}
     }
 }
