@@ -23,7 +23,7 @@ namespace BankingApp.Pages.Investing
         {
             createColumn(x => Item.Name);
             createColumn(x => Item.Ticker);
-            createColumn(x => Item.BlockchainID);
+            createColumn(x => Item.BlockСhainID);
             createColumn(x => Item.Price);
         }
         public override string GetName(IHtmlHelper<CryptoClientPage> h, int i) => i switch
@@ -33,7 +33,7 @@ namespace BankingApp.Pages.Investing
         };
         public override IHtmlContent GetValue(IHtmlHelper<CryptoClientPage> h, int i) => i switch
         {
-            2 => getRaw(h, BlockChainName(Item?.BlockchainID)),
+            2 => getRaw(h, BlockChainName(Item?.BlockСhainID)),
             3 => getValue<decimal>(h, i),
             _ => getValue<string>(h, i)
         };

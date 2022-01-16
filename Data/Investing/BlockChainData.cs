@@ -3,6 +3,6 @@ namespace BankingApp.Data.Investing
 {
     public sealed class BlockChainData:NamedEntityData
     {
-
+        
     }
 }

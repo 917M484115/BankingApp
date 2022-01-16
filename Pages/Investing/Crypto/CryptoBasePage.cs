@@ -42,8 +42,9 @@ namespace BankingApp.Pages.Investing
             createColumn(x => Item.Id);
             createColumn(x => Item.Name);
             createColumn(x => Item.Ticker);
-            createColumn(x => Item.BlockchainID);
+            createColumn(x => Item.BlockСhainID);
             createColumn(x => Item.Price);
+            //createColumn(x => Item.Code);
         }
         public override string GetName(IHtmlHelper<TPage> h, int i) => i switch
         {
@@ -53,7 +54,7 @@ namespace BankingApp.Pages.Investing
 
         public override IHtmlContent GetValue(IHtmlHelper<TPage> h, int i) => i switch
         {
-            3 => getRaw(h, BlockChainName(Item?.BlockchainID)),
+            3 => getRaw(h, BlockChainName(Item?.BlockСhainID)),
             4 => getValue<decimal>(h, i),
             _ => base.getValue<string>(h, i)
         };
@@ -70,6 +71,17 @@ namespace BankingApp.Pages.Investing
                 $"&fixedFilter={nameof(i.CryptoBasketID)}" +
                 $"&fixedValue={b.Id}", UriKind.Relative);
             return Redirect(url.ToString());
+        }
+        public override async Task<IActionResult> OnPostCreateAsync(
+            string sortOrder,
+            string searchString,
+            int? pageIndex,
+            string fixedFilter,
+            string fixedValue)
+        {
+            await addObject(sortOrder, searchString, pageIndex, fixedFilter, fixedValue)
+                .ConfigureAwait(true);
+            return Redirect(IndexUrl.ToString());
         }
     }
 }

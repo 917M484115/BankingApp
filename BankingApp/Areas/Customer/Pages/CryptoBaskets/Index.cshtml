@@ -16,7 +16,6 @@
             @Html.Header(
                 new Link(Html.DisplayNameFor(m => m.Item.CustomerName), "Index"),
                 new Link(Html.DisplayNameFor(m => m.Item.TotalPrice), "Index"),
-                new Link(Html.DisplayNameFor(m => m.Item.From), "Index"),
                 new Link(Html.DisplayNameFor(m => m.Item.Closed), "Index")
                 )
 
@@ -43,7 +42,6 @@
                         Model.FixedValue,
                         Html.DisplayFor(modelItem => item.CustomerName),
                         Html.DisplayFor(modelItem => item.TotalPrice),
-                        Html.DisplayFor(modelItem => item.From),
                         Html.DisplayFor(modelItem => item.Closed)
                         )
                 </tr>
