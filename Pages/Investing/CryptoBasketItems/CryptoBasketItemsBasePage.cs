@@ -1,7 +1,6 @@
-﻿using BankingApp.Aids.Constants;
-using BankingApp.Data.Common;
+﻿using System;
+using System.Collections.Generic;
 using BankingApp.Data.Investing;
-using BankingApp.Domain.Common;
 using BankingApp.Domain.Investing;
 using BankingApp.Domain.Investing.Repositories;
 using BankingApp.Facade.Investing;
@@ -9,9 +8,6 @@ using BankingApp.Pages.Common;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace BankingApp.Pages.Investing
 {
@@ -44,6 +40,44 @@ namespace BankingApp.Pages.Investing
         protected internal override Uri pageUrl() => new Uri("/Manager/CryptoBasketItems", UriKind.Relative);
         protected internal override CryptoBasketItem toObject(CryptoBasketItemView v) => new CryptoBasketItemViewFactory().Create(v);
         protected internal override CryptoBasketItemView toView(CryptoBasketItem o) => new CryptoBasketItemViewFactory().Create(o);
+
+        public IEnumerable<SelectListItem> Crypto { get; }
+        public IEnumerable<SelectListItem> CryptoBaskets { get; }
+
+        public override string BackToMasterDetailPageUrl => "/Manager/CryptoBaskets/Details" +
+                                                            "?handler=Details" +
+                                                            $"&id={FixedValue}";
+
+        protected internal override string pageSubtitle()
+        {
+            return CryptoBasketsName(FixedValue);
+        }
+
+        public string CryptoBasketsName(string id)
+        {
+            return itemName(CryptoBaskets, id);
+        }
+
+        public string CryptoName(string id)
+        {
+            return itemName(Crypto, id);
+        }
+
+        protected internal override Uri pageUrl()
+        {
+            return new("/Manager/CryptoBasketItems", UriKind.Relative);
+        }
+
+        protected internal override CryptoBasketItem toObject(CryptoBasketItemView v)
+        {
+            return new CryptoBasketItemViewFactory().Create(v);
+        }
+
+        protected internal override CryptoBasketItemView toView(CryptoBasketItem o)
+        {
+            return new CryptoBasketItemViewFactory().Create(o);
+        }
+
         protected override void createTableColumns()
         {
             createColumn(x => Item.Id);
