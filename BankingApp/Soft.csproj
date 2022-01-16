@@ -41,6 +41,7 @@
 
   <ItemGroup>
     <Folder Include="Areas\Customer\Pages\StockBasketItems\" />
+    <Folder Include="Pages\Shared\Partials\" />
   </ItemGroup>
 
 </Project>

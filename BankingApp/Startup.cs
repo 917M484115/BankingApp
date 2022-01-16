@@ -46,7 +46,7 @@ namespace BankingApp
             s.AddScoped<ICarLoanRepository, CarLoanRepository>();
             s.AddScoped<IHomeLoanRepository, HomeLoanRepository>();
             s.AddScoped<IPersonalLoanRepository, PersonalLoanRepository>();
-            s.AddScoped<IInvestingAccountRepository, InvestingAccountRepository>();
+            
 
             s.AddScoped<IBlockChainsRepository,BlockChainRepository>();
             s.AddScoped<ICryptoPortfolioRepository,CryptoPortfolioRepository>();

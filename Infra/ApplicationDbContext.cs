@@ -17,8 +17,6 @@ namespace BankingApp.Infra
         public DbSet<ATMData> ATMs { get; set; }
         public DbSet<ATMManagerData> ATMManagers { get; set; }
         public DbSet<AccountData> Accounts { get; set; }
-        public DbSet<InvestingAccountData> InvestingAccounts { get; set; }
-        public DbSet<InvestmentData> Investments { get; set; }
         public DbSet<LoanAccountData> LoanAccounts { get; set; }
         public DbSet<LoanData> Loans { get; set; }
         public DbSet<CarLoanData> CarLoans { get; set; }
@@ -68,8 +66,6 @@ namespace BankingApp.Infra
             modelBuilder.Entity<ATMManagerData>().ToTable(nameof(ATMManagers));
             modelBuilder.Entity<CryptoPortfolioData>().ToTable(nameof(CryptoPortfolios));
             modelBuilder.Entity<AccountData>().ToTable(nameof(Accounts));
-            modelBuilder.Entity<InvestingAccountData>().ToTable(nameof(InvestingAccounts));
-            modelBuilder.Entity<InvestmentData>().ToTable(nameof(Investments));
             modelBuilder.Entity<LoanData>().ToTable(nameof(Loans));
             modelBuilder.Entity<LoanAccountData>().ToTable(nameof(LoanAccounts));
             modelBuilder.Entity<CarLoanData>().ToTable(nameof(CarLoans));
