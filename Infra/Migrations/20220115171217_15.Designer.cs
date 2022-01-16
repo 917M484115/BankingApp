@@ -4,14 +4,16 @@ using BankingApp.Infra;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BankingApp.Infra.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220115171217_15")]
+    partial class _15
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -67,28 +69,6 @@ namespace BankingApp.Infra.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("MoneyAmount");
-                });
-
-            modelBuilder.Entity("BankingApp.Data.Investing.BlockChainData", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Code")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("From")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("To")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("BlockChains");
                 });
 
             modelBuilder.Entity("BankingApp.Data.Investing.CalculatorData", b =>
@@ -183,7 +163,7 @@ namespace BankingApp.Infra.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("BlockChainID")
+                    b.Property<string>("Blockchain")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Code")

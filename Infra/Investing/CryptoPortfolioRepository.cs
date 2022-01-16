@@ -23,7 +23,8 @@ namespace BankingApp.Infra.Investing
                     {
                         CryptoID = i.CryptoID,
                         Units = i.Quantity,
-                        CustomerID =b.CustomerID
+                        CustomerID =b.CustomerID,
+                       
                     };
                     var portfolioItem = toDomainObject(d);
                     await Add(portfolioItem);

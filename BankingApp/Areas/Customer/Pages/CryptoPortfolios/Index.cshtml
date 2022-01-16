@@ -1,5 +1,6 @@
 ﻿@page
 @using BankingApp.Pages.Common.Extensions;
+@using BankingApp.Pages.Common.Aids
 @model BankingApp.Pages.Investing.CryptoPortfolioClientPage
 
 @{
@@ -10,4 +11,51 @@
 @section Create {
 }
 
-@Html.ShowTable(Model)
+@*@Html.ShowTable(Model, null, "Sell(EDIT)", "Details", "SELL(DELETE)")*@
+<body>
+    <table class="table">
+        <thead>
+            @Html.Header(
+                new Link(Html.DisplayNameFor(m => m.Item.CustomerName), "Index"),
+                new Link(Html.DisplayNameFor(m => m.Item.CryptoName), "Index"),
+                new Link(Html.DisplayNameFor(m => m.Item.BlockChain), "Index"),
+                new Link(Html.DisplayNameFor(m => m.Item.Ticker), "Index"),
+                new Link(Html.DisplayNameFor(m => m.Item.UnitPrice), "Index"),
+                new Link(Html.DisplayNameFor(m => m.Item.Units), "Index"),
+                new Link(Html.DisplayNameFor(m => m.Item.TotalPrice), "Index")
+                )
+
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Items)
+            {
+                var buttons = new RowButtons
+                {
+                    Select = null,
+                    Delete = "SELL(DELETE)",
+                    Edit = "SELL(EDIT)",
+                    Details = "DETAILS"
+                };
+                <tr>
+                    @Html.Row(
+                        buttons,
+                        page,
+                        item.GetId(),
+                        Model.SortOrder,
+                        Model.SearchString,
+                        Model.PageIndex,
+                        Model.FixedFilter,
+                        Model.FixedValue,
+                        Html.DisplayFor(modelItem => item.CustomerName),
+                        Html.DisplayFor(modelItem => item.CryptoName),
+                        Html.DisplayFor(modelItem => item.BlockChain),
+                        Html.DisplayFor(modelItem => item.Ticker),
+                        Html.DisplayFor(modelItem => item.UnitPrice),
+                        Html.DisplayFor(modelItem => item.Units),
+                        Html.DisplayFor(modelItem => item.TotalPrice)
+                        )
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>

@@ -19,5 +19,6 @@ namespace BankingApp.Domain.Investing
         public decimal UnitPrice => Crypto?.Price ?? UnspecifiedDecimal;
         public decimal TotalPrice
             => Safe.Run(() => UnitPrice * Units, UnspecifiedDecimal);
+        public int AmountToSell;
     }
 }
