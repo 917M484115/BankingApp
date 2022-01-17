@@ -1,7 +1,10 @@
-﻿using System;
+﻿using BankingApp.Aids.Random;
+using BankingApp.Aids.Reflection;
+using System;
+using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
-using BankingApp.Aids;
-using BankingApp.Aids.Random;
+using System.Linq;
+using System.Reflection;
 
 namespace BankingApp.Tests
 {
@@ -11,11 +14,13 @@ namespace BankingApp.Tests
         protected Type type;
         protected void isProperty<T>(bool isNullable = true)
         {
-            var t = type;
             var n = getPropertyNameAfter(nameof(isProperty));
-            var pi = t?.GetProperty(n);
-            isNotNull(pi,
-                $"The class {t} does not have a property {n}");
+            testProperty<T>(n, isNullable);
+        }
+        private void testProperty<T>(string propertyName, bool isNullable = true)
+        {
+            var n = propertyName;
+            var pi = getPropertyInfo(n);
             isTrue(pi.CanRead, $"The property {n} does not have a getter");
             isTrue(pi.CanWrite, $"The property {n} does not have a setter");
             var expectedValue = GetRandom.Value(typeof(T));
@@ -27,27 +32,89 @@ namespace BankingApp.Tests
             pi.SetValue(objUnderTests, null);
             isNull(pi.GetValue(objUnderTests), $"Can not set null for the property {n}.");
         }
+        protected void isDisplayProperty<T>(string displayName, bool isNullable = true)
+        {
+            var n = getPropertyNameAfter(nameof(isDisplayProperty));
+            testProperty<T>(n, isNullable);
+            hasDisplayName(n, displayName);
+        }
+        protected void isRequiredProperty<T>(string displayName, bool isNullable = true)
+        {
+            var n = getPropertyNameAfter(nameof(isRequiredProperty));
+            testProperty<T>(n, isNullable);
+            hasRequiredAttribute(n);
+        }
+
+        private void hasRequiredAttribute(string n)
+        {
+            var pi = objUnderTests.GetType().GetProperty(n);
+            var list = pi?.GetCustomAttributes(typeof(RequiredAttribute), true);
+            var a = list?.Cast<RequiredAttribute>().Single();
+            if (a is null) isFalse(true, $"Property \"{n}\" is not required");
+        }
+
+        private void hasDateAttribute(string n)
+        {
+            var pi = objUnderTests.GetType().GetProperty(n);
+            var list = pi?.GetCustomAttributes(typeof(DataTypeAttribute), true);
+            var a = list?.Cast<DataTypeAttribute>().Single();
+            var actual = a?.DataType;
+            var expected = DataType.Date;
+            areEqual(expected, actual, $"Property \"{n}\" has not DataType(DataType.Date) attribute");
+        }
+
+        protected void isDateProperty<T>(string displayName, bool isNullable = true)
+        {
+            var n = getPropertyNameAfter(nameof(isDateProperty));
+            testProperty<T>(n, isNullable);
+            hasDateAttribute(n);
+        }
+
+        protected void isAbstractMethod<T>(string methodName)
+        {
+            var mi = typeof(T).GetMethod(methodName);
+            var actual = mi.IsAbstract;
+            isTrue(actual, $"Method \"{methodName}\" is not abstract.");
+        }
+
+        private void hasDisplayName(string n, string displayName)
+        {
+            var actual = GetMember.DisplayName(n, objUnderTests.GetType());
+            areEqual(displayName, actual);
+        }
 
         protected void isProperty<T>(T expectedValue)
         {
-            var t = type;
             var n = getPropertyNameAfter(nameof(isProperty));
-            var pi = t?.GetProperty(n);
-            isNotNull(pi,
-                $"The class {t} does not have a property {n}");
+            var pi = getPropertyInfo(n);
             isTrue(pi.CanRead, $"The property {n} does not have a getter");
             var actual = pi.GetValue(objUnderTests);
             areEqual(expectedValue, actual,
                 $"For the property {n}.");
         }
-
+        protected void isBooleanProperty(bool expectedValue)
+        {
+            var n = getPropertyNameAfter(nameof(isBooleanProperty));
+            var pi = getPropertyInfo(n);
+            isTrue(pi.CanRead, $"The property {n} does not have a getter");
+            var actual = pi.GetValue(objUnderTests);
+            areEqual(expectedValue, actual,
+                $"For the property {n}.");
+        }
+        private PropertyInfo getPropertyInfo(string propertyName)
+        {
+            var t = objUnderTests?.GetType() ?? type;
+            var pi = t?.GetProperty(propertyName);
+            if (pi == null) pi = type?.GetProperty(propertyName);
+            isNotNull(pi, $"The class {t} does not have a property {propertyName}");
+            return pi;
+        }
         private string getPropertyNameAfter(string methodName)
         {
             var stack = new StackTrace();
             var i = getFrameIndex(stack, methodName);
             return nextMethodName(stack, i);
         }
-
         private string nextMethodName(StackTrace stack, int frameIndex)
         {
             var i = frameIndex;
@@ -59,7 +126,6 @@ namespace BankingApp.Tests
             }
             return string.Empty;
         }
-
         private int getFrameIndex(StackTrace stack, string methodName)
         {
             int index = -1;
@@ -71,5 +137,8 @@ namespace BankingApp.Tests
             }
             return index;
         }
+
+        public TClass random<TClass>() => GetRandom.Object<TClass>();
+        public int random(int min, int max) => GetRandom.Int32(min, max);
     }
 }

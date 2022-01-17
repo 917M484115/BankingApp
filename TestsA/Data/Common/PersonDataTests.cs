@@ -1,6 +1,4 @@
-﻿using System;
-using BankingApp.Aids;
-using BankingApp.Data.Common;
+﻿using BankingApp.Data.Common;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace BankingApp.Tests.Data.Common
@@ -9,12 +7,8 @@ namespace BankingApp.Tests.Data.Common
     public class PersonDataTests : AbstractClassTests<NamedEntityData>
     {
         private class testClass : PersonData { }
-        protected override PersonData createObject() =>new testClass();
-        [TestMethod] public void LastNameTest() => isProperty<string>();
-        [TestMethod] public void FirstMidNameTest() => isProperty<string>();
-
-        [TestMethod] public void AgeTest() => isProperty<int>();
-        [TestMethod] public void PhotoTest() => isProperty<byte[]>();
-        [TestMethod] public void BirthdayTest() => isProperty<DateTime?>();
+        protected override object createObject() =>new testClass();
+        [TestMethod] public void CountryTest() => isProperty<string>();
+        [TestMethod] public void AgeTest() => isProperty<int>(false);
     }
 }

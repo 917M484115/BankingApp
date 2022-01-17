@@ -1,16 +1,15 @@
-﻿using System;
-using BankingApp.Aids.Methods;
+﻿using BankingApp.Aids.Methods;
 using BankingApp.Data.Common;
+using System;
 
 namespace BankingApp.Domain.Common
 {
+
     public abstract class ValueObject<TData> : BaseEntity where TData : class, new()
     {
 
-        protected readonly TData data;
-        //internal static Guid guid;
+        internal protected readonly TData data;
         protected internal ValueObject(TData d = null) => data = d ?? new TData();
-
         public TData Data
         {
             get
@@ -18,30 +17,22 @@ namespace BankingApp.Domain.Common
                 if (data is null) return null;
                 var d = new TData();
                 Copy.Members(data, d);
-
                 return d;
             }
         }
-
         public bool IsUnspecified => isUnspecified();
-
         private bool isUnspecified()
-        {
-            return data is null || arePropertiesEqual(data, new TData());
-        }
-
+            => data is null || arePropertiesEqual(data, new TData());
         private static bool arePropertiesEqual(TData a, TData b)
         {
             foreach (var property in a.GetType().GetProperties())
             {
                 var name = property.Name;
-
                 var p = b.GetType().GetProperty(name);
 
                 if (p is null) return false;
                 var expected = property.GetValue(a);
                 var actual = p.GetValue(b);
-
                 switch (expected)
                 {
                     case null when (actual is null):
@@ -58,7 +49,6 @@ namespace BankingApp.Domain.Common
 
             return true;
         }
-
         private static bool isGuid(string s)
         {
             try
@@ -68,6 +58,5 @@ namespace BankingApp.Domain.Common
             }
             catch (FormatException) { return false; }
         }
-
     }
 }

@@ -20,7 +20,7 @@ namespace BankingApp.Infra.Investing
                 .OrderByDescending(x => x.From)
                 .ToListAsync();
             if (l.Count > 0) return toDomainObject(l[0]);
-            var d = new OrderData { CustomerID = name, From = DateTime.Now };
+            var d = new OrderData { CustomerID = name, OrderDate = DateTime.Now };
             var o = new Order(d);
             await Add(o);
             return o;

@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace BankingApp.Tests.Data.Common
 {
     [TestClass]
-    public class VirtualEntityDataTests : AbstractClassTests<NamedEntityData>
+    public class VirtualAssetDataTests : AbstractClassTests<NamedEntityData>
     {
         private class testClass : VirtualAssetData { }
         protected override object createObject() => new testClass();

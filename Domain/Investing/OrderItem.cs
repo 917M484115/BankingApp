@@ -2,7 +2,7 @@
 using BankingApp.Data.Investing;
 using BankingApp.Domain.Common;
 using BankingApp.Domain.Investing.Repositories;
-
+using System;
 namespace BankingApp.Domain.Investing
 {
     public sealed class OrderItem : UniqueEntity<OrderItemData>
@@ -14,7 +14,8 @@ namespace BankingApp.Domain.Investing
         public string Blockchain => Crypto?.BlockChainID ?? Unspecified;
         public string Ticker => Crypto?.Ticker?? Unspecified;
         public int Units => Data?.Units ?? UnspecifiedInteger;
-        public string OrderId => Data?.OrderID ?? Unspecified;
+        public DateTime OrderTime => Data?.OrderTime ?? UnspecifiedValidTo;
+        public string OrderID => Data?.OrderID ?? Unspecified;
         public decimal TotalPrice => Safe.Run(() => UnitPrice * Units, decimal.MaxValue);
     }
 }
