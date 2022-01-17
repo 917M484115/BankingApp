@@ -36,13 +36,24 @@ namespace BankingApp.Aids.Methods {
 
         private static T run<T>(Func<T> function, T valueOnExeption)
         {
-            return function(); 
-            
+            try { return function(); }
+            catch (Exception e)
+            {
+                Log.Exception(e);
+
+                return valueOnExeption;
+            }
         }
 
         private static T run<T>(Func<T> function, Func<string, T> valueOnExeption) {
-            return function(); 
-           
+            try { return function(); }
+            catch (Exception e)
+            {
+                Log.Exception(e);
+
+                return valueOnExeption is null ? default : valueOnExeption(e.Message);
+            }
+
         }
 
         private static void run(Action action) {

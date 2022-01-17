@@ -1,13 +1,10 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using BankingApp.Aids;
 using BankingApp.Aids.Classes;
 using BankingApp.Aids.Extensions;
 using BankingApp.Aids.Reflection;
-using Tests;
 
 namespace BankingApp.Tests
 {
@@ -36,7 +33,12 @@ namespace BankingApp.Tests
             var projectName = testableClassName.GetTail().GetHead();
             var l = GetSolution.TypesForAssembly($"{solutionName}.{projectName}");
             var list = l?.Where(x => x.FullName == testableClassName)?.ToList();
-            return (list?.Count() > 0)? list[0]: null;
+            if (list?.Count == 0)
+            {
+                testableClassName += "`";
+                list = l?.Where(x => x.FullName.StartsWith(testableClassName))?.ToList();
+            }
+            return (list?.Count() > 0) ? list[0] : null;
         }
         [TestMethod]
         public virtual void IsTested()

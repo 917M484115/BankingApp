@@ -15,7 +15,7 @@ namespace BankingApp.Domain.Investing
         public string Ticker => Crypto?.Ticker?? Unspecified;
         public int Units => Data?.Units ?? UnspecifiedInteger;
         public DateTime OrderTime => Data?.OrderTime ?? UnspecifiedValidTo;
-        public string OrderId => Data?.OrderID ?? Unspecified;
+        public string OrderID => Data?.OrderID ?? Unspecified;
         public decimal TotalPrice => Safe.Run(() => UnitPrice * Units, decimal.MaxValue);
     }
 }

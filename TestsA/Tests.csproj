@@ -24,7 +24,6 @@
 
   <ItemGroup>
     <Folder Include="Core\" />
-    <Folder Include="Domain\Investing\" />
     <Folder Include="Facade\Investing\" />
     <Folder Include="Infra\Investing\" />
     <Folder Include="Pages\Investing\" />

@@ -5,7 +5,7 @@ using BankingApp.Data.Common;
 using BankingApp.Tests;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Tests.Data.Common
+namespace BankingApp.Tests.Data.Common
 {
     [TestClass]
     public class BaseEntityTests : AbstractClassTests<object>

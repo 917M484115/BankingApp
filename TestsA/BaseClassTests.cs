@@ -11,7 +11,7 @@ namespace BankingApp.Tests
             set => objUnderTests = value;
         }
         protected abstract object createObject();
-        protected virtual Type getBaseClass() => typeof(TBaseClass);
+        protected virtual Type getBaseClass() => type?.BaseType;
 
         [TestInitialize]
         public virtual void TestInitialize()
@@ -20,6 +20,10 @@ namespace BankingApp.Tests
             obj = createObject();
         }
         [TestMethod] public void CanCreateTest() => isNotNull(createObject());
-        [TestMethod] public void IsInheritedTest() => areEqual(getBaseClass(), type?.BaseType);
+        [TestMethod]
+        public virtual void IsInheritedTest()
+        {
+            areEqual(typeof(TBaseClass), getBaseClass());
+        }
     }
 }

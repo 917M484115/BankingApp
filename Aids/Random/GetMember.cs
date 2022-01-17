@@ -1,35 +1,44 @@
-﻿using System;
+﻿using BankingApp.Aids.Methods;
+using System;
 using System.ComponentModel;
 using System.Linq;
 using System.Linq.Expressions;
-using BankingApp.Aids.Methods;
 
-namespace BankingApp.Aids.Reflection {
+namespace BankingApp.Aids.Reflection
+{
 
-    public static class GetMember {
+    public static class GetMember
+    {
 
-        public static string Name<T>(Expression<Func<T, object>> ex) {
+        public static string Name<T>(Expression<Func<T, object>> ex)
+        {
             return Safe.Run(() => name(ex?.Body), string.Empty);
         }
 
-        public static string Name<T, TResult>(Expression<Func<T, TResult>> ex) {
+        public static string Name<T, TResult>(Expression<Func<T, TResult>> ex)
+        {
             return Safe.Run(() => name(ex?.Body), string.Empty);
         }
 
-        public static string Name<T>(Expression<Action<T>> ex) {
+        public static string Name<T>(Expression<Action<T>> ex)
+        {
             return Safe.Run(() => name(ex?.Body), string.Empty);
         }
 
-        public static string DisplayName<T>(Expression<Func<T, object>> ex) {
+        public static string DisplayName<T>(Expression<Func<T, object>> ex)
+        {
             return Safe.Run(() => {
                 var name = Name(ex);
                 return DisplayName<T>(name);
             }, string.Empty);
         }
-        public static string DisplayName<T>(string propertyName) {
+        public static string DisplayName<T>(string propertyName) => DisplayName(propertyName, typeof(T));
+
+        public static string DisplayName(string propertyName, Type t)
+        {
             return Safe.Run(() => {
                 var name = propertyName ?? string.Empty;
-                var p = GetClass.Property<T>(name);
+                var p = t.GetProperty(name);
                 var list = p?.GetCustomAttributes(typeof(DisplayNameAttribute), true);
 
                 if (list is null || list.Length < 1) return name;
@@ -39,7 +48,9 @@ namespace BankingApp.Aids.Reflection {
             }, string.Empty);
         }
 
-        private static string name(Expression ex) {
+
+        private static string name(Expression ex)
+        {
             var member = ex as MemberExpression;
             var method = ex as MethodCallExpression;
             var operand = ex as UnaryExpression;
@@ -51,15 +62,18 @@ namespace BankingApp.Aids.Reflection {
             return string.Empty;
         }
 
-        private static string name(MemberExpression ex) {
+        private static string name(MemberExpression ex)
+        {
             return ex?.Member.Name ?? string.Empty;
         }
 
-        private static string name(MethodCallExpression ex) {
+        private static string name(MethodCallExpression ex)
+        {
             return ex?.Method.Name ?? string.Empty;
         }
 
-        private static string name(UnaryExpression ex) {
+        private static string name(UnaryExpression ex)
+        {
             var member = ex?.Operand as MemberExpression;
             var method = ex?.Operand as MethodCallExpression;
 
@@ -72,7 +86,4 @@ namespace BankingApp.Aids.Reflection {
     }
 
 }
-
-
-
 

@@ -7,6 +7,5 @@ namespace BankingApp.Data.Investing
         public string CustomerID {get;set;}
         public string CryptoID { get; set; }
         public int Units { get; set; }
-        public int AmountToSell { get; set; }
     }
 }
