@@ -4,9 +4,9 @@ namespace BankingApp.Pages.Common.Consts
 
     public static class ProductPagesUrls {
 
-        public static string Catalogs => "/Products/Catalogs";
-        public static string CatalogEntries => "/Products/CatalogEntries";
-        public static string CatalogedProducts => "/Products/CatalogedProducts";
+        public static string BlockChains => "/Products/BlockChains";
+        public static string BlockChainEntries => "/Products/BlockChainEntries";
+        public static string BlockChainedProducts => "/Products/BlockChainedProducts";
         public static string Features => "/Products/Features";
         public static string FeatureTypes => "/Products/FeatureTypes";
         public static string PossibleFeatureValues => "/Products/PossibleFeatureValues";

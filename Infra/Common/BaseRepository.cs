@@ -13,7 +13,7 @@ namespace BankingApp.Infra.Common {
         where TData : PeriodData, new() {
 
         protected internal DbContext db;
-        protected internal DbSet<TData> dbSet;
+        public DbSet<TData> dbSet;
 
         protected BaseRepository(DbContext c, DbSet<TData> s) {
             db = c;
@@ -86,7 +86,7 @@ namespace BankingApp.Infra.Common {
 
         public object GetById(string id) => Get(id).GetAwaiter().GetResult();
 
-        protected internal virtual IQueryable<TData> createSqlQuery() {
+        public virtual IQueryable<TData> createSqlQuery() {
             var query = from s in dbSet select s;
 
             return query;
