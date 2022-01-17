@@ -45,9 +45,6 @@ namespace BankingApp.Infra
             base.OnModelCreating(b);
             InitializeTables(b);
         }
-        //TODO vaadata, kuidas krüptod/stockid listina siia saada. Võib panna käsitsi nt 5 populaarseimat ja listist saab investeerides valida nende vahel.
-        //public DbSet<CryptoData> Crypto { get; set; }
-        //public DbSet<StockData> Stock { get; set; }
         public static void InitializeTables(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<BlockChainData>().ToTable(nameof(BlockChains));

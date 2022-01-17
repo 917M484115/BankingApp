@@ -1,15 +1,15 @@
-﻿namespace BankingApp.Domain.Common
-{
-    public interface IVirtualAssetEntity : IUniqueEntity
-    {
+﻿//namespace BankingApp.Domain.Common
+//{
+//    public interface IVirtualAssetEntity : IUniqueEntity
+//    {
 
-        double MoneyAmount { get; }
+//        double MoneyAmount { get; }
 
-    }
+//    }
 
-    public interface IVirtualAssetEntity<out TData> : IVirtualAssetEntity, IMoneyAmountEntity
-    {
+//    public interface IVirtualAssetEntity<out TData> : IVirtualAssetEntity, IMoneyAmountEntity
+//    {
 
-    }
+//    }
 
-}
+//}
