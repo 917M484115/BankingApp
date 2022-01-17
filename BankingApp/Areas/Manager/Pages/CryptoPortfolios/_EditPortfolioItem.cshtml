@@ -1,0 +1,13 @@
+﻿@using BankingApp.Pages.Common.Extensions;
+@model BankingApp.Pages.Investing.CryptoPortfolioManagerPage;
+
+<body>
+    <input type="hidden" asp-for="Item.Id" />
+    <input type="hidden" asp-for="Item.CryptoID" />
+
+    <input type="hidden" asp-for="Item.From" />
+    <input type="hidden" asp-for="Item.To" />
+    @Html.Editor(m => m.Item.CustomerID)
+    @Html.Editor(m => m.Item.CryptoName)
+    @Html.Editor(m => m.Item.Units)
+</body>

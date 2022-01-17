@@ -21,7 +21,7 @@ namespace BankingApp.Pages.Investing
         where TPage : PageModel
     {
 
-        protected CryptoPortfolioBasePage(ICryptoPortfolioRepository r) : base(r, "CryptoPortfolio")
+        protected CryptoPortfolioBasePage(ICryptoPortfolioRepository r, IOrderItemsRepository oir, IOrdersRepository or) : base(r, "CryptoPortfolio")
         {
         }
         protected internal override CryptoPortfolio toObject(CryptoPortfolioView v) => new CryptoPortfolioViewFactory().Create(v);
@@ -38,7 +38,6 @@ namespace BankingApp.Pages.Investing
             createColumn(x => Item.UnitPrice);
             createColumn(x => Item.Units);
             createColumn(x => Item.TotalPrice);
-            //createColumn(x => Item.AmountToSell);
         }
         public override string GetName(IHtmlHelper<TPage> h, int i) => i switch
         {

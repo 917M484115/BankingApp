@@ -12,6 +12,7 @@ namespace BankingApp.Domain.Investing
         public Crypto Crypto => new GetFrom<ICryptoRepository, Crypto>().ById(CryptoID);
         public decimal UnitPrice => Crypto?.Price ?? UnspecifiedDecimal;
         public string Blockchain => Crypto?.BlockChainID ?? Unspecified;
+        public string OrderType => Data?.OrderType?? Unspecified;
         public string Ticker => Crypto?.Ticker?? Unspecified;
         public int Units => Data?.Units ?? UnspecifiedInteger;
         public DateTime OrderTime => Data?.OrderTime ?? UnspecifiedValidTo;

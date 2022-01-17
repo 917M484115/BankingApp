@@ -26,6 +26,7 @@ namespace BankingApp.Pages.Investing
         protected internal override Uri pageUrl() => new Uri("/Customer/OrderItems", UriKind.Relative);
         protected override void createTableColumns()
         {
+            createColumn(x => Item.OrderType);
             createColumn(x => Item.CryptoName);
             createColumn(x => Item.UnitPrice);
             createColumn(x => Item.Units);
@@ -34,16 +35,16 @@ namespace BankingApp.Pages.Investing
         }
         public override string GetName(IHtmlHelper<OrderItemsClientPage> h, int i) => i switch
         {
-            1 or 3 => getName<decimal>(h, i),
-            2 => getName<int>(h, i),
-            4 => getName<DateTime>(h,i),
+            2 or 4 => getName<decimal>(h, i),
+            3 => getName<int>(h, i),
+            5 => getName<DateTime>(h,i),
             _ => base.GetName(h, i)
         };
         public override IHtmlContent GetValue(IHtmlHelper<OrderItemsClientPage> h, int i) => i switch
         {
-            1 or 3 => getValue<decimal>(h, i),
-            2 => getValue<int>(h, i),
-            4 => getValue<DateTime>(h, i),
+            2 or 4 => getValue<decimal>(h, i),
+            3 => getValue<int>(h, i),
+            5 => getValue<DateTime>(h, i),
             _ => base.GetValue(h, i)
         };
     }

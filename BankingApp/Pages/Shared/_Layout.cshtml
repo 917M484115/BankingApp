@@ -42,10 +42,10 @@
                             new Link("BlockChains", new Uri("/Manager/BlockChains/Index?handler=index", UriKind.Relative)),
                             new Link("Crypto", new Uri("/Manager/Crypto/Index?handler=index", UriKind.Relative)),
                             new Link("Stock", new Uri("/Manager/Stock/Index?handler=index", UriKind.Relative)),
-                            new Link("Calculator", new Uri("/Manager/Calculators/Index?handler=index",UriKind.Relative)),
+                            new Link("Calculator", new Uri("/Manager/Calculators/Index?handler=index", UriKind.Relative)),
                             new Link("Customers", new Uri("/Manager/Customers/Index?handler=index", UriKind.Relative)),
                             //new Link("Investing Accounts", new Uri("/Manager/InvestingAccount/Index?handler=index", UriKind.Relative)),
-                            new Link("Crypto Potfolios", new Uri("/Manager/CryptoPortfolios/Index?handler=index",UriKind.Relative)),
+                            new Link("Crypto Potfolios", new Uri("/Manager/CryptoPortfolios/Index?handler=index", UriKind.Relative)),
                             new Link("Orders", new Uri("/Manager/Orders/Index?handler=index", UriKind.Relative))
                             )
                         @Html.DropMenu("Client",
@@ -87,17 +87,16 @@
             @RenderBody()
         </main>
     </div>
+        <footer class="border-top footer text-muted">
+            <div class="container">
+                &copy; 2020 - Soft - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            </div>
+        </footer>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2020 - Soft - <a asp-area="" asp-page="/Privacy">Privacy</a>
-        </div>
-    </footer>
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-
-    @RenderSection("Scripts", required: false)
+        @RenderSection("Scripts", required: false)
 </body>
 </html>

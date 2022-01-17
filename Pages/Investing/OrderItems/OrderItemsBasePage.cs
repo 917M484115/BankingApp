@@ -61,6 +61,7 @@ namespace BankingApp.Pages.Investing
 
         protected override void createTableColumns()
         {
+            createColumn(x => Item.OrderType);
             createColumn(x => Item.Id);
             createColumn(x => Item.OrderID);
             createColumn(x => Item.CryptoID);
@@ -75,9 +76,9 @@ namespace BankingApp.Pages.Investing
         {
             return i switch
             {
-                4 or 6 => getName<decimal>(h, i),
-                5 => getName<int>(h, i),
-                7 => getName<DateTime>(h,i),
+                5 or 7 => getName<decimal>(h, i),
+                6 => getName<int>(h, i),
+                8 => getName<DateTime>(h,i),
                 _ => base.GetName(h, i)
             };
         }
@@ -86,9 +87,9 @@ namespace BankingApp.Pages.Investing
         {
             return i switch
             {
-                4 or 6 => getValue<decimal>(h, i),
-                5 => getValue<int>(h, i),
-                7 => getValue<DateTime>(h, i),
+                5 or 7 => getValue<decimal>(h, i),
+                6 => getValue<int>(h, i),
+                8 => getValue<DateTime>(h, i),
                 _ => base.GetValue(h, i)
             };
         }

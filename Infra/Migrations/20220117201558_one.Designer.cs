@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BankingApp.Infra.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220115171217_15")]
-    partial class _15
+    [Migration("20220117201558_one")]
+    partial class one
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -69,6 +69,28 @@ namespace BankingApp.Infra.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("MoneyAmount");
+                });
+
+            modelBuilder.Entity("BankingApp.Data.Investing.BlockChainData", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Code")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("From")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("To")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("BlockChains");
                 });
 
             modelBuilder.Entity("BankingApp.Data.Investing.CalculatorData", b =>
@@ -163,7 +185,7 @@ namespace BankingApp.Infra.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("Blockchain")
+                    b.Property<string>("BlockChainID")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Code")
@@ -193,9 +215,6 @@ namespace BankingApp.Infra.Migrations
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("AmountToSell")
-                        .HasColumnType("int");
 
                     b.Property<string>("Code")
                         .HasColumnType("nvarchar(max)");
@@ -260,6 +279,12 @@ namespace BankingApp.Infra.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("OrderID")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("OrderTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("OrderType")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("To")
@@ -683,19 +708,6 @@ namespace BankingApp.Infra.Migrations
                     b.ToTable("Accounts");
                 });
 
-            modelBuilder.Entity("BankingApp.Data.Investing.InvestmentData", b =>
-                {
-                    b.HasBaseType("BankingApp.Data.Common.MoneyAmountData");
-
-                    b.Property<double>("CurrentAmount")
-                        .HasColumnType("float");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.ToTable("Investments");
-                });
-
             modelBuilder.Entity("BankingApp.Data.Loan.LoanData", b =>
                 {
                     b.HasBaseType("BankingApp.Data.Common.MoneyAmountData");
@@ -735,13 +747,6 @@ namespace BankingApp.Infra.Migrations
                         .HasColumnType("int");
 
                     b.ToTable("Transactions");
-                });
-
-            modelBuilder.Entity("BankingApp.Data.Investing.InvestingAccountData", b =>
-                {
-                    b.HasBaseType("BankingApp.Data.Common.AccountData");
-
-                    b.ToTable("InvestingAccounts");
                 });
 
             modelBuilder.Entity("BankingApp.Data.Loan.LoanAccountData", b =>
@@ -859,15 +864,6 @@ namespace BankingApp.Infra.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("BankingApp.Data.Investing.InvestmentData", b =>
-                {
-                    b.HasOne("BankingApp.Data.Common.MoneyAmountData", null)
-                        .WithOne()
-                        .HasForeignKey("BankingApp.Data.Investing.InvestmentData", "Id")
-                        .OnDelete(DeleteBehavior.ClientCascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("BankingApp.Data.Loan.LoanData", b =>
                 {
                     b.HasOne("BankingApp.Data.Common.MoneyAmountData", null)
@@ -882,15 +878,6 @@ namespace BankingApp.Infra.Migrations
                     b.HasOne("BankingApp.Data.Common.MoneyAmountData", null)
                         .WithOne()
                         .HasForeignKey("BankingApp.Data.Misc.TransactionData", "Id")
-                        .OnDelete(DeleteBehavior.ClientCascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("BankingApp.Data.Investing.InvestingAccountData", b =>
-                {
-                    b.HasOne("BankingApp.Data.Common.AccountData", null)
-                        .WithOne()
-                        .HasForeignKey("BankingApp.Data.Investing.InvestingAccountData", "Id")
                         .OnDelete(DeleteBehavior.ClientCascade)
                         .IsRequired();
                 });
