@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tests.Pages.Investing
+namespace BankingApp.Tests.Pages.Investing
 {
     class CalculatorsBasePageTests
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tests.Pages.Investing.CryptoPortfolio
+namespace BankingApp.Tests.Pages.Investing.CryptoPortfolio
 {
     class CryptoPortfolioClientPageTests
     {
