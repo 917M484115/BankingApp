@@ -39,6 +39,31 @@ namespace BankingApp.Infra.Investing
                 }
             }
         }
+        public async Task<int> SellCrypto(string id,string CustomerID, int sellAmount)
+        {
+            var portfolio =dbSet.FirstOrDefault(c=>c.CryptoID==id && c.CustomerID==CustomerID);
+            if (portfolio != null)
+            {
+                var old = portfolio;
+                if(sellAmount<=old.Units && sellAmount>=0)
+                    { 
+                    old.Units -= sellAmount;
+                    var newItem = toDomainObject(old);
+                    await Update(newItem);
+                    return sellAmount;
+                    }
+                if (sellAmount > old.Units) 
+                    {
+                      var temp = old.Units;  
+                      old.Units = 0;
+                      await Delete(old.Id);
+                      return temp;
+                    }
+                if(sellAmount<0) return 0;
+            }
+            return 0;
+        }
+
 
         protected internal override CryptoPortfolio toDomainObject(CryptoPortfolioData d)
             => new CryptoPortfolio(d);

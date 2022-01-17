@@ -99,10 +99,20 @@ namespace BankingApp.Tests
         private class MockOrderItemsRepo : MockRepo<OrderItem>, IOrderItemsRepository
         {
             public Task AddItems(Order o, CryptoBasket b) => throw new NotImplementedException();
+
+            public Task AddOrderItem(string OrderID, int Units, string CryptoID)
+            {
+                throw new NotImplementedException();
+            }
         }
         private class MockCryptoPortfolioRepo : MockRepo<CryptoPortfolio>, ICryptoPortfolioRepository
         {
             public Task AddItems(CryptoBasket b, string id)
+            {
+                throw new NotImplementedException();
+            }
+
+            public Task<int> SellCrypto(string id, string CustomerID, int sellAmount)
             {
                 throw new NotImplementedException();
             }

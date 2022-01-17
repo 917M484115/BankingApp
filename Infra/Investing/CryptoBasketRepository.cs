@@ -32,16 +32,6 @@ namespace BankingApp.Infra.Investing
             await Add(o);
             return o;
         }
-        //public async Task Delete(CryptoBasket p, CryptoBasketItem c)
-        //{
-
-        //    //var o = toDomainObject(d);
-        //    //var o = toDomainObject(d);
-        //    await Delete2(c);
-
-        //    //return c;
-        //}
-
         protected internal override CryptoBasket toDomainObject(CryptoBasketData d) => new CryptoBasket(d);
     }
 }

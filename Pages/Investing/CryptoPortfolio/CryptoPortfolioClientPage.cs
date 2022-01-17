@@ -20,8 +20,10 @@ namespace BankingApp.Pages.Investing
     public sealed class CryptoPortfolioClientPage:CryptoPortfolioBasePage<CryptoPortfolioClientPage>
     {
         protected internal override Uri pageUrl() => new Uri("/Customer/CryptoPortfolios", UriKind.Relative);
-        public CryptoPortfolioClientPage(ICryptoPortfolioRepository r) : base(r) { }
-        //CryptoPortfolioView c;
+        ICryptoPortfolioRepository cryptoRepo;
+        IOrderItemsRepository orderItemsRepo;
+        IOrdersRepository ordersRepo;
+        public CryptoPortfolioClientPage(ICryptoPortfolioRepository r, IOrderItemsRepository oir, IOrdersRepository or) : base(r,oir,or) {cryptoRepo=r;orderItemsRepo=oir;ordersRepo=or; }
         public override async Task OnGetIndexAsync(string sortOrder,
             string id, string currentFilter, string searchString, int? pageIndex,
             string fixedFilter, string fixedValue)
@@ -35,30 +37,12 @@ namespace BankingApp.Pages.Investing
         public override async Task<IActionResult> OnPostEditAsync(string sortOrder, string searchString, int pageIndex,
             string fixedFilter, string fixedValue)
         {
-            //CryptoPortfolio b = await db.Get(SelectedId);
-            //var amountToSell=
-            //await updateObject(sortOrder, searchString, pageIndex, fixedFilter, fixedValue).ConfigureAwait(true);
-            Item.Units -= Item.AmountToSell;
-            var c = Item.AmountToSell;
-
-            await updateObject(sortOrder, searchString, pageIndex, fixedFilter, fixedValue).ConfigureAwait(true);
-            return Redirect(IndexUrl.ToString());
-        }
-        public override async Task<IActionResult> OnPostDeleteAsync(string id, string sortOrder, string searchString,
-            int pageIndex,
-            string fixedFilter, string fixedValue)
-        {
-            //CryptoPortfolioView c=new;
-            CryptoPortfolio b = await db.Get(id);
-            //var amountToSell=
-            //await updateObject(sortOrder, searchString, pageIndex, fixedFilter, fixedValue).ConfigureAwait(true);
-            b.Data.Units -= Item.AmountToSell;
-            var c = b.AmountToSell;
-            
-            //b.Units -= c.AmountToSell;
-            //await CryptoBasketsRepository.Delete(id);
-            //await deleteObject(id, sortOrder, searchString, pageIndex, fixedFilter, fixedValue).ConfigureAwait(true);
-            await updateObject(sortOrder, searchString, pageIndex, fixedFilter, fixedValue).ConfigureAwait(true);
+            var c = await cryptoRepo.SellCrypto(Item.CryptoID,User.Identity.Name, Item.AmountToSell);
+            if(c>0)
+            {
+                var o = ordersRepo.GetLatestForUser(User.Identity.Name).Result;
+                await orderItemsRepo.AddOrderItem(o.Id,c,Item.CryptoID);
+            }
             return Redirect(IndexUrl.ToString());
         }
     }

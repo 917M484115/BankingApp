@@ -7,6 +7,7 @@ namespace BankingApp.Data.Investing
         public string OrderID { get; set; }
         public string CryptoID { get; set; }
         public DateTime OrderTime { get;set;}
+        public string OrderType { get;set;}
         public int Units { get; set; }
     }
 }

@@ -79,6 +79,21 @@ namespace BankingApp.Infra.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "BlockChains",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    From = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    To = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Code = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_BlockChains", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Calculators",
                 columns: table => new
                 {
@@ -152,7 +167,7 @@ namespace BankingApp.Infra.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Blockchain = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    BlockChainID = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     From = table.Column<DateTime>(type: "datetime2", nullable: true),
                     To = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Code = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -235,6 +250,8 @@ namespace BankingApp.Infra.Migrations
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     OrderID = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CryptoID = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    OrderTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    OrderType = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Units = table.Column<int>(type: "int", nullable: false),
                     From = table.Column<DateTime>(type: "datetime2", nullable: true),
                     To = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -458,25 +475,6 @@ namespace BankingApp.Infra.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Investments",
-                columns: table => new
-                {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    CurrentAmount = table.Column<double>(type: "float", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Investments", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Investments_MoneyAmount_Id",
-                        column: x => x.Id,
-                        principalTable: "MoneyAmount",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Loans",
                 columns: table => new
                 {
@@ -515,23 +513,6 @@ namespace BankingApp.Infra.Migrations
                         name: "FK_Transactions_MoneyAmount_Id",
                         column: x => x.Id,
                         principalTable: "MoneyAmount",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "InvestingAccounts",
-                columns: table => new
-                {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_InvestingAccounts", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_InvestingAccounts_Accounts_Id",
-                        column: x => x.Id,
-                        principalTable: "Accounts",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -677,6 +658,9 @@ namespace BankingApp.Infra.Migrations
                 name: "Banks");
 
             migrationBuilder.DropTable(
+                name: "BlockChains");
+
+            migrationBuilder.DropTable(
                 name: "Calculators");
 
             migrationBuilder.DropTable(
@@ -699,12 +683,6 @@ namespace BankingApp.Infra.Migrations
 
             migrationBuilder.DropTable(
                 name: "HomeLoans");
-
-            migrationBuilder.DropTable(
-                name: "InvestingAccounts");
-
-            migrationBuilder.DropTable(
-                name: "Investments");
 
             migrationBuilder.DropTable(
                 name: "LoanAccounts");

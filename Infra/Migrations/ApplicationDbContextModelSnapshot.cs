@@ -99,9 +99,6 @@ namespace BankingApp.Infra.Migrations
                     b.Property<double>("APY")
                         .HasColumnType("float");
 
-                    b.Property<double>("Amount")
-                        .HasColumnType("float");
-
                     b.Property<string>("Code")
                         .HasColumnType("nvarchar(max)");
 
@@ -110,15 +107,6 @@ namespace BankingApp.Infra.Migrations
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<double>("Result")
-                        .HasColumnType("float");
-
-                    b.Property<double>("Revenue")
-                        .HasColumnType("float");
-
-                    b.Property<double>("TimeInMonths")
-                        .HasColumnType("float");
 
                     b.Property<DateTime?>("To")
                         .HasColumnType("datetime2");
@@ -214,9 +202,6 @@ namespace BankingApp.Infra.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("AmountToSell")
-                        .HasColumnType("int");
-
                     b.Property<string>("Code")
                         .HasColumnType("nvarchar(max)");
 
@@ -284,6 +269,9 @@ namespace BankingApp.Infra.Migrations
 
                     b.Property<DateTime>("OrderTime")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("OrderType")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("To")
                         .HasColumnType("datetime2");

@@ -9,7 +9,7 @@ namespace BankingApp.Pages.Investing
 {
     public sealed class CryptoPortfolioManagerPage : CryptoPortfolioBasePage<CryptoPortfolioManagerPage>
     {
-        public  CryptoPortfolioManagerPage(ICryptoPortfolioRepository r) : base(r)
+        public  CryptoPortfolioManagerPage(ICryptoPortfolioRepository r, IOrderItemsRepository oir, IOrdersRepository or) : base(r,oir,or)
         {
         }
     }

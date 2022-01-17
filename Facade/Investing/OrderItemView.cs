@@ -10,6 +10,7 @@ namespace BankingApp.Facade.Investing
         [DisplayName("Crypto")] public string CryptoID { get;set;}
         [DisplayName("Crypto Name")] public string CryptoName { get;set;}
         [DisplayName("Order Date")] public DateTime OrderTime { get;set;}
+        [DisplayName("Order Type")] public string OrderType { get;set;}
         public string BlockChain { get;set;}
         public string Ticker { get;set;}
         [Min(0)]
