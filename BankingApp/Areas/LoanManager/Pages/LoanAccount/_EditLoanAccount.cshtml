@@ -1,10 +1,33 @@
 ﻿@using BankingApp.Pages.Common.Extensions
 @model BankingApp.Pages.Loan.LoanAccountManagerPage;
 
+
 <body>
     @Html.Editor(m => m.Item.AccountNickname)
+    @Html.Editor(m => m.Item.AccountAddress)
     @Html.Editor(m => m.Item.CustomerId)
     @Html.Editor(m => m.Item.AccountLocation)
     @Html.Editor(m => m.Item.MoneyAmount)
+
+<script>
+    function generateAccountAddress() {
+
+        var txt = "EE" + generateNumbers(16);
+        document.getElementById("result").value = txt;
+    }
+
+    function generateNumbers(numberAmount) {
+       
+        var numbers = "";
+
+        for ( var i = 0; i < numberAmount; i++ ) {
+            numbers += Math.floor(Math.random() * 10);
+        }
+        return numbers;
+    }
+</script>
+
+<input type="button" value="Click to generate account address" onclick="generateAccountAddress()">
+<input type="text" id="result" size="30">
 
 </body>
