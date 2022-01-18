@@ -104,6 +104,10 @@ namespace BankingApp.Tests
             {
                 throw new NotImplementedException();
             }
+            public async Task Delete(Order p, OrderItem c)
+            {
+                throw new NotImplementedException();
+            }
         }
         private class MockCryptoPortfolioRepo : MockRepo<CryptoPortfolio>, ICryptoPortfolioRepository
         {

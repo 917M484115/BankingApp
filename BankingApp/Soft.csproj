@@ -13,12 +13,16 @@
 
   <ItemGroup>
     <Compile Remove="Areas\Customer\Pages\Investments\**" />
+    <Compile Remove="Areas\Customer\Pages\StockBasketItems\**" />
     <Compile Remove="Areas\Customer\Pages\Stocks\**" />
     <Content Remove="Areas\Customer\Pages\Investments\**" />
+    <Content Remove="Areas\Customer\Pages\StockBasketItems\**" />
     <Content Remove="Areas\Customer\Pages\Stocks\**" />
     <EmbeddedResource Remove="Areas\Customer\Pages\Investments\**" />
+    <EmbeddedResource Remove="Areas\Customer\Pages\StockBasketItems\**" />
     <EmbeddedResource Remove="Areas\Customer\Pages\Stocks\**" />
     <None Remove="Areas\Customer\Pages\Investments\**" />
+    <None Remove="Areas\Customer\Pages\StockBasketItems\**" />
     <None Remove="Areas\Customer\Pages\Stocks\**" />
   </ItemGroup>
 
@@ -40,7 +44,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Customer\Pages\StockBasketItems\" />
     <Folder Include="Pages\Shared\Partials\" />
   </ItemGroup>
 

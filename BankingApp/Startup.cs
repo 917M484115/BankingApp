@@ -57,7 +57,7 @@ namespace BankingApp
             s.AddScoped<IOrdersRepository,OrdersRepository>();
             s.AddScoped<ICryptoBasketItemsRepository, CryptoBasketItemsRepository>();
             s.AddScoped<ICryptoBasketsRepository, CryptoBasketRepository>();
-            s.AddScoped<IStockRepository, StocksRepository>();
+            
             GetRepository.SetServiceProvider(s.BuildServiceProvider());
         }
 

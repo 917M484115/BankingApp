@@ -25,7 +25,7 @@ namespace BankingApp.Tests.Pages.Investing
         protected override object createObject()
         {
             customers = addItems<Customer, CustomerData>(MockRepos.Customers(), d => new Customer(d)) as ICustomersRepository;
-            return new OrdersManagerPage(MockRepos.Orders(), customers);
+            return new OrdersManagerPage(MockRepos.Orders(), customers,MockRepos.OrderItems());
         }
         protected override string expectedUrl => "/Manager/Orders";
 

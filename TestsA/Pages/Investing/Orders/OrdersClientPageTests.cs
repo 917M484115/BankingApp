@@ -14,7 +14,7 @@ namespace BankingApp.Tests.Pages.Investing
     public class OrdersClientPageTests : AuthorizedPageTests<OrdersClientPage, OrdersBasePage<OrdersClientPage>>
     {
         protected override object createObject()
-            => new OrdersClientPage(MockRepos.Orders(), MockRepos.Customers());
+            => new OrdersClientPage(MockRepos.Orders(), MockRepos.Customers(), MockRepos.OrderItems());
         //    [Authorize]
         //public sealed class OrdersClientPageTests :OrdersBasePageTests<OrdersClientPageTests> {
         //    public OrdersClientPageTests(IOrdersRepository r, IBuyersRepository b) : base(r, b) {}

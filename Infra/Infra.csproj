@@ -15,4 +15,8 @@
     <ProjectReference Include="..\Facade\Facade.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Investing\TODO\" />
+  </ItemGroup>
+
 </Project>
