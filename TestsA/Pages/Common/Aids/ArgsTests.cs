@@ -1,5 +1,6 @@
 ﻿
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace BankingApp.Tests.Pages.Common.Aids {
 
@@ -24,7 +25,8 @@ namespace BankingApp.Tests.Pages.Common.Aids {
         //    Uri pageUrl = null, string itemId = null,
         //    string fixedFilter = null, string fixedValue = null,
         //    string sortOrder = null, string searchString = null,
-        //    int? pageIndex = null, string currentFilter = null) {
+        //    int? pageIndex = null, string currentFilter = null)
+        //{
         //    PageUrl = pageUrl;
         //    ItemId = itemId;
         //    FixedFilter = fixedFilter;

@@ -21,9 +21,16 @@ namespace BankingApp.Tests.Pages.Investing
         //    protected internal override BasketItem toObject(BasketItemView v) => new BasketItemViewFactory().Create(v);
         //    protected internal override BasketItemView toView(BasketItem o) => new BasketItemViewFactory().Create(o);
         protected override List<string> expectedIndexPageColumns
-            => new() { "Id", "BasketId", "ProductId", "ProductName", "UnitPrice", "Quantity", "TotalPrice", "From", "To" };
-        //    public override string BackToMasterDetailPageUrl => $"/Shop/Baskets/Details" +
-        //                   "?handler=Details" +
-        //                   $"&id={FixedValue}";
+            => new() {
+                "Id",
+                "CryptoBasketID",
+                "CryptoID",
+                "CryptoName",
+                "Ticker",
+                "UnitPrice",
+                "Quantity",
+                "TotalPrice",
+            };
+                   
     }
 }

@@ -15,12 +15,12 @@ namespace BankingApp.Tests.Pages.Investing
         protected override object createObject() => new BlockChainsClientPage(MockRepos.BlockChains());
         //public sealed class CatalogsClientPageTests :CatalogsBasePageTests<CatalogsClientPageTests> {
         //    public CatalogsClientPageTests(ICatalogsRepository r) : base(r) { }
-        protected override string expectedUrl => "/Client/Catalogs";
+        protected override string expectedUrl => "/Customer/BlockChains";
         protected override List<string> expectedIndexPageColumns => new() { "Name" };
         [TestMethod]
         public async Task OnGetDetailsAsyncTest()
         {
-            var expectedUrl = $"/Client/Products/Index?handler=Index&fixedFilter=CatalogId&fixedValue={id}";
+            var expectedUrl = $"/Customer/Crypto/Index?handler=Index&fixedFilter=BlockChainID&fixedValue={id}";
             var r = await page.OnGetDetailsAsync(id, sortOrder, searchString, pageIndex, fixedFilter, fixedValue);
             var actual = r as RedirectResult;
             isNotNull(actual);

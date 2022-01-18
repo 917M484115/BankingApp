@@ -17,7 +17,7 @@ namespace BankingApp.Tests.Pages.Investing
     public class BlockChainsBasePageTests : CommonPageTests<BlockChainsManagerPage, ViewPage<BlockChainsManagerPage, IBlockChainsRepository, BlockChain,
         BlockChainView, BlockChainData>>
     {
-        protected override string expectedUrl => "/Shop/Catalogs";
+        protected override string expectedUrl => "/Manager/BlockChains";
 
         protected override object createObject() => new BlockChainsManagerPage(MockRepos.BlockChains());
         //public abstract class CatalogsBasePageTests<TPage> :
@@ -30,10 +30,7 @@ namespace BankingApp.Tests.Pages.Investing
         protected override List<string> expectedIndexPageColumns => new()
         {
             "Id",
-            "Name",
-            "Code",
-            "From",
-            "To"
+            "Name"
         };
     }
 }

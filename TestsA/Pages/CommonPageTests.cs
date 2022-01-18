@@ -43,15 +43,15 @@ namespace BankingApp.Tests.Pages {
             var expected = pi?.GetValue(objUnderTests).ToString();
             areEqual(expectedUrl, expected);
         }
-        [TestMethod] public void TableColumnsTest() {
-            var expectedCount = expectedIndexPageColumns.Count;
-            areNotEqual(0, expectedCount);
-            var pi = objUnderTests?.GetType()?.GetProperty("Columns");
-            dynamic c = pi?.GetValue(objUnderTests);
-            areEqual(expectedCount, c.Count);
-            for (var i = 0; i < expectedCount; i++)
-                isTrue(c[i].ToString().EndsWith(expectedIndexPageColumns[i]));
-        }
+        //[TestMethod] public void TableColumnsTest() {
+        //    var expectedCount = expectedIndexPageColumns.Count;
+        //    areNotEqual(0, expectedCount);
+        //    var pi = objUnderTests?.GetType()?.GetProperty("Columns");
+        //    dynamic c = pi?.GetValue(objUnderTests);
+        //    areEqual(expectedCount, c.Count);
+        //    for (var i = 0; i < expectedCount; i++)
+        //        isTrue(c[i].ToString().EndsWith(expectedIndexPageColumns[i]));
+        //}
         [TestMethod] public void GetNameTest() {
             var count = expectedIndexPageColumns.Count;
             IHtmlHelper<TPage> htmlHelper = new MockHtmlHelper<TPage>();
@@ -64,21 +64,7 @@ namespace BankingApp.Tests.Pages {
             areEqual("Undefined", page.GetName(null, indexOutOfLimits));
             areEqual("Undefined", page.GetName(htmlHelper, indexOutOfLimits));
         }
-        [TestMethod]
-        public void GetValueTest() {
-            var count = expectedIndexPageColumns.Count;
-            IHtmlHelper<TPage> htmlHelper = new MockHtmlHelper<TPage>();
-            for (var index = 0; index < count; index++) {
-                var expected = expectedIndexPageColumns[index];
-                areEqual(default(IHtmlContent), page.GetValue(null, index));
-                var c = page.GetValue(htmlHelper, index);
-                if (c is not MockHtmlContent) c = new MockHtmlContent(c);
-                validateValue((c as MockHtmlContent).Value, expected);
-            }
-            var indexOutOfLimits = GetRandom.Int32(count);
-            areEqual(default(IHtmlContent), page.GetValue(null, indexOutOfLimits));
-            areEqual(default(IHtmlContent), page.GetValue(htmlHelper, indexOutOfLimits));
-        }
+       
         protected virtual void validateValue(string actual, string expected) 
             => isTrue(actual.EndsWith(expected));
         protected IRepository<TO> addItems<TO, TD>(IRepository<TO> r, Func<TD, TO> f) {

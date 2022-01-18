@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BankingApp.Tests.Pages.Investing.Orders
+namespace BankingApp.Tests.Pages.Investing
 {
     [TestClass]
     public class OrdersClientPageTests : AuthorizedPageTests<OrdersClientPage, OrdersBasePage<OrdersClientPage>>
@@ -18,12 +18,12 @@ namespace BankingApp.Tests.Pages.Investing.Orders
         //    [Authorize]
         //public sealed class OrdersClientPageTests :OrdersBasePageTests<OrdersClientPageTests> {
         //    public OrdersClientPageTests(IOrdersRepository r, IBuyersRepository b) : base(r, b) {}
-        protected override string expectedUrl => "/Client/Orders";
+        protected override string expectedUrl => "/Customer/Orders";
         [TestMethod] public void OnGetIndexAsyncTest() => notTested();
         [TestMethod] public void OnGetDetailsAsyncTest() => notTested();
 
         protected override List<string> expectedIndexPageColumns
-            => new() { "BuyerAddress", "TotalPrice", "OrderDate", "Closed" };
+            => new() { "CustomerName", "TotalPrice", "OrderDate", "Closed" };
 
 
         //    public override async Task OnGetIndexAsync(string sortOrder,

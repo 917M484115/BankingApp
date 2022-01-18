@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BankingApp.Tests.Pages.Investing.CryptoBaskets
+namespace BankingApp.Tests.Pages.Investing
 {
     [TestClass]
     public class CryptoBasketsManagerPageTests : AuthorizedPageTests<CryptoBasketsManagerPage, CryptoBasketsBasePage<CryptoBasketsManagerPage>>
@@ -23,12 +23,18 @@ namespace BankingApp.Tests.Pages.Investing.CryptoBaskets
         //        Buyers = newItemsList<Buyer, BuyerData>(b);
         //    }
         //    public string BuyerName(string id) => itemName(Buyers, id);
-        protected override string expectedUrl => "/Shop/Baskets";
+        protected override string expectedUrl => "/Manager/CryptoBaskets";
 
         //    protected internal override Basket toObject(BasketView v) => new BasketViewFactory().Create(v);
         //    protected internal override BasketView toView(Basket o) => new BasketViewFactory().Create(o);
         protected override List<string> expectedIndexPageColumns
-            => new() { "Id", "BuyerId", "BuyerName", "BuyerAddress", "TotalPrice", "From", "To" };
+            => new() {
+                "Id",
+                "CustomerID",
+                "CustomerName",
+                "CustomerCountry",
+                "TotalPrice",
+            };
 
         //    public override IHtmlContent GetValue(IHtmlHelper<BasketsPageTests> h, int i) => i switch {
         //        4 => getValue<decimal>(h, i),

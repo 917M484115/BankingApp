@@ -26,6 +26,6 @@ namespace BankingApp.Tests.Pages.Investing
         //    public override string BackToMasterDetailPageUrl => $"/Client/Baskets/Index?handler=Index";
 
         protected override List<string> expectedIndexPageColumns
-            => new() { "CryptoName", "UnitPrice", "Quantity", "TotalPrice", "BlockChain" };
+            => new() { "CryptoName", "Ticker", "UnitPrice", "Quantity", "TotalPrice" };
     }
 }

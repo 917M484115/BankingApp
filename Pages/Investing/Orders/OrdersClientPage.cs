@@ -19,7 +19,7 @@ namespace BankingApp.Pages.Investing
 {
     public sealed class OrdersClientPage :OrdersBasePage<OrdersClientPage>
     {
-        public OrdersClientPage(IOrdersRepository r, ICustomersRepository b) : base(r, b) { }
+        public OrdersClientPage(IOrdersRepository r, ICustomersRepository b,IOrderItemsRepository oir) : base(r, b,oir) { }
         protected internal override Uri pageUrl() => new Uri("/Customer/Orders", UriKind.Relative);
         protected override void createTableColumns()
         {

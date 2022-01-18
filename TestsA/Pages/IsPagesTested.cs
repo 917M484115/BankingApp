@@ -18,7 +18,7 @@ namespace BankingApp.Tests.Pages {
         public void IsExtensionTested()
             => isAllTested(assembly, nameSpace("Common.Extensions"));
         [TestMethod]
-        public void IsShopTested()
-            => isAllTested(assembly, nameSpace("Shop"));
+        public void IsInvestingTested()
+            => isAllTested(assembly, nameSpace("Investing"));
     }
 }

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BankingApp.Tests.Pages.Investing.OrderItems
+namespace BankingApp.Tests.Pages.Investing
 {
     [TestClass]
     public class OrderItemsClientPageTests
@@ -23,9 +23,17 @@ namespace BankingApp.Tests.Pages.Investing.OrderItems
         //    public override string BackToMasterDetailPageUrl => $"/Client/Orders/Details" +
         //                   "?handler=Details" +
         //                   $"&id={FixedValue}";
-        protected override string expectedUrl => "/Client/OrderItems";
+        protected override string expectedUrl => "/Customer/OrderItems";
         protected override List<string> expectedIndexPageColumns
-            => new() { "ProductName", "PictureUri", "UnitPrice", "Units", "TotalPrice" };
+            => new() {
+                "OrderType",
+                
+                "CryptoName",
+                "UnitPrice",
+                "Units",
+                "TotalPrice",
+                "OrderTime"
+            };
         protected override void validateValue(string actual, string expected)
         {
             if (expected == "PictureUri")

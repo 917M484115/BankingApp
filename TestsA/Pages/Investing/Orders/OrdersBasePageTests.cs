@@ -14,7 +14,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BankingApp.Tests.Pages.Investing.Orders
+namespace BankingApp.Tests.Pages.Investing
 {
     [TestClass]
     public class OrdersBasePageTests : CommonPageTests<OrdersManagerPage, ViewPage<OrdersManagerPage,
@@ -27,22 +27,21 @@ namespace BankingApp.Tests.Pages.Investing.Orders
             customers = addItems<Customer, CustomerData>(MockRepos.Customers(), d => new Customer(d)) as ICustomersRepository;
             return new OrdersManagerPage(MockRepos.Orders(), customers);
         }
-        protected override string expectedUrl => "/Shop/Orders";
+        protected override string expectedUrl => "/Manager/Orders";
 
-        [TestMethod] public async Task BuyerNameTest() => await selectNameTest(customers, page.CustomerName);
+        [TestMethod] public async Task CustomerNameTest() => await selectNameTest(customers, page.CustomerName);
         [TestMethod] public void OnGetSelectAsyncTest() => notTested();
-        [TestMethod] public async Task BuyersTest() => await selectListTest(page.Customers, customers);
+        [TestMethod] public async Task CustomersTest() => await selectListTest(page.Customers, customers);
 
         protected override List<string> expectedIndexPageColumns => new()
         {
             "Id",
-            "BuyerId",
-            "BuyerName",
-            "BuyerAddress",
+
+            "CustomerName",
+
             "TotalPrice",
             "OrderDate",
-            "From",
-            "To"
+
         };
        
     }

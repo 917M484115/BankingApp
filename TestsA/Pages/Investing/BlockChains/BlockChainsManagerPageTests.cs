@@ -12,8 +12,11 @@ namespace BankingApp.Tests.Pages.Investing
     public class BlockChainsManagerPageTests : AuthorizedPageTests<BlockChainsManagerPage, BlockChainsBasePage<BlockChainsManagerPage>>
     {
         protected override object createObject() => new BlockChainsManagerPage(MockRepos.BlockChains());
-        protected override string expectedUrl => "/Shop/Catalogs";
+        protected override string expectedUrl => "/Manager/BlockChains";
         protected override List<string> expectedIndexPageColumns
-            => new() { "Id", "Name", "Code", "From", "To" };
+            => new() {
+                "Id",
+                "Name"
+            };
     }
 }

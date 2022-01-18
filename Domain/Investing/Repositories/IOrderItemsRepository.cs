@@ -8,5 +8,6 @@ namespace BankingApp.Domain.Investing.Repositories
     {
         Task AddItems(Order o, CryptoBasket b);
         Task AddOrderItem(string OrderID, int Units, string CryptoID);
+        Task Delete(Order p, OrderItem c);
     }
 }

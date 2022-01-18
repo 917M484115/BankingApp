@@ -20,23 +20,17 @@ namespace BankingApp.Tests.Pages.Investing
         //    public ProductsClientPageTests(IProductsRepository r, ICatalogsRepository c, IBrandsRepository b,
         //        IBasketsRepository ba, IBasketItemsRepository bi)
         //        : base(r, c, b, ba, bi) {}
-        protected override string expectedUrl => "/Client/Products";
+        protected override string expectedUrl => "/Customer/Crypto";
 
         protected override List<string> expectedIndexPageColumns
-            => new() { "Name", "Description", "Price", "PictureUri", "CatalogId", "BrandId" };
-        protected override void validateValue(string actual, string expected)
-        {
-            if (expected == "PictureUri")
-                areEqual("<img src=\"\" alt=\"uu\" style=\"height: 75px\"/>", actual);
-            else if (expected == "CatalogId" || expected == "BrandId")
-                areEqual("Unspecified", actual);
-            else base.validateValue(actual, expected);
-        }
-        //    public override string BackToMasterDetailPageUrl => $"/Client/{backUrl()}/Index?handler=Index";
-
-        //    private string backUrl() =>
-        //        (FixedFilter == GetMember.Name<ProductData>(x => x.CatalogId)) ? "Catalogs" :
-        //        (FixedFilter == GetMember.Name<ProductData>(x => x.BrandId)) ? "Brands" :
-        //        "Products";
+            => new()
+            {
+                
+                "Name",
+                "Ticker",
+                "BlockChainID",
+                "Price"
+            };
+        
     }
 }

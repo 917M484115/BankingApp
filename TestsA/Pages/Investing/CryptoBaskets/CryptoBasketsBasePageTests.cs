@@ -28,9 +28,9 @@ namespace BankingApp.Tests.Pages.Investing
                 , MockRepos.Orders(), MockRepos.OrderItems(), MockRepos.CryptoBasketItems(), MockRepos.Portfolios());
         }
         protected override string expectedUrl => "/Manager/CryptoBaskets";
-        [TestMethod] public async Task BuyerNameTest() => await selectNameTest(customers, page.CustomerName);
+        [TestMethod] public async Task CustomersNameTest() => await selectNameTest(customers, page.CustomerName);
         [TestMethod] public void OnGetSelectAsyncTest() => notTested();
-        [TestMethod] public async Task BuyersTest() => await selectListTest(page.Customers, customers);
+        [TestMethod] public async Task CustomersTest() => await selectListTest(page.Customers, customers);
         [TestMethod] public void OrdersTest() => notTested();
         [TestMethod] public void OrderItemsTest() => notTested();
 
@@ -38,12 +38,11 @@ namespace BankingApp.Tests.Pages.Investing
         protected override List<string> expectedIndexPageColumns => new()
         {
             "Id",
-            "BuyerId",
-            "BuyerName",
-            "BuyerAddress",
+            "CustomerID",
+            "CustomerName",
+            "CustomerCountry",
             "TotalPrice",
-            "From",
-            "To"
+
         };
 
     }

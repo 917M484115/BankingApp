@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using BankingApp.Data.Investing;
 using BankingApp.Data.Misc;
 using BankingApp.Domain.Investing;
@@ -9,6 +10,7 @@ using BankingApp.Domain.Misc.Repositories;
 using BankingApp.Facade.Investing;
 using BankingApp.Pages.Common;
 using Microsoft.AspNetCore.Html;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
@@ -18,9 +20,14 @@ namespace BankingApp.Pages.Investing
         ViewPage<TPage, IOrdersRepository, Order, OrderView, OrderData>
         where TPage : PageModel
     {
-        protected OrdersBasePage(IOrdersRepository r, ICustomersRepository b) : base(r, "Orders")
+        public IOrdersRepository OrdersRepository { get; }
+        public IOrderItemsRepository OrderItemsRepository { get; }
+        protected OrdersBasePage(IOrdersRepository r, ICustomersRepository b, IOrderItemsRepository oir) : base(r, "Orders")
         {
+            
             Customers = newItemsList<Customer, CustomerData>(b);
+            OrdersRepository = r;
+            OrderItemsRepository = oir;
         }
 
         public IEnumerable<SelectListItem> Customers { get; }
@@ -73,6 +80,19 @@ namespace BankingApp.Pages.Investing
 
                 _ => base.GetValue(h, i)
             };
+        }
+        public override async Task<IActionResult> OnPostDeleteAsync(string id, string sortOrder, string searchString,
+            int pageIndex,
+            string fixedFilter, string fixedValue)
+        {
+            Order b = await db.Get(id);
+            foreach (var i in b.Items)
+            {
+                await OrderItemsRepository.Delete(b, i);
+            }
+            await OrdersRepository.Delete(id);
+            await deleteObject(id, sortOrder, searchString, pageIndex, fixedFilter, fixedValue).ConfigureAwait(true);
+            return Redirect(IndexUrl.ToString());
         }
     }
 }

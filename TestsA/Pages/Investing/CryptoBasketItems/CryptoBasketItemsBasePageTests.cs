@@ -31,8 +31,8 @@ namespace BankingApp.Tests.Pages.Investing
         
         protected override string expectedUrl => "/Manager/CryptoBasketItems";
         [TestMethod] public async Task BasketsNameTest() => await selectNameTest(baskets, page.CryptoBasketsName);
-        [TestMethod] public async Task ProductNameTest() => await selectNameTest(cryptos, page.CryptoName);
-        [TestMethod] public async Task ProductsTest() => await selectListTest(page.Crypto, cryptos);
+        [TestMethod] public async Task CryptoNameTest() => await selectNameTest(cryptos, page.CryptoName);
+        [TestMethod] public async Task CryptosTest() => await selectListTest(page.Crypto, cryptos);
         [TestMethod] public async Task BasketsTest() => await selectListTest(page.CryptoBaskets, baskets);
         [TestMethod] public void BackToMasterDetailPageUrlTest() => notTested();
 
@@ -42,12 +42,11 @@ namespace BankingApp.Tests.Pages.Investing
             "Id",
             "CryptoBasketID",
             "CryptoID",
-            //"Crypto",
-            "Unit Price",
+            "CryptoName",
+            "Ticker",
+            "UnitPrice",
             "Quantity",
-            "From",
-            "To",
-            "Code",
+            "TotalPrice",
         };
     }
 }

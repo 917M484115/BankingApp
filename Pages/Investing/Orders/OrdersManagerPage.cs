@@ -5,6 +5,6 @@ namespace BankingApp.Pages.Investing
 {
     public sealed class OrdersManagerPage : OrdersBasePage<OrdersManagerPage>
     {
-        public OrdersManagerPage(IOrdersRepository r, ICustomersRepository b) : base(r, b) { }
+        public OrdersManagerPage(IOrdersRepository r, ICustomersRepository b, IOrderItemsRepository oir) : base(r, b,oir) { }
     }
 }

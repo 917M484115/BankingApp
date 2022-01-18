@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BankingApp.Tests.Pages.Investing.CryptoBaskets
+namespace BankingApp.Tests.Pages.Investing
 {
     [TestClass]
     public class CryptoBasketsClientPageTests : AuthorizedPageTests<CryptoBasketsClientPage, CryptoBasketsBasePage<CryptoBasketsClientPage>>
@@ -17,7 +17,7 @@ namespace BankingApp.Tests.Pages.Investing.CryptoBaskets
                 MockRepos.Orders(), MockRepos.OrderItems(),MockRepos.CryptoBasketItems(),MockRepos.Portfolios());
         [TestMethod] public void OnGetIndexAsyncTest() => notTested();
         [TestMethod] public void OnGetDetailsAsyncTest() => notTested();
-        protected override string expectedUrl => "/Client/Baskets";
+        protected override string expectedUrl => "/Customer/CryptoBaskets";
 
         //    public override async Task OnGetIndexAsync(string sortOrder,
         //        string id, string currentFilter, string searchString, int? pageIndex,
@@ -41,7 +41,7 @@ namespace BankingApp.Tests.Pages.Investing.CryptoBaskets
         //        return Redirect(url.ToString());
         //    }
         protected override List<string> expectedIndexPageColumns
-            => new() { "BuyerName", "BuyerAddress", "TotalPrice", "From", "Closed" };
+            => new() { "CustomerName", "CustomerCountry", "TotalPrice", "Closed" };
         //    public override string GetName(IHtmlHelper<BasketsClientPageTests> h, int i) => i switch {
         //        2 => getName<decimal>(h, i),
         //        3 => getName<DateTime?>(h, i),

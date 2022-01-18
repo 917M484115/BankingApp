@@ -27,14 +27,14 @@ namespace BankingApp.Tests.Pages.Investing
             return new CryptoManagerPage(MockRepos.Cryptos(), MockRepos.CryptoBaskets(), MockRepos.CryptoBasketItems(), blockchains
                 );
         }
-        protected override string expectedUrl => "/Shop/Products";
-        [TestMethod] public async Task CatalogNameTest() => await selectNameTest(blockchains, x => page.BlockChainName(x));
+        protected override string expectedUrl => "/Manager/Crypto";
+        [TestMethod] public async Task BlockChainNameTest() => await selectNameTest(blockchains, x => page.BlockChainName(x));
         
         [TestMethod] public void OnGetSelectAsyncTest() => notTested();
-        [TestMethod] public async Task CatalogsTest() => await selectListTest(page.BlockChains, blockchains);
+        [TestMethod] public async Task BlockChainsTest() => await selectListTest(page.BlockChains, blockchains);
        
-        [TestMethod] public void BasketsTest() => notTested();
-        [TestMethod] public void BasketItemsTest() => notTested();
+        [TestMethod] public void CryptoBasketsTest() => notTested();
+        [TestMethod] public void CryptoBasketItemsTest() => notTested();
         [TestMethod] public void BackToMasterDetailPageUrlTest() => notTested();
 
        
@@ -43,23 +43,11 @@ namespace BankingApp.Tests.Pages.Investing
         {
             "Id",
             "Name",
-            "Code",
-            "Description",
-            "Price",
-            "PictureUri",
-            "CatalogId",
-            "BrandId",
-            "From",
-            "To"
+            "Ticker",
+            "BlockChainID",
+            "Price"
         };
-        protected override void validateValue(string actual, string expected)
-        {
-            if (expected == "PictureUri")
-                areEqual("<img src=\"\" alt=\"uu\" style=\"height: 75px\"/>", actual);
-            else if (expected == "CatalogId" || expected == "BrandId")
-                areEqual("Unspecified", actual);
-            else base.validateValue(actual, expected);
-        }
+        
        
     }
 }

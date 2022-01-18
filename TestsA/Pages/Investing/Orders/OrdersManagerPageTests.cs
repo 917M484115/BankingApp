@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BankingApp.Tests.Pages.Investing.Orders
+namespace BankingApp.Tests.Pages.Investing
 {
     [TestClass]
     public class OrdersManagerPageTests : AuthorizedPageTests<OrdersManagerPage, OrdersBasePage<OrdersManagerPage>>
@@ -25,11 +25,18 @@ namespace BankingApp.Tests.Pages.Investing.Orders
         //    }
 
         //    public string BuyerName(string id) => itemName(Buyers, id);
-        protected override string expectedUrl => "/Shop/Orders";
+        protected override string expectedUrl => "/Manager/Orders";
 
         //    protected internal override Order toObject(OrderView v) => new OrderViewFactory().Create(v);
         //    protected internal override OrderView toView(Order o) => new OrderViewFactory().Create(o);
         protected override List<string> expectedIndexPageColumns
-            => new() { "Id", "BuyerId", "BuyerName", "BuyerAddress", "TotalPrice", "OrderDate", "From", "To" };
+            => new() {
+                "Id",
+
+                "CustomerName",
+
+                "TotalPrice",
+                "OrderDate",
+            };
     }
 }
