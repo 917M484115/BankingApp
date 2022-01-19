@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using DataAnnotationsExtensions;
 namespace BankingApp.Facade.Investing
 {
-    public class CalculatorView : NamedView
+    public sealed class CalculatorView : NamedView
     {
         [Min(0),Required]
         public double APY {get;set;}

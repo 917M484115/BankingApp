@@ -41,6 +41,10 @@ namespace BankingApp.Infra.Investing
                 await Add(orderItem);
             }
         }
+        public async Task Delete(Order p, OrderItem c)
+        {
+            await Delete2(c);
+        }
         protected internal override OrderItem toDomainObject(OrderItemData d)
            => new OrderItem(d);
     }

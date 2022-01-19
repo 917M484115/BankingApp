@@ -30,14 +30,13 @@ namespace BankingApp.Infra
         public DbSet<BlockChainData> BlockChains { get;set;}
         public DbSet<CryptoPortfolioData> CryptoPortfolios { get;set;}
         public DbSet<CryptoBasketData> CryptoBaskets { get; set; }
-        public DbSet<StocksBasketData> StocksBaskets { get; set; }
-        public DbSet<StocksBasketItemData> StocksBasketItems { get; set; }
+       
         public DbSet<CryptoBasketItemData> CryptoBasketItems { get; set; }
         public DbSet<OrderData> Orders { get; set; }
         public DbSet<OrderItemData> OrderItems { get; set; }
         public DbSet<CustomerData> Customers { get; set; }
         public DbSet<CalculatorData> Calculators { get; set; }
-        public DbSet<StockData> Stocks { get;set;}
+        
         public DbSet<CryptoData> Cryptos { get;set;}
 
         protected override void OnModelCreating(ModelBuilder b)
@@ -49,11 +48,9 @@ namespace BankingApp.Infra
         {
             modelBuilder.Entity<BlockChainData>().ToTable(nameof(BlockChains));
             modelBuilder.Entity<CryptoBasketData>().ToTable(nameof(CryptoBaskets));
-            modelBuilder.Entity<StocksBasketData>().ToTable(nameof(StocksBaskets));
+           
             modelBuilder.Entity<CryptoBasketItemData>().ToTable(nameof(CryptoBasketItems));
-            modelBuilder.Entity<StocksBasketItemData>().ToTable(nameof(StocksBasketItems));
-            modelBuilder.Entity<StockData>().ToTable(nameof(Stocks)).Property(x => x.Price)
-                .HasColumnType("decimal(16,4)");
+            
             modelBuilder.Entity<CryptoData>().ToTable(nameof(Cryptos)).Property(x => x.Price)
                 .HasColumnType("decimal(16,4)");
             modelBuilder.Entity<OrderData>().ToTable(nameof(Orders));

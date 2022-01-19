@@ -19,7 +19,7 @@ namespace BankingApp.Infra.Common
 
         protected PaginatedRepository(DbContext c, DbSet<TData> s) : base(c, s) { }
 
-        internal int getTotalPages(in int pageSize) {
+        public int getTotalPages(in int pageSize) {
             var count = getItemsCount();
             var pages = countTotalPages(count, pageSize);
 
@@ -30,7 +30,7 @@ namespace BankingApp.Infra.Common
 
         internal int getItemsCount() => base.createSqlQuery().CountAsync().Result;
 
-        protected internal override IQueryable<TData> createSqlQuery() => addSkipAndTake(base.createSqlQuery());
+        public override IQueryable<TData> createSqlQuery() => addSkipAndTake(base.createSqlQuery());
 
         private IQueryable<TData> addSkipAndTake(IQueryable<TData> query) {
             if (PageIndex < 1) return query;

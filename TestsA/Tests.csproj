@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="5.0.11" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.9.4" />
     <PackageReference Include="MSTest.TestAdapter" Version="2.2.3" />
     <PackageReference Include="MSTest.TestFramework" Version="2.2.3" />
@@ -24,9 +25,7 @@
 
   <ItemGroup>
     <Folder Include="Core\" />
-    <Folder Include="Facade\Investing\" />
-    <Folder Include="Infra\Investing\" />
-    <Folder Include="Pages\Investing\" />
+    <Folder Include="Facade\ViewModels\" />
     <Folder Include="Soft\Investing\" />
   </ItemGroup>
 

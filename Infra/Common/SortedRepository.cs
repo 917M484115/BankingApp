@@ -18,7 +18,7 @@ namespace BankingApp.Infra.Common
 
         protected SortedRepository(DbContext c, DbSet<TData> s) : base(c, s) { }
 
-        protected internal override IQueryable<TData> createSqlQuery() {
+        public override IQueryable<TData> createSqlQuery() {
             var query = base.createSqlQuery();
             query = addSorting(query);
 

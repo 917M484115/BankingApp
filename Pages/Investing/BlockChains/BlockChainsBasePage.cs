@@ -23,6 +23,7 @@ namespace BankingApp.Pages.Investing
             createColumn(x => Item.Id);
             createColumn(x => Item.Name);
             
+            
         }
         public override string GetName(IHtmlHelper<TPage> h, int i) => i switch
         {

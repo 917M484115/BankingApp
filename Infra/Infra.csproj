@@ -8,11 +8,15 @@
 
   <ItemGroup>
     <PackageReference Include="DataAnnotationsExtensions" Version="5.0.1.27" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.11" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Facade\Facade.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Investing\TODO\" />
   </ItemGroup>
 
 </Project>

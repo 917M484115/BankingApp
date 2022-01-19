@@ -21,7 +21,7 @@ namespace BankingApp.Pages.Investing
         }
         public async Task<IActionResult> OnPostCalculateAsync()
         {
-           var selectedAPY = Convert.ToDouble(Item.APY) + 1;
+           var selectedAPY = Convert.ToDouble(Item.APY)/100 + 1;
            var TimeInYears = Convert.ToDouble(Item.TimeInMonths) / 12;
            var amount = Convert.ToDouble(Item.Amount);
            var result = amount * Math.Pow(selectedAPY, TimeInYears);

@@ -19,7 +19,7 @@ namespace BankingApp.Infra.Common
 
         protected FilteredRepository(DbContext c, DbSet<TData> s) : base(c, s) { }
 
-        protected internal override IQueryable<TData> createSqlQuery() {
+        public override IQueryable<TData> createSqlQuery() {
             var query = base.createSqlQuery();
             query = addFixedFiltering(query);
             query = addFiltering(query);
