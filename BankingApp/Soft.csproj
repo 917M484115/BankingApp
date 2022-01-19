@@ -15,15 +15,19 @@
     <Compile Remove="Areas\Customer\Pages\Investments\**" />
     <Compile Remove="Areas\Customer\Pages\StockBasketItems\**" />
     <Compile Remove="Areas\Customer\Pages\Stocks\**" />
+    <Compile Remove="Pages\Shared\Partials\**" />
     <Content Remove="Areas\Customer\Pages\Investments\**" />
     <Content Remove="Areas\Customer\Pages\StockBasketItems\**" />
     <Content Remove="Areas\Customer\Pages\Stocks\**" />
+    <Content Remove="Pages\Shared\Partials\**" />
     <EmbeddedResource Remove="Areas\Customer\Pages\Investments\**" />
     <EmbeddedResource Remove="Areas\Customer\Pages\StockBasketItems\**" />
     <EmbeddedResource Remove="Areas\Customer\Pages\Stocks\**" />
+    <EmbeddedResource Remove="Pages\Shared\Partials\**" />
     <None Remove="Areas\Customer\Pages\Investments\**" />
     <None Remove="Areas\Customer\Pages\StockBasketItems\**" />
     <None Remove="Areas\Customer\Pages\Stocks\**" />
+    <None Remove="Pages\Shared\Partials\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -41,10 +45,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Pages\Pages.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Pages\Shared\Partials\" />
   </ItemGroup>
 
 </Project>

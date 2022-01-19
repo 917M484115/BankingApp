@@ -22,12 +22,6 @@ namespace BankingApp.Tests
         public static IATMManagerRepository ATMManagerRepo(string id, out ATMManagerData d)
             => createMockRepo<MockATMManagerRepo, ATMManager, ATMManagerData>(
                 id, d => new ATMManager(d), out d);
-        public static IInvestmentRepository InvestmentRepo(string id, out InvestmentData d)
-            => createMockRepo<MockInvestmentRepo, Investment, InvestmentData>(
-                id, d => new Investment(d), out d);
-
-
-
         public static ICryptoBasketItemsRepository CryptoBasketItemsRepo(string id, out int count)
             => createMockRepo<MockCryptoBasketItemsRepo, CryptoBasketItem, CryptoBasketItemData>(
                 d => setRelatedId(d, id), d => new CryptoBasketItem(d), out count);
@@ -144,26 +138,8 @@ namespace BankingApp.Tests
             d.Quantity = GetRandom.UInt8(1, 5);
             return d;
         }
-
-
-
-
-
-
-
         private class MockATMRepo : MockRepo<ATM>, IATMRepository { }
         private class MockATMManagerRepo : MockRepo<ATMManager>, IATMManagerRepository { }
-        private class MockInvestmentRepo : MockRepo<Investment>, IInvestmentRepository { }
-
-
-
-
-
-
-
-
-
-
         private static TRepo createMockRepo<TRepo, TObj, TData>()
           where TRepo : IRepository<TObj>, new()
           where TData : UniqueEntityData => new TRepo();
