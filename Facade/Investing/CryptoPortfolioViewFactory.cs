@@ -14,6 +14,10 @@ namespace BankingApp.Facade.Investing
             {
                 v.CryptoName = o.Crypto.Name;
                 v.BlockChain = o.Crypto.BlockChain.Data.Name;
+                if(o.Crypto.BlockChain.Data.Name==null)
+                {
+                    v.BlockChain="Unspecified";
+                }
                 v.Ticker = o.Crypto.Ticker;
                 v.CustomerName =o.Customer.Name;
                 v.Units =o.Units;

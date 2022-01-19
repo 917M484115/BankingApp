@@ -38,16 +38,18 @@
                             new Link("All Loans", new Uri("/LoanManager/AllLoan/Index?handler=index", UriKind.Relative)),
                             new Link("Loan Accounts", new Uri("/LoanManager/LoanAccount/Index?handler=index", UriKind.Relative))
                             )
+                        @if (User.Identity.IsAuthenticated && User.Identity.Name.Equals("investingmanager@gmail.com"))
+                        { 
                         @Html.DropMenu("Investing Manager",
                             new Link("BlockChains", new Uri("/Manager/BlockChains/Index?handler=index", UriKind.Relative)),
                             new Link("Crypto", new Uri("/Manager/Crypto/Index?handler=index", UriKind.Relative)),
                             new Link("Stock", new Uri("/Manager/Stock/Index?handler=index", UriKind.Relative)),
                             new Link("Calculator", new Uri("/Manager/Calculators/Index?handler=index", UriKind.Relative)),
                             new Link("Customers", new Uri("/Manager/Customers/Index?handler=index", UriKind.Relative)),
-                            //new Link("Investing Accounts", new Uri("/Manager/InvestingAccount/Index?handler=index", UriKind.Relative)),
                             new Link("Crypto Potfolios", new Uri("/Manager/CryptoPortfolios/Index?handler=index", UriKind.Relative)),
                             new Link("Orders", new Uri("/Manager/Orders/Index?handler=index", UriKind.Relative))
                             )
+                        }
                         @Html.DropMenu("Client",
                             new Link("Transaction", new Uri("/Client/Transaction/Index?handler=index", UriKind.Relative)),
                             new Link("All accounts", new Uri("/Client/Accounts/Index?handler=index", UriKind.Relative)),

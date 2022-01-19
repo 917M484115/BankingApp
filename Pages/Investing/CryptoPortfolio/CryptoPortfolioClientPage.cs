@@ -34,6 +34,7 @@ namespace BankingApp.Pages.Investing
             await getList(sortOrder, currentFilter, searchString, pageIndex,
                 fixedFilter, fixedValue).ConfigureAwait(true);
         }
+
         public override async Task<IActionResult> OnPostEditAsync(string sortOrder, string searchString, int pageIndex,
             string fixedFilter, string fixedValue)
         {

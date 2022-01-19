@@ -43,20 +43,17 @@ namespace BankingApp.Pages.Investing
             createColumn(x => Item.CustomerName);
             createColumn(x => Item.CustomerCountry);
             createColumn(x => Item.TotalPrice);
-            //createColumn(x => Item.From);
             createColumn(x => Item.Closed);
         }
         public override string GetName(IHtmlHelper<CryptoBasketsClientPage> h, int i) => i switch
         {
             2 => getName<decimal>(h, i),
-            //3 => getName<DateTime?>(h, i),
             3 => getName<bool>(h, i),
             _ => base.GetName(h, i)
         };
         public override IHtmlContent GetValue(IHtmlHelper<CryptoBasketsClientPage> h, int i) => i switch
         {
             2 => getValue<decimal>(h, i),
-            //3 => getValue<DateTime?>(h, i),
             3 => getValue<bool>(h, i),
             _ => base.GetValue(h, i)
         };

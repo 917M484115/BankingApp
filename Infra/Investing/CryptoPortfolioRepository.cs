@@ -48,6 +48,11 @@ namespace BankingApp.Infra.Investing
                 if(sellAmount<=old.Units && sellAmount>=0)
                     { 
                     old.Units -= sellAmount;
+                    if(old.Units ==0)
+                    {
+                        await Delete(old.Id);
+                        return sellAmount;
+                    }
                     var newItem = toDomainObject(old);
                     await Update(newItem);
                     return sellAmount;
