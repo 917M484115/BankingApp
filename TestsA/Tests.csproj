@@ -26,6 +26,7 @@
   <ItemGroup>
     <Folder Include="Core\" />
     <Folder Include="Facade\ViewModels\" />
+    <Folder Include="Soft\1\" />
     <Folder Include="Soft\Investing\" />
   </ItemGroup>
 

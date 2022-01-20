@@ -6,7 +6,7 @@
 //using System.Text;
 //using System.Threading.Tasks;
 
-//namespace Tests.Aids
+//namespace BankingApp.Tests.Aids
 //{
 //    [TestClass]
 //    public class CreateNewTests : StaticClassTests

@@ -39,7 +39,6 @@ namespace BankingApp
         private static void registerRepositories(IServiceCollection s)
         {
             s.AddScoped<ITransactionRepository, TransactionRepository>();
-            s.AddScoped<INotificationRepository, NotificationRepository>();
             s.AddScoped<ILoanManagerRepository, LoanManagerRepository>();
             s.AddScoped<ILoanAccountRepository, LoanAccountRepository>();
             s.AddScoped<IATMManagerRepository, ATMManagerRepository>();

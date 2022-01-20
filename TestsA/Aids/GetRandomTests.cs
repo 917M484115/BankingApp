@@ -1,13 +1,8 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using BankingApp.Aids;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using BankingApp.Aids.Random;
 
-namespace Tests.Aids
+namespace BankingApp.Tests.Aids
 {
     [TestClass]
     public class GetRandomTests

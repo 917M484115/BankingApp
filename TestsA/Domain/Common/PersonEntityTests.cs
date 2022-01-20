@@ -9,7 +9,7 @@
 //    {
 //        private TestData data;
 
-//        private class testClass : PersonEntity<TestData>
+//        private class testClass : NamedEntity<TestData>
 //        {
 //            public testClass(TestData d) : base(d) { }
 //        }

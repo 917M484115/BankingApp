@@ -24,7 +24,6 @@ namespace BankingApp.Infra
         public DbSet<PersonalLoanData> PersonalLoans { get; set; }
         public DbSet<LoanManagerData> LoanManagers { get; set; }
         public DbSet<BankData> Banks { get; set; }
-        public DbSet<NotificationData> Notifications { get; set; }
         public DbSet<TransactionData> Transactions { get; set; }
 
         public DbSet<BlockChainData> BlockChains { get;set;}
@@ -68,7 +67,6 @@ namespace BankingApp.Infra
             modelBuilder.Entity<LoanManagerData>().ToTable(nameof(LoanManagers));
             modelBuilder.Entity<BankData>().ToTable(nameof(Banks));
             modelBuilder.Entity<CustomerData>().ToTable(nameof(Customers));
-            modelBuilder.Entity<NotificationData>().ToTable(nameof(Notifications));
             modelBuilder.Entity<TransactionData>().ToTable(nameof(Transactions));
             modelBuilder.Entity<MoneyAmountData>().ToTable("MoneyAmount");
         }

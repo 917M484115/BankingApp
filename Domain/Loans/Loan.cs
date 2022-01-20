@@ -11,7 +11,5 @@ namespace BankingApp.Domain.Loans
 		public string LoanManagerId => Data?.LoanManagerId ?? Unspecified;
 		public int LoanPeriod => Data?.LoanPeriod ?? 0;
 		public double Interest => Data?.Interest ?? 0;
-        public double MonthlyReturn
-            => Safe.Run(() => Math.Round(MoneyAmount / Convert.ToDouble(LoanPeriod) + MoneyAmount / Convert.ToDouble(LoanPeriod) * Interest/100, 2), UnspecifiedDouble);
     }
 }
