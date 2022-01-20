@@ -10,7 +10,7 @@ namespace BankingApp.Tests.Data.Common
         private class testClass : AccountData { }
         protected override object createObject() => new testClass();
         [TestMethod] public void AccountAddressTest() => isProperty<string>();
-        [TestMethod] public void CustomerIdTest() => isProperty<string>();
+        [TestMethod] public void AccountOwnerNameTest() => isProperty<string>();
         [TestMethod] public void AccountLocationTest() => isProperty<string>();
     }
 }

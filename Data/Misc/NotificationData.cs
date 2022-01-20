@@ -4,10 +4,10 @@ namespace BankingApp.Data.Misc
 {
     public sealed class NotificationData : UniqueEntityData
     {
-        public string TransactionId { get; }
-        public string ATMProcessId { get; }
-        public string LoanId { get; }
-        public string InvestmentId { get; }
-        public string CurrencySwapId { get; }
+        public string TransactionId { get; set; }
+        public string ATMProcessId { get; set; }
+        public string LoanId { get; set; }
+        public string InvestmentId { get; set; }
+        public string CurrencySwapId { get; set; }
     }
 }

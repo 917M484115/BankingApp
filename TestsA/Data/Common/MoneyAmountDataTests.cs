@@ -9,6 +9,6 @@ namespace BankingApp.Tests.Data.Common
     {
         private class testClass : MoneyAmountData { }
         protected override object createObject() => new testClass();
-        [TestMethod] public void MoneyAmountTest() => isProperty<double>();
+        [TestMethod] public void MoneyAmountTest() => isProperty<double>(false);
     }
 }

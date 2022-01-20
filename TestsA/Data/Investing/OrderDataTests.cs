@@ -3,10 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BankingApp.Data.Common;
+using BankingApp.Data.Investing;
+using BankingApp.Tests;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Tests.Data.Investing
+namespace BankingApp.Tests.Data.Investing
 {
-    public class OrderDataTests
+    [TestClass]
+    public class OrderDataTests : SealedClassTests<UniqueEntityData>
     {
+        [TestMethod] public void CustomerIDTest() => isProperty<string>();
+        [TestMethod] public void OrderDateTest() => isProperty<DateTime>(false);
     }
 }

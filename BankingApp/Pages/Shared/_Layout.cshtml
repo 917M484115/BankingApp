@@ -87,8 +87,7 @@
                              && User.Identity.Name.Equals("atmmanager@gmail.com") == false)
                         {
                             @Html.DropMenu("Client",
-                                new Link("Transaction", new Uri("/Client/Transaction/Index?handler=index", UriKind.Relative)),
-                                new Link("Notifications", new Uri("/Client/Notification/Index?handler=index", UriKind.Relative))
+                                new Link("Transaction", new Uri("/Client/Transaction/Index?handler=index", UriKind.Relative))
                                 )
                         }
                         @if (User.Identity.IsAuthenticated == true && User.Identity.Name.Equals("investingmanager@gmail.com") == false

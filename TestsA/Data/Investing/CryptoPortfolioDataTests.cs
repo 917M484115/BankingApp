@@ -3,7 +3,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace BankingApp.Tests.Data.Investing
 {
-    public class CryptoPortfolioDataTests : SealedClassTests<NamedEntityData>
+    [TestClass]
+    public class CryptoPortfolioDataTests : SealedClassTests<UniqueEntityData>
     {
         [TestMethod] public void CustomerIDTest() => isProperty<string>();
         [TestMethod] public void CryptoIDTest() => isProperty<string>();
