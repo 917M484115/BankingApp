@@ -18,9 +18,9 @@ namespace BankingApp.Pages.Client
         protected override void createTableColumns()
         {
             createColumn(x => Item.Id);
-            createColumn(x => Item.RecipientId);
+            createColumn(x => Item.RecipientAddress);
             createColumn(x => Item.RecipientName);
-            createColumn(x => Item.SenderId);
+            createColumn(x => Item.SenderAddress);
             createColumn(x => Item.SenderName);
             createColumn(x => Item.Note);
             createColumn(x => Item.MoneyAmount);

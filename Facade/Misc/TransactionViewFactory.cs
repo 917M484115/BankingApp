@@ -10,12 +10,13 @@ namespace BankingApp.Facade.Misc
 		public override TransactionView Create(Transaction o)
 		{
 			var v = base.Create(o);
-			v.RecipientId = o.RecipientId;
+			v.RecipientAddress = o.RecipientAddress;
 			v.RecipientName = o.RecipientName;
-			v.SenderId = o.SenderId;
+			v.SenderAddress = o.SenderAddress;
 			v.SenderName = o.SenderName;
 			v.Note = o.Note;
 			v.TransactionNr = o.TransactionNr;
+            v.MoneyAmount = o.AmountSent;
 			return v;
 		}
 	}

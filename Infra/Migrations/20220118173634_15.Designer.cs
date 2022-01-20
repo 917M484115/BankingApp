@@ -719,13 +719,13 @@ namespace BankingApp.Infra.Migrations
                     b.Property<string>("Note")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("RecipientId")
+                    b.Property<string>("RecipientAddress")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("RecipientName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("SenderId")
+                    b.Property<string>("SenderAddress")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SenderName")

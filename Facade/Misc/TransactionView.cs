@@ -10,9 +10,9 @@ namespace BankingApp.Facade.Misc
 {
 	public sealed class TransactionView: MoneyAmountView
 	{
-		public string RecipientId { get; set; }
+		public string RecipientAddress { get; set; }
 		[DisplayName("Recipient")] public string RecipientName { get; set; }
-		public string SenderId { get; set; }
+		public string SenderAddress { get; set; }
 		[DisplayName("Sender")] public string SenderName { get; set; }
 		public string Note { get; set; }
 		[DisplayName("Transaction number")] public int TransactionNr { get; set; }

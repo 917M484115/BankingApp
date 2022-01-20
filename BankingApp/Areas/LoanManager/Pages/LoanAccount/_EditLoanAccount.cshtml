@@ -15,16 +15,6 @@
         var txt = "EE" + generateNumbers(16);
         document.getElementById("result").value = txt;
     }
-
-    function generateNumbers(numberAmount) {
-       
-        var numbers = "";
-
-        for ( var i = 0; i < numberAmount; i++ ) {
-            numbers += Math.floor(Math.random() * 10);
-        }
-        return numbers;
-    }
 </script>
 
 <input type="button" value="Click to generate account address" onclick="generateAccountAddress()">
