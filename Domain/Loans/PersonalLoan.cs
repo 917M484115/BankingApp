@@ -1,4 +1,6 @@
-﻿using BankingApp.Data.Loan;
+﻿using System;
+using BankingApp.Aids.Methods;
+using BankingApp.Data.Loan;
 
 namespace BankingApp.Domain.Loans
 {
@@ -6,5 +8,8 @@ namespace BankingApp.Domain.Loans
 	{
 		public PersonalLoan(PersonalLoanData d) : base(d) { }
 		public string Reason => Data?.Reason ?? Unspecified;
+
+        public double MonthlyReturn
+            => Safe.Run(() => Math.Round(MoneyAmount / Convert.ToDouble(LoanPeriod) + MoneyAmount / Convert.ToDouble(LoanPeriod) * Interest / 100, 2), UnspecifiedDouble);
 	}
 }

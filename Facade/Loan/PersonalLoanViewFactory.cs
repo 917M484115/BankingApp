@@ -12,6 +12,7 @@ namespace BankingApp.Facade.Loan
 		{
 			var v = base.Create(o);
 			v.Reason = o.Reason;
+            v.MonthlyReturn = o.MonthlyReturn;
 			return v;
 		}
 	}

@@ -29,24 +29,21 @@ namespace BankingApp.Pages.Loan
         protected internal override LoanAccountView toView(LoanAccount o) => new LoanAccountViewFactory().Create(o);
         protected override void createTableColumns()
         {
-            createColumn(x => Item.Id);
             createColumn(x => Item.AccountAddress);
-            createColumn(x => Item.AccountNickname);
-            createColumn(x => Item.CustomerId);
+            createColumn(x => Item.AccountOwnerName);
             createColumn(x => Item.AccountLocation);
             createColumn(x => Item.MoneyAmount);
-
         }
 
         public override string GetName(IHtmlHelper<TPage> h, int i) => i switch
         {
-            5 => getName<double>(h, i),
+            3 => getName<double>(h, i),
             _ => base.GetName(h, i)
         };
 
         public override IHtmlContent GetValue(IHtmlHelper<TPage> h, int i) => i switch
         {
-            5 => getValue<double>(h, i),
+            3 => getValue<double>(h, i),
             _ => base.GetValue(h, i)
         };
         public virtual async Task<IActionResult> OnGetSelectAsync(string id, string sortOrder, string searchString,

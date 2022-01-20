@@ -1,4 +1,6 @@
-﻿using BankingApp.Data.Loan;
+﻿using System;
+using BankingApp.Aids.Methods;
+using BankingApp.Data.Loan;
 
 namespace BankingApp.Domain.Loans
 {
@@ -8,5 +10,8 @@ namespace BankingApp.Domain.Loans
 		public string CarType => Data?.CarType ?? Unspecified;
 		public double CarValue => Data?.CarValue ?? UnspecifiedDouble;
 		public int CarAge => Data?.CarAge ?? UnspecifiedInteger;
+
+        public double MonthlyReturn
+            => Safe.Run(() => Math.Round(MoneyAmount / Convert.ToDouble(LoanPeriod) + MoneyAmount / Convert.ToDouble(LoanPeriod) * Interest / 100, 2), UnspecifiedDouble);
 	}
 }

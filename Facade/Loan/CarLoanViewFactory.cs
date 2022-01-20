@@ -14,7 +14,8 @@ namespace BankingApp.Facade.Loan
 			v.CarType = o.CarType;
             v.CarValue = o.CarValue;
 			v.CarAge = o.CarAge;
-            return v;
+            v.MonthlyReturn = o.MonthlyReturn;
+			return v;
 		}
 	}
 }

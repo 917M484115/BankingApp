@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BankingApp.Infra.Migrations
 {
-    public partial class one : Migration
+    public partial class abc : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -99,10 +99,6 @@ namespace BankingApp.Infra.Migrations
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     APY = table.Column<double>(type: "float", nullable: false),
-                    TimeInMonths = table.Column<double>(type: "float", nullable: false),
-                    Amount = table.Column<double>(type: "float", nullable: false),
-                    Revenue = table.Column<double>(type: "float", nullable: false),
-                    Result = table.Column<double>(type: "float", nullable: false),
                     From = table.Column<DateTime>(type: "datetime2", nullable: true),
                     To = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Code = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -279,56 +275,6 @@ namespace BankingApp.Infra.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Stocks",
-                columns: table => new
-                {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Country = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    From = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    To = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    Code = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Ticker = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Price = table.Column<decimal>(type: "decimal(16,4)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Stocks", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "StocksBasketItems",
-                columns: table => new
-                {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    StockID = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    StocksBasketID = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Quantity = table.Column<int>(type: "int", nullable: false),
-                    From = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    To = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    Code = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_StocksBasketItems", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "StocksBaskets",
-                columns: table => new
-                {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    CustomerID = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    From = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    To = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    Code = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_StocksBaskets", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
@@ -440,8 +386,7 @@ namespace BankingApp.Infra.Migrations
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     AccountAddress = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    AccountNickname = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CustomerId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    AccountOwnerName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     AccountLocation = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -499,10 +444,12 @@ namespace BankingApp.Infra.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    RecipientId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    RecipientAddress = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     RecipientName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    SenderId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    RecipientId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SenderAddress = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     SenderName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SenderId = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Note = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     TransactionNr = table.Column<int>(type: "int", nullable: false)
                 },
@@ -701,15 +648,6 @@ namespace BankingApp.Infra.Migrations
 
             migrationBuilder.DropTable(
                 name: "PersonalLoans");
-
-            migrationBuilder.DropTable(
-                name: "Stocks");
-
-            migrationBuilder.DropTable(
-                name: "StocksBasketItems");
-
-            migrationBuilder.DropTable(
-                name: "StocksBaskets");
 
             migrationBuilder.DropTable(
                 name: "Transactions");

@@ -14,11 +14,26 @@ namespace BankingApp.Domain.Misc
 
         public double AmountSent => Data?.MoneyAmount ?? 0;
 
-        public LoanAccount Sender => new GetFrom<ILoanAccountRepository, LoanAccount>().ById(SenderAddress);
 
-        public string SenderName => Sender.AccountNickname;
-        public LoanAccount Recipient => new GetFrom<ILoanAccountRepository, LoanAccount>().ById(RecipientAddress);
-        public string RecipientName => Recipient.AccountNickname;
+        public LoanAccount Sender => new GetFrom<ILoanAccountRepository, LoanAccount>().ByAddress(SenderAddress);
+        public string SenderName => Sender?.AccountOwnerName;
+
+        public double SenderBalance => Sender.MoneyAmount - AmountSent;
+
+
+        public LoanAccount Recipient => new GetFrom<ILoanAccountRepository, LoanAccount>().ByAddress(RecipientAddress);
+        public string RecipientName => Recipient?.AccountOwnerName;
+
+        public double RecipientBalance => Recipient.MoneyAmount + AmountSent;
+
+        //TODO transaction
+
+
+
+
+
+
+
 
     }
 }

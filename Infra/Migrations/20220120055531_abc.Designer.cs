@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BankingApp.Infra.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220118174925_16")]
-    partial class _16
+    [Migration("20220120055531_abc")]
+    partial class abc
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -606,10 +606,7 @@ namespace BankingApp.Infra.Migrations
                     b.Property<string>("AccountLocation")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("AccountNickname")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CustomerId")
+                    b.Property<string>("AccountOwnerName")
                         .HasColumnType("nvarchar(max)");
 
                     b.ToTable("Accounts");
@@ -641,10 +638,16 @@ namespace BankingApp.Infra.Migrations
                     b.Property<string>("RecipientAddress")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("RecipientId")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("RecipientName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SenderAddress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SenderId")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SenderName")

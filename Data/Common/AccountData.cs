@@ -9,8 +9,7 @@ namespace BankingApp.Data.Common
     {
 
         public string AccountAddress { get; set; }
-        public string AccountNickname { get; set; } 
-        public string CustomerId { get; set; }
+        public string AccountOwnerName { get; set; }
         public string AccountLocation { get; set; }
 
 

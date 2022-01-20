@@ -12,6 +12,9 @@ namespace BankingApp.Domain.Common
             => GetRepository.Instance<TRepository>();
         public TObject ById(string id)
             => Safe.Run(() => repository?.Get(id)?.GetAwaiter().GetResult(), default(TObject));
+        public TObject ByAddress(string address)
+            => Safe.Run(() => repository?.Get(address)?.GetAwaiter().GetResult(), default(TObject));
+
         public IReadOnlyList<TObject> ListBy(string field, string value)
         {
             var r = repository;

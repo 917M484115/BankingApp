@@ -17,11 +17,10 @@ namespace BankingApp.Pages.Client
         protected internal override TransactionView toView(Transaction o) => new TransactionViewFactory().Create(o);
         protected override void createTableColumns()
         {
-            createColumn(x => Item.Id);
-            createColumn(x => Item.RecipientAddress);
             createColumn(x => Item.RecipientName);
-            createColumn(x => Item.SenderAddress);
+            createColumn(x => Item.RecipientAddress);
             createColumn(x => Item.SenderName);
+            createColumn(x => Item.SenderAddress);
             createColumn(x => Item.Note);
             createColumn(x => Item.MoneyAmount);
             createColumn(x => Item.TransactionNr);
@@ -29,15 +28,15 @@ namespace BankingApp.Pages.Client
 
         public override string GetName(IHtmlHelper<TransactionPage> h, int i) => i switch
         {
-            6 => base.getName<double>(h, i),
-            7 => base.getName<int>(h, i),
+            5 => base.getName<double>(h, i),
+            6 => base.getName<int>(h, i),
             _ => base.GetName(h, i)
         };
 
         public override IHtmlContent GetValue(IHtmlHelper<TransactionPage> h, int i) => i switch
         {
-            6 => base.getValue<double>(h, i),
-            7 => base.getValue<int>(h, i),
+            5 => base.getValue<double>(h, i),
+            6 => base.getValue<int>(h, i),
             _ => base.GetValue(h, i)
         };
 

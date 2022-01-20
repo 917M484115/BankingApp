@@ -13,7 +13,7 @@ namespace BankingApp.Facade.Common
         //[Required]
         [DisplayName("Account address")] 
         public string AccountAddress { get; set; }
-		[DisplayName("Nickname")] public string AccountNickname { get; set; }
+		[DisplayName("Account owner")] public string AccountOwnerName { get; set; }
 		[DisplayName("Customer Id")] public string CustomerId { get; set; }
 		[DisplayName("Account location")] public string AccountLocation { get; set; }
 	}
