@@ -21,30 +21,6 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <partial name="_LoginPartial" />
                     <ul class="navbar-nav flex-grow-1">
-                        
-                        @Html.DropMenu("Client",
-                            new Link("Transaction", new Uri("/Client/Transaction/Index?handler=index", UriKind.Relative)),
-                            new Link("Notifications", new Uri("/Client/Notification/Index?handler=index", UriKind.Relative))
-                            )
-                        
-                        @Html.DropMenu("Loan Manager",
-                            new Link("Personal Loans", new Uri("/LoanManager/PersonalLoan/Index?handler=index", UriKind.Relative)),
-                            new Link("Home Loans", new Uri("/LoanManager/HomeLoan/Index?handler=index", UriKind.Relative)),
-                            new Link("Car Loans", new Uri("/LoanManager/CarLoan/Index?handler=index", UriKind.Relative)),
-                            new Link("All Loans", new Uri("/LoanManager/AllLoan/Index?handler=index", UriKind.Relative)),
-                            new Link("Loan Accounts", new Uri("/LoanManager/LoanAccount/Index?handler=index", UriKind.Relative))
-                            )
-                        
-                        @Html.DropMenu("Loans",
-                            new Link("Loan Account", new Uri("/Loan/LoanAccount/Index?handler=index", UriKind.Relative)),
-                            new Link("Personal Loans", new Uri("/Loan/PersonalLoan/Index?handler=index", UriKind.Relative)),
-                            new Link("Home Loans", new Uri("/Loan/HomeLoan/Index?handler=index", UriKind.Relative)),
-                            new Link("Car Loans", new Uri("/Loan/CarLoan/Index?handler=index", UriKind.Relative))
-                            )
-                        
-
-                        
-
 
                         @if (User.Identity.IsAuthenticated && User.Identity.Name.Equals("bankmanager@gmail.com"))
                         {
