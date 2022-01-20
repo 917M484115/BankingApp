@@ -6,10 +6,10 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace BankingApp.Tests.Infra.Misc
 {
     [TestClass]
-    public class CustomersRepositoryTests : RepoTests<CustomersRepository, Customer, CustomerData>
+    public class BankRepositoryTests : RepoTests<BankRepository, Bank, BankData>
     {
         protected override object createObject()
-            => new CustomersRepository(new InMemoryApplicationDbContext().AppDb);
-        protected override Customer toObject(CustomerData d) => new(d);
+            => new BankRepository(new InMemoryApplicationDbContext().AppDb);
+        protected override Bank toObject(BankData d) => new(d);
     }
 }
